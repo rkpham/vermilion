@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7rcoukatcl8"]
+
+[ext_resource type="PackedScene" uid="uid://cvcvk40l5yxq4" path="res://assets/models/shove.glb" id="1_76jim"]
+
+[node name="shove" instance=ExtResource("1_76jim")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/7/rotation = Quaternion(-3.94635e-06, 3.94635e-06, 0.707107, 0.707107)
+bones/9/rotation = Quaternion(-3.94635e-06, -3.94635e-06, -0.707107, 0.707107)
+bones/11/rotation = Quaternion(-6.71544e-07, 0, 1, 0)

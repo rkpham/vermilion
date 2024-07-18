@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3uylqvkt8xck"]
+
+[ext_resource type="PackedScene" uid="uid://gx05s2nrvnh8" path="res://assets/models/ghostie.glb" id="1_ha06b"]
+
+[node name="ghostie" instance=ExtResource("1_ha06b")]
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_default_blend_time = 0.2
