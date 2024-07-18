@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://di1lgu50gdfbw"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
+[ext_resource type="Texture2D" uid="uid://cgu5d4ofbicl4" path="res://assets/textures/icons/eye.png" id="2_ex0ab"]
+[ext_resource type="Texture2D" uid="uid://bhdvn1srd6ie3" path="res://assets/textures/icons/handgrab.png" id="3_eyslv"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_iyfh5")
+
+[node name="InteractIcons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="EyeIcon" type="TextureRect" parent="InteractIcons"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ex0ab")
+
+[node name="HandGrabIcon" type="TextureRect" parent="InteractIcons"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_eyslv")
