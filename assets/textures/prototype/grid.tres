@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b4sx7sx66b372"]
+
+[ext_resource type="Texture2D" uid="uid://c1rb0h8e7eyf5" path="res://assets/textures/prototype/grid.png" id="1_27hci"]
+
+[resource]
+albedo_texture = ExtResource("1_27hci")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=6 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
+[ext_resource type="Material" uid="uid://b4sx7sx66b372" path="res://assets/textures/prototype/grid.tres" id="2_6fn4d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_re3dg"]
+size = Vector3(32, 1, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4t8e"]
+size = Vector3(32, 1, 32)
+
+[sub_resource type="Environment" id="Environment_ujcor"]
+background_mode = 1
+background_color = Color(0.854902, 1, 1, 1)
 
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fxprh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_re3dg")
+surface_material_override/0 = ExtResource("2_6fn4d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_w4t8e")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ujcor")

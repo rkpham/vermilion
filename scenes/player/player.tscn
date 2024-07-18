@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://blavsaulbsrwo"]
+[gd_scene load_steps=10 format=3 uid="uid://blavsaulbsrwo"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_iiql7"]
 [ext_resource type="PackedScene" uid="uid://c0tef407ni00e" path="res://scenes/ent/footsteps.tscn" id="2_2bqbd"]
 [ext_resource type="Script" path="res://scenes/player/player_cam.gd" id="2_cpvu0"]
-[ext_resource type="AudioStream" uid="uid://fqiyospcyu3t" path="res://assets/audio/sfx/footsteps/metal/metalsteps.wav" id="3_nyy8u"]
-[ext_resource type="AudioStream" uid="uid://b61gt4d77yoxo" path="res://assets/audio/sfx/footsteps/metal/metalsteps2.wav" id="4_72snx"]
-[ext_resource type="AudioStream" uid="uid://bxyoegm2wjds8" path="res://assets/audio/sfx/footsteps/metal/metalsteps3.wav" id="5_r5ahl"]
-[ext_resource type="AudioStream" uid="uid://c56y1t5n7o5vi" path="res://assets/audio/sfx/footsteps/metal/metalsteps4.wav" id="6_d5qvl"]
-[ext_resource type="AudioStream" uid="uid://bgrwcux4dmn35" path="res://assets/audio/sfx/footsteps/metal/metalsteps5.wav" id="7_ktx3p"]
+[ext_resource type="AudioStream" uid="uid://damo0hqg681" path="res://assets/audio/sfx/footsteps/stone/stone1.wav" id="3_xkka3"]
+[ext_resource type="AudioStream" uid="uid://dgjoyd781mkqw" path="res://assets/audio/sfx/footsteps/stone/stone2.wav" id="4_p1ww4"]
+[ext_resource type="AudioStream" uid="uid://byhooduhr20bk" path="res://assets/audio/sfx/footsteps/stone/stone3.wav" id="5_owa0i"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gnlxt"]
 
@@ -20,13 +18,15 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_iiql7")
 
 [node name="Footsteps" parent="." instance=ExtResource("2_2bqbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-sounds = Array[AudioStream]([ExtResource("3_nyy8u"), ExtResource("4_72snx"), ExtResource("5_r5ahl"), ExtResource("6_d5qvl"), ExtResource("7_ktx3p")])
+speed_scale = 1.4
+sounds = Array[AudioStream]([ExtResource("3_xkka3"), ExtResource("4_p1ww4"), ExtResource("5_owa0i")])
+
+[node name="StepPlayer" parent="Footsteps" index="0"]
+bus = &"Master"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_gnlxt")
@@ -34,6 +34,7 @@ shape = SubResource("CylinderShape3D_gnlxt")
 [node name="PlayerCam" type="Node3D" parent="." node_paths=PackedStringArray("footsteps")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 script = ExtResource("2_cpvu0")
+sensitivity = 0.2
 footsteps = NodePath("../Footsteps")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCam"]
@@ -54,3 +55,5 @@ libraries = {
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_energy = 0.5
 omni_range = 3.0
+
+[editable path="Footsteps"]

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c8xdoy1jibm23"]
+
+[ext_resource type="Texture2D" uid="uid://c8nacxrh1krrt" path="res://textures/bricks/bricks.jpg" id="1_d4dro"]
+
+[resource]
+albedo_texture = ExtResource("1_d4dro")
+normal_enabled = true
+texture_filter = 0

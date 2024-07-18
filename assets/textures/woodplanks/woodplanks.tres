@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://q4wsv3djg18a"]
+
+[ext_resource type="Texture2D" uid="uid://tq8mhopsunma" path="res://textures/woodplanks/woodplanks.jpg" id="1_edps8"]
+
+[resource]
+albedo_texture = ExtResource("1_edps8")
+texture_filter = 0

@@ -1,10 +1,10 @@
 class_name Footsteps
 extends Node3D
 
-var speed_scale: float = 1.0
 var stepping: bool = false
 var step_delta: float = 0.0
 
+@export var speed_scale: float = 1.0
 @export var sounds: Array[AudioStream] = []
 
 @onready var step_player = $StepPlayer
