@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=6 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="Material" uid="uid://b4sx7sx66b372" path="res://assets/textures/prototype/grid.tres" id="2_6fn4d"]
-[ext_resource type="PackedScene" uid="uid://cwmuypivbmfoh" path="res://scenes/objects/test_object.tscn" id="3_yvgq5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_re3dg"]
 size = Vector3(32, 1, 32)
@@ -30,6 +29,3 @@ shape = SubResource("BoxShape3D_w4t8e")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ujcor")
-
-[node name="TestObject" parent="." instance=ExtResource("3_yvgq5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1816)

@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cg37li1lusy66"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="1_j7fmj"]
+[ext_resource type="Texture2D" uid="uid://ddrka3cxp2yr" path="res://scripts/shaders/reconstruction_grad.tres" id="2_rah33"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pn5lb"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_i6iag"]
+seamless = true
+seamless_blend_skirt = 0.435
+noise = SubResource("FastNoiseLite_pn5lb")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j7fmj")
+shader_parameter/stability = 0.01
+shader_parameter/noise = SubResource("NoiseTexture3D_i6iag")
+shader_parameter/tex = ExtResource("2_rah33")
