@@ -5,6 +5,8 @@
 
 [node name="Main" type="Node"]
 
-[node name="UI" parent="." instance=ExtResource("1_adlav")]
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UILayer" instance=ExtResource("1_adlav")]
 
 [node name="World" parent="." instance=ExtResource("2_khaeu")]

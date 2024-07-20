@@ -16,6 +16,7 @@ var interacting: bool = false
 
 func _ready() -> void:
 	Game.player = self
+	cam.player = self
 
 
 func _physics_process(delta: float) -> void:

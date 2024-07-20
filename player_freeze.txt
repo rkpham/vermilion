@@ -1,0 +1,5 @@
+Things that can freeze the player movement
+(avoid having any two of these things happen at the same time)
+
+- Camera shifting interactables
+- Briefcase/inventory opening

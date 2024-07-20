@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://kc143kogfxww"]
+
+[ext_resource type="PackedScene" uid="uid://cdam3ovcwlk42" path="res://assets/models/briefcase/briefcase.glb" id="1_xr8my"]
+[ext_resource type="Texture2D" uid="uid://dmpr5mjcywknw" path="res://assets/models/briefcase/briefcase_basecolor.png" id="2_qerp3"]
+[ext_resource type="Texture2D" uid="uid://cfbsg8fd1itur" path="res://assets/models/briefcase/briefcase_metallic.png" id="3_t555y"]
+[ext_resource type="Texture2D" uid="uid://n81nnelv4vxe" path="res://assets/models/briefcase/briefcase_normal.png" id="4_enc23"]
+[ext_resource type="Texture2D" uid="uid://scay5stw5xtb" path="res://assets/models/briefcase/briefcase_roughness.png" id="5_3fowk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5xwr"]
+albedo_texture = ExtResource("2_qerp3")
+metallic = 1.0
+metallic_texture = ExtResource("3_t555y")
+roughness_texture = ExtResource("5_3fowk")
+normal_enabled = true
+normal_texture = ExtResource("4_enc23")
+
+[node name="Briefcase" instance=ExtResource("1_xr8my")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, -1.43438e-06)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
+
+[node name="Briefcase" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_p5xwr")

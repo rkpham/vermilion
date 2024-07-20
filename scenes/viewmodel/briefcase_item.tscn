@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwvfqxl55lwsy"]
+
+[ext_resource type="Script" path="res://scenes/viewmodel/briefcase_item.gd" id="1_e7tmw"]
+
+[node name="BriefcaseItem" type="Area3D"]
+script = ExtResource("1_e7tmw")
+
+[node name="HoverLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.515465)
+light_energy = 0.0
+omni_range = 0.1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

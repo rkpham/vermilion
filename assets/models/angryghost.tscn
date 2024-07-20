@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq0unv8pyfkb3"]
-
-[ext_resource type="PackedScene" uid="uid://ddwgbas1dxqbv" path="res://assets/models/angryghost.glb" id="1_imgyl"]
-
-[node name="angryghost" instance=ExtResource("1_imgyl")]

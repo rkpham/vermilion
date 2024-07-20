@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://bexruyiyhhkyk"]
+
+[ext_resource type="Script" path="res://scenes/viewmodel/view_model.gd" id="1_pmnb7"]
+[ext_resource type="PackedScene" uid="uid://kc143kogfxww" path="res://assets/models/briefcase/briefcase.tscn" id="1_troln"]
+[ext_resource type="PackedScene" uid="uid://7l4ucy2yhcju" path="res://assets/models/notepad/notepad.tscn" id="3_n2vnl"]
+[ext_resource type="PackedScene" uid="uid://cwvfqxl55lwsy" path="res://scenes/viewmodel/briefcase_item.tscn" id="4_edcdt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6s1b"]
+size = Vector3(0.405, 0.49, 0.085)
+
+[sub_resource type="Animation" id="Animation_3emqp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Briefcase:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.868, -0.664, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Briefcase:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_botmf"]
+resource_name = "briefcase_lower"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Briefcase:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.603, -0.364, 0), Vector3(-1.988, -5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Briefcase:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_miacx"]
+resource_name = "briefcase_rise"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Briefcase:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.603, -3, 0), Vector3(-1.603, -0.364, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Briefcase:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8s7la"]
+_data = {
+"RESET": SubResource("Animation_3emqp"),
+"briefcase_lower": SubResource("Animation_botmf"),
+"briefcase_rise": SubResource("Animation_miacx")
+}
+
+[node name="ViewModel" type="Node3D"]
+script = ExtResource("1_pmnb7")
+
+[node name="Briefcase" parent="." instance=ExtResource("1_troln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -0.664, 0)
+visible = false
+
+[node name="NotepadAttachment" type="BoneAttachment3D" parent="Briefcase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987164, -0.0368981)
+bone_name = "TopBriefcase"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="NotepadPosition" type="Node3D" parent="Briefcase/NotepadAttachment"]
+transform = Transform3D(0.992757, 0, 0.120137, 0, 1, 0, -0.120137, 0, 0.992757, 1.02, 0.115, -0.61)
+
+[node name="BriefcaseItem" parent="Briefcase/NotepadAttachment/NotepadPosition" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
+transform = Transform3D(1.3411e-07, 1, -1.04647e-08, -4.1329e-08, -5.81808e-09, 1, 1, -1.41561e-07, 3.43213e-08, 0, 0, 0)
+item_model = NodePath("../NotepadModel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/NotepadAttachment/NotepadPosition/BriefcaseItem"]
+transform = Transform3D(0.999989, 6.18398e-07, 1.40294e-07, 2.23517e-08, 0.999993, -1.18106e-07, 2.54285e-08, 2.07542e-06, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_v6s1b")
+
+[node name="NotepadModel" parent="Briefcase/NotepadAttachment/NotepadPosition" instance=ExtResource("3_n2vnl")]
+transform = Transform3D(1.2666e-07, 1, 0, -4.37114e-08, -5.73205e-15, 1, 1, -1.2666e-07, 4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+current = true
+fov = 70.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8s7la")
+}
+
+[connection signal="input_event" from="Briefcase/NotepadAttachment/NotepadPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
+
+[editable path="Briefcase"]

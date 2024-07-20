@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blavsaulbsrwo"]
+[gd_scene load_steps=11 format=3 uid="uid://blavsaulbsrwo"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_iiql7"]
 [ext_resource type="PackedScene" uid="uid://c0tef407ni00e" path="res://scenes/ent/footsteps.tscn" id="2_2bqbd"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://damo0hqg681" path="res://assets/audio/sfx/footsteps/stone/stone1.wav" id="3_xkka3"]
 [ext_resource type="AudioStream" uid="uid://dgjoyd781mkqw" path="res://assets/audio/sfx/footsteps/stone/stone2.wav" id="4_p1ww4"]
 [ext_resource type="AudioStream" uid="uid://byhooduhr20bk" path="res://assets/audio/sfx/footsteps/stone/stone3.wav" id="5_owa0i"]
+[ext_resource type="PackedScene" uid="uid://bexruyiyhhkyk" path="res://scenes/viewmodel/view_model.tscn" id="7_3wq51"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gnlxt"]
 
@@ -40,13 +41,16 @@ view_bob_amount = 0.03
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCam"]
 current = true
-fov = 90.0
+fov = 70.0
 
 [node name="InteractRay" type="RayCast3D" parent="PlayerCam/Camera3D"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 7
 hit_back_faces = false
 collide_with_areas = true
+
+[node name="ViewModel" parent="PlayerCam/Camera3D" instance=ExtResource("7_3wq51")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

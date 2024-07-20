@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://7l4ucy2yhcju"]
+
+[ext_resource type="PackedScene" uid="uid://dw8rkb6cqf4oh" path="res://assets/models/notepad/notepad.glb" id="1_gstod"]
+[ext_resource type="Texture2D" uid="uid://dyq40r6qnaj6x" path="res://assets/models/notepad/notepad_basecolor.png" id="2_8yoka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klmop"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_8yoka")
+
+[node name="notepad" instance=ExtResource("1_gstod")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_klmop")

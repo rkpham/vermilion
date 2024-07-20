@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=7 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Texture2D" uid="uid://cgu5d4ofbicl4" path="res://assets/textures/icons/eye.png" id="2_ex0ab"]
 [ext_resource type="Texture2D" uid="uid://bhdvn1srd6ie3" path="res://assets/textures/icons/handgrab.png" id="3_eyslv"]
+[ext_resource type="Texture2D" uid="uid://fov4ot6uv6ex" path="res://assets/textures/icons/goldcursor.png" id="4_d1e7q"]
+[ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="5_0udoo"]
+[ext_resource type="Script" path="res://scenes/ui/notepad.gd" id="5_a0cvu"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -14,6 +17,23 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_iyfh5")
 
+[node name="Cursor" type="Control" parent="."]
+visible = false
+z_index = 20
+z_as_relative = false
+anchors_preset = 0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="CursorIcon" type="TextureRect" parent="Cursor"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 14.0
+offset_bottom = 14.0
+mouse_filter = 2
+texture = ExtResource("4_d1e7q")
+
 [node name="InteractIcons" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -22,6 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="EyeIcon" type="TextureRect" parent="InteractIcons"]
 visible = false
@@ -56,3 +77,34 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_eyslv")
+
+[node name="Notepad" type="Control" parent="."]
+custom_minimum_size = Vector2(240, 320)
+layout_mode = 1
+anchor_left = 0.3125
+anchor_top = 0.0555556
+anchor_right = 0.6875
+anchor_bottom = 0.944444
+offset_top = 380.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_a0cvu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Paper" type="TextureRect" parent="Notepad"]
+show_behind_parent = true
+z_index = -5
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0udoo")
+expand_mode = 1
+stretch_mode = 1
+
+[connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
