@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfbsg8fd1itur"
-path="res://.godot/imported/briefcase_metallic.png-927de5c39b0efa45afcb2eb6f12be64a.ctex"
+uid="uid://byax63iivpx3a"
+path.s3tc="res://.godot/imported/apartments_doorframe_basecolor.png-1eb8465d77574030fad765aa3fa2098b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "81107340de84d569f1d2af533b280a7e"
 }
 
 [deps]
 
-source_file="res://assets/models/briefcase/briefcase_metallic.png"
-dest_files=["res://.godot/imported/briefcase_metallic.png-927de5c39b0efa45afcb2eb6f12be64a.ctex"]
+source_file="res://assets/models/apartments/apartments_doorframe_basecolor.png"
+dest_files=["res://.godot/imported/apartments_doorframe_basecolor.png-1eb8465d77574030fad765aa3fa2098b.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

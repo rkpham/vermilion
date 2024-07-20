@@ -5,7 +5,6 @@ var stepping: bool = false
 var step_delta: float = 0.0
 
 @export var speed_scale: float = 1.0
-@export var sounds: Array[AudioStream] = []
 
 @onready var step_player = $StepPlayer
 
@@ -20,6 +19,5 @@ func _physics_process(delta: float) -> void:
 
 
 func step() -> void:
-	step_player.stream = sounds[randi_range(0, sounds.size() - 1)]
 	step_player.play()
 	step_delta = 0.0

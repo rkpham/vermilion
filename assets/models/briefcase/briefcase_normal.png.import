@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n81nnelv4vxe"
-path.s3tc="res://.godot/imported/briefcase_normal.png-a0680d433aa36ee26e7d3ef6487ab4f2.s3tc.ctex"
+path="res://.godot/imported/briefcase_normal.png-a0680d433aa36ee26e7d3ef6487ab4f2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/models/briefcase/briefcase_normal.png"
-dest_files=["res://.godot/imported/briefcase_normal.png-a0680d433aa36ee26e7d3ef6487ab4f2.s3tc.ctex"]
+dest_files=["res://.godot/imported/briefcase_normal.png-a0680d433aa36ee26e7d3ef6487ab4f2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

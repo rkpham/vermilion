@@ -73,10 +73,10 @@ tracks/0/path = NodePath("Briefcase:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-1.603, -3, 0), Vector3(-1.603, -0.364, 0)]
+"values": [Vector3(-1.603, -3, 0), Vector3(-1.603, -0.364, 0), Vector3(-1.603, -0.364, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -105,8 +105,13 @@ script = ExtResource("1_pmnb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -0.664, 0)
 visible = false
 
+[node name="Skeleton3D" parent="Briefcase/Armature" index="0"]
+bones/2/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, -1.43438e-06)
+bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
+bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
+
 [node name="NotepadAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987164, -0.0368981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987165, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true

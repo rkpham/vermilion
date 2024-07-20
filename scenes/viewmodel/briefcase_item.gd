@@ -12,6 +12,9 @@ var debounce: float = 0.0
 
 
 func _on_mouse_entered() -> void:
+	if Game.viewmodel.frozen:
+		return
+	
 	if hover_tween:
 		hover_tween.stop()
 	hover_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)

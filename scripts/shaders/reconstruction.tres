@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cg37li1lusy66"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bly46xj15cygd"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="1_j7fmj"]
-[ext_resource type="Texture2D" uid="uid://ddrka3cxp2yr" path="res://scripts/shaders/reconstruction_grad.tres" id="2_rah33"]
+[ext_resource type="Texture2D" uid="uid://b3anp7kxoia5p" path="res://scripts/shaders/reconstruction_grad.tres" id="2_rah33"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pn5lb"]
 

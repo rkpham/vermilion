@@ -1,12 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://blavsaulbsrwo"]
+[gd_scene load_steps=16 format=3 uid="uid://blavsaulbsrwo"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_iiql7"]
 [ext_resource type="PackedScene" uid="uid://c0tef407ni00e" path="res://scenes/ent/footsteps.tscn" id="2_2bqbd"]
 [ext_resource type="Script" path="res://scenes/player/player_cam.gd" id="2_cpvu0"]
-[ext_resource type="AudioStream" uid="uid://damo0hqg681" path="res://assets/audio/sfx/footsteps/stone/stone1.wav" id="3_xkka3"]
-[ext_resource type="AudioStream" uid="uid://dgjoyd781mkqw" path="res://assets/audio/sfx/footsteps/stone/stone2.wav" id="4_p1ww4"]
-[ext_resource type="AudioStream" uid="uid://byhooduhr20bk" path="res://assets/audio/sfx/footsteps/stone/stone3.wav" id="5_owa0i"]
+[ext_resource type="AudioStream" uid="uid://dck2hdncenx3t" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps1.wav" id="3_5r03n"]
+[ext_resource type="AudioStream" uid="uid://caimcw4ysgds1" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps2.wav" id="4_i1jb8"]
+[ext_resource type="AudioStream" uid="uid://dot21d7re6r8l" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps3.wav" id="5_dxkaj"]
+[ext_resource type="AudioStream" uid="uid://cdc5i7uu7fqww" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps4.wav" id="6_3y0ht"]
 [ext_resource type="PackedScene" uid="uid://bexruyiyhhkyk" path="res://scenes/viewmodel/view_model.tscn" id="7_3wq51"]
+[ext_resource type="AudioStream" uid="uid://bl8i5h28o2iej" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps5.wav" id="7_waq25"]
+[ext_resource type="AudioStream" uid="uid://dmcnn3npjhplr" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps6.wav" id="8_ffr5w"]
+[ext_resource type="AudioStream" uid="uid://dho84kmnpxiqx" path="res://assets/audio/sfx/footsteps/carpet/carpetfootsteps7.wav" id="9_ngow2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_08sl1"]
+random_pitch = 1.1
+streams_count = 7
+stream_0/stream = ExtResource("3_5r03n")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_i1jb8")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_dxkaj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_3y0ht")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_waq25")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("8_ffr5w")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("9_ngow2")
+stream_6/weight = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gnlxt"]
 
@@ -24,9 +46,9 @@ script = ExtResource("1_iiql7")
 [node name="Footsteps" parent="." instance=ExtResource("2_2bqbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 speed_scale = 1.4
-sounds = Array[AudioStream]([ExtResource("3_xkka3"), ExtResource("4_p1ww4"), ExtResource("5_owa0i")])
 
 [node name="StepPlayer" parent="Footsteps" index="0"]
+stream = SubResource("AudioStreamRandomizer_08sl1")
 bus = &"Master"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -58,7 +80,8 @@ libraries = {
 }
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_energy = 0.5
-omni_range = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_energy = 0.01
+omni_range = 4.0
 
 [editable path="Footsteps"]

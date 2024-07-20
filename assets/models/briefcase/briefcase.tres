@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://m6n471g3wwxi"]
+
+[ext_resource type="Texture2D" uid="uid://dmpr5mjcywknw" path="res://assets/models/briefcase/briefcase_basecolor.png" id="1_5admp"]
+[ext_resource type="Texture2D" uid="uid://cfbsg8fd1itur" path="res://assets/models/briefcase/briefcase_metallic.png" id="2_ddjno"]
+[ext_resource type="Texture2D" uid="uid://n81nnelv4vxe" path="res://assets/models/briefcase/briefcase_normal.png" id="3_rakk6"]
+[ext_resource type="Texture2D" uid="uid://scay5stw5xtb" path="res://assets/models/briefcase/briefcase_roughness.png" id="4_l1sv2"]
+
+[resource]
+albedo_texture = ExtResource("1_5admp")
+metallic = 1.0
+metallic_texture = ExtResource("2_ddjno")
+roughness_texture = ExtResource("4_l1sv2")
+normal_enabled = true
+normal_texture = ExtResource("3_rakk6")
+texture_filter = 5

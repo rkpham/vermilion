@@ -1,19 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=8 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
-[ext_resource type="Material" uid="uid://b4sx7sx66b372" path="res://assets/textures/prototype/grid.tres" id="2_6fn4d"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="3_pbtji"]
+[ext_resource type="PackedScene" uid="uid://kiu2y4k8rmry" path="res://scenes/effects/window_light.tscn" id="4_eyn8v"]
+[ext_resource type="PackedScene" uid="uid://dltasewwiwrl1" path="res://assets/models/apartments/apartments.tscn" id="4_vkrfk"]
+[ext_resource type="AudioStream" uid="uid://cvogm81aw0job" path="res://assets/audio/ambience/quietrainroomambience.ogg" id="5_3h65x"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
-background_color = Color(1, 1, 1, 1)
-background_energy_multiplier = 0.5
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_re3dg"]
-size = Vector3(32, 1, 32)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_w4t8e"]
-size = Vector3(32, 1, 32)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1dkwg"]
 
 [node name="World" type="Node3D"]
 
@@ -23,17 +23,32 @@ script = ExtResource("3_pbtji")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ujcor")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.829632, 0.44321, -0.339522, 0, 0.608124, 0.793842, 0.55831, -0.658597, 0.50452, 0, 0, 0)
-
 [node name="Player" parent="." instance=ExtResource("1_fxprh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="apartments" parent="." instance=ExtResource("4_vkrfk")]
+
+[node name="WindowLight" parent="apartments" instance=ExtResource("4_eyn8v")]
+
+[node name="WindowLight2" parent="apartments" instance=ExtResource("4_eyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -11)
+
+[node name="WindowLight3" parent="apartments" instance=ExtResource("4_eyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -18)
+
+[node name="WindowLight4" parent="apartments" instance=ExtResource("4_eyn8v")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.74925, 1, -21)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.88211, -0.358339, -0.305736, 0.464749, 0.767837, 0.440948, 0.0767469, -0.531056, 0.843854, 0, 0, 0)
+light_energy = 0.003
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_re3dg")
-surface_material_override/0 = ExtResource("2_6fn4d")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_w4t8e")
+shape = SubResource("WorldBoundaryShape3D_1dkwg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3h65x")
+autoplay = true
