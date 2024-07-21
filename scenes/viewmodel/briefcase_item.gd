@@ -19,7 +19,7 @@ func _on_mouse_entered() -> void:
 		hover_tween.stop()
 	hover_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	hover_tween.tween_property(item_model, "position", hover_position, 0.2)
-	hover_tween.tween_property(hover_light, "light_energy", 0.1, 0.2)
+	hover_tween.tween_property(hover_light, "light_energy", 0.03, 0.2)
 
 
 func _on_mouse_exited() -> void:

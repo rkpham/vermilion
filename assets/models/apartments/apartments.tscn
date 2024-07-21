@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dltasewwiwrl1"]
+[gd_scene load_steps=3 format=3 uid="uid://dltasewwiwrl1"]
 
 [ext_resource type="PackedScene" uid="uid://i2koxmul7at3" path="res://assets/models/apartments/apartments.glb" id="1_n8ivf"]
+[ext_resource type="Material" uid="uid://sra0vh7umukr" path="res://assets/models/apartments/apartments.tres" id="2_i0od4"]
 
 [node name="apartments" instance=ExtResource("1_n8ivf")]
+
+[node name="Apartment" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_i0od4")
