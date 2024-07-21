@@ -35,18 +35,14 @@ func toggle_briefcase() -> void:
 
 
 func _set_briefcase_open(open: bool) -> void:
-	if briefcase_anim.is_playing() or anim.is_playing():
+	if anim.is_playing():
 		return
 	
 	briefcase_open = open
 	if open:
-		anim.play("briefcase_rise")
-		await anim.animation_finished
-		briefcase_anim.play("Open")
+		anim.play("briefcase_open")
 	else:
-		briefcase_anim.play("Close")
-		await briefcase_anim.animation_finished
-		anim.play("briefcase_lower")
+		anim.play("briefcase_close")
 
 
 func _on_briefcase_item_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:

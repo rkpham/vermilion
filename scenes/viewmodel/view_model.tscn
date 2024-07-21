@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bexruyiyhhkyk"]
+[gd_scene load_steps=12 format=3 uid="uid://bexruyiyhhkyk"]
 
 [ext_resource type="Script" path="res://scenes/viewmodel/view_model.gd" id="1_pmnb7"]
 [ext_resource type="PackedScene" uid="uid://kc143kogfxww" path="res://assets/models/briefcase/briefcase.tscn" id="1_troln"]
 [ext_resource type="PackedScene" uid="uid://7l4ucy2yhcju" path="res://assets/models/notepad/notepad.tscn" id="3_n2vnl"]
 [ext_resource type="PackedScene" uid="uid://cwvfqxl55lwsy" path="res://scenes/viewmodel/briefcase_item.tscn" id="4_edcdt"]
+[ext_resource type="AudioStream" uid="uid://cipgfhuwb7glo" path="res://assets/audio/sfx/briefcaseopen.ogg" id="5_t0qvq"]
+[ext_resource type="AudioStream" uid="uid://d0m3yhkyouo1x" path="res://assets/audio/sfx/briefcaseclose.ogg" id="6_q8jn2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6s1b"]
 size = Vector3(0.405, 0.49, 0.085)
@@ -34,38 +36,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [false]
 }
-
-[sub_resource type="Animation" id="Animation_botmf"]
-resource_name = "briefcase_lower"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Briefcase:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.603, -0.364, 0), Vector3(-1.988, -5, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Briefcase:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Briefcase/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_miacx"]
-resource_name = "briefcase_rise"
-length = 0.3
+resource_name = "briefcase_open"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,12 +74,90 @@ tracks/1/keys = {
 "update": 0,
 "values": [true, true]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.125957,
+"stream": ExtResource("5_t0qvq")
+}],
+"times": PackedFloat32Array(0.0440191)
+}
+tracks/2/use_blend = true
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Briefcase/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("RESET", "Open"),
+"times": PackedFloat32Array(0, 0.480694)
+}
+
+[sub_resource type="Animation" id="Animation_botmf"]
+resource_name = "briefcase_close"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Briefcase:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.603, -0.364, 0), Vector3(-1.988, -5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Briefcase:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_q8jn2")
+}],
+"times": PackedFloat32Array(0.161046)
+}
+tracks/2/use_blend = true
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Briefcase/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("Close"),
+"times": PackedFloat32Array(0.03)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8s7la"]
 _data = {
 "RESET": SubResource("Animation_3emqp"),
-"briefcase_lower": SubResource("Animation_botmf"),
-"briefcase_rise": SubResource("Animation_miacx")
+"briefcase_close": SubResource("Animation_botmf"),
+"briefcase_open": SubResource("Animation_miacx")
 }
 
 [node name="ViewModel" type="Node3D"]
@@ -105,13 +167,8 @@ script = ExtResource("1_pmnb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -0.664, 0)
 visible = false
 
-[node name="Skeleton3D" parent="Briefcase/Armature" index="0"]
-bones/2/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, -1.43438e-06)
-bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
-bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
-
 [node name="NotepadAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987165, -0.0368981)
+transform = Transform3D(0.0181519, -0.999835, 4.37042e-08, 0.999835, 0.0181519, -7.93445e-10, 3.55271e-15, 4.37114e-08, 1, -0.561411, 0.453079, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true
@@ -140,6 +197,8 @@ fov = 70.0
 libraries = {
 "": SubResource("AnimationLibrary_8s7la")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="input_event" from="Briefcase/NotepadAttachment/NotepadPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 
