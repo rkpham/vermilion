@@ -29,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Effects" type="Node3D" parent="."]
 
 [node name="WindowLight" parent="Effects" instance=ExtResource("4_eyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
 
 [node name="WindowLight2" parent="Effects" instance=ExtResource("4_eyn8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -11)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=8 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Texture2D" uid="uid://cgu5d4ofbicl4" path="res://assets/textures/icons/eye.png" id="2_ex0ab"]
@@ -6,6 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://fov4ot6uv6ex" path="res://assets/textures/icons/goldcursor.png" id="4_d1e7q"]
 [ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="5_0udoo"]
 [ext_resource type="Script" path="res://scenes/ui/notepad.gd" id="5_a0cvu"]
+
+[sub_resource type="GDScript" id="GDScript_v5iy4"]
+script/source = "extends Label
+
+func _process(delta: float) -> void:
+	text = \"fps: %d\" % Engine.get_frames_per_second()
+"
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -16,6 +23,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_iyfh5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 23.0
+text = "fps: 0"
+script = SubResource("GDScript_v5iy4")
 
 [node name="Cursor" type="Control" parent="."]
 visible = false

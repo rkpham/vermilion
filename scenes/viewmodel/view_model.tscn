@@ -196,7 +196,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8s7la"]
 _data = {
 "RESET": SubResource("Animation_3emqp"),

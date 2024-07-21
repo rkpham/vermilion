@@ -3,7 +3,6 @@
 [ext_resource type="AudioStream" uid="uid://c42gmkuov2cit" path="res://assets/audio/ambience/rainloop.ogg" id="1_ta416"]
 
 [node name="WindowLight" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 0.603681, 0, 0)
@@ -11,7 +10,7 @@ light_energy = 0.5
 spot_angle = 25.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896223, 0, 0)
 light_energy = 0.1
 
 [node name="RainSound" type="AudioStreamPlayer3D" parent="."]
