@@ -32,8 +32,10 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	for brush in brushes:
-		draw_rect(Rect2(brush - Vector2.ONE, Vector2(2, 2)), Color.BLACK, true)
+	for i in range(brushes.size()):
+		if i > 0:
+			if not i in undo_amts:
+				draw_line(brushes[i - 1], brushes[i], Color.BLACK, 1.7, false)
 
 
 func add_brush(pos: Vector2) -> void:

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b53ve2a2qfdx7"]
+
+[ext_resource type="Texture2D" uid="uid://c4cpykccawuf4" path="res://assets/models/candles/Candle_BaseColor.png" id="1_gkk5q"]
+[ext_resource type="Texture2D" uid="uid://cy2cisc54iqrj" path="res://assets/models/candles/Candle_Metallic.png" id="2_vkwp5"]
+[ext_resource type="Texture2D" uid="uid://6v2b60djlxv4" path="res://assets/models/candles/Candle_Normal.png" id="3_jj7xw"]
+[ext_resource type="Texture2D" uid="uid://bhkjcahag60ah" path="res://assets/models/candles/Candle_Roughness.png" id="4_lujat"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_gkk5q")
+metallic = 1.0
+metallic_texture = ExtResource("2_vkwp5")
+roughness_texture = ExtResource("4_lujat")
+normal_enabled = true
+normal_texture = ExtResource("3_jj7xw")

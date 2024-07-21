@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6d728aa8fwyl"]
+
+[ext_resource type="PackedScene" uid="uid://b4is8rkoxjee3" path="res://assets/models/chair/chair.glb" id="1_nc3m1"]
+[ext_resource type="Material" uid="uid://c1dbhfun4w8n6" path="res://assets/models/chair/chair.tres" id="2_14t6n"]
+
+[node name="chair" instance=ExtResource("1_nc3m1")]
+
+[node name="Chair" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_14t6n")
