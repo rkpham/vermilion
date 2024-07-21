@@ -3,6 +3,7 @@ extends Node3D
 
 var briefcase_open: bool = false:
 	set = _set_briefcase_open
+var item_show: bool = false
 var frozen: bool = false
 
 @onready var briefcase = $Briefcase
@@ -43,8 +44,3 @@ func _set_briefcase_open(open: bool) -> void:
 		anim.play("briefcase_open")
 	else:
 		anim.play("briefcase_close")
-
-
-func _on_briefcase_item_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if event.is_action_pressed("mouse_left"):
-		Game.ui.notepad_shown = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bsacakukfn6o3"]
 
 [ext_resource type="Script" path="res://scenes/components/reconstruction_component.gd" id="1_8gq0n"]
-[ext_resource type="Material" uid="uid://cg37li1lusy66" path="res://scripts/shaders/reconstruction.tres" id="3_e8hea"]
+[ext_resource type="Material" uid="uid://bly46xj15cygd" path="res://scripts/shaders/reconstruction.tres" id="3_e8hea"]
 
 [sub_resource type="Curve" id="Curve_okhcd"]
 _data = [Vector2(0, 0), 0.0, 4.4595, 0, 0, Vector2(0.0866667, 0.590482), 2.61394, 2.61394, 0, 0, Vector2(1, 0), -2.72565, 0.0, 0, 0]
