@@ -16,3 +16,4 @@ mesh = SubResource("QuadMesh_m26cf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+current = true

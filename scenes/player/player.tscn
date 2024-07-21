@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 script = ExtResource("2_cpvu0")
 sensitivity = 0.2
 footsteps = NodePath("../Footsteps")
-view_bob_amount = 0.03
+view_bob_amount = 0.04
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCam"]
 current = true
