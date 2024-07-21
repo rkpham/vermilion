@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwmuypivbmfoh"]
+[gd_scene load_steps=7 format=3 uid="uid://cwmuypivbmfoh"]
 
+[ext_resource type="Script" path="res://scenes/objects/test_object.gd" id="1_mbtfv"]
 [ext_resource type="Texture2D" uid="uid://ddcad5wjcvcio" path="res://assets/models/nail_41_light satin bronze metal texture-seamless-128.jpg" id="2_qco0q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3a0f"]
@@ -45,6 +46,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rujjs")
 
 [node name="TestObject" type="RigidBody3D"]
+script = ExtResource("1_mbtfv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030426, 0.168213, 0.0145264)

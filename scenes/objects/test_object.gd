@@ -1,4 +1,6 @@
 extends RigidBody3D
 
-func _ready():
-	$ReconstructionComponent.reconstruct()
+func interact():
+	for child in get_children():
+		if child.has_method("interact"):
+			child.interact()

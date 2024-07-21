@@ -153,6 +153,28 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.480694)
 }
 
+[sub_resource type="Animation" id="Animation_by731"]
+resource_name = "item_hide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.4, 1, 0, -2, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_hneno"]
 resource_name = "item_show"
 tracks/0/type = "position_3d"
@@ -175,27 +197,6 @@ tracks/1/keys = {
 "values": [true, true]
 }
 
-[sub_resource type="Animation" id="Animation_by731"]
-resource_name = "item_hide"
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Item")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.4, 1, 0, -2, 0)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Item:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8s7la"]
 _data = {
 "RESET": SubResource("Animation_3emqp"),
@@ -213,7 +214,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -0.664, 0)
 visible = false
 
 [node name="UpperAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(1, -5.96046e-08, 2.6054e-15, 5.96046e-08, 1, -4.37114e-08, 0, 4.37114e-08, 1, -0.714645, 0.0987163, -0.0368981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987164, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true
@@ -233,19 +234,19 @@ shape = SubResource("BoxShape3D_v6s1b")
 [node name="NotepadModel" parent="Briefcase/UpperAttachment/NotepadPosition" instance=ExtResource("3_n2vnl")]
 transform = Transform3D(1.2666e-07, 1, 0, -4.37114e-08, -5.73205e-15, 1, 1, -1.2666e-07, 4.37114e-08, 0, 0, 0)
 
-[node name="NotepadPosition2" type="Node3D" parent="Briefcase/UpperAttachment"]
-transform = Transform3D(0.992757, 0, 0.120137, 0, 1, 0, -0.120137, 0, 0.992757, 0.72738, 0.108037, -0.202508)
+[node name="ReconstructionPosition" type="Node3D" parent="Briefcase/UpperAttachment"]
+transform = Transform3D(0.960142, 0, -0.27951, 0, 1, 0, 0.27951, 0, 0.960142, 0.72738, 0.108037, -0.0832728)
 
-[node name="BriefcaseItem" parent="Briefcase/UpperAttachment/NotepadPosition2" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
+[node name="BriefcaseItem" parent="Briefcase/UpperAttachment/ReconstructionPosition" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
 transform = Transform3D(1.3411e-07, 1, -1.04647e-08, -4.1329e-08, -5.81808e-09, 1, 1, -1.41561e-07, 3.43213e-08, 0, 0, 0)
 item_model = NodePath("../NotepadModel")
-item_type = 1
+item_type = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/UpperAttachment/NotepadPosition2/BriefcaseItem"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/UpperAttachment/ReconstructionPosition/BriefcaseItem"]
 transform = Transform3D(0.999989, 6.18398e-07, 1.40294e-07, 2.23517e-08, 0.999993, -1.18106e-07, 2.54285e-08, 2.07542e-06, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_v6s1b")
 
-[node name="NotepadModel" parent="Briefcase/UpperAttachment/NotepadPosition2" instance=ExtResource("3_n2vnl")]
+[node name="NotepadModel" parent="Briefcase/UpperAttachment/ReconstructionPosition" instance=ExtResource("3_n2vnl")]
 transform = Transform3D(1.2666e-07, 1, 0, -4.37114e-08, -5.73205e-15, 1, 1, -1.2666e-07, 4.37114e-08, 0, 0, 0)
 
 [node name="Item" type="Node3D" parent="."]

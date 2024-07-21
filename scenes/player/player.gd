@@ -45,14 +45,8 @@ func _physics_process(delta: float) -> void:
 	
 	if interact_ray.is_colliding():
 		collider = interact_ray.get_collider()
-		if collider.owner.has_method("interact"):
+		if collider.has_method("interact"):
 			interact_hover = true
 			if Input.is_action_just_pressed("interact"):
-				collider.owner.interact()
+				collider.interact()
 				interacting = true
-	
-	if Game.ui:
-		if interact_hover and not interacting:
-			Game.ui.show_icon(collider.owner.interact_type)
-		else:
-			Game.ui.show_icon(Values.INTERACT_TYPE.NONE)

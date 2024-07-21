@@ -5,6 +5,7 @@ render_mode blend_mix, cull_disabled, depth_draw_opaque, diffuse_burley, specula
 uniform float stability: hint_range(0.0, 2.0) = 0.1;
 uniform sampler3D noise;
 uniform sampler2D tex;
+uniform float opacity: hint_range(0.0, 1.0) = 1.0;
 
 void vertex(){
 	//vec3 displacement = (texture(noise, UV + TIME) * stability);
@@ -16,5 +17,5 @@ void vertex(){
 void fragment(){
 	vec3 model_texture = texture(tex, UV).xyz;
 	ALBEDO = model_texture.rgb;
-	ALPHA = min(0.2 + (1.0 - (NORMAL * VIEW).z * 1.0), 1.0);
+	ALPHA = min(0.2 + (1.0 - (NORMAL * VIEW).z * 1.0), opacity);
 }

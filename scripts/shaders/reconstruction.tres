@@ -14,5 +14,6 @@ noise = SubResource("FastNoiseLite_pn5lb")
 render_priority = 0
 shader = ExtResource("1_j7fmj")
 shader_parameter/stability = 0.01
+shader_parameter/opacity = 0.0
 shader_parameter/noise = SubResource("NoiseTexture3D_i6iag")
 shader_parameter/tex = ExtResource("2_rah33")

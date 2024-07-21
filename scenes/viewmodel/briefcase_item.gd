@@ -1,7 +1,5 @@
 extends Area3D
 
-enum ItemType {NOTEPAD, RECONSTRUCTOR} 
-
 const DEBOUNCE_AMOUNT: float = 0.02
 
 var hover_tween: Tween
@@ -11,10 +9,11 @@ var debounce: float = 0.0
 @export var hover_position: Vector3 = Vector3(0.0, -0.1, 0.0)
 @export var item_model: Node3D
 @export_category("Item Settings")
-@export var item_type: ItemType = ItemType.NOTEPAD
+@export var item_type: Game.ItemType = Game.ItemType.NOTEPAD
 
 @onready var hover_light: OmniLight3D = $HoverLight
 
+signal item_used(item)
 
 func _on_mouse_entered() -> void:
 	if Game.viewmodel.frozen:
@@ -38,9 +37,11 @@ func _on_mouse_exited() -> void:
 func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_left"):
 		match item_type:
-			ItemType.NOTEPAD:
+			Game.ItemType.NONE:
+				return
+			Game.ItemType.NOTEPAD:
 				_on_mouse_exited()
 				Game.viewmodel.frozen = true
 				Game.ui.notepad_shown = true
-			ItemType.RECONSTRUCTOR:
-				print("sdofjoasdiujf")
+			Game.ItemType.RECONSTRUCTOR:
+				Game.item_taken_out.emit(item_type)
