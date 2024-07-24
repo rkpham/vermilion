@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cpoig8lwuvytf"]
+
+[ext_resource type="Texture2D" uid="uid://b6o4wx5dg7vj5" path="res://assets/models/bed/BedFrame_BaseColor.png" id="1_ol7mw"]
+[ext_resource type="Texture2D" uid="uid://ckiqiajj1o1cy" path="res://assets/models/bed/BedFrame_Normal.png" id="2_1ax4v"]
+[ext_resource type="Texture2D" uid="uid://cld4v1yj5wixv" path="res://assets/models/bed/BedFrame_Roughness.png" id="3_jhe11"]
+
+[resource]
+albedo_texture = ExtResource("1_ol7mw")
+metallic = 1.0
+metallic_texture = ExtResource("2_1ax4v")
+roughness_texture = ExtResource("3_jhe11")
+normal_enabled = true
+normal_texture = ExtResource("2_1ax4v")

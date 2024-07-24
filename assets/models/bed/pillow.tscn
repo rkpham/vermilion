@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5m5r4c1qrq1k"]
+
+[ext_resource type="PackedScene" uid="uid://bqnbw5m3eg5pe" path="res://assets/models/bed/pillow.glb" id="1_be4ky"]
+[ext_resource type="Material" uid="uid://b5qcgl0j2604q" path="res://assets/models/bed/pillow.tres" id="2_2a2y8"]
+
+[node name="pillow" instance=ExtResource("1_be4ky")]
+
+[node name="Cube_003" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2a2y8")

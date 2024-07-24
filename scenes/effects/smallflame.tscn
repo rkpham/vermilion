@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://duokjbqx5n1hg"]
+
+[ext_resource type="Texture2D" uid="uid://dfyn7b7dwxpvw" path="res://assets/models/candles/flame.png" id="1_u0ume"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4k4yn"]
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0hv3"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_u0ume")
+billboard_mode = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219273, 0)
+mesh = SubResource("QuadMesh_4k4yn")
+surface_material_override/0 = SubResource("StandardMaterial3D_x0hv3")
