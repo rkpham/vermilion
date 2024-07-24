@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn47bbjngb2ds"]
+[gd_scene load_steps=4 format=3 uid="uid://cn47bbjngb2ds"]
 
 [ext_resource type="PackedScene" uid="uid://janp4d5qc06x" path="res://assets/models/table/recttable.glb" id="1_08mxc"]
 [ext_resource type="Material" uid="uid://b0iwgnuj57xpr" path="res://assets/models/table/recttable.tres" id="2_jv4dr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48xse"]
+size = Vector3(1.43164, 0.734375, 0.831543)
 
 [node name="recttable" instance=ExtResource("1_08mxc")]
 
 [node name="RectTable" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_jv4dr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.367188, -0.0471191)
+shape = SubResource("BoxShape3D_48xse")

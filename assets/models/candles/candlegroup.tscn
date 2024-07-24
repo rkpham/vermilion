@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dulpbx03pm5xi"]
 
 [ext_resource type="PackedScene" uid="uid://dwok1m4jn0mvp" path="res://assets/models/candles/candlegroup.glb" id="1_p7lqv"]
-[ext_resource type="Material" uid="uid://52m23w0ryo06" path="res://assets/models/bed/candlegroup.tres" id="2_e23na"]
+[ext_resource type="Material" uid="uid://rmvclhs26rkq" path="res://assets/models/candles/candlegroup.tres" id="2_e03xx"]
 [ext_resource type="PackedScene" uid="uid://duokjbqx5n1hg" path="res://scenes/effects/smallflame.tscn" id="3_7cfol"]
 
 [node name="candlegroup" instance=ExtResource("1_p7lqv")]
 
 [node name="CandleGroup" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_e23na")
+surface_material_override/0 = ExtResource("2_e03xx")
 
 [node name="MeshInstance3D" parent="." index="1" instance=ExtResource("3_7cfol")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052174, 0.261363, -0.0479197)

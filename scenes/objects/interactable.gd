@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends CollisionObject3D
 
 func interact():
 	for child in get_children():

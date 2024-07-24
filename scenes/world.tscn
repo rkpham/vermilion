@@ -1,15 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=19 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
 [ext_resource type="PackedScene" uid="uid://vy1up7jsvbgo" path="res://assets/models/apartments/window/window.tscn" id="3_je4py"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="3_pbtji"]
 [ext_resource type="AudioStream" uid="uid://cvogm81aw0job" path="res://assets/audio/ambience/quietrainroomambience.ogg" id="5_3h65x"]
+[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="5_88q77"]
 [ext_resource type="PackedScene" uid="uid://c6d728aa8fwyl" path="res://assets/models/chair/chair.tscn" id="5_p40up"]
+[ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="6_syysi"]
 [ext_resource type="PackedScene" uid="uid://cn47bbjngb2ds" path="res://assets/models/table/recttable.tscn" id="7_3ruqk"]
+[ext_resource type="PackedScene" uid="uid://c0aexu1i55xxh" path="res://assets/models/bookcase/bookcase.tscn" id="7_xtgjr"]
 [ext_resource type="PackedScene" uid="uid://bem8jkmp1i0uv" path="res://assets/models/radiator/radiator.tscn" id="8_daqix"]
+[ext_resource type="PackedScene" uid="uid://benpnomafosb6" path="res://assets/models/candles/candle.tscn" id="8_vgbib"]
 [ext_resource type="PackedScene" uid="uid://dy2bynepodjeb" path="res://assets/models/apartments/apartment.tscn" id="9_2nkxv"]
 [ext_resource type="PackedScene" uid="uid://cy0nk5nh1ku4m" path="res://assets/models/apartments/hallway.tscn" id="9_uss60"]
+[ext_resource type="PackedScene" uid="uid://c8qeor42ujf7" path="res://assets/models/bed/bed.tscn" id="11_btqx4"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -17,6 +22,17 @@ background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.0
+
+[sub_resource type="GDScript" id="GDScript_fsys7"]
+script/source = "extends Camera3D
+
+func _physics_process(delta: float) -> void:
+	var seconds := Time.get_ticks_msec() / 1000.0
+	
+	global_position = get_parent().global_position + Vector3(sin(seconds), 2, cos(seconds))
+	
+	look_at(get_parent().global_position)
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hjq1f"]
 size = Vector3(128, 1, 128)
@@ -67,11 +83,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
 [node name="chair" parent="ApartmentA1Props/Props" instance=ExtResource("5_p40up")]
 transform = Transform3D(0.89488, 0, 0.446307, 0, 1, 0, -0.446307, 0, 0.89488, 11.2355, -0.016163, -20.4294)
 
+[node name="chair2" parent="ApartmentA1Props/Props" instance=ExtResource("5_p40up")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97416, 0, -10.912)
+
+[node name="StaticBody3D" parent="ApartmentA1Props/Props/chair2" index="1"]
+script = ExtResource("5_88q77")
+
+[node name="CloseUpComponent" parent="ApartmentA1Props/Props/chair2/StaticBody3D" index="2" instance=ExtResource("6_syysi")]
+
+[node name="Camera3D" type="Camera3D" parent="ApartmentA1Props/Props/chair2/StaticBody3D/CloseUpComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6659, 0)
+script = SubResource("GDScript_fsys7")
+
 [node name="radiator" parent="ApartmentA1Props/Props" instance=ExtResource("8_daqix")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.69929, 0, -20.7256)
 
+[node name="bookcase" parent="ApartmentA1Props/Props" instance=ExtResource("7_xtgjr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.77938, 0, -14.1358)
+
+[node name="bookcase2" parent="ApartmentA1Props/Props" instance=ExtResource("7_xtgjr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.30819, 0, -14.1358)
+
 [node name="recttable" parent="ApartmentA1Props/Props" instance=ExtResource("7_3ruqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59815, -0.00629747, -8.91294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34389, 0, -12.282)
+
+[node name="candle" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36125, 0, -10.9483)
+
+[node name="candle2" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54957, 0, -11.3546)
+
+[node name="candle3" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93041, 0, -11.5971)
+
+[node name="candle4" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37339, 0, -11.4725)
+
+[node name="candle5" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.74179, 0, -11.0921)
+
+[node name="candle6" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60135, 0, -10.6545)
+
+[node name="candle7" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29616, 0, -10.2825)
+
+[node name="candle8" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88086, 0, -10.2654)
+
+[node name="candle9" parent="ApartmentA1Props/Props" instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53051, 0, -10.5034)
+
+[node name="Bed" parent="ApartmentA1Props/Props" instance=ExtResource("11_btqx4")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.36976, 2.38419e-07, -15.7898)
 
 [node name="Effects" type="Node3D" parent="ApartmentA1Props"]
 
@@ -190,6 +254,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
 [node name="Window" parent="HallwayProps/Windows" instance=ExtResource("3_je4py")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.945, 0, 0)
 
+[node name="OmniLight3D" parent="HallwayProps/Windows/Window/WindowLight" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896223, 1, -4.54747e-13)
+omni_range = 4.0
+
 [node name="Props" type="Node3D" parent="HallwayProps"]
 
 [node name="Effects" type="Node3D" parent="HallwayProps"]
@@ -229,3 +297,7 @@ shape = SubResource("BoxShape3D_hjq1f")
 [node name="QuietAmbience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3h65x")
 autoplay = true
+
+[editable path="ApartmentA1Props/Props/chair2"]
+[editable path="HallwayProps/Windows/Window"]
+[editable path="HallwayProps/Windows/Window/WindowLight"]

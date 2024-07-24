@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bem8jkmp1i0uv"]
+[gd_scene load_steps=4 format=3 uid="uid://bem8jkmp1i0uv"]
 
 [ext_resource type="PackedScene" uid="uid://c5gll73utp76q" path="res://assets/models/radiator/radiator.glb" id="1_q7xng"]
 [ext_resource type="Material" uid="uid://dhnld828q3gqo" path="res://assets/models/radiator/radiator.tres" id="2_wvu6m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0pw3m"]
+size = Vector3(0.40332, 0.774023, 0.759521)
 
 [node name="radiator" instance=ExtResource("1_q7xng")]
 
 [node name="Radiator" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_wvu6m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387952, 0)
+shape = SubResource("BoxShape3D_0pw3m")

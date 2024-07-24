@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		cam3d.rotation.x = lerp(cam3d.rotation.x, deg_to_rad(look.y), delta * smooth_speed)
 		player.rotation.y = lerp_angle(player.rotation.y, deg_to_rad(look.x), delta * smooth_speed)
 	
-	if footsteps:
+	if footsteps and not cam_copy:
 		if footsteps.stepping:
 			var bob_y = (abs(cos((footsteps.step_delta + 0.5) * PI)) * view_bob_amount) - view_bob_amount
 			cam3d.position.y = bob_y

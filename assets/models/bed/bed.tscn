@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8qeor42ujf7"]
+
+[ext_resource type="PackedScene" uid="uid://duaymgeiipt8q" path="res://assets/models/bed/mattress.tscn" id="1_y2p0a"]
+[ext_resource type="PackedScene" uid="uid://dtus12t0hckio" path="res://assets/models/bed/bedframe.tscn" id="2_10osr"]
+[ext_resource type="PackedScene" uid="uid://b5m5r4c1qrq1k" path="res://assets/models/bed/pillow.tscn" id="3_s20bc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2p0he"]
+size = Vector3(1.57422, 1.17078, 2.69165)
+
+[node name="Bed" type="Node3D"]
+
+[node name="bedframe" parent="." instance=ExtResource("2_10osr")]
+
+[node name="mattress" parent="." instance=ExtResource("1_y2p0a")]
+
+[node name="pillow" parent="." instance=ExtResource("3_s20bc")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.585388, 0)
+shape = SubResource("BoxShape3D_2p0he")
