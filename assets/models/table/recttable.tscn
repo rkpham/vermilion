@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn47bbjngb2ds"]
+
+[ext_resource type="PackedScene" uid="uid://janp4d5qc06x" path="res://assets/models/table/recttable.glb" id="1_08mxc"]
+[ext_resource type="Material" uid="uid://b0iwgnuj57xpr" path="res://assets/models/table/recttable.tres" id="2_jv4dr"]
+
+[node name="recttable" instance=ExtResource("1_08mxc")]
+
+[node name="RectTable" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_jv4dr")

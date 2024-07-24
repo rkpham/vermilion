@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bgv88dmodbr1q"]
+
+[ext_resource type="Texture2D" uid="uid://ydvwuc7ueoi8" path="res://assets/models/apartments/hallway/Hallway_BaseColor.png" id="1_52p4w"]
+[ext_resource type="Texture2D" uid="uid://b7rb6d7vtvja1" path="res://assets/models/apartments/hallway/Hallway_Normal.png" id="2_mbvor"]
+[ext_resource type="Texture2D" uid="uid://bif40qu5lxjjv" path="res://assets/models/apartments/hallway/Hallway_Roughness.png" id="3_b7yce"]
+
+[resource]
+albedo_texture = ExtResource("1_52p4w")
+roughness_texture = ExtResource("3_b7yce")
+normal_enabled = true
+normal_texture = ExtResource("2_mbvor")

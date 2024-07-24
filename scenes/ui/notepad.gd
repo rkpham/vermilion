@@ -1,5 +1,7 @@
 extends Control
 
+const BRUSH_SIZE: float = 1.7
+
 var hovering: bool = false
 var drawing: bool = false
 var brushes: Array[Vector2] = []
@@ -28,27 +30,31 @@ func _process(delta: float) -> void:
 	
 	if drawing:
 		add_brush(get_local_mouse_position())
-		queue_redraw()
 
 
 func _draw() -> void:
 	for i in range(brushes.size()):
+		draw_circle(brushes[i], 1, Color.BLACK)
 		if i > 0:
 			if not i in undo_amts:
-				draw_line(brushes[i - 1], brushes[i], Color.BLACK, 1.7, false)
+				draw_line(brushes[i - 1], brushes[i], Color.BLACK, BRUSH_SIZE, false)
 
 
 func add_brush(pos: Vector2) -> void:
 	if last_drew_pos == Vector2.ZERO:
+		brushes.append(pos)
 		last_drew_pos = pos
+		queue_redraw()
 	if (pos - last_drew_pos).length() > 1:
 		brushes.append(pos)
 		last_drew_pos = pos
+		queue_redraw()
 
 
 func start_stroke() -> void:
 	drawing = true
 	undo_amts.append(brushes.size())
+	add_brush(get_local_mouse_position())
 
 
 func end_stroke() -> void:

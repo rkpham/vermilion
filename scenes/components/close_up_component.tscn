@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cekvsxsj4fjix"]
+
+[ext_resource type="Script" path="res://scenes/components/close_up_component.gd" id="1_nwq64"]
+
+[node name="CloseUpComponent" type="Node3D"]
+script = ExtResource("1_nwq64")

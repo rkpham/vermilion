@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtus12t0hckio"]
+
+[ext_resource type="PackedScene" uid="uid://dmjl7vj1tcqqv" path="res://assets/models/bed/bedframe.glb" id="1_p8m7d"]
+[ext_resource type="Texture2D" uid="uid://b6o4wx5dg7vj5" path="res://assets/models/bed/BedFrame_BaseColor.png" id="2_ox1pg"]
+[ext_resource type="Texture2D" uid="uid://ckiqiajj1o1cy" path="res://assets/models/bed/BedFrame_Normal.png" id="3_thww8"]
+[ext_resource type="Texture2D" uid="uid://cld4v1yj5wixv" path="res://assets/models/bed/BedFrame_Roughness.png" id="4_t7fg0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i2kw"]
+albedo_texture = ExtResource("2_ox1pg")
+metallic = 1.0
+metallic_texture = ExtResource("3_thww8")
+roughness_texture = ExtResource("4_t7fg0")
+normal_enabled = true
+normal_texture = ExtResource("3_thww8")
+
+[node name="bedframe" instance=ExtResource("1_p8m7d")]
+
+[node name="Cube_002" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5i2kw")

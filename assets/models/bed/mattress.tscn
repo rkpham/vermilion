@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://duaymgeiipt8q"]
+
+[ext_resource type="PackedScene" uid="uid://dlev30b6ijjv2" path="res://assets/models/bed/mattress.glb" id="1_53b0g"]
+[ext_resource type="Material" uid="uid://b22iyeig5pnwv" path="res://assets/models/bed/mattress.tres" id="2_4pcq2"]
+
+[node name="mattress" instance=ExtResource("1_53b0g")]
+
+[node name="Cube_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4pcq2")

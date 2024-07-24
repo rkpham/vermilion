@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://vy1up7jsvbgo"]
+
+[ext_resource type="PackedScene" uid="uid://b7g2g3pm4wm5j" path="res://assets/models/apartments/window/window.glb" id="1_r6cpi"]
+[ext_resource type="Material" uid="uid://33g3csudc6nm" path="res://assets/models/apartments/window/window.tres" id="2_ibyfp"]
+[ext_resource type="PackedScene" uid="uid://kiu2y4k8rmry" path="res://scenes/effects/window_light.tscn" id="3_6ledx"]
+
+[node name="Window" instance=ExtResource("1_r6cpi")]
+
+[node name="Window" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ibyfp")
+
+[node name="WindowLight" parent="." index="1" instance=ExtResource("3_6ledx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604585, 0)

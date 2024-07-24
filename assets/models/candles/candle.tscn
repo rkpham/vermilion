@@ -1,27 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://benpnomafosb6"]
+[gd_scene load_steps=4 format=3 uid="uid://benpnomafosb6"]
 
 [ext_resource type="PackedScene" uid="uid://cok1ia8xb6ow3" path="res://assets/models/candles/candle.glb" id="1_mvokx"]
 [ext_resource type="Material" uid="uid://b53ve2a2qfdx7" path="res://assets/models/candles/candle.tres" id="2_ai3dc"]
-[ext_resource type="Texture2D" uid="uid://dfyn7b7dwxpvw" path="res://assets/models/candles/flame.png" id="3_14v42"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_4k4yn"]
-size = Vector2(0.05, 0.05)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0hv3"]
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("3_14v42")
-billboard_mode = 2
+[ext_resource type="PackedScene" uid="uid://duokjbqx5n1hg" path="res://scenes/effects/smallflame.tscn" id="3_goxxf"]
 
 [node name="candle" instance=ExtResource("1_mvokx")]
 
 [node name="Candle" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_ai3dc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219273, 0)
-mesh = SubResource("QuadMesh_4k4yn")
-surface_material_override/0 = SubResource("StandardMaterial3D_x0hv3")
+[node name="MeshInstance3D" parent="." index="1" instance=ExtResource("3_goxxf")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2415, 0)
