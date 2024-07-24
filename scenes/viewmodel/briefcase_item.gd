@@ -44,4 +44,8 @@ func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal:
 				Game.viewmodel.frozen = true
 				Game.ui.notepad_shown = true
 			Game.ItemType.RECONSTRUCTOR:
-				Game.item_taken_out.emit(item_type)
+				var item_model_mesh = item_model.get_child(0).mesh
+				Game.item_taken_out.emit(item_type, item_model_mesh)
+			Game.ItemType.CHALK:
+				var item_model_mesh = item_model.get_child(0).mesh
+				Game.item_taken_out.emit(item_type, item_model_mesh)

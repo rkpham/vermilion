@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://hssvel81hcrq"]
+
+[ext_resource type="Texture2D" uid="uid://du3521soa3giv" path="res://assets/textures/crafting_circle.png" id="1_7eirs"]
+[ext_resource type="Script" path="res://scenes/crafting_circle/crafting_circle.gd" id="1_junl5"]
+
+[sub_resource type="Curve" id="Curve_01cqc"]
+_data = [Vector2(0, 0), 0.0, 6.1039, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pmfcn"]
+curve = SubResource("Curve_01cqc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jqmig"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 1, 0)
+alpha_curve = SubResource("CurveTexture_pmfcn")
+turbulence_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_m0but"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.122642, 0.367925, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.262745, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nj5xp"]
+gradient = SubResource("Gradient_m0but")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owr8d"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_nj5xp")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_2drsd"]
+material = SubResource("StandardMaterial3D_owr8d")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_xv882"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.60882, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cjjtr"]
+curve = SubResource("Curve_xv882")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k8oba"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_cjjtr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3cjw"]
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_o8ike"]
+material = SubResource("StandardMaterial3D_w3cjw")
+size = Vector2(0.01, 0.02)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ixasg"]
+height = 0.6
+radius = 0.75
+
+[node name="CraftingCircle" type="Area3D"]
+script = ExtResource("1_junl5")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.01, 0)
+shaded = true
+texture = ExtResource("1_7eirs")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+light_color = Color(0.995178, 0.914639, 0.842232, 1)
+light_energy = 0.1
+omni_range = 1.5
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount_ratio = 0.5
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_jqmig")
+draw_pass_1 = SubResource("QuadMesh_2drsd")
+
+[node name="Dust" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_k8oba")
+draw_pass_1 = SubResource("QuadMesh_o8ike")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("CylinderShape3D_ixasg")

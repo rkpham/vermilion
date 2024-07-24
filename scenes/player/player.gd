@@ -8,10 +8,13 @@ const FRICTION = 16.0
 
 var frozen: bool = false
 var interacting: bool = false
+var crafting_circle_instance : Node = null
 
 @onready var cam: PlayerCam = $PlayerCam
 @onready var interact_ray: RayCast3D = $PlayerCam/Camera3D/InteractRay
 @onready var footsteps: Footsteps = $Footsteps
+
+@onready var crafting_circle: = preload("res://scenes/crafting_circle/crafting_circle.tscn")
 
 
 func _ready() -> void:
@@ -50,3 +53,11 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("interact"):
 				collider.interact()
 				interacting = true
+	if Input.is_action_just_pressed("interact"):
+		if Game.active_item == Game.ItemType.CHALK and not Game.player.cam.frozen:
+			if crafting_circle_instance:
+				crafting_circle_instance.erase()
+			crafting_circle_instance = crafting_circle.instantiate()
+			get_parent().add_child(crafting_circle_instance)
+			crafting_circle_instance.global_position = Vector3(global_position.x, global_position.y - 1, global_position.z)
+		

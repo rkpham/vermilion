@@ -10,6 +10,8 @@ var frozen: bool = false
 @onready var briefcase = $Briefcase
 @onready var briefcase_anim = $Briefcase/AnimationPlayer
 @onready var anim = $AnimationPlayer
+@onready var hand = $Hand
+@onready var hand_mesh = $Hand/MeshInstance3D
 
 func _ready() -> void:
 	Game.viewmodel = self
@@ -47,7 +49,8 @@ func _set_briefcase_open(open: bool) -> void:
 		anim.play("briefcase_close")
 		
 
-func take_item_out(item: Game.ItemType) -> void:
+func take_item_out(item: Game.ItemType, model: Mesh) -> void:
+	hand_mesh.mesh = model
 	item_show = not item_show
 	Game.active_item  = item if item_show else Game.ItemType.NONE
 	

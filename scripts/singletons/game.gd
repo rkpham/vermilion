@@ -1,9 +1,9 @@
 extends Node
 
-enum ItemType {NONE, NOTEPAD, RECONSTRUCTOR} 
+enum ItemType {NONE, NOTEPAD, RECONSTRUCTOR, CHALK} 
 
 signal player_set(player: Player)
-signal item_taken_out(item: ItemType)
+signal item_taken_out(item: ItemType, model: Mesh)
 
 var player: Player:
 	set = _set_player
