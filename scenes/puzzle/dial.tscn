@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://djphgbf7ppj1h"]
+
+[ext_resource type="Script" path="res://scenes/puzzle/dial.gd" id="1_3jghn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_33871"]
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.02
+radial_segments = 16
+rings = 1
+
+[sub_resource type="SystemFont" id="SystemFont_2tg2j"]
+
+[node name="SafeDial" type="Node3D"]
+script = ExtResource("1_3jghn")
+
+[node name="Dial" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_33871")
+
+[node name="Label3D" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.0405579)
+pixel_size = 0.0005
+text = "0"
+
+[node name="Label3D2" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, -0.809017, 0.587785, 1, -3.53633e-08, 2.56929e-08, 0, 0.587785, 0.809017, 0.0238393, 1.04205e-09, 0.032812)
+pixel_size = 0.0005
+text = "1"
+
+[node name="Label3D3" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, -0.309017, 0.951057, 1, -1.35076e-08, 4.1572e-08, 0, 0.951057, 0.309017, 0.0385728, 1.68607e-09, 0.0125331)
+pixel_size = 0.0005
+text = "2"
+
+[node name="Label3D4" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, 0.309017, 0.951056, 1, 1.35076e-08, 4.1572e-08, 0, 0.951056, -0.309017, 0.0385728, 1.68607e-09, -0.0125331)
+pixel_size = 0.0005
+text = "3"
+
+[node name="Label3D5" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, 0.809017, 0.587785, 1, 3.53633e-08, 2.56929e-08, 0, 0.587785, -0.809017, 0.0238393, 1.04205e-09, -0.032812)
+pixel_size = 0.0005
+text = "4"
+
+[node name="Label3D6" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, 1, -8.9407e-08, 1, 4.37114e-08, -3.9081e-15, 0, -8.9407e-08, -1, -3.62615e-09, -1.58504e-16, -0.0405579)
+pixel_size = 0.0005
+text = "5"
+
+[node name="Label3D7" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, 0.809017, -0.587785, 1, 3.53633e-08, -2.56929e-08, 0, -0.587785, -0.809017, -0.0238393, -1.04205e-09, -0.032812)
+pixel_size = 0.0005
+text = "6"
+
+[node name="Label3D8" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, 0.309017, -0.951056, 1, 1.35076e-08, -4.1572e-08, 0, -0.951056, -0.309017, -0.0385728, -1.68607e-09, -0.0125331)
+pixel_size = 0.0005
+text = "7"
+
+[node name="Label3D9" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, -0.309017, -0.951056, 1, -1.35076e-08, -4.1572e-08, 0, -0.951056, 0.309017, -0.0385728, -1.68607e-09, 0.0125331)
+pixel_size = 0.0005
+text = "8"
+
+[node name="Label3D10" type="Label3D" parent="Dial"]
+transform = Transform3D(-4.37114e-08, -0.809017, -0.587785, 1, -3.53633e-08, -2.56929e-08, 0, -0.587785, 0.809017, -0.0238393, -1.04205e-09, 0.032812)
+pixel_size = 0.0005
+text = "9"
+
+[node name="Indicator" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063, 0.013)
+visible = false
+pixel_size = 0.0005
+billboard = 2
+text = "v"
+font = SubResource("SystemFont_2tg2j")
+outline_size = 0

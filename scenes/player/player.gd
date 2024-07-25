@@ -5,6 +5,7 @@ const GRAVITY = 19.6
 const SPEED = 2.0
 const ACCEL = 16.0
 const FRICTION = 16.0
+const SPRINT_MULT = 1.4
 
 var frozen: bool = false
 var interacting: bool = false
@@ -31,9 +32,12 @@ func _physics_process(delta: float) -> void:
 	var horiz_vel = Vector2(velocity.x, velocity.z)
 	var horiz_targ = Vector2(movement_dir.x, movement_dir.z)
 	
+	var sprinting = Input.is_action_pressed("sprint")
+	var speed_mult = SPRINT_MULT if sprinting else 1.0
+	
 	if input_vec.length_squared() > 0:
 		footsteps.stepping = true
-		horiz_vel = horiz_vel.move_toward(horiz_targ * SPEED, delta * ACCEL)
+		horiz_vel = horiz_vel.move_toward(horiz_targ * SPEED * speed_mult, delta * ACCEL)
 	else:
 		footsteps.stepping = false
 		horiz_vel = horiz_vel.move_toward(Vector2.ZERO, delta * FRICTION)
@@ -46,8 +50,8 @@ func _physics_process(delta: float) -> void:
 	var interact_hover: bool = false
 	var collider
 	
-	if interact_ray.is_colliding():
-		collider = interact_ray.get_collider()
+	collider = interact_ray.get_collider()
+	if collider:
 		if collider.has_method("interact"):
 			interact_hover = true
 			if Input.is_action_just_pressed("interact"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=23 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dy2bynepodjeb" path="res://assets/models/apartments/apartment.tscn" id="9_2nkxv"]
 [ext_resource type="PackedScene" uid="uid://cy0nk5nh1ku4m" path="res://assets/models/apartments/hallway.tscn" id="9_uss60"]
 [ext_resource type="PackedScene" uid="uid://c8qeor42ujf7" path="res://assets/models/bed/bed.tscn" id="11_btqx4"]
+[ext_resource type="PackedScene" uid="uid://djphgbf7ppj1h" path="res://scenes/puzzle/dial.tscn" id="12_mkrb3"]
+[ext_resource type="LightmapGIData" uid="uid://cw6q8qvjfv5q5" path="res://scenes/world.lmbake" id="17_lfrks"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -34,8 +36,14 @@ func _physics_process(delta: float) -> void:
 	look_at(get_parent().global_position)
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hjq1f"]
-size = Vector3(128, 1, 128)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tr61"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_20coi"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fk73"]
+albedo_color = Color(0.201527, 0.201527, 0.201527, 1)
 
 [node name="World" type="Node3D"]
 
@@ -136,6 +144,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53051, 0, -10.5034)
 
 [node name="Bed" parent="ApartmentA1Props/Props" instance=ExtResource("11_btqx4")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.36976, 2.38419e-07, -15.7898)
+
+[node name="Safe" type="Area3D" parent="ApartmentA1Props/Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24684, 1.03581, -12.4188)
+script = ExtResource("5_88q77")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ApartmentA1Props/Props/Safe"]
+shape = SubResource("BoxShape3D_2tr61")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ApartmentA1Props/Props/Safe"]
+mesh = SubResource("BoxMesh_20coi")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0fk73")
+
+[node name="CloseUpComponent" parent="ApartmentA1Props/Props/Safe" node_paths=PackedStringArray("puzzle_items") instance=ExtResource("6_syysi")]
+puzzle_items = [NodePath("../SafeDial"), NodePath("../SafeDial2"), NodePath("../SafeDial3")]
+
+[node name="Camera3D" type="Camera3D" parent="ApartmentA1Props/Props/Safe/CloseUpComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0, 0.481)
+current = true
+
+[node name="SafeDial" parent="ApartmentA1Props/Props/Safe" instance=ExtResource("12_mkrb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188673, 0, 0.297667)
+
+[node name="SafeDial2" parent="ApartmentA1Props/Props/Safe" instance=ExtResource("12_mkrb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223535, 0, 0.297667)
+
+[node name="SafeDial3" parent="ApartmentA1Props/Props/Safe" instance=ExtResource("12_mkrb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257792, 0, 0.297667)
 
 [node name="Effects" type="Node3D" parent="ApartmentA1Props"]
 
@@ -254,9 +290,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
 [node name="Window" parent="HallwayProps/Windows" instance=ExtResource("3_je4py")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.945, 0, 0)
 
+[node name="Window" parent="HallwayProps/Windows/Window" index="0"]
+cast_shadow = 0
+
 [node name="OmniLight3D" parent="HallwayProps/Windows/Window/WindowLight" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896223, 1, -4.54747e-13)
-omni_range = 4.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.607034, 1, 5.05631e-08)
+shadow_enabled = true
 
 [node name="Props" type="Node3D" parent="HallwayProps"]
 
@@ -282,21 +321,27 @@ transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, -1, -12, 0,
 [node name="Effects" type="Node3D" parent="Hallway"]
 
 [node name="Player" parent="." instance=ExtResource("1_fxprh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13266, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8022, 1.13266, 0)
 
 [node name="BarelyVisibleLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.88211, -0.358339, -0.305736, 0.464749, 0.767837, 0.440948, 0.0767469, -0.531056, 0.843854, 0, 0, 0)
 light_energy = 0.003
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_hjq1f")
-
 [node name="QuietAmbience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3h65x")
 autoplay = true
+
+[node name="candle" parent="." instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66989, 0.734375, -11.9923)
+
+[node name="candle2" parent="." instance=ExtResource("8_vgbib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9513, 0.734375, -12.128)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+directional = true
+interior = true
+generate_probes_subdiv = 3
+light_data = ExtResource("17_lfrks")
 
 [editable path="ApartmentA1Props/Props/chair2"]
 [editable path="HallwayProps/Windows/Window"]
