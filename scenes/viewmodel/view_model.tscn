@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bexruyiyhhkyk"]
+[gd_scene load_steps=19 format=3 uid="uid://bexruyiyhhkyk"]
 
 [ext_resource type="Script" path="res://scenes/viewmodel/view_model.gd" id="1_pmnb7"]
 [ext_resource type="PackedScene" uid="uid://kc143kogfxww" path="res://assets/models/briefcase/briefcase.tscn" id="1_troln"]
 [ext_resource type="PackedScene" uid="uid://7l4ucy2yhcju" path="res://assets/models/notepad/notepad.tscn" id="3_n2vnl"]
 [ext_resource type="PackedScene" uid="uid://cwvfqxl55lwsy" path="res://scenes/viewmodel/briefcase_item.tscn" id="4_edcdt"]
+[ext_resource type="PackedScene" uid="uid://ca2wymjwsx0cr" path="res://assets/models/journal/journal.tscn" id="5_cpbrx"]
 [ext_resource type="AudioStream" uid="uid://cipgfhuwb7glo" path="res://assets/audio/sfx/briefcaseopen.ogg" id="5_t0qvq"]
 [ext_resource type="AudioStream" uid="uid://d0m3yhkyouo1x" path="res://assets/audio/sfx/briefcaseclose.ogg" id="6_q8jn2"]
 
@@ -17,6 +18,9 @@ size = Vector3(0.1, 0.3, 0.1)
 top_radius = 0.02
 bottom_radius = 0.02
 height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nety3"]
+size = Vector3(0.423828, 0.551025, 0.1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3is8d"]
 top_radius = 0.01
@@ -35,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.868, -0.664, 0)]
+"values": [Vector3(-1.868, -5, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -223,11 +227,11 @@ _data = {
 script = ExtResource("1_pmnb7")
 
 [node name="Briefcase" parent="." instance=ExtResource("1_troln")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -0.664, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -5, 0)
 visible = false
 
 [node name="UpperAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(-5.96046e-08, -1, 4.37114e-08, 1, -5.96046e-08, 0, 5.32907e-15, 4.37114e-08, 1, -0.569543, 0.442814, -0.0368981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987165, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true
@@ -265,6 +269,22 @@ shape = SubResource("BoxShape3D_v6s1b")
 transform = Transform3D(-0.0924448, -0.993244, -0.0701556, 0.969502, -0.0737256, -0.233735, 0.226984, -0.0896236, 0.969766, 0, 0, 0)
 mesh = SubResource("CylinderMesh_8vn2u")
 
+[node name="JournalPosition" type="Node3D" parent="Briefcase/UpperAttachment"]
+transform = Transform3D(0.973287, 6.06617e-23, -0.229591, 7.22522e-10, 0.999999, 1.68516e-10, 0.229591, 7.10543e-15, 0.973286, 0.950587, 0.138438, 0.186209)
+
+[node name="BriefcaseItem" parent="Briefcase/UpperAttachment/JournalPosition" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
+transform = Transform3D(1.63913e-07, 1, -7.06089e-09, -4.12161e-08, -2.9888e-09, 1, 1, -1.49012e-07, 3.40676e-08, 0, 0, 0)
+hover_position = Vector3(0, -0.1, 0)
+item_model = NodePath("../Journal")
+item_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/UpperAttachment/JournalPosition/BriefcaseItem"]
+transform = Transform3D(0.999994, 3.8743e-07, 7.21769e-08, -4.32134e-07, 1, -2.55369e-06, -7.3109e-08, 2.55369e-06, 1, -0.0115777, -0.0061956, -7.55787e-05)
+shape = SubResource("BoxShape3D_nety3")
+
+[node name="Journal" parent="Briefcase/UpperAttachment/JournalPosition" instance=ExtResource("5_cpbrx")]
+transform = Transform3D(1, -3.65416e-09, -4.47035e-08, 7.36498e-10, -1, -8.73064e-08, 0, 8.72798e-08, -1, 0, 0, 0)
+
 [node name="Hand" type="Node3D" parent="."]
 transform = Transform3D(0.95532, -0.295575, 0, 0.283321, 0.915714, -0.284952, 0.0842247, 0.272221, 0.958542, -0.2, -1, -0.2)
 
@@ -285,5 +305,6 @@ libraries = {
 
 [connection signal="input_event" from="Briefcase/UpperAttachment/NotepadPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/ChalkPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
+[connection signal="input_event" from="Briefcase/UpperAttachment/JournalPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 
 [editable path="Briefcase"]

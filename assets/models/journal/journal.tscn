@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca2wymjwsx0cr"]
+
+[ext_resource type="PackedScene" uid="uid://bwmycqmkihpne" path="res://assets/models/journal/journal.glb" id="1_nur4j"]
+[ext_resource type="Material" uid="uid://bflue4hkop08s" path="res://assets/models/journal/journal.tres" id="2_cmms1"]
+
+[node name="journal" instance=ExtResource("1_nur4j")]
+
+[node name="Book" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_cmms1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=20 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Texture2D" uid="uid://cgu5d4ofbicl4" path="res://assets/textures/icons/eye.png" id="2_ex0ab"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://fov4ot6uv6ex" path="res://assets/textures/icons/goldcursor.png" id="4_d1e7q"]
 [ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="5_0udoo"]
 [ext_resource type="Script" path="res://scenes/ui/notepad.gd" id="5_a0cvu"]
+[ext_resource type="Theme" uid="uid://hv0iua7noolr" path="res://assets/resources/journal.tres" id="7_uhsnx"]
+[ext_resource type="Script" path="res://scenes/ui/journal.gd" id="7_wnrkn"]
 
 [sub_resource type="GDScript" id="GDScript_v5iy4"]
 script/source = "extends Label
@@ -13,6 +15,353 @@ script/source = "extends Label
 func _process(delta: float) -> void:
 	text = \"fps: %d\" % Engine.get_frames_per_second()
 "
+
+[sub_resource type="Animation" id="Animation_a5ejx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageTurn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageTurn/PaperTurn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-240, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PageTurn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PageTurn/PageShadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PageTurn/PageShadow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_508b6"]
+resource_name = "turn_next_end"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageTurn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(0.635806, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageTurn/PaperTurn:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-240, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PageTurn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PageTurn/PageShadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1), Vector2(1.32143, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PageTurn/PageShadow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, 0), Vector2(-314.561, 0), Vector2(-240, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cxrey"]
+resource_name = "turn_next_start"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageTurn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.740743, 1), Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageTurn/PaperTurn:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3.05176e-05, 0), Vector2(-240, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PageTurn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PageTurn/PageShadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1), Vector2(1.2, 1), Vector2(1.5, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PageTurn/PageShadow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fj5em"]
+resource_name = "turn_prev_end"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageTurn:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(0.635806, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageTurn/PaperTurn:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.05176e-05, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PageTurn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PageTurn/PageShadow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PageTurn/PageShadow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.09, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1), Vector2(1.3, 1), Vector2(1.05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rku2h"]
+resource_name = "turn_prev_start"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageTurn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.740743, 1), Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageTurn/PaperTurn:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-240, 0), Vector2(3.05176e-05, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PageTurn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PageTurn/PageShadow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, 0), Vector2(-260, 0), Vector2(-360, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PageTurn/PageShadow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qegt5"]
+_data = {
+"RESET": SubResource("Animation_a5ejx"),
+"turn_next_end": SubResource("Animation_508b6"),
+"turn_next_start": SubResource("Animation_cxrey"),
+"turn_prev_end": SubResource("Animation_fj5em"),
+"turn_prev_start": SubResource("Animation_rku2h")
+}
+
+[sub_resource type="Gradient" id="Gradient_o3las"]
+offsets = PackedFloat32Array(0, 0.1, 0.4, 0.475, 0.5, 0.525, 0.6, 0.9, 1)
+colors = PackedColorArray(0, 0, 0, 0.156863, 0, 0, 0, 0, 0, 0, 0, 0.196078, 0, 0, 0, 0.392157, 0, 0, 0, 0.654902, 0, 0, 0, 0.392157, 0, 0, 0, 0.197647, 0, 0, 0, 0, 0, 0, 0, 0.156863)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kpn38"]
+gradient = SubResource("Gradient_o3las")
+width = 128
+
+[sub_resource type="Gradient" id="Gradient_eyxku"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.392157, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8t38p"]
+gradient = SubResource("Gradient_eyxku")
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -122,5 +471,166 @@ texture = ExtResource("5_0udoo")
 expand_mode = 1
 stretch_mode = 1
 
+[node name="Journal" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_uhsnx")
+script = ExtResource("7_wnrkn")
+pages = Array[String](["[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+Greetings, Mr. Ivanov
+
+Welcome to your first homicide case.
+
+The state police has conducted a preliminary investigation. You will see a note with their findings within the victim's apartment.
+
+Please note that we have included several important documents on the following pages.
+
+Conduct yourself with honor and get the job done.
+
+	Ovborod Homicide Division
+	Chief Viktor Harvald"])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Journal"]
+libraries = {
+"": SubResource("AnimationLibrary_qegt5")
+}
+
+[node name="JournalBackground" type="TextureRect" parent="Journal"]
+show_behind_parent = true
+z_index = -5
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = -80.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0udoo")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Shading" type="TextureRect" parent="Journal"]
+z_index = 5
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 560.0
+offset_bottom = 344.0
+texture = SubResource("GradientTexture2D_kpn38")
+
+[node name="PageTurn" type="CanvasGroup" parent="Journal"]
+visible = false
+position = Vector2(320, 24)
+
+[node name="PaperTurn" type="Control" parent="Journal/PageTurn"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_bottom = 320.0
+mouse_filter = 2
+theme = ExtResource("7_uhsnx")
+
+[node name="PageTexture" type="TextureRect" parent="Journal/PageTurn/PaperTurn"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_0udoo")
+expand_mode = 1
+
+[node name="PageText" type="RichTextLabel" parent="Journal/PageTurn/PaperTurn"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_top = 0.025
+anchor_right = 0.966667
+anchor_bottom = 0.975
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "PageTurnText"
+metadata/_edit_use_anchors_ = true
+
+[node name="PageShadow" type="TextureRect" parent="Journal/PageTurn"]
+offset_right = 240.0
+offset_bottom = 320.0
+texture = SubResource("GradientTexture2D_8t38p")
+
+[node name="PaperLeft" type="Control" parent="Journal"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 320.0
+offset_bottom = 344.0
+
+[node name="PageText" type="RichTextLabel" parent="Journal/PaperLeft"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_top = 0.025
+anchor_right = 0.966667
+anchor_bottom = 0.975
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+Greetings, Mr. Ivanov
+
+Welcome to your first homicide case.
+
+The state police has conducted a preliminary investigation. You will see a note with their findings within the victim's apartment.
+
+Please note that we have included several important documents on the following pages.
+
+Conduct yourself with honor and get the job done.
+
+	Ovborod Homicide Division
+	Chief Viktor Harvald"
+metadata/_edit_use_anchors_ = true
+
+[node name="PaperRight" type="Control" parent="Journal"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 24.0
+offset_right = 560.0
+offset_bottom = 344.0
+
+[node name="PageText" type="RichTextLabel" parent="Journal/PaperRight"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.03333
+anchor_top = 0.025
+anchor_right = 1.96667
+anchor_bottom = 0.975
+offset_left = -240.0
+offset_right = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
 [connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
+[connection signal="gui_input" from="Journal/PaperLeft" to="Journal" method="_on_paper_left_gui_input"]
+[connection signal="gui_input" from="Journal/PaperRight" to="Journal" method="_on_paper_right_gui_input"]

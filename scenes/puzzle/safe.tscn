@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnw7ci2snmxk3"]
+
+[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_pucsr"]
+[ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="2_e2hu2"]
+[ext_resource type="PackedScene" uid="uid://djphgbf7ppj1h" path="res://scenes/puzzle/dial.tscn" id="3_wewqi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tr61"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_20coi"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fk73"]
+albedo_color = Color(0.201527, 0.201527, 0.201527, 1)
+
+[node name="Safe" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24684, 1.03581, -12.4188)
+script = ExtResource("1_pucsr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2tr61")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_20coi")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0fk73")
+
+[node name="CloseUpComponent" parent="." node_paths=PackedStringArray("puzzle_items") instance=ExtResource("2_e2hu2")]
+puzzle_items = [NodePath(""), NodePath(""), NodePath("")]
+
+[node name="Camera3D" type="Camera3D" parent="CloseUpComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0, 0.481)
+current = true
+
+[node name="SafeDial" parent="." instance=ExtResource("3_wewqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188673, 0, 0.297667)
+
+[node name="SafeDial2" parent="." instance=ExtResource("3_wewqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223535, 0, 0.297667)
+
+[node name="SafeDial3" parent="." instance=ExtResource("3_wewqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257792, 0, 0.297667)

@@ -4,6 +4,8 @@
 
 [node name="BriefcaseItem" type="Area3D"]
 script = ExtResource("1_e7tmw")
+hover_position = null
+item_type = null
 
 [node name="HoverLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.515465)

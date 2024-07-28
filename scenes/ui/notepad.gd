@@ -1,3 +1,4 @@
+class_name Notepad
 extends Control
 
 const BRUSH_SIZE: float = 1.7

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://hv0iua7noolr"]
+
+[ext_resource type="FontFile" uid="uid://cgobn7jbhym58" path="res://assets/resources/pixel.ttf" id="1_pc87b"]
+
+[resource]
+default_font = ExtResource("1_pc87b")
+default_font_size = 11
+Label/colors/font_color = Color(0.101961, 0.0431373, 0, 1)
+RichTextLabel/colors/default_color = Color(0.0823529, 0.0588235, 0.0156863, 1)

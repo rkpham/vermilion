@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ycrc8r2ua54p"]
+
+[ext_resource type="PackedScene" uid="uid://c8ts5k3a02l0x" path="res://assets/models/vial/sprayer.glb" id="1_ispjp"]
+[ext_resource type="Material" uid="uid://pb8hdcshlce7" path="res://assets/models/vial/sprayer.tres" id="2_m1tnb"]
+
+[node name="sprayer" instance=ExtResource("1_ispjp")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_m1tnb")

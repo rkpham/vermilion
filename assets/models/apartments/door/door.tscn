@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0ghw6n8smks"]
+
+[ext_resource type="PackedScene" uid="uid://d1pb3v2khinx6" path="res://assets/models/apartments/door/door.glb" id="1_eck0x"]
+[ext_resource type="Material" uid="uid://ck4pku1xqng6j" path="res://assets/models/apartments/door/door.tres" id="2_wcoui"]
+
+[node name="door" instance=ExtResource("1_eck0x")]
+
+[node name="Skeleton3D" parent="DoorArmature" index="0"]
+bones/1/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
+
+[node name="Cube" parent="DoorArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_wcoui")

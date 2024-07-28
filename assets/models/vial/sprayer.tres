@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://pb8hdcshlce7"]
+
+[ext_resource type="Texture2D" uid="uid://daoavc2u1lagr" path="res://assets/models/vial/Sprayer_BaseColor.png" id="1_m4iap"]
+[ext_resource type="Texture2D" uid="uid://brx1b6wguwby1" path="res://assets/models/vial/Sprayer_Metallic.png" id="2_oxqjy"]
+[ext_resource type="Texture2D" uid="uid://dpqsqeh1u1mq6" path="res://assets/models/vial/Sprayer_Normal.png" id="3_0tr1w"]
+[ext_resource type="Texture2D" uid="uid://ba85nm07ashkd" path="res://assets/models/vial/Sprayer_Roughness.png" id="4_4y64b"]
+
+[resource]
+transparency = 4
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_m4iap")
+metallic = 1.0
+metallic_texture = ExtResource("2_oxqjy")
+roughness_texture = ExtResource("4_4y64b")
+normal_enabled = true
+normal_texture = ExtResource("3_0tr1w")

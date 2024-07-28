@@ -35,6 +35,9 @@ func interact() -> void:
 
 
 func _set_focused_puzzle_item(_num: int) -> void:
+	if _num < 0 or _num >= puzzle_items.size():
+		return
+	
 	puzzle_items[focused_puzzle_item].active = false
 	focused_puzzle_item = _num
 	puzzle_items[focused_puzzle_item].active = true
