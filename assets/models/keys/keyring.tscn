@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://8t716aqtkoaa"]
+
+[ext_resource type="PackedScene" uid="uid://g2umcdj30hyh" path="res://assets/models/keys/keyring.glb" id="1_s63gg"]
+[ext_resource type="Material" uid="uid://dbqxdr84rcbee" path="res://assets/models/keys/keyring.tres" id="2_1swon"]
+
+[node name="keyring" instance=ExtResource("1_s63gg")]
+
+[node name="Torus" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_1swon")

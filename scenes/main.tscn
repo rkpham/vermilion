@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://g24sxj7wbb85"]
+[gd_scene load_steps=4 format=3 uid="uid://g24sxj7wbb85"]
 
 [ext_resource type="PackedScene" uid="uid://di1lgu50gdfbw" path="res://scenes/ui/ui.tscn" id="1_adlav"]
-[ext_resource type="PackedScene" uid="uid://cpd4nvm2b53pl" path="res://scenes/world.tscn" id="2_khaeu"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_twwyn"]
+[ext_resource type="PackedScene" uid="uid://y2l18wisrmdb" path="res://scenes/shader_loader/shader_loader.tscn" id="3_owj7p"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_twwyn")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UILayer" instance=ExtResource("1_adlav")]
 
-[node name="World" parent="." instance=ExtResource("2_khaeu")]
+[node name="ShaderLoader" parent="." instance=ExtResource("3_owj7p")]

@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cf3cwonwp5kjx"]
+
+[ext_resource type="Texture2D" uid="uid://cy4qfp462br7o" path="res://assets/models/watch/Watch_BaseColor.png" id="1_kihe8"]
+[ext_resource type="Texture2D" uid="uid://cw4jrb32oecfs" path="res://assets/models/watch/Watch_Metallic.png" id="2_d6x4f"]
+[ext_resource type="Texture2D" uid="uid://bod3rx4ofbg3x" path="res://assets/models/watch/Watch_Normal.png" id="3_65l3n"]
+[ext_resource type="Texture2D" uid="uid://rgtkl74qfha8" path="res://assets/models/watch/Watch_Roughness.png" id="4_3v2li"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_kihe8")
+metallic = 1.0
+metallic_texture = ExtResource("2_d6x4f")
+roughness_texture = ExtResource("4_3v2li")
+normal_enabled = true
+normal_texture = ExtResource("3_65l3n")

@@ -1,6 +1,6 @@
 extends Node
 
-enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK} 
+enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK, WATCH} 
 
 signal player_set(player: Player)
 signal item_taken_out(item: ItemType, model: Mesh)

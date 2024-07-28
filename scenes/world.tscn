@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=11 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
 [ext_resource type="PackedScene" uid="uid://vy1up7jsvbgo" path="res://assets/models/apartments/window/window.tscn" id="3_je4py"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="3_pbtji"]
 [ext_resource type="AudioStream" uid="uid://cvogm81aw0job" path="res://assets/audio/ambience/quietrainroomambience.ogg" id="5_3h65x"]
+[ext_resource type="Script" path="res://scenes/env/light_area.gd" id="8_oo28k"]
 [ext_resource type="PackedScene" uid="uid://dy2bynepodjeb" path="res://assets/models/apartments/apartment.tscn" id="9_2nkxv"]
 [ext_resource type="PackedScene" uid="uid://cy0nk5nh1ku4m" path="res://assets/models/apartments/hallway.tscn" id="9_uss60"]
 
@@ -12,8 +13,11 @@
 background_mode = 1
 background_energy_multiplier = 0.0
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.0
+ambient_light_color = Color(0.733005, 0.733005, 0.733005, 1)
+ambient_light_energy = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8oyw"]
+size = Vector3(11.969, 7.20313, 18.9561)
 
 [node name="World" type="Node3D"]
 
@@ -22,6 +26,19 @@ script = ExtResource("3_pbtji")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ujcor")
+
+[node name="ApartmentMeshes" type="Node3D" parent="."]
+
+[node name="ApartmentA1" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
+
+[node name="ApartmentA2" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
+[node name="ApartmentA3" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
+transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="ApartmentA4" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
+transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, -1, -12, 0, 0)
 
 [node name="ApartmentA1Props" type="Node3D" parent="."]
 
@@ -73,14 +90,17 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.9448,
 [node name="Window3" parent="ApartmentA2Props/Windows" instance=ExtResource("3_je4py")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.9448, 0, 17.8268)
 
+[node name="Props" type="Node3D" parent="ApartmentA2Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
+[node name="Effects" type="Node3D" parent="ApartmentA2Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
 [node name="Doorframes" type="Node3D" parent="ApartmentA2Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="Doorframe" parent="ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
-
-[node name="DoorComponent" parent="ApartmentA2Props/Doorframes/Doorframe/DoorPivot/Door/StaticBody3D" index="0"]
-closed = false
 
 [node name="Doorframe2" parent="ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
@@ -97,12 +117,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -14.5)
 [node name="Doorframe6" parent="ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
 
-[node name="Props" type="Node3D" parent="ApartmentA2Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
-
-[node name="Effects" type="Node3D" parent="ApartmentA2Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
-
 [node name="ApartmentA3Props" type="Node3D" parent="."]
 
 [node name="Windows" type="Node3D" parent="ApartmentA3Props"]
@@ -117,10 +131,13 @@ transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
 
 [node name="Doorframes" type="Node3D" parent="ApartmentA3Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, -12, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
 [node name="Doorframe" parent="ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
+
+[node name="DoorComponent" parent="ApartmentA3Props/Doorframes/Doorframe/DoorPivot/Door/StaticBody3D" index="0"]
+closed = false
 
 [node name="Doorframe2" parent="ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
@@ -151,7 +168,7 @@ transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, -1, -12, 0,
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, -1, -12, 0, 0)
 
 [node name="Doorframes" type="Node3D" parent="ApartmentA4Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, -12, 0, 0)
 
 [node name="Doorframe" parent="ApartmentA4Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
@@ -189,19 +206,6 @@ shadow_enabled = true
 
 [node name="Effects" type="Node3D" parent="HallwayProps"]
 
-[node name="ApartmentMeshes" type="Node3D" parent="."]
-
-[node name="ApartmentA1" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
-
-[node name="ApartmentA2" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
-
-[node name="ApartmentA3" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
-transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
-
-[node name="ApartmentA4" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
-transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, -1, -12, 0, 0)
-
 [node name="Hallway" parent="." instance=ExtResource("9_uss60")]
 
 [node name="Props" type="Node3D" parent="Hallway"]
@@ -211,15 +215,52 @@ transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, -1, -12, 0,
 [node name="Player" parent="." instance=ExtResource("1_fxprh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8022, 1.13266, 0)
 
-[node name="BarelyVisibleLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.88211, -0.358339, -0.305736, 0.464749, 0.767837, 0.440948, 0.0767469, -0.531056, 0.843854, 0, 0, 0)
-light_energy = 0.003
-
 [node name="QuietAmbience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3h65x")
 autoplay = true
 
-[editable path="ApartmentA2Props/Doorframes/Doorframe"]
-[editable path="ApartmentA2Props/Doorframes/Doorframe/DoorPivot/Door"]
+[node name="RoomA1" type="Area3D" parent="." node_paths=PackedStringArray("objects")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49876, 0, -11.1802)
+script = ExtResource("8_oo28k")
+objects = [NodePath("../ApartmentA1Props/Windows")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomA1"]
+shape = SubResource("BoxShape3D_x8oyw")
+
+[node name="RoomA2" type="Area3D" parent="." node_paths=PackedStringArray("objects")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49876, 0, 11.1101)
+script = ExtResource("8_oo28k")
+objects = [NodePath("../ApartmentA2Props/Windows")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomA2"]
+shape = SubResource("BoxShape3D_x8oyw")
+
+[node name="RoomA3" type="Area3D" parent="." node_paths=PackedStringArray("objects")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11.1605)
+script = ExtResource("8_oo28k")
+objects = [NodePath("../ApartmentA3Props/Windows")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomA3"]
+shape = SubResource("BoxShape3D_x8oyw")
+
+[node name="RoomA4" type="Area3D" parent="." node_paths=PackedStringArray("objects")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 11.1512)
+script = ExtResource("8_oo28k")
+objects = [NodePath("../ApartmentA4Props/Windows")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomA4"]
+shape = SubResource("BoxShape3D_x8oyw")
+
+[connection signal="body_entered" from="RoomA1" to="RoomA1" method="_on_body_entered"]
+[connection signal="body_exited" from="RoomA1" to="RoomA1" method="_on_body_exited"]
+[connection signal="body_entered" from="RoomA2" to="RoomA2" method="_on_body_entered"]
+[connection signal="body_exited" from="RoomA2" to="RoomA2" method="_on_body_exited"]
+[connection signal="body_entered" from="RoomA3" to="RoomA3" method="_on_body_entered"]
+[connection signal="body_exited" from="RoomA3" to="RoomA3" method="_on_body_exited"]
+[connection signal="body_entered" from="RoomA4" to="RoomA4" method="_on_body_entered"]
+[connection signal="body_exited" from="RoomA4" to="RoomA4" method="_on_body_exited"]
+
+[editable path="ApartmentA3Props/Doorframes/Doorframe"]
+[editable path="ApartmentA3Props/Doorframes/Doorframe/DoorPivot/Door"]
 [editable path="HallwayProps/Windows/Window"]
 [editable path="HallwayProps/Windows/Window/WindowLight"]

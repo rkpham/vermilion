@@ -1,12 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://bexruyiyhhkyk"]
+[gd_scene load_steps=21 format=3 uid="uid://bexruyiyhhkyk"]
 
 [ext_resource type="Script" path="res://scenes/viewmodel/view_model.gd" id="1_pmnb7"]
 [ext_resource type="PackedScene" uid="uid://kc143kogfxww" path="res://assets/models/briefcase/briefcase.tscn" id="1_troln"]
 [ext_resource type="PackedScene" uid="uid://7l4ucy2yhcju" path="res://assets/models/notepad/notepad.tscn" id="3_n2vnl"]
 [ext_resource type="PackedScene" uid="uid://cwvfqxl55lwsy" path="res://scenes/viewmodel/briefcase_item.tscn" id="4_edcdt"]
+[ext_resource type="PackedScene" uid="uid://b0htdbskerthy" path="res://assets/models/watch/watch.tscn" id="4_tttk1"]
 [ext_resource type="PackedScene" uid="uid://ca2wymjwsx0cr" path="res://assets/models/journal/journal.tscn" id="5_cpbrx"]
+[ext_resource type="PackedScene" uid="uid://8t716aqtkoaa" path="res://assets/models/keys/keyring.tscn" id="5_is8c3"]
 [ext_resource type="AudioStream" uid="uid://cipgfhuwb7glo" path="res://assets/audio/sfx/briefcaseopen.ogg" id="5_t0qvq"]
 [ext_resource type="AudioStream" uid="uid://d0m3yhkyouo1x" path="res://assets/audio/sfx/briefcaseclose.ogg" id="6_q8jn2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nety3"]
+size = Vector3(0.301758, 0.283203, 0.0869141)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ul24s"]
 size = Vector3(0.318359, 0.44165, 0.1)
@@ -18,9 +23,6 @@ size = Vector3(0.1, 0.3, 0.1)
 top_radius = 0.02
 bottom_radius = 0.02
 height = 0.2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nety3"]
-size = Vector3(0.423828, 0.551025, 0.1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3is8d"]
 top_radius = 0.01
@@ -230,8 +232,52 @@ script = ExtResource("1_pmnb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -5, 0)
 visible = false
 
+[node name="Skeleton3D" parent="Briefcase/Armature" index="0"]
+bones/2/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, -1.43438e-06)
+bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
+bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
+
+[node name="BottomAttachment" type="BoneAttachment3D" parent="Briefcase"]
+transform = Transform3D(0.856807, 0.515638, 0, -0.515638, 0.856807, 0, 0, 0, 1, 0, 0, 0)
+bone_name = "BottomBriefcase"
+bone_idx = 0
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="WatchPosition" type="Node3D" parent="Briefcase/BottomAttachment"]
+transform = Transform3D(-0.335764, 0, 0.941946, -5.96046e-08, 1, -2.98023e-08, -0.941946, 0, -0.335764, -0.347972, -0.0486392, 0.604867)
+
+[node name="BriefcaseItem" parent="Briefcase/BottomAttachment/WatchPosition" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
+transform = Transform3D(-2.98023e-08, -1, 3.87834e-08, 2.00131e-08, -4.12432e-08, -0.999999, 0.999999, -5.96046e-08, -1.59777e-08, 0, 0, 0)
+hover_position = Vector3(0, 0.1, 0)
+item_model = NodePath("../Watch")
+item_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/WatchPosition/BriefcaseItem"]
+transform = Transform3D(0.999994, 3.57628e-07, -2.0116e-06, -3.33786e-06, 1.00001, -1.5126e-07, 1.21841e-05, 6.09371e-06, 1.00001, 0, 0, 0)
+shape = SubResource("BoxShape3D_nety3")
+
+[node name="Watch" parent="Briefcase/BottomAttachment/WatchPosition" instance=ExtResource("4_tttk1")]
+transform = Transform3D(0.75, 7.45058e-09, -1.49012e-08, -2.59521e-09, 0.75, -1.47925e-08, 0, 0, 0.75, -0.00659901, 0, 0.016536)
+
+[node name="KeyRing" type="Node3D" parent="Briefcase/BottomAttachment"]
+transform = Transform3D(-0.335764, 0, 0.941946, -5.96046e-08, 1, -2.98023e-08, -0.941946, 0, -0.335764, 0.0306488, -0.0486391, 0.171751)
+
+[node name="BriefcaseItem" parent="Briefcase/BottomAttachment/KeyRing" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
+transform = Transform3D(-2.98023e-08, -1, 3.87834e-08, 2.00131e-08, -4.12432e-08, -0.999999, 0.999999, -5.96046e-08, -1.59777e-08, 0, 0, 0)
+hover_position = Vector3(0, 0.1, 0)
+item_model = NodePath("../Keyring")
+item_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/KeyRing/BriefcaseItem"]
+transform = Transform3D(0.999994, 3.57628e-07, -2.0116e-06, -3.33786e-06, 1.00001, -1.5126e-07, 1.21841e-05, 6.09371e-06, 1.00001, 0, 0, 0)
+shape = SubResource("BoxShape3D_nety3")
+
+[node name="Keyring" parent="Briefcase/BottomAttachment/KeyRing" instance=ExtResource("5_is8c3")]
+transform = Transform3D(1, 0, 2.98023e-08, -3.46027e-09, 1, -9.78922e-09, 0, -2.98023e-08, 1, 0, 0, 0)
+
 [node name="UpperAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987165, -0.0368981)
+transform = Transform3D(0.0181519, -0.999835, 4.37042e-08, 0.999835, 0.0181519, -7.93445e-10, 3.55271e-15, 4.37114e-08, 1, -0.561411, 0.453079, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true
@@ -274,7 +320,6 @@ transform = Transform3D(0.973287, 6.06617e-23, -0.229591, 7.22522e-10, 0.999999,
 
 [node name="BriefcaseItem" parent="Briefcase/UpperAttachment/JournalPosition" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
 transform = Transform3D(1.63913e-07, 1, -7.06089e-09, -4.12161e-08, -2.9888e-09, 1, 1, -1.49012e-07, 3.40676e-08, 0, 0, 0)
-hover_position = Vector3(0, -0.1, 0)
 item_model = NodePath("../Journal")
 item_type = 2
 
@@ -291,6 +336,8 @@ transform = Transform3D(0.95532, -0.295575, 0, 0.283321, 0.915714, -0.284952, 0.
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hand"]
 mesh = SubResource("CylinderMesh_3is8d")
 
+[node name="Watch" type="Node3D" parent="."]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 current = true
@@ -303,6 +350,8 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="input_event" from="Briefcase/BottomAttachment/WatchPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
+[connection signal="input_event" from="Briefcase/BottomAttachment/KeyRing/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/NotepadPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/ChalkPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/JournalPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]

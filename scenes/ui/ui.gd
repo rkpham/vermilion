@@ -8,15 +8,22 @@ var notepad_shown: bool = false:
 var journal_tween: Tween
 var journal_shown: bool = false:
 	set = _set_journal_shown
+var dialogue_speaking: bool = false
 
 @onready var interact_icons = $InteractIcons
 @onready var cursor = $Cursor
 @onready var notepad: Notepad = $Notepad
 @onready var journal: Journal = $Journal
+@onready var loading = $Loading
+@onready var loading_progress = $Loading/LoadingProgress
+@onready var dialogue = $Dialogue
+@onready var dialogue_text = $Dialogue/RichTextLabel
 
 
 func _ready() -> void:
 	Game.ui = self
+	loading.show()
+	show_dialogue("[center][color=white]This is a message. A verrrrrrrrrrrrryyyyyyyyyy long one.[/color][/center]")
 
 
 func _input(event: InputEvent) -> void:
@@ -30,6 +37,16 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("undo"):
 		if notepad_shown:
 			notepad.undo()
+
+
+func _physics_process(delta: float) -> void:
+	if dialogue_speaking:
+		if dialogue_text.visible_ratio < 1.0:
+			dialogue_text.visible_characters += 1
+		else:
+			dialogue_speaking = false
+			await get_tree().create_timer(4.0).timeout
+			hide_dialogue()
 
 
 func show_icon(icon_id: Values.INTERACT_TYPE) -> void:
@@ -89,6 +106,30 @@ func hide_journal() -> void:
 	journal_tween = create_tween()
 	journal_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	journal_tween.tween_property(journal, "position", Vector2(0, 360), 0.5)
+
+
+func set_loading_progress(progress: float) -> void:
+	loading_progress.value = progress
+	if progress >= 1.0:
+		loading.hide()
+
+
+func show_dialogue(text: String) -> void:
+	var dialogue_tween = create_tween()
+	dialogue_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	dialogue_tween.tween_property(dialogue, "modulate", Color.WHITE, 0.5)
+	
+	await dialogue_tween.finished
+	
+	dialogue_speaking = true
+	dialogue_text.text = text
+	dialogue_text.visible_ratio = 0.0
+
+
+func hide_dialogue() -> void:
+	var dialogue_tween = create_tween()
+	dialogue_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	dialogue_tween.tween_property(dialogue, "modulate", Color.TRANSPARENT, 0.5)
 
 
 func _set_notepad_shown(_notepad_shown: bool) -> void:
