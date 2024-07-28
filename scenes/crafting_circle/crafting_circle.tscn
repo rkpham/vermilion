@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://hssvel81hcrq"]
 
-[ext_resource type="Texture2D" uid="uid://du3521soa3giv" path="res://assets/textures/crafting_circle.png" id="1_7eirs"]
+[ext_resource type="Texture2D" uid="uid://d40oqntbferx" path="res://assets/textures/crafting_circle.png" id="1_7eirs"]
 [ext_resource type="Script" path="res://scenes/crafting_circle/crafting_circle.gd" id="1_junl5"]
 
 [sub_resource type="Curve" id="Curve_01cqc"]
@@ -82,7 +82,8 @@ radius = 0.75
 script = ExtResource("1_junl5")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.01, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0144775, -1.95719e-10)
+pixel_size = 0.005
 shaded = true
 texture = ExtResource("1_7eirs")
 

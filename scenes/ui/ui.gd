@@ -24,7 +24,6 @@ var dialogue_tween: Tween
 func _ready() -> void:
 	Game.ui = self
 	loading.show()
-	show_dialogue("[center][color=white]This is a message. A verrrrrrrrrrrrryyyyyyyyyy long one.[/color][/center]")
 
 
 func _input(event: InputEvent) -> void:

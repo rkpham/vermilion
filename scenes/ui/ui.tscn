@@ -558,6 +558,24 @@ texture = ExtResource("5_0udoo")
 expand_mode = 1
 stretch_mode = 1
 
+[node name="ControlsText" type="Label" parent="Notepad"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.10352e-05
+offset_bottom = 9.00006
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ky6kj")
+theme_override_font_sizes/font_size = 5
+text = "(LMB) Draw (ESC) Close"
+horizontal_alignment = 1
+
 [node name="Journal" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -585,7 +603,25 @@ Please note that we have included several important documents on the following p
 Conduct yourself with honor and get the job done.
 
 	Ovborod Homicide Division
-	Chief Viktor Harvald"])
+	Chief Viktor Harvald", "awesome", "journal", "pages", "hahha"])
+
+[node name="ControlsText" type="Label" parent="Journal"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ky6kj")
+theme_override_font_sizes/font_size = 5
+text = "(LMB) Turn page (ESC) Close"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Journal"]
 libraries = {
@@ -726,6 +762,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Dialogue" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
