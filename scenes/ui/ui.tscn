@@ -585,7 +585,7 @@ Please note that we have included several important documents on the following p
 Conduct yourself with honor and get the job done.
 
 	Ovborod Homicide Division
-	Chief Viktor Harvald"])
+	Chief Viktor Harvald", "awesome", "journal", "pages", "hahha"])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Journal"]
 libraries = {
