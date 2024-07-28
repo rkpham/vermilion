@@ -26,10 +26,12 @@ func _physics_process(delta: float) -> void:
 		toggle_briefcase()
 		if briefcase_open:
 			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+			Game.capture_mouse = false
 			Game.ui.cursor.visible = true
 			Game.player.cam.frozen = true
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			Game.capture_mouse = true
 			Game.ui.cursor.visible = false
 			Game.player.cam.frozen = false
 

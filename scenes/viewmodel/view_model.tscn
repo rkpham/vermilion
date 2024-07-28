@@ -238,7 +238,6 @@ bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
 bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
 
 [node name="BottomAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(0.856807, 0.515638, 0, -0.515638, 0.856807, 0, 0, 0, 1, 0, 0, 0)
 bone_name = "BottomBriefcase"
 bone_idx = 0
 use_external_skeleton = true
@@ -277,7 +276,7 @@ shape = SubResource("BoxShape3D_nety3")
 transform = Transform3D(1, 0, 2.98023e-08, -3.46027e-09, 1, -9.78922e-09, 0, -2.98023e-08, 1, 0, 0, 0)
 
 [node name="UpperAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(0.0181519, -0.999835, 4.37042e-08, 0.999835, 0.0181519, -7.93445e-10, 3.55271e-15, 4.37114e-08, 1, -0.561411, 0.453079, -0.0368981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987165, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true

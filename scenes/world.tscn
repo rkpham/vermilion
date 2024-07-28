@@ -58,6 +58,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 
 [node name="Doorframe" parent="ApartmentA1Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 
+[node name="DoorComponent" parent="ApartmentA1Props/Doorframes/Doorframe/Door" index="2"]
+locked = true
+
 [node name="Doorframe2" parent="ApartmentA1Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
 
@@ -102,6 +105,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 [node name="Doorframe" parent="ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 
+[node name="DoorComponent" parent="ApartmentA2Props/Doorframes/Doorframe/Door" index="2"]
+locked = true
+
 [node name="Doorframe2" parent="ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
 
@@ -136,7 +142,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 [node name="Doorframe" parent="ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 
-[node name="DoorComponent" parent="ApartmentA3Props/Doorframes/Doorframe/DoorPivot/Door/StaticBody3D" index="0"]
+[node name="DoorComponent" parent="ApartmentA3Props/Doorframes/Doorframe/Door" index="2"]
 closed = false
 
 [node name="Doorframe2" parent="ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
@@ -173,6 +179,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, -12, 0, 0)
 [node name="Doorframe" parent="ApartmentA4Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 
+[node name="DoorComponent" parent="ApartmentA4Props/Doorframes/Doorframe/Door" index="2"]
+locked = true
+
 [node name="Doorframe2" parent="ApartmentA4Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
 
@@ -198,7 +207,7 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.945, 
 [node name="Window" parent="HallwayProps/Windows/Window" index="0"]
 cast_shadow = 0
 
-[node name="OmniLight3D" parent="HallwayProps/Windows/Window/WindowLight" index="1"]
+[node name="OmniLight3D" parent="HallwayProps/Windows/Window/WindowLight" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.607034, 1, 5.05631e-08)
 shadow_enabled = true
 
@@ -260,7 +269,9 @@ shape = SubResource("BoxShape3D_x8oyw")
 [connection signal="body_entered" from="RoomA4" to="RoomA4" method="_on_body_entered"]
 [connection signal="body_exited" from="RoomA4" to="RoomA4" method="_on_body_exited"]
 
+[editable path="ApartmentA1Props/Doorframes/Doorframe"]
+[editable path="ApartmentA2Props/Doorframes/Doorframe"]
 [editable path="ApartmentA3Props/Doorframes/Doorframe"]
-[editable path="ApartmentA3Props/Doorframes/Doorframe/DoorPivot/Door"]
+[editable path="ApartmentA4Props/Doorframes/Doorframe"]
 [editable path="HallwayProps/Windows/Window"]
 [editable path="HallwayProps/Windows/Window/WindowLight"]

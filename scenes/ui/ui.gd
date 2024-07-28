@@ -9,6 +9,7 @@ var journal_tween: Tween
 var journal_shown: bool = false:
 	set = _set_journal_shown
 var dialogue_speaking: bool = false
+var dialogue_tween: Tween
 
 @onready var interact_icons = $InteractIcons
 @onready var cursor = $Cursor
@@ -45,20 +46,15 @@ func _physics_process(delta: float) -> void:
 			dialogue_text.visible_characters += 1
 		else:
 			dialogue_speaking = false
-			await get_tree().create_timer(4.0).timeout
 			hide_dialogue()
 
 
-func show_icon(icon_id: Values.INTERACT_TYPE) -> void:
+func show_icon(icon_id: Game.InteractType) -> void:
 	match icon_id:
-		Values.INTERACT_TYPE.NONE:
+		Game.InteractType.NONE:
 			for icon in interact_icons.get_children():
 				icon.hide()
-		Values.INTERACT_TYPE.LOOK:
-			for icon in interact_icons.get_children():
-				icon.hide()
-			interact_icons.get_node("EyeIcon").show()
-		Values.INTERACT_TYPE.GRAB:
+		Game.InteractType.HAND:
 			for icon in interact_icons.get_children():
 				icon.hide()
 			interact_icons.get_node("HandGrabIcon").show()
@@ -115,21 +111,28 @@ func set_loading_progress(progress: float) -> void:
 
 
 func show_dialogue(text: String) -> void:
-	var dialogue_tween = create_tween()
+	if dialogue_tween:
+		dialogue_tween.stop()
+	
+	dialogue_text.visible_ratio = 0.0
+	dialogue_text.text = text
+	dialogue_tween = create_tween()
 	dialogue_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	dialogue_tween.tween_property(dialogue, "modulate", Color.WHITE, 0.5)
+	dialogue_tween.tween_property(dialogue, "modulate", Color.WHITE, 0.2)
 	
 	await dialogue_tween.finished
 	
 	dialogue_speaking = true
-	dialogue_text.text = text
-	dialogue_text.visible_ratio = 0.0
 
 
 func hide_dialogue() -> void:
-	var dialogue_tween = create_tween()
+	if dialogue_tween:
+		dialogue_tween.stop()
+	
+	dialogue_tween = create_tween()
 	dialogue_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	dialogue_tween.tween_property(dialogue, "modulate", Color.TRANSPARENT, 0.5)
+	dialogue_tween.tween_property(dialogue, "position", dialogue.position, 2.0)
+	dialogue_tween.tween_property(dialogue, "modulate", Color.TRANSPARENT, 0.2)
 
 
 func _set_notepad_shown(_notepad_shown: bool) -> void:

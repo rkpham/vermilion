@@ -6,7 +6,7 @@
 [node name="door" instance=ExtResource("1_eck0x")]
 
 [node name="Skeleton3D" parent="DoorArmature" index="0"]
-bones/1/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
+bones/1/rotation = Quaternion(0.685764, -0.172416, -0.685764, -0.172416)
 
 [node name="Cube" parent="DoorArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_wcoui")

@@ -15,11 +15,10 @@ var frozen: bool = false
 
 @onready var cam3d = $Camera3D
 
-func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 
 func _input(event: InputEvent) -> void:
+	if Game.capture_mouse:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion:
 		if not frozen:
 			event.relative *= sensitivity

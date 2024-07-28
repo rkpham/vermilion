@@ -1,6 +1,7 @@
 extends Node
 
-enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK, WATCH} 
+enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK, WATCH}
+enum InteractType {NONE, HAND, EYE}
 
 signal player_set(player: Player)
 signal item_taken_out(item: ItemType, model: Mesh)
@@ -11,6 +12,7 @@ var ui: UserInterface
 var viewmodel: Viewmodel
 var trip_traveled: float = 0.0
 var active_item: Game.ItemType = Game.ItemType.NONE
+var capture_mouse: bool = true
 
 func _set_player(_player) -> void:
 	player = _player

@@ -41,6 +41,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_iiql7")
 
 [node name="Footsteps" parent="." instance=ExtResource("2_2bqbd")]
@@ -66,7 +68,7 @@ fov = 70.0
 
 [node name="InteractRay" type="RayCast3D" parent="PlayerCam/Camera3D"]
 target_position = Vector3(0, 0, -2)
-collision_mask = 7
+collision_mask = 6
 hit_back_faces = false
 collide_with_areas = true
 

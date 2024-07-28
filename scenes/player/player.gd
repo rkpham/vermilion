@@ -51,12 +51,16 @@ func _physics_process(delta: float) -> void:
 	var collider
 	
 	collider = interact_ray.get_collider()
+	Game.ui.show_icon(Game.InteractType.NONE)
+	
 	if collider:
 		if collider.has_method("interact"):
 			interact_hover = true
+			Game.ui.show_icon(Game.InteractType.HAND)
 			if Input.is_action_just_pressed("interact"):
 				collider.interact()
 				interacting = true
+	
 	if Input.is_action_just_pressed("interact"):
 		if Game.active_item == Game.ItemType.CHALK and not Game.player.cam.frozen:
 			if crafting_circle_instance:

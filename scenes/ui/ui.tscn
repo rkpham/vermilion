@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Theme" uid="uid://cnjks23fh4kxd" path="res://assets/resources/loading.tres" id="2_7qa3h"]
-[ext_resource type="Texture2D" uid="uid://cgu5d4ofbicl4" path="res://assets/textures/icons/eye.png" id="2_ex0ab"]
-[ext_resource type="Texture2D" uid="uid://bhdvn1srd6ie3" path="res://assets/textures/icons/handgrab.png" id="3_eyslv"]
 [ext_resource type="Texture2D" uid="uid://fov4ot6uv6ex" path="res://assets/textures/icons/goldcursor.png" id="4_d1e7q"]
 [ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="5_0udoo"]
 [ext_resource type="Script" path="res://scenes/ui/notepad.gd" id="5_a0cvu"]
+[ext_resource type="FontFile" uid="uid://dx75jx0mequiw" path="res://assets/resources/retro-pixel-petty-5x5.ttf" id="5_ky6kj"]
+[ext_resource type="Texture2D" uid="uid://cdvvyvy35nuq3" path="res://assets/textures/icons/handgrab2.png" id="5_x7w0p"]
 [ext_resource type="Theme" uid="uid://hv0iua7noolr" path="res://assets/resources/journal.tres" id="7_uhsnx"]
 [ext_resource type="Script" path="res://scenes/ui/journal.gd" id="7_wnrkn"]
 [ext_resource type="Theme" uid="uid://bpvu7bw8wrncp" path="res://assets/resources/dialogue.tres" id="9_552ou"]
@@ -484,6 +484,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="InteractIcons" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -493,39 +494,41 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="EyeIcon" type="TextureRect" parent="InteractIcons"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_ex0ab")
-
 [node name="HandGrabIcon" type="TextureRect" parent="InteractIcons"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_eyslv")
+texture = ExtResource("5_x7w0p")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="InteractIcons/HandGrabIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ky6kj")
+theme_override_font_sizes/font_size = 5
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Notepad" type="Control" parent="."]
 custom_minimum_size = Vector2(240, 320)
@@ -566,7 +569,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_uhsnx")
 script = ExtResource("7_wnrkn")
-pages = Array[String](["[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+pages = Array[String](["[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
+[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
+
+
 Greetings, Mr. Ivanov
 
 Welcome to your first homicide case.
@@ -665,7 +672,7 @@ offset_right = 320.0
 offset_bottom = 344.0
 
 [node name="PageText" type="RichTextLabel" parent="Journal/PaperLeft"]
-texture_filter = 1
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0333333
@@ -676,7 +683,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+text = "[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
+[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
+
+
 Greetings, Mr. Ivanov
 
 Welcome to your first homicide case.
