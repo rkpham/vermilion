@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d40oqntbferx"
-path.s3tc="res://.godot/imported/crafting_circle.png-3f9f9e69dd2f45863231e97442218724.s3tc.ctex"
+uid="uid://c7v6txw3ae5ho"
+path.s3tc="res://.godot/imported/Hallway_BaseColor.png-d64e6b0e6e45c1648607ee202fee0c46.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/crafting_circle.png"
-dest_files=["res://.godot/imported/crafting_circle.png-3f9f9e69dd2f45863231e97442218724.s3tc.ctex"]
+source_file="res://assets/models/apartments/stairwell/Hallway_BaseColor.png"
+dest_files=["res://.godot/imported/Hallway_BaseColor.png-d64e6b0e6e45c1648607ee202fee0c46.s3tc.ctex"]
 
 [params]
 

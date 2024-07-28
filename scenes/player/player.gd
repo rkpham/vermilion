@@ -21,6 +21,7 @@ var crafting_circle_instance : Node = null
 func _ready() -> void:
 	Game.player = self
 	cam.player = self
+	cam.look.x = global_rotation_degrees.y
 
 
 func _physics_process(delta: float) -> void:

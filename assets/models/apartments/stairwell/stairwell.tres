@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://vbbd7mot0hqr"]
+
+[ext_resource type="Texture2D" uid="uid://c7v6txw3ae5ho" path="res://assets/models/apartments/stairwell/Hallway_BaseColor.png" id="1_2q3fo"]
+[ext_resource type="Texture2D" uid="uid://drmx428ly8qu" path="res://assets/models/apartments/stairwell/Hallway_Metallic.png" id="2_bx55s"]
+[ext_resource type="Texture2D" uid="uid://d3objtkcufrvo" path="res://assets/models/apartments/stairwell/Hallway_Normal.png" id="3_so2en"]
+[ext_resource type="Texture2D" uid="uid://cyrf1cs45cld5" path="res://assets/models/apartments/stairwell/Hallway_Roughness.png" id="4_a2b4p"]
+
+[resource]
+albedo_texture = ExtResource("1_2q3fo")
+metallic = 1.0
+metallic_texture = ExtResource("2_bx55s")
+roughness_texture = ExtResource("4_a2b4p")
+normal_enabled = true
+normal_texture = ExtResource("3_so2en")

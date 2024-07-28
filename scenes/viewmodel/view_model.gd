@@ -29,11 +29,14 @@ func _physics_process(delta: float) -> void:
 			Game.capture_mouse = false
 			Game.ui.cursor.visible = true
 			Game.player.cam.frozen = true
+			Game.player.frozen = true
+			Game.ui.show_icon(Game.InteractType.NONE)
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			Game.capture_mouse = true
 			Game.ui.cursor.visible = false
 			Game.player.cam.frozen = false
+			Game.player.frozen = false
 
 
 func toggle_briefcase() -> void:
