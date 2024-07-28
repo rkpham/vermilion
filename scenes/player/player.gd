@@ -10,9 +10,12 @@ const SPRINT_MULT = 1.4
 var frozen: bool = false
 var interacting: bool = false
 var crafting_circle_instance : Node = null
+var drawing: bool = false
+var erasing: bool = false
 
 @onready var cam: PlayerCam = $PlayerCam
 @onready var interact_ray: RayCast3D = $PlayerCam/Camera3D/InteractRay
+@onready var drop_ray: RayCast3D = $PlayerCam/Camera3D/DropRay
 @onready var footsteps: Footsteps = $Footsteps
 
 @onready var crafting_circle: = preload("res://scenes/crafting_circle/crafting_circle.tscn")
@@ -63,9 +66,19 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		if Game.active_item == Game.ItemType.CHALK and not Game.player.cam.frozen:
-			if crafting_circle_instance:
+			if crafting_circle_instance and not erasing:
+				erasing = true
 				crafting_circle_instance.erase()
-			crafting_circle_instance = crafting_circle.instantiate()
-			get_parent().add_child(crafting_circle_instance)
-			crafting_circle_instance.global_position = Vector3(global_position.x, global_position.y - 1, global_position.z)
+				await crafting_circle_instance.done_erasing
+				erasing = false
+			if not drawing:
+				drawing = true
+				crafting_circle_instance = crafting_circle.instantiate()
+				get_parent().add_child(crafting_circle_instance)
+				crafting_circle_instance.global_position = Vector3(global_position.x, global_position.y - 1, global_position.z)
+				await crafting_circle_instance.done_drawing
+				drawing = false
+		if Game.active_item == Game.ItemType.WORLD_OBJECT and not Game.player.cam.frozen and not Game.pickup_cooldown:
+			if Vector3i(drop_ray.get_collision_normal()) == Vector3i(0, 1, 0):
+				Game.held_object.drop(drop_ray.get_collision_point())
 		

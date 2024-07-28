@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://twdld5mc1gjo"]
+
+[ext_resource type="Script" path="res://scenes/components/holdable_component.gd" id="1_538sf"]
+
+[node name="HoldableComponent" type="Node3D"]
+script = ExtResource("1_538sf")

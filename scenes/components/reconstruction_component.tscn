@@ -59,10 +59,9 @@ material = SubResource("StandardMaterial3D_4hq61")
 size = Vector2(0.05, 0.05)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx76v"]
-emission_shape_offset = Vector3(6.3144, 0.0208912, 0.346561)
 angle_min = -360.0
 angle_max = 360.0
-direction = Vector3(-6.3144, -0.33961, 0.0721531)
+direction = Vector3(0, 0, 0)
 spread = 0.0
 initial_velocity_min = 2.0
 initial_velocity_max = 4.0

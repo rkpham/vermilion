@@ -72,6 +72,12 @@ collision_mask = 6
 hit_back_faces = false
 collide_with_areas = true
 
+[node name="DropRay" type="RayCast3D" parent="PlayerCam/Camera3D"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 7
+hit_back_faces = false
+collide_with_areas = true
+
 [node name="ViewModel" parent="PlayerCam/Camera3D" instance=ExtResource("7_3wq51")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)
 

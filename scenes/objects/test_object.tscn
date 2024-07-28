@@ -3,10 +3,8 @@
 [ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_mbtfv"]
 [ext_resource type="Texture2D" uid="uid://ddcad5wjcvcio" path="res://assets/models/nail_41_light satin bronze metal texture-seamless-128.jpg" id="2_qco0q"]
 
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3a0f"]
 radius = 0.127388
-height = 1.49061
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fks01"]
 resource_name = "Material"
@@ -46,14 +44,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rujjs")
 
-[node name="TestObject" type="RigidBody3D"]
+[node name="TestObject" type="StaticBody3D"]
+collision_layer = 7
 script = ExtResource("1_mbtfv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030426, 0.168213, 0.0145264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_q3a0f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("ArrayMesh_kdynm")
 skeleton = NodePath("")

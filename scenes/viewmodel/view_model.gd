@@ -16,6 +16,8 @@ var frozen: bool = false
 func _ready() -> void:
 	Game.viewmodel = self
 	Game.item_taken_out.connect(take_item_out)
+	Game.put_away_item.connect(put_item_away)
+	Game.object_pick_up.connect(take_object_out)
 	
 
 func _physics_process(delta: float) -> void:
@@ -56,13 +58,20 @@ func take_item_out(item: Game.ItemType, model: Mesh) -> void:
 	item_show = not item_show
 	Game.active_item  = item if item_show else Game.ItemType.NONE
 	
-func _set_item_show(show: bool) -> void:
-	if anim.is_playing():
-		return
+func take_object_out(object: Interactable) -> void:
+	hand_mesh.mesh = object.mesh.mesh
+	item_show = true
+	Game.active_item = Game.ItemType.WORLD_OBJECT
 	
+func _set_item_show(show: bool) -> void:
 	item_show = show
 	if show:
 		anim.play("item_show")
 	else:
 		anim.play("item_hide")
+
+func put_item_away() -> void:
+	hand_mesh.mesh = null
+	item_show = false
+	Game.active_item = Game.ItemType.NONE
 		
