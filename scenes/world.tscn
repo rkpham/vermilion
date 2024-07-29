@@ -252,6 +252,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -1.5)
 [node name="DoorComponent" parent="Props/HallwayProps/StairwellDoor/Door" index="2"]
 locked = true
 locked_message = "[center][color=white]Locked. I remember having a key in my briefcase. (Tab)[/color][/center]"
+key_name = "Third Floor Stairwell Key"
 
 [node name="Window" parent="Props/HallwayProps" instance=ExtResource("3_je4py")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, -1.74372, -8.5)

@@ -25,10 +25,23 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if keyring_shown:
+	if keyring_shown:
+		if Input.is_action_just_pressed("ui_cancel"):	
 			keyring_shown = false
 			frozen = false
+		if Input.is_action_just_pressed("move_back"):
+			keyring_shown = false
+			frozen = false
+			Game.current_key = key_ring.current_key
+			Game.ui.show_dialogue("[center][color=white]Took the %s.[/color][/center]" % [key_ring.current_key])
+			Game.key_changed.emit()
+		if Input.is_action_just_pressed("move_forward"):
+			keyring_shown = false
+			frozen = false
+			if Game.current_key != "":
+				Game.ui.show_dialogue("[center][color=white]Returned %s.[/color][/center]" % [key_ring.current_key])
+			Game.current_key = ""
+			Game.key_changed.emit()
 	
 	if frozen:
 		return

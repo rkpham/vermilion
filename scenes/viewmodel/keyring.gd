@@ -3,6 +3,7 @@ extends Node3D
 var shown: bool = false
 
 var keys: Array[Node3D] = []
+var current_key: String = ""
 
 @onready var key_ring_model = $KeyRingModel
 
@@ -28,6 +29,7 @@ func _process(delta: float) -> void:
 			targ_rot += sign(key_idx) * 45
 		else:
 			Game.ui.key_name.text = key.key_name
+			current_key = key.key_name
 		key.rotation.y = lerp_angle(key.rotation.y, deg_to_rad(targ_rot), delta * 8.0)
 		key_idx += 1
 

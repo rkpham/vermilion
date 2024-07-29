@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=31 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Theme" uid="uid://cnjks23fh4kxd" path="res://assets/resources/loading.tres" id="2_7qa3h"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://hv0iua7noolr" path="res://assets/resources/journal.tres" id="7_uhsnx"]
 [ext_resource type="Script" path="res://scenes/ui/journal.gd" id="7_wnrkn"]
 [ext_resource type="Theme" uid="uid://bpvu7bw8wrncp" path="res://assets/resources/dialogue.tres" id="9_552ou"]
+[ext_resource type="Script" path="res://scenes/ui/key_label.gd" id="11_n50wj"]
 
 [sub_resource type="Gradient" id="Gradient_w11qt"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0784314, 0, 0.0823529, 1)
@@ -457,9 +458,13 @@ text = "Loading shaders..."
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-layout_mode = 0
-offset_right = 42.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
 offset_bottom = 23.0
+grow_horizontal = 0
 theme = ExtResource("2_7qa3h")
 text = "fps: 0"
 script = SubResource("GDScript_v5iy4")
@@ -825,7 +830,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
-text = "(A) Previous Key (D) Next Key (S) Take KEy (ESC) Back"
+text = "(A) Previous Key (D) Next Key (S) Take KEy (W) Return Key (ESC) Back"
 horizontal_alignment = 1
 
 [node name="KeyName" type="Label" parent="KeyRingControls"]
@@ -848,6 +853,23 @@ theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
 text = "Stair key"
 horizontal_alignment = 1
+
+[node name="KeyEquiped" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="KeyEquiped"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 102.0
+offset_bottom = 15.0
+theme = ExtResource("2_7qa3h")
+script = ExtResource("11_n50wj")
 
 [connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
