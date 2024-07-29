@@ -26,6 +26,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if keyring_shown:
+		if anim.is_playing() or key_ring_anim.is_playing():
+			return
 		if Input.is_action_just_pressed("ui_cancel"):	
 			keyring_shown = false
 			frozen = false

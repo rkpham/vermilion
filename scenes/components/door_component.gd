@@ -6,7 +6,7 @@ var can_interact: bool = true
 @export var closed: bool = true
 @export var locked: bool = false
 @export_multiline var locked_message: String = "[center][color=white]Locked.[/color][/center]"
-@export var key_name: String
+@export var key_name: String = "CHANGE ME"
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
@@ -23,6 +23,8 @@ func interact() -> void:
 		Game.ui.show_dialogue(locked_message)
 	elif locked and Game.current_key == key_name:
 		Game.ui.show_dialogue("[center][color=white]The door was unlocked.[/color][/center]")
+		Game.current_key = ""
+		Game.key_changed.emit()
 		locked = false
 	else:
 		can_interact = false

@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8qeor42ujf7"]
+[gd_scene load_steps=5 format=3 uid="uid://c8qeor42ujf7"]
+
+[ext_resource type="PackedScene" uid="uid://dtus12t0hckio" path="res://assets/models/bed/bedframe.tscn" id="1_g346b"]
+[ext_resource type="PackedScene" uid="uid://duaymgeiipt8q" path="res://assets/models/bed/mattress.tscn" id="2_007gn"]
+[ext_resource type="PackedScene" uid="uid://b5m5r4c1qrq1k" path="res://assets/models/bed/pillow.tscn" id="3_isav8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p0he"]
 size = Vector3(1.57422, 1.17078, 2.69165)
 
 [node name="Bed" type="Node3D"]
 
-[node name="bedframe" type="Node3D" parent="."]
+[node name="bedframe" parent="." instance=ExtResource("1_g346b")]
 
-[node name="mattress" type="Node3D" parent="."]
+[node name="mattress" parent="." instance=ExtResource("2_007gn")]
 
-[node name="pillow" type="Node3D" parent="."]
+[node name="pillow" parent="." instance=ExtResource("3_isav8")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

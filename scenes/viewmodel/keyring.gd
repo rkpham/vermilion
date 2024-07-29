@@ -20,16 +20,18 @@ func _process(delta: float) -> void:
 			prev_key()
 		if Input.is_action_just_pressed("move_right"):
 			next_key()
-	
-	var key_idx: int = -keys.size() / 2
+			
+	var key_idx: int = 0
 	for key in keys:
-		var targ_rot = key_idx * 45.0
-		if not key_idx == 0:
+		var key_idx_offset = -keys.size() / 2 + key_idx
+		var targ_rot = key_idx_offset * 30.0
+		if not key_idx_offset == 0:
 			targ_rot *= 0.5
-			targ_rot += sign(key_idx) * 45
+			targ_rot += sign(key_idx_offset) * 91
 		else:
 			Game.ui.key_name.text = key.key_name
 			current_key = key.key_name
+		
 		key.rotation.y = lerp_angle(key.rotation.y, deg_to_rad(targ_rot), delta * 8.0)
 		key_idx += 1
 
