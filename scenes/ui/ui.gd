@@ -19,6 +19,8 @@ var dialogue_tween: Tween
 @onready var loading_progress = $Loading/LoadingProgress
 @onready var dialogue = $Dialogue
 @onready var dialogue_text = $Dialogue/RichTextLabel
+@onready var key_ring_controls = $KeyRingControls
+@onready var key_name = $KeyRingControls/KeyName
 
 
 func _ready() -> void:

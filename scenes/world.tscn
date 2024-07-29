@@ -16,7 +16,7 @@ background_mode = 1
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_color = Color(0.733005, 0.733005, 0.733005, 1)
-ambient_light_energy = 0.01
+ambient_light_energy = 0.03
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8oyw"]
 size = Vector3(11.969, 7.20313, 18.9561)
@@ -257,7 +257,7 @@ locked_message = "[center][color=white]Locked. I remember having a key in my bri
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, -1.74372, -8.5)
 
 [node name="OmniLight3D" parent="Props/HallwayProps/Window/WindowLight" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55219, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56789, 1.92205, 0)
 
 [node name="ApartmentMeshes" type="Node3D" parent="."]
 

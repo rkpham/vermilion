@@ -1,6 +1,6 @@
 extends Node
 
-enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK, WATCH, WORLD_OBJECT}
+enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK, WATCH, WORLD_OBJECT, KEYRING}
 enum InteractType {NONE, HAND, EYE}
 
 signal player_set(player: Player)

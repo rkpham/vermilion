@@ -797,6 +797,58 @@ text = "[center][color=white]This is some text![/color][/center]"
 visible_characters = 0
 visible_ratio = 0.0
 
+[node name="KeyRingControls" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ControlsText" type="Label" parent="KeyRingControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = 107.5
+offset_right = 66.0
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ky6kj")
+theme_override_font_sizes/font_size = 5
+text = "(A) Previous Key (D) Next Key (S) Take KEy (ESC) Back"
+horizontal_alignment = 1
+
+[node name="KeyName" type="Label" parent="KeyRingControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = 85.0
+offset_right = 159.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ky6kj")
+theme_override_font_sizes/font_size = 5
+text = "Stair key"
+horizontal_alignment = 1
+
 [connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
 [connection signal="gui_input" from="Journal/PaperLeft" to="Journal" method="_on_paper_left_gui_input"]

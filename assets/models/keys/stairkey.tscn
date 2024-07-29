@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://t2eo56jpovmp"]
+
+[ext_resource type="PackedScene" uid="uid://dfy78dklxw8b7" path="res://assets/models/keys/stairkey.glb" id="1_koicg"]
+[ext_resource type="Material" uid="uid://eiccymtrt257" path="res://assets/models/keys/stairkey.tres" id="2_536xl"]
+
+[node name="stairkey" instance=ExtResource("1_koicg")]
+
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_536xl")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bexruyiyhhkyk"]
+[gd_scene load_steps=30 format=3 uid="uid://bexruyiyhhkyk"]
 
 [ext_resource type="Script" path="res://scenes/viewmodel/view_model.gd" id="1_pmnb7"]
 [ext_resource type="PackedScene" uid="uid://kc143kogfxww" path="res://assets/models/briefcase/briefcase.tscn" id="1_troln"]
@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cwvfqxl55lwsy" path="res://scenes/viewmodel/briefcase_item.tscn" id="4_edcdt"]
 [ext_resource type="PackedScene" uid="uid://b0htdbskerthy" path="res://assets/models/watch/watch.tscn" id="4_tttk1"]
 [ext_resource type="PackedScene" uid="uid://ca2wymjwsx0cr" path="res://assets/models/journal/journal.tscn" id="5_cpbrx"]
-[ext_resource type="PackedScene" uid="uid://8t716aqtkoaa" path="res://assets/models/keys/keyring.tscn" id="5_is8c3"]
+[ext_resource type="PackedScene" uid="uid://8t716aqtkoaa" path="res://assets/models/keys/keyring.tscn" id="5_i3nhx"]
 [ext_resource type="AudioStream" uid="uid://cipgfhuwb7glo" path="res://assets/audio/sfx/briefcaseopen.ogg" id="5_t0qvq"]
 [ext_resource type="AudioStream" uid="uid://d0m3yhkyouo1x" path="res://assets/audio/sfx/briefcaseclose.ogg" id="6_q8jn2"]
+[ext_resource type="Script" path="res://scenes/viewmodel/keyring.gd" id="7_bk0uh"]
+[ext_resource type="PackedScene" uid="uid://t2eo56jpovmp" path="res://assets/models/keys/stairkey.tscn" id="9_1rgs5"]
+[ext_resource type="Script" path="res://scenes/viewmodel/key.gd" id="10_ifkhh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nety3"]
 size = Vector3(0.301758, 0.283203, 0.0869141)
@@ -28,6 +31,61 @@ height = 0.2
 top_radius = 0.01
 bottom_radius = 0.01
 height = 0.1
+
+[sub_resource type="Animation" id="Animation_ce2xa"]
+resource_name = "key_ring_show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.765, -1, 0.025), Vector3(-0.765, 0, 0.025)]
+}
+
+[sub_resource type="Animation" id="Animation_25ylt"]
+resource_name = "key_ring_hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.765, 0.065, 0.025), Vector3(-0.765, -1, 0.025)]
+}
+
+[sub_resource type="Animation" id="Animation_qstau"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.765, -1, 0.025)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtgbb"]
+_data = {
+"RESET": SubResource("Animation_qstau"),
+"key_ring_hide": SubResource("Animation_25ylt"),
+"key_ring_show": SubResource("Animation_ce2xa")
+}
 
 [sub_resource type="Animation" id="Animation_3emqp"]
 length = 0.001
@@ -216,13 +274,23 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_3ia6l"]
+resource_name = "keyring_show"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_45wwl"]
+resource_name = "keyring_hide"
+length = 0.5
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8s7la"]
 _data = {
 "RESET": SubResource("Animation_3emqp"),
 "briefcase_close": SubResource("Animation_botmf"),
 "briefcase_open": SubResource("Animation_miacx"),
 "item_hide": SubResource("Animation_kf0kj"),
-"item_show": SubResource("Animation_dki5j")
+"item_show": SubResource("Animation_dki5j"),
+"keyring_hide": SubResource("Animation_45wwl"),
+"keyring_show": SubResource("Animation_3ia6l")
 }
 
 [node name="ViewModel" type="Node3D"]
@@ -232,7 +300,13 @@ script = ExtResource("1_pmnb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -5, 0)
 visible = false
 
+[node name="Skeleton3D" parent="Briefcase/Armature" index="0"]
+bones/2/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, -1.43438e-06)
+bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
+bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
+
 [node name="BottomAttachment" type="BoneAttachment3D" parent="Briefcase"]
+transform = Transform3D(0.856807, 0.515638, 0, -0.515638, 0.856807, 0, 0, 0, 1, 0, 0, 0)
 bone_name = "BottomBriefcase"
 bone_idx = 0
 use_external_skeleton = true
@@ -245,7 +319,7 @@ transform = Transform3D(-0.335764, 0, 0.941946, -5.96046e-08, 1, -2.98023e-08, -
 transform = Transform3D(-2.98023e-08, -1, 3.87834e-08, 2.00131e-08, -4.12432e-08, -0.999999, 0.999999, -5.96046e-08, -1.59777e-08, 0, 0, 0)
 hover_position = Vector3(0, 0.1, 0)
 item_model = NodePath("../Watch")
-item_type = 2
+item_type = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/WatchPosition/BriefcaseItem"]
 transform = Transform3D(0.999994, 3.57628e-07, -2.0116e-06, -3.33786e-06, 1.00001, -1.5126e-07, 1.21841e-05, 6.09371e-06, 1.00001, 0, 0, 0)
@@ -254,24 +328,42 @@ shape = SubResource("BoxShape3D_nety3")
 [node name="Watch" parent="Briefcase/BottomAttachment/WatchPosition" instance=ExtResource("4_tttk1")]
 transform = Transform3D(0.75, 7.45058e-09, -1.49012e-08, -2.59521e-09, 0.75, -1.47925e-08, 0, 0, 0.75, -0.00659901, 0, 0.016536)
 
-[node name="KeyRing" type="Node3D" parent="Briefcase/BottomAttachment"]
-transform = Transform3D(-0.335764, 0, 0.941946, -5.96046e-08, 1, -2.98023e-08, -0.941946, 0, -0.335764, 0.0306488, -0.0486391, 0.171751)
+[node name="KeyRingPosition" type="Node3D" parent="Briefcase/BottomAttachment"]
+transform = Transform3D(-0.335764, 0, 0.941946, -5.96046e-08, 1, 0, -0.941946, 0, -0.335764, -0.399832, -0.0486389, -0.681685)
 
-[node name="BriefcaseItem" parent="Briefcase/BottomAttachment/KeyRing" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
+[node name="BriefcaseItem" parent="Briefcase/BottomAttachment/KeyRingPosition" node_paths=PackedStringArray("item_model") instance=ExtResource("4_edcdt")]
 transform = Transform3D(-2.98023e-08, -1, 3.87834e-08, 2.00131e-08, -4.12432e-08, -0.999999, 0.999999, -5.96046e-08, -1.59777e-08, 0, 0, 0)
 hover_position = Vector3(0, 0.1, 0)
-item_model = NodePath("../Keyring")
-item_type = 2
+item_model = NodePath("../KeyRing")
+item_type = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/KeyRing/BriefcaseItem"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/KeyRingPosition/BriefcaseItem"]
 transform = Transform3D(0.999994, 3.57628e-07, -2.0116e-06, -3.33786e-06, 1.00001, -1.5126e-07, 1.21841e-05, 6.09371e-06, 1.00001, 0, 0, 0)
 shape = SubResource("BoxShape3D_nety3")
 
-[node name="Keyring" parent="Briefcase/BottomAttachment/KeyRing" instance=ExtResource("5_is8c3")]
-transform = Transform3D(1, 0, 2.98023e-08, -3.46027e-09, 1, -9.78922e-09, 0, -2.98023e-08, 1, 0, 0, 0)
+[node name="KeyRing" parent="Briefcase/BottomAttachment/KeyRingPosition" instance=ExtResource("5_i3nhx")]
+transform = Transform3D(1, 0, 2.98023e-08, -3.46027e-09, 1, 2.00131e-08, 0, -2.98023e-08, 1, 0, 0.0158269, 0)
+
+[node name="KeyCenter" type="Node3D" parent="Briefcase/BottomAttachment/KeyRingPosition/KeyRing"]
+transform = Transform3D(1, 2.03767e-08, 0, -2.5952e-09, 1, 1.50098e-08, 0, -3.31622e-08, 1, 0, 0, 0)
+
+[node name="stairkey" parent="Briefcase/BottomAttachment/KeyRingPosition/KeyRing/KeyCenter" instance=ExtResource("9_1rgs5")]
+transform = Transform3D(0.750999, 0.660303, 1.19209e-07, -0.660303, 0.750999, 4.48122e-08, 5.96046e-08, -1.49012e-08, 1, 0, 0, 0.191616)
+
+[node name="KeyCenter2" type="Node3D" parent="Briefcase/BottomAttachment/KeyRingPosition/KeyRing"]
+transform = Transform3D(0.859478, 2.79679e-08, -0.511173, 2.1512e-08, 1, 2.11783e-08, 0.511173, -3.04562e-08, 0.859478, 0, 0, 0)
+
+[node name="stairkey" parent="Briefcase/BottomAttachment/KeyRingPosition/KeyRing/KeyCenter2" instance=ExtResource("9_1rgs5")]
+transform = Transform3D(0.750999, 0.660303, 1.19209e-07, -0.660303, 0.750999, 4.48122e-08, 5.96046e-08, -1.49012e-08, 1, 0, 0, 0.191616)
+
+[node name="KeyCenter3" type="Node3D" parent="Briefcase/BottomAttachment/KeyRingPosition/KeyRing"]
+transform = Transform3D(0.368011, 2.0658e-08, -0.929821, 2.94528e-08, 1, 2.59752e-08, 0.929821, 2.05206e-09, 0.368011, 0, 0, 0)
+
+[node name="stairkey" parent="Briefcase/BottomAttachment/KeyRingPosition/KeyRing/KeyCenter3" instance=ExtResource("9_1rgs5")]
+transform = Transform3D(0.750999, 0.660303, 1.19209e-07, -0.660303, 0.750999, 4.48122e-08, 5.96046e-08, -1.49012e-08, 1, 0, 0, 0.191616)
 
 [node name="UpperAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987163, -0.0368981)
+transform = Transform3D(0.0181519, -0.999835, 4.37042e-08, 0.999835, 0.0181519, -7.93445e-10, 3.55271e-15, 4.37114e-08, 1, -0.561411, 0.453079, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true
@@ -331,10 +423,29 @@ transform = Transform3D(0.95532, -0.295575, 0, 0.283321, 0.915714, -0.284952, 0.
 mesh = SubResource("CylinderMesh_3is8d")
 
 [node name="Watch" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847778, 0, 0)
+
+[node name="KeyRing" type="Node3D" parent="."]
+transform = Transform3D(0.60042, 0.747565, -0.283974, 0, 0.355107, 0.934826, 0.799684, -0.561288, 0.213213, -0.765, -1, 0.025)
+script = ExtResource("7_bk0uh")
+
+[node name="KeyRingModel" parent="KeyRing" instance=ExtResource("5_i3nhx")]
+
+[node name="Key" type="Node3D" parent="KeyRing"]
+transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 2.23517e-08, -1.49012e-08, 0, 1, 0, 0, 0)
+script = ExtResource("10_ifkhh")
+key_name = "Third Floor Stairwell Key"
+
+[node name="stairkey" parent="KeyRing/Key" instance=ExtResource("9_1rgs5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 1.42109e-14, 8.74228e-08, 1.42109e-14, -1, 0, 0.00335348, -0.196568)
+
+[node name="KeyRingAnim" type="AnimationPlayer" parent="KeyRing"]
+libraries = {
+"": SubResource("AnimationLibrary_rtgbb")
+}
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-current = true
 fov = 70.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -345,7 +456,7 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="input_event" from="Briefcase/BottomAttachment/WatchPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
-[connection signal="input_event" from="Briefcase/BottomAttachment/KeyRing/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
+[connection signal="input_event" from="Briefcase/BottomAttachment/KeyRingPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/NotepadPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/ChalkPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]
 [connection signal="input_event" from="Briefcase/UpperAttachment/JournalPosition/BriefcaseItem" to="." method="_on_briefcase_item_input_event"]

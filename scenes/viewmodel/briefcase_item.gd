@@ -22,14 +22,23 @@ func _on_mouse_entered() -> void:
 	hover_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	hover_tween.tween_property(item_model, "position", hover_position, 0.2)
 	hover_tween.tween_property(hover_light, "light_energy", 0.03, 0.2)
+	
+	await hover_tween.finished
+	
+	hover_light.show()
 
 
 func _on_mouse_exited() -> void:
 	if hover_tween:
 		hover_tween.stop()
+		
 	hover_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	hover_tween.tween_property(item_model, "position", Vector3.ZERO, 0.2)
 	hover_tween.tween_property(hover_light, "light_energy", 0.0, 0.2)
+	
+	await hover_tween.finished
+	
+	hover_light.hide()
 
 
 func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -53,3 +62,8 @@ func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal:
 				Game.item_taken_out.emit(item_type, item_model_mesh)
 			Game.ItemType.WATCH:
 				pass
+			Game.ItemType.KEYRING:
+				_on_mouse_exited()
+				Game.viewmodel.frozen = true
+				Game.viewmodel.keyring_shown = true
+				

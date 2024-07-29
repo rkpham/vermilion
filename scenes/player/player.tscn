@@ -63,8 +63,9 @@ footsteps = NodePath("../Footsteps")
 view_bob_amount = 0.03
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCam"]
-current = true
 fov = 70.0
+near = 0.001
+far = 1000.0
 
 [node name="InteractRay" type="RayCast3D" parent="PlayerCam/Camera3D"]
 target_position = Vector3(0, 0, -2)
@@ -79,7 +80,7 @@ hit_back_faces = false
 collide_with_areas = true
 
 [node name="ViewModel" parent="PlayerCam/Camera3D" instance=ExtResource("7_3wq51")]
-transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0)
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
