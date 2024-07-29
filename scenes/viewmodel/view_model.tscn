@@ -313,7 +313,7 @@ transform = Transform3D(-0.335764, 0, 0.941946, -5.96046e-08, 1, -2.98023e-08, -
 transform = Transform3D(-2.98023e-08, -1, 3.87834e-08, 2.00131e-08, -4.12432e-08, -0.999999, 0.999999, -5.96046e-08, -1.59777e-08, 0, 0, 0)
 hover_position = Vector3(0, 0.1, 0)
 item_model = NodePath("../Watch")
-item_type = 5
+item_type = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/WatchPosition/BriefcaseItem"]
 transform = Transform3D(0.999994, 3.57628e-07, -2.0116e-06, -3.33786e-06, 1.00001, -1.5126e-07, 1.21841e-05, 6.09371e-06, 1.00001, 0, 0, 0)

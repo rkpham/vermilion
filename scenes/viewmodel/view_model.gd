@@ -81,14 +81,16 @@ func _set_briefcase_open(open: bool) -> void:
 		anim.play("briefcase_close")
 
 
-func take_item_out(item: Game.ItemType, model: Mesh) -> void:
+func take_item_out(item: Game.ItemType, model: Mesh, material: StandardMaterial3D) -> void:
 	hand_mesh.mesh = model
+	hand_mesh.set_surface_override_material(0, material)
 	item_show = not item_show
 	Game.active_item  = item if item_show else Game.ItemType.NONE
 
 
 func take_object_out(object: Interactable) -> void:
 	hand_mesh.mesh = object.mesh.mesh
+	hand_mesh.set_surface_override_material(0, object.material)
 	item_show = true
 	Game.active_item = Game.ItemType.WORLD_OBJECT
 

@@ -55,11 +55,12 @@ func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal:
 				Game.viewmodel.frozen = true
 				Game.ui.journal_shown = true
 			Game.ItemType.RECONSTRUCTOR:
-				var item_model_mesh = item_model.get_child(0).mesh
-				Game.item_taken_out.emit(item_type, item_model_mesh)
+				var item_model_mesh = item_model.get_child(0).get_child(0).get_child(0).mesh
+				var item_model_mat = item_model.get_child(0).get_child(0).get_child(0).get_surface_override_material(0)
+				Game.item_taken_out.emit(item_type, item_model_mesh, item_model_mat)
 			Game.ItemType.CHALK:
 				var item_model_mesh = item_model.get_child(0).mesh
-				Game.item_taken_out.emit(item_type, item_model_mesh)
+				Game.item_taken_out.emit(item_type, item_model_mesh, null)
 			Game.ItemType.WATCH:
 				pass
 			Game.ItemType.KEYRING:

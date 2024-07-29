@@ -4,7 +4,7 @@ enum ItemType {NONE, NOTEPAD, JOURNAL, RECONSTRUCTOR, CHALK, WATCH, WORLD_OBJECT
 enum InteractType {NONE, HAND, EYE}
 
 signal player_set(player: Player)
-signal item_taken_out(item: ItemType, model: Mesh)
+signal item_taken_out(item: ItemType, model: Mesh, material: StandardMaterial3D)
 signal put_away_item
 signal object_pick_up(object: Interactable)
 signal key_changed

@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode blend_mix, cull_disabled, depth_draw_opaque, diffuse_burley, specular_schlick_ggx, unshaded;
+render_mode blend_mix, cull_disabled, depth_draw_opaque, diffuse_burley, specular_schlick_ggx, unshaded, skip_vertex_transform;
 
 uniform float stability: hint_range(0.0, 2.0) = 0.1;
 uniform sampler3D noise;

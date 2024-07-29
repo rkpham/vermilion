@@ -6,4 +6,5 @@
 [node name="sprayer" instance=ExtResource("1_ispjp")]
 
 [node name="Cube" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
 surface_material_override/0 = ExtResource("2_m1tnb")

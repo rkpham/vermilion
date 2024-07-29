@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsacakukfn6o3"]
+[gd_scene load_steps=12 format=3 uid="uid://bsacakukfn6o3"]
 
 [ext_resource type="Script" path="res://scenes/components/reconstruction_component.gd" id="1_8gq0n"]
 [ext_resource type="Material" uid="uid://bly46xj15cygd" path="res://scripts/shaders/reconstruction.tres" id="3_e8hea"]
@@ -20,7 +20,7 @@ point_count = 2
 curve = SubResource("Curve_3qow0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycp6n"]
-emission_shape_scale = Vector3(0.282843, 0.282843, 2.025)
+emission_shape_scale = Vector3(0.175487, 0.480796, 0.130908)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -360.0
@@ -58,25 +58,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_4hq61")
 size = Vector2(0.05, 0.05)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx76v"]
-angle_min = -360.0
-angle_max = 360.0
-direction = Vector3(0, 0, 0)
-spread = 0.0
-initial_velocity_min = 2.0
-initial_velocity_max = 4.0
-gravity = Vector3(0, 0.5, 0)
-linear_accel_curve = SubResource("CurveTexture_orqna")
-scale_min = 0.25
-scale_max = 1.75
-alpha_curve = SubResource("CurveTexture_jdilu")
-
-[sub_resource type="QuadMesh" id="QuadMesh_y3ucj"]
-material = SubResource("StandardMaterial3D_4hq61")
-size = Vector2(0.1, 0.1)
-
 [node name="ReconstructionComponent" type="Node3D"]
-visible = false
 script = ExtResource("1_8gq0n")
 reconstruction_shader = ExtResource("3_e8hea")
 
@@ -84,13 +66,6 @@ reconstruction_shader = ExtResource("3_e8hea")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00151262, 0.00546893, -0.00151807)
-transparency = 1.0
 amount_ratio = 0.5
 process_material = SubResource("ParticleProcessMaterial_ycp6n")
 draw_pass_1 = SubResource("QuadMesh_w4a3m")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00151262, 0.00546893, -0.00151807)
-transparency = 1.0
-process_material = SubResource("ParticleProcessMaterial_lx76v")
-draw_pass_1 = SubResource("QuadMesh_y3ucj")
