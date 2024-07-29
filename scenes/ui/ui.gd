@@ -10,6 +10,8 @@ var journal_shown: bool = false:
 	set = _set_journal_shown
 var dialogue_speaking: bool = false
 var dialogue_tween: Tween
+var note_tween: Tween
+var note_shown: bool = false
 
 @onready var interact_icons = $InteractIcons
 @onready var cursor = $Cursor
@@ -21,6 +23,8 @@ var dialogue_tween: Tween
 @onready var dialogue_text = $Dialogue/RichTextLabel
 @onready var key_ring_controls = $KeyRingControls
 @onready var key_name = $KeyRingControls/KeyName
+@onready var note: Note = $Note
+@onready var note_text = $Note/PageText
 
 
 func _ready() -> void:
@@ -36,6 +40,8 @@ func _input(event: InputEvent) -> void:
 			hide_notepad()
 		if journal_shown:
 			hide_journal()
+		if note_shown:
+			hide_note()
 	if event.is_action_pressed("undo"):
 		if notepad_shown:
 			notepad.undo()
@@ -135,6 +141,27 @@ func hide_dialogue() -> void:
 	dialogue_tween.tween_property(dialogue, "position", dialogue.position, 2.0)
 	dialogue_tween.tween_property(dialogue, "modulate", Color.TRANSPARENT, 0.2)
 
+func show_note(text: String) -> void:
+	if note_tween:
+		note_tween.stop()
+	
+	note_text.text = text
+	note_tween = create_tween()
+	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	note_tween.tween_property(note, "position", Vector2(200, 20), 0.5)
+	note_shown = true
+
+
+func hide_note() -> void:
+	Game.viewmodel.frozen = false
+	
+	if note_tween:
+		note_tween.stop()
+	
+	note_tween = create_tween()
+	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	note_tween.tween_property(note, "position", Vector2(200, 400), 0.5)
+	note_shown = false
 
 func _set_notepad_shown(_notepad_shown: bool) -> void:
 	notepad_shown = _notepad_shown
@@ -152,3 +179,4 @@ func _set_journal_shown(_journal_shown: bool) -> void:
 		show_journal()
 	else:
 		hide_journal()
+

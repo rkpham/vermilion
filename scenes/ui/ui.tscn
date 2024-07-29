@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=32 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Theme" uid="uid://cnjks23fh4kxd" path="res://assets/resources/loading.tres" id="2_7qa3h"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://hv0iua7noolr" path="res://assets/resources/journal.tres" id="7_uhsnx"]
 [ext_resource type="Script" path="res://scenes/ui/journal.gd" id="7_wnrkn"]
 [ext_resource type="Theme" uid="uid://bpvu7bw8wrncp" path="res://assets/resources/dialogue.tres" id="9_552ou"]
+[ext_resource type="Script" path="res://scenes/ui/note.gd" id="9_tna6k"]
 [ext_resource type="Script" path="res://scenes/ui/key_label.gd" id="11_n50wj"]
 
 [sub_resource type="Gradient" id="Gradient_w11qt"]
@@ -579,6 +580,68 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
 text = "(LMB) Draw (ESC) Close"
+horizontal_alignment = 1
+
+[node name="Note" type="Control" parent="."]
+custom_minimum_size = Vector2(240, 320)
+layout_mode = 1
+anchor_left = 0.3125
+anchor_top = 0.0555556
+anchor_right = 0.6875
+anchor_bottom = 0.944444
+offset_top = 380.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_uhsnx")
+script = ExtResource("9_tna6k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Paper" type="TextureRect" parent="Note"]
+show_behind_parent = true
+z_index = -5
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0udoo")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="PageText" type="RichTextLabel" parent="Note"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_top = 0.025
+anchor_right = 0.966667
+anchor_bottom = 0.975
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Test Text"
+metadata/_edit_use_anchors_ = true
+
+[node name="ControlsText" type="Label" parent="Note"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.10352e-05
+offset_bottom = 9.00006
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ky6kj")
+theme_override_font_sizes/font_size = 5
+text = "(ESC) Close"
 horizontal_alignment = 1
 
 [node name="Journal" type="Control" parent="."]

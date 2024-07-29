@@ -17,6 +17,8 @@ func _ready() -> void:
 		left_text.text = pages[0]
 	if pages.size() > 1:
 		right_text.text = pages[1]
+	
+	Game.note_picked_up.connect(_add_page)
 
 # Page sets are each pairs of pages; turning a page gives you the next 2
 # Pages are therefore considered in sets of 2
@@ -60,3 +62,7 @@ func _on_paper_left_gui_input(event: InputEvent) -> void:
 func _on_paper_right_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):
 		current_page_set += 1
+
+func _add_page(text: String) -> void:
+	if text not in pages:
+		pages.append(text)

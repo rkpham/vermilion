@@ -8,6 +8,7 @@ signal item_taken_out(item: ItemType, model: Mesh, material: StandardMaterial3D)
 signal put_away_item
 signal object_pick_up(object: Interactable)
 signal key_changed
+signal note_picked_up(text: String)
 
 var player: Player:
 	set = _set_player
