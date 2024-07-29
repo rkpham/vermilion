@@ -3,6 +3,7 @@ extends Node3D
 
 @onready var object: Node3D = get_parent()
 @export var mesh_node: Node3D
+@export var collision: CollisionShape3D
 
 
 func interact():
@@ -10,7 +11,7 @@ func interact():
 		return
 	Game.pickup_cooldown = true
 	mesh_node.visible = false
-	object.collision.disabled = true
+	collision.set_deferred("disabled", true)
 	Game.object_pick_up.emit(object)
 	Game.held_object = self
 	var timer = get_tree().create_timer(0.5)
@@ -20,5 +21,5 @@ func interact():
 func drop(new_pos: Vector3):
 	Game.put_away_item.emit()
 	mesh_node.visible = true
-	object.collision.disabled = false
+	collision.set_deferred("disabled", false)
 	object.global_position = new_pos
