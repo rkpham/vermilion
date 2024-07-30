@@ -45,14 +45,15 @@ func _process(delta):
 		reconstruction_shader.set_shader_parameter("stability", dist)
 		original_pos = original_obj.global_position
 
-func interact():
+func interact() -> bool:
 	reconstructed = not reconstructed
 	if Game.active_item != Game.ItemType.RECONSTRUCTOR:
-		return
+		return false
 	if reconstructed:
 		reconstruct()
 	else:
 		deconstruct()
+	return true
 
 func reconstruct():
 	visible = true

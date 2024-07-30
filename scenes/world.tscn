@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=41 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="3_pbtji"]
 [ext_resource type="PackedScene" uid="uid://br1gu5i2rnyfv" path="res://assets/models/apartments/stairwell/stairwell.tscn" id="4_d7frv"]
 [ext_resource type="AudioStream" uid="uid://cvogm81aw0job" path="res://assets/audio/ambience/quietrainroomambience.ogg" id="5_3h65x"]
+[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="5_eidxj"]
 [ext_resource type="PackedScene" uid="uid://bn5pbgt3j2chy" path="res://scenes/components/dialogue_component.tscn" id="7_1j27x"]
 [ext_resource type="Script" path="res://scenes/components/message_area.gd" id="8_g1or1"]
 [ext_resource type="Script" path="res://scenes/env/light_area.gd" id="8_oo28k"]
@@ -19,14 +20,19 @@
 [ext_resource type="PackedScene" uid="uid://c0aexu1i55xxh" path="res://assets/models/bookcase/bookcase.tscn" id="17_eps6s"]
 [ext_resource type="PackedScene" uid="uid://dtht4exxiwdts" path="res://assets/models/wardrobe/wardrobe.tscn" id="18_xr338"]
 [ext_resource type="PackedScene" uid="uid://bem8jkmp1i0uv" path="res://assets/models/radiator/radiator.tscn" id="19_d0hr5"]
+[ext_resource type="PackedScene" uid="uid://b5m5r4c1qrq1k" path="res://assets/models/bed/pillow.tscn" id="20_e3x5g"]
+[ext_resource type="PackedScene" uid="uid://twdld5mc1gjo" path="res://scenes/components/holdable_component.tscn" id="21_85bkh"]
 [ext_resource type="PackedScene" uid="uid://dnbreg84256oh" path="res://assets/models/cardboard/squarecardboardbox.tscn" id="21_dcdn3"]
 [ext_resource type="PackedScene" uid="uid://dj8l7avbds442" path="res://assets/models/paintings/fruitpainting.tscn" id="22_6p0w1"]
+[ext_resource type="PackedScene" uid="uid://bsacakukfn6o3" path="res://scenes/components/reconstruction_component.tscn" id="22_nymjp"]
 [ext_resource type="PackedScene" uid="uid://dqmhwwq2jimjb" path="res://assets/models/paintings/beachpainting.tscn" id="23_y7und"]
 [ext_resource type="PackedScene" uid="uid://gy0w8edoca31" path="res://assets/models/paintings/painting.tscn" id="24_ecwq5"]
+[ext_resource type="PackedScene" uid="uid://benpnomafosb6" path="res://assets/models/candles/candle.tscn" id="24_hapgs"]
 [ext_resource type="PackedScene" uid="uid://cdrcne8dgy71o" path="res://assets/models/couch/couch.tscn" id="25_uv87g"]
 [ext_resource type="PackedScene" uid="uid://cn47bbjngb2ds" path="res://assets/models/table/recttable.tscn" id="26_4gsyf"]
 [ext_resource type="PackedScene" uid="uid://dulpbx03pm5xi" path="res://assets/models/candles/candlegroup.tscn" id="27_vgra5"]
 [ext_resource type="PackedScene" uid="uid://srdjhbg442b7" path="res://assets/models/clock/clock.tscn" id="28_yweog"]
+[ext_resource type="PackedScene" uid="uid://cf5pq1c8qptqb" path="res://scenes/objects/note.tscn" id="32_hlhsm"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -37,6 +43,15 @@ ambient_light_energy = 0.03
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8oyw"]
 size = Vector3(11.969, 7.20313, 18.9561)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8d228"]
+size = Vector3(0.2, 1.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oetqq"]
+size = Vector3(0.75, 0.2, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pmkjv"]
+size = Vector3(1.5, 0.3, 2.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nd38b"]
 size = Vector3(6.37891, 7.00684, 1)
@@ -82,18 +97,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 [node name="DoorComponent" parent="Props/ApartmentA1Props/Doorframes/Doorframe/Door" index="2"]
 locked = true
 
+[node name="DialogueComponent" parent="Props/ApartmentA1Props/Doorframes/Doorframe/Door" index="4" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]Apartment A1. Belongs to Reynauld Barig.[/color][/center]"
+
 [node name="ApartmentA2Props" type="Node3D" parent="Props"]
 
 [node name="Windows" type="Node3D" parent="Props/ApartmentA2Props"]
-
-[node name="Window" parent="Props/ApartmentA2Props/Windows" instance=ExtResource("3_je4py")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8.1, 0, 20.9652)
-
-[node name="Window2" parent="Props/ApartmentA2Props/Windows" instance=ExtResource("3_je4py")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.9448, 0, 11.0652)
-
-[node name="Window3" parent="Props/ApartmentA2Props/Windows" instance=ExtResource("3_je4py")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.9448, 0, 17.8268)
 
 [node name="Props" type="Node3D" parent="Props/ApartmentA2Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
@@ -110,20 +120,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 [node name="DoorComponent" parent="Props/ApartmentA2Props/Doorframes/Doorframe/Door" index="2"]
 locked = true
 
-[node name="Doorframe2" parent="Props/ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
-
-[node name="Doorframe3" parent="Props/ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7.5)
-
-[node name="Doorframe4" parent="Props/ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7, 0, -7.5)
-
-[node name="Doorframe5" parent="Props/ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -14.5)
-
-[node name="Doorframe6" parent="Props/ApartmentA2Props/Doorframes" instance=ExtResource("3_j0moq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
+[node name="DialogueComponent" parent="Props/ApartmentA2Props/Doorframes/Doorframe/Door" index="4" instance=ExtResource("7_1j27x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 3)
+action_mode = 1
+text = "[center][color=white]Apartment A2. Belongs to Isak Tempolev.[/color][/center]"
 
 [node name="ApartmentA3Props" type="Node3D" parent="Props"]
 
@@ -141,8 +141,148 @@ transform = Transform3D(0.606724, -8.74228e-08, 0.794913, 5.30415e-08, 1, 6.9493
 [node name="chair2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
 transform = Transform3D(0.888096, -8.74228e-08, -0.459657, 7.76399e-08, 1, -4.01845e-08, 0.459657, 0, 0.888096, 23.6386, 2.06655e-06, 1.10664)
 
-[node name="Bed" parent="Props/ApartmentA3Props/Props" instance=ExtResource("9_6udc8")]
-transform = Transform3D(-4.37114e-08, -8.74228e-08, 1, 3.28406e-15, 1, 8.74228e-08, -1, 0, -4.37114e-08, 4.79795, 4.1945e-07, -17.6755)
+[node name="bookcase" parent="Props/ApartmentA3Props/Props" instance=ExtResource("17_eps6s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.85157, 1.52443e-06, -15.6021)
+
+[node name="wardrobe" parent="Props/ApartmentA3Props/Props" instance=ExtResource("18_xr338")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.957, 1.04759e-06, -14.9058)
+
+[node name="radiator" parent="Props/ApartmentA3Props/Props" instance=ExtResource("19_d0hr5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.11426, 9.44073e-07, -20.768)
+
+[node name="squarecardboardbox" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.923753, 0, -0.38299, 0, 1, 0, 0.38299, 0, 0.923753, 1.56788, 1.76285e-06, -19.6392)
+
+[node name="squarecardboardbox2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.881781, 0, 0.471658, 0, 1, 0, -0.471658, 0, 0.881781, 1.49067, 1.04502, -19.295)
+
+[node name="squarecardboardbox3" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.996893, 0, -0.0787723, 0, 1, 0, 0.0787723, 0, 0.996893, 2.81746, 1.76285e-06, -20.3678)
+
+[node name="squarecardboardbox4" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.799936, 0, -0.600085, 0, 1, 0, 0.600085, 0, 0.799936, 2.63274, 1.76285e-06, -18.9547)
+
+[node name="squarecardboardbox5" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.204154, 0, 0.978939, 0, 1, 0, -0.978939, 0, 0.204154, 1.23888, 1.52443e-06, -18.2553)
+
+[node name="squarecardboardbox6" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.992565, 0, 0.121713, 0, 1, 0, -0.121713, 0, 0.992565, 2.54601, 1.52443e-06, -17.62)
+
+[node name="squarecardboardbox7" parent="Props/ApartmentA3Props/Props" instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.885783, 0, -0.4641, 0, 1, 0, 0.4641, 0, 0.885783, 2.74724, 1.04502, -19.8955)
+
+[node name="fruitpainting" parent="Props/ApartmentA3Props/Props" instance=ExtResource("22_6p0w1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.9331, 1.81828, -11.1392)
+
+[node name="beachpainting" parent="Props/ApartmentA3Props/Props" instance=ExtResource("23_y7und")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.9955, 1.7855, -7.55)
+
+[node name="couch" parent="Props/ApartmentA3Props/Props" instance=ExtResource("25_uv87g")]
+transform = Transform3D(-0.776355, 0, -0.630296, 0, 1, 0, 0.630296, 0, -0.776355, 1.82958, 1.28601e-06, -9.01629)
+
+[node name="recttable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_4gsyf")]
+transform = Transform3D(0.651185, 0, -0.758919, 0, 1, 0, 0.758919, 0, 0.651185, 2.89639, 1.28601e-06, -10.0067)
+
+[node name="bookcase2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("17_eps6s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.85685, 1.04759e-06, -7.87716)
+
+[node name="candlegroup" parent="Props/ApartmentA3Props/Props" instance=ExtResource("27_vgra5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77979, 0.734377, -10.4139)
+
+[node name="clock" parent="Props/ApartmentA3Props/Props" instance=ExtResource("28_yweog")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.78377, 8.09175e-07, -14.2848)
+
+[node name="Painting" type="Area3D" parent="Props/ApartmentA3Props/Props" node_paths=PackedStringArray("collision", "mesh_node")]
+transform = Transform3D(1, 1.29706e-09, 1.50035e-08, 1.29707e-09, 0.985163, -0.17162, -1.50035e-08, 0.17162, 0.985163, 0.568086, 1.9474, -11.1896)
+collision_layer = 6
+script = ExtResource("5_eidxj")
+collision = NodePath("CollisionShape3D")
+mesh_node = NodePath("painting")
+
+[node name="painting" parent="Props/ApartmentA3Props/Props/Painting" instance=ExtResource("24_ecwq5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Painting"]
+transform = Transform3D(1, -3.04423e-13, 1.77636e-14, -3.10862e-15, 0.999998, 3.8743e-07, 0, -3.8743e-07, 0.999998, 0, 0, 0)
+shape = SubResource("BoxShape3D_8d228")
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/Painting" instance=ExtResource("7_1j27x")]
+transform = Transform3D(1, -2.66454e-15, 8.88178e-16, -3.10862e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+action_mode = 1
+text = "[center][color=white]A crooked painting of some flowers. Doesn't seem particularly interesting or pretty.[/color][/center]"
+
+[node name="Bed" type="Area3D" parent="Props/ApartmentA3Props/Props" node_paths=PackedStringArray("collision", "mesh_node")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.82019, 4.21395e-07, -17.8876)
+collision_layer = 7
+script = ExtResource("5_eidxj")
+collision = NodePath("CollisionShape3D")
+mesh_node = NodePath("Bed")
+
+[node name="Bed" parent="Props/ApartmentA3Props/Props/Bed" instance=ExtResource("9_6udc8")]
+
+[node name="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Bed/Bed/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.307341, 0)
+
+[node name="Pillow" type="Area3D" parent="Props/ApartmentA3Props/Props/Bed/Bed" node_paths=PackedStringArray("collision", "mesh_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607343, -0.94148)
+collision_layer = 7
+script = ExtResource("5_eidxj")
+collision = NodePath("CollisionShape3D")
+mesh_node = NodePath("pillow")
+
+[node name="pillow" parent="Props/ApartmentA3Props/Props/Bed/Bed/Pillow" instance=ExtResource("20_e3x5g")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Bed/Bed/Pillow"]
+shape = SubResource("BoxShape3D_oetqq")
+
+[node name="HoldableComponent" parent="Props/ApartmentA3Props/Props/Bed/Bed/Pillow" node_paths=PackedStringArray("mesh_node", "collision") instance=ExtResource("21_85bkh")]
+mesh_node = NodePath("../pillow")
+collision = NodePath("../CollisionShape3D")
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/Bed/Bed/Pillow" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]The pillow looks conspicuously placed.[/color][/center]"
+
+[node name="ReconstructionComponent" parent="Props/ApartmentA3Props/Props/Bed/Bed/Pillow" node_paths=PackedStringArray("optional_model") instance=ExtResource("22_nymjp")]
+transform = Transform3D(0.756105, 5.72139e-08, 0.654451, -5.72139e-08, 1, -2.1322e-08, -0.654451, -2.1322e-08, 0.756105, -0.418732, 0.0694645, 0.272458)
+optional_model = NodePath("../pillow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Bed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00154114, 0.457067, 0.0447693)
+shape = SubResource("BoxShape3D_pmkjv")
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/Bed" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]The bed has no blankets. Who sleeps like that?[/color][/center]"
+
+[node name="BedNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
+transform = Transform3D(-0.566694, 0, 0.823928, 0, 1, 0, -0.823928, 0, -0.566694, 3.90551, 0.614686, -17.898)
+
+[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/BedNote" index="2"]
+text = "NOTE TO SELF:
+
+Make sure to change the safe combination, it should be the same as the game winning move I made against Reynauld."
+
+[node name="FoyerTable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_4gsyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50839, 0.0242107, -6.96611)
+
+[node name="candle" parent="Props/ApartmentA3Props/Props" instance=ExtResource("24_hapgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07045, 0.791475, -6.75702)
+
+[node name="FoyerNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
+transform = Transform3D(0.964989, -3.06076e-09, 0.26229, -3.06076e-09, 1, 2.29301e-08, -0.26229, -2.29301e-08, 0.964989, 2.52153, 0.766026, -6.80307)
+
+[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/FoyerNote" index="2"]
+text = "Mr. Makovich,
+
+I'm reaching my breaking point with you on this, so I'll make this brief. I understand your need, but I cannot simply just give you any of the cinnabar I have right now. You do realize this is a controlled government substance now right? Not only am I running out of it myself (and trust me I NEED it to do my job unlike you), but I can't just give it out all willy nilly, especially to someone from Azbastania (no offense!).
+
+I hope you understand...
+
+Sofia"
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/FoyerNote" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]Looks like this note is from [color=green]Sofia[/color], doesn't seem like she's happy with Mr. Makovich.[/color][/center]"
 
 [node name="Effects" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -213,6 +353,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 [node name="DoorComponent" parent="Props/ApartmentA4Props/Doorframes/Doorframe/Door" index="2"]
 locked = true
 
+[node name="DialogueComponent" parent="Props/ApartmentA4Props/Doorframes/Doorframe/Door" index="4" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]Apartment A4. Belongs to Sofia Petrov.[/color][/center]"
+
 [node name="HallwayProps" type="Node3D" parent="Props"]
 
 [node name="Windows" type="Node3D" parent="Props/HallwayProps"]
@@ -243,9 +387,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56789, 1.92205, 0)
 
 [node name="ApartmentMeshes" type="Node3D" parent="."]
-
-[node name="ApartmentA2" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="ApartmentA3" parent="ApartmentMeshes" instance=ExtResource("9_2nkxv")]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -280,60 +421,6 @@ transform = Transform3D(-0.764888, 0, 0.644164, 0, 1, 0, -0.644164, 0, -0.764888
 stream = ExtResource("5_3h65x")
 autoplay = true
 
-[node name="bookcase" parent="." instance=ExtResource("17_eps6s")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.13151, 4.76837e-07, -15.6021)
-
-[node name="wardrobe" parent="." instance=ExtResource("18_xr338")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.02611, 0, -14.9058)
-
-[node name="radiator" parent="." instance=ExtResource("19_d0hr5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.68468, 0, -20.768)
-
-[node name="squarecardboardbox" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.923753, 0, -0.38299, 0, 1, 0, 0.38299, 0, 0.923753, -10.4152, 7.15256e-07, -19.6392)
-
-[node name="squarecardboardbox2" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.881781, 0, 0.471658, 0, 1, 0, -0.471658, 0, 0.881781, -10.4924, 1.04502, -19.295)
-
-[node name="squarecardboardbox3" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.996893, 0, -0.0787723, 0, 1, 0, 0.0787723, 0, 0.996893, -9.16561, 7.15256e-07, -20.3678)
-
-[node name="squarecardboardbox4" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.799936, 0, -0.600085, 0, 1, 0, 0.600085, 0, 0.799936, -9.35034, 7.15256e-07, -18.9547)
-
-[node name="squarecardboardbox5" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.204154, 0, 0.978939, 0, 1, 0, -0.978939, 0, 0.204154, -10.7442, 4.76837e-07, -18.2553)
-
-[node name="squarecardboardbox6" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.992565, 0, 0.121713, 0, 1, 0, -0.121713, 0, 0.992565, -9.43707, 4.76837e-07, -17.62)
-
-[node name="squarecardboardbox7" parent="." instance=ExtResource("21_dcdn3")]
-transform = Transform3D(0.885783, 0, -0.4641, 0, 1, 0, 0.4641, 0, 0.885783, -9.23584, 1.04502, -19.8955)
-
-[node name="fruitpainting" parent="." instance=ExtResource("22_6p0w1")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0499992, 1.81828, -11.1392)
-
-[node name="beachpainting" parent="." instance=ExtResource("23_y7und")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.98758, 1.7855, -7.55)
-
-[node name="painting" parent="." instance=ExtResource("24_ecwq5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 1.82024, -10.8848)
-
-[node name="couch" parent="." instance=ExtResource("25_uv87g")]
-transform = Transform3D(-0.776355, 0, -0.630296, 0, 1, 0, 0.630296, 0, -0.776355, -10.1535, 2.38419e-07, -9.01629)
-
-[node name="recttable" parent="." instance=ExtResource("26_4gsyf")]
-transform = Transform3D(0.651185, 0, -0.758919, 0, 1, 0, 0.758919, 0, 0.651185, -9.08668, 2.38419e-07, -10.0067)
-
-[node name="bookcase2" parent="." instance=ExtResource("17_eps6s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.12622, 0, -7.87716)
-
-[node name="candlegroup" parent="." instance=ExtResource("27_vgra5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20329, 0.734376, -10.4139)
-
-[node name="clock" parent="." instance=ExtResource("28_yweog")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.19931, -2.38419e-07, -14.2848)
-
 [connection signal="body_entered" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_entered"]
 [connection signal="body_exited" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_exited"]
 [connection signal="body_entered" from="Rooms/RoomA3" to="Rooms/RoomA3" method="_on_body_entered"]
@@ -346,6 +433,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.199
 [editable path="Props/ApartmentA2Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA2Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA2Props/Doorframes/Doorframe/Door/Door"]
+[editable path="Props/ApartmentA3Props/Props/Bed/Bed"]
+[editable path="Props/ApartmentA3Props/Props/BedNote"]
+[editable path="Props/ApartmentA3Props/Props/FoyerNote"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door/Door"]

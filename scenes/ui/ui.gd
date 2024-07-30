@@ -149,11 +149,15 @@ func show_note(text: String) -> void:
 	if note_tween:
 		note_tween.stop()
 	
+	Game.player.frozen = true
+	interact_icons.visible = false
+	Game.player.cam.frozen = true
 	note_text.text = text
 	note_tween = create_tween()
 	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	note_tween.tween_property(note, "position", Vector2(200, 20), 0.5)
 	note_shown = true
+	
 
 
 func hide_note() -> void:
@@ -166,6 +170,9 @@ func hide_note() -> void:
 	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	note_tween.tween_property(note, "position", Vector2(200, 400), 0.5)
 	note_shown = false
+	Game.player.frozen = false
+	interact_icons.visible = true
+	Game.player.cam.frozen = false
 
 func _set_notepad_shown(_notepad_shown: bool) -> void:
 	notepad_shown = _notepad_shown

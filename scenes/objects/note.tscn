@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf5pq1c8qptqb"]
+
+[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_06in2"]
+[ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="2_1n58n"]
+[ext_resource type="PackedScene" uid="uid://bedu67papthkm" path="res://scenes/components/note_component.tscn" id="3_vlgnw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsj3n"]
+size = Vector3(0.2, 0.05, 0.3)
+
+[node name="Note" type="Area3D" node_paths=PackedStringArray("collision")]
+collision_layer = 7
+script = ExtResource("1_06in2")
+collision = NodePath("CollisionShape3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.01, 0)
+modulate = Color(0.481789, 0.481789, 0.481789, 1)
+shaded = true
+texture = ExtResource("2_1n58n")
+region_enabled = true
+region_rect = Rect2(0, 226.566, 20, 29.4342)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0299649, 0)
+shape = SubResource("BoxShape3D_bsj3n")
+
+[node name="NoteComponent" parent="." instance=ExtResource("3_vlgnw")]

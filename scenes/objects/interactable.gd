@@ -16,12 +16,23 @@ func _ready():
 				material = child.get_surface_override_material(0)
 				break
 
-func interact():
+func interact() -> void:
+	var has_interacted: bool = false
 	for child in get_children():
 		if child.has_method("interact"):
-			child.interact()
+			if await child.interact():
+				has_interacted = true
+	if not has_interacted:
+		var roll = randi() % 2
+		var text = ""
+		match roll:
+			0:
+				text = "[center][color=white]Nothing happened.[/color][/center]"
+			1:
+				text = "[center][color=white]Nothing useful here.[/color][/center]"
+		Game.ui.show_dialogue(text)
 
-func investigate():
+func investigate() -> void:
 	var has_investigated: bool = false
 	for child in get_children():
 		if child.has_method("investigate"):

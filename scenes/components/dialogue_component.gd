@@ -4,7 +4,7 @@ extends Node3D
 enum Mode {INTERACT, INVESTIGATE}
 
 @export var action_mode: Mode = Mode.INTERACT
-@export var text = "[center][color=white][/color][/center]"
+@export_multiline var text = "[center][color=white][/color][/center]"
 
 func interact() -> bool:
 	if Mode.INTERACT:

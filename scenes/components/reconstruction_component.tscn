@@ -20,7 +20,7 @@ point_count = 2
 curve = SubResource("Curve_3qow0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycp6n"]
-emission_shape_scale = Vector3(0.175487, 0.480796, 0.130908)
+emission_shape_scale = Vector3(0.690574, 0.135547, 0.397281)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -360.0

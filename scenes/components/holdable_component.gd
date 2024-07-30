@@ -8,7 +8,10 @@ extends Node3D
 
 func interact():
 	if Game.active_item != Game.ItemType.NONE or Game.pickup_cooldown:
-		return
+		return false
+	elif Game.active_item == Game.ItemType.WORLD_OBJECT:
+		Game.ui.show_dialogue("[center][color=white]My hands are a little full right now.[/color][/center]")
+		return false
 	Game.pickup_cooldown = true
 	mesh_node.visible = false
 	collision.set_deferred("disabled", true)
@@ -17,6 +20,7 @@ func interact():
 	var timer = get_tree().create_timer(0.5)
 	await timer.timeout
 	Game.pickup_cooldown = false
+	return true
 
 func drop(new_pos: Vector3):
 	Game.put_away_item.emit()

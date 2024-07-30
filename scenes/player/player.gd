@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	Game.ui.show_icon(Game.InteractType.NONE)
 	
 	if collider:
-		if collider.has_method("interact") and current_mode == Game.InteractType.HAND:
+		if collider.has_method("interact") and current_mode == Game.InteractType.HAND and not Game.active_item == Game.ItemType.WORLD_OBJECT:
 			interact_hover = true
 			Game.ui.show_icon(Game.InteractType.HAND)
 			if Input.is_action_just_pressed("interact"):

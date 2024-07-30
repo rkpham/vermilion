@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 				focused_puzzle_item += 1
 
 
-func interact() -> void:
+func interact() -> bool:
 	if not interacting:
 		focused_puzzle_item = 0
 		interacting = true
@@ -32,6 +32,7 @@ func interact() -> void:
 		Game.player.cam.cam_copy = cam
 		Game.viewmodel.frozen = true
 		Game.player.footsteps.stepping = false
+	return true
 
 
 func _set_focused_puzzle_item(_num: int) -> void:

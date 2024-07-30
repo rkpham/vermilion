@@ -15,9 +15,9 @@ func _ready() -> void:
 	get_parent().rotation_degrees.y = 0 if closed else 85
 
 
-func interact() -> void:
+func interact() -> bool:
 	if not can_interact:
-		return
+		return true
 	
 	if locked and Game.current_key != key_name:
 		Game.ui.show_dialogue(locked_message)
@@ -32,6 +32,7 @@ func interact() -> void:
 			open()
 		else:
 			close()
+	return true
 
 
 func open() -> void:

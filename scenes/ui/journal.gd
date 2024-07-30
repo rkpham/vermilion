@@ -66,3 +66,4 @@ func _on_paper_right_gui_input(event: InputEvent) -> void:
 func _add_page(text: String) -> void:
 	if text not in pages:
 		pages.append(text)
+		Game.ui.show_dialogue("[center][color=yellow]Note added to journal![/color][/center]")

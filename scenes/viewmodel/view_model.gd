@@ -102,6 +102,9 @@ func put_item_away() -> void:
 
 
 func _set_item_show(show: bool) -> void:
+	if anim.is_playing():
+		return
+		
 	item_show = show
 	if show:
 		anim.play("item_show")
