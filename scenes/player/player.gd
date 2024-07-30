@@ -9,9 +9,11 @@ const SPRINT_MULT = 1.4
 
 var frozen: bool = false
 var interacting: bool = false
+var investigating: bool = false
 var crafting_circle_instance : Node = null
 var drawing: bool = false
 var erasing: bool = false
+var current_mode: Game.InteractType = Game.InteractType.HAND
 
 @onready var cam: PlayerCam = $PlayerCam
 @onready var interact_ray: RayCast3D = $PlayerCam/Camera3D/InteractRay
@@ -52,18 +54,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	var interact_hover: bool = false
+	var investigate_hover: bool = false
 	var collider
 	
 	collider = interact_ray.get_collider()
 	Game.ui.show_icon(Game.InteractType.NONE)
 	
 	if collider:
-		if collider.has_method("interact"):
+		if collider.has_method("interact") and current_mode == Game.InteractType.HAND:
 			interact_hover = true
 			Game.ui.show_icon(Game.InteractType.HAND)
 			if Input.is_action_just_pressed("interact"):
 				collider.interact()
 				interacting = true
+		if collider.has_method("investigate") and current_mode == Game.InteractType.EYE:
+			investigate_hover = true
+			Game.ui.show_icon(Game.InteractType.EYE)
+			if Input.is_action_just_pressed("interact"):
+				collider.investigate()
+				investigating = true
 	
 	if Input.is_action_just_pressed("interact"):
 		if Game.active_item == Game.ItemType.CHALK and not Game.player.cam.frozen:
@@ -82,4 +91,8 @@ func _physics_process(delta: float) -> void:
 		if Game.active_item == Game.ItemType.WORLD_OBJECT and not Game.player.cam.frozen and not Game.pickup_cooldown:
 			if Vector3i(drop_ray.get_collision_normal()) == Vector3i(0, 1, 0):
 				Game.held_object.drop(drop_ray.get_collision_point())
-		
+	
+func _input(event):	
+	if event is InputEventMouseButton:
+		if (event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN) and event.is_released():
+			current_mode = Game.InteractType.HAND if current_mode == Game.InteractType.EYE else Game.InteractType.EYE

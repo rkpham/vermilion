@@ -26,4 +26,4 @@ func _set_player(_player) -> void:
 	player_set.emit(player)
 
 func _ready() -> void:
-	pass
+	randomize()

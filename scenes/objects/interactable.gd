@@ -20,3 +20,23 @@ func interact():
 	for child in get_children():
 		if child.has_method("interact"):
 			child.interact()
+
+func investigate():
+	var has_investigated: bool = false
+	for child in get_children():
+		if child.has_method("investigate"):
+			if child.investigate():
+				has_investigated = true
+	if not has_investigated:
+		var roll = randi() % 4
+		var text = ""
+		match roll:
+			0:
+				text = "[center][color=white]Nothing out of the ordinary.[/color][/center]"
+			1:
+				text = "[center][color=white]Nothing useful here.[/color][/center]"
+			2:
+				text = "[center][color=white]I think I should look elsewhere for any hints.[/color][/center]"
+			3:
+				text = "[center][color=white]I don't see anything I need.[/color][/center]"
+		Game.ui.show_dialogue(text)

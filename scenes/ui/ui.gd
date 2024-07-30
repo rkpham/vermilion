@@ -65,6 +65,10 @@ func show_icon(icon_id: Game.InteractType) -> void:
 			for icon in interact_icons.get_children():
 				icon.hide()
 			interact_icons.get_node("HandGrabIcon").show()
+		Game.InteractType.EYE:
+			for icon in interact_icons.get_children():
+				icon.hide()
+			interact_icons.get_node("EyeIcon").show()
 
 
 func toggle_notepad() -> void:

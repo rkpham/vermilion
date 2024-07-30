@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=32 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -6,9 +6,7 @@
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="3_pbtji"]
 [ext_resource type="PackedScene" uid="uid://br1gu5i2rnyfv" path="res://assets/models/apartments/stairwell/stairwell.tscn" id="4_d7frv"]
 [ext_resource type="AudioStream" uid="uid://cvogm81aw0job" path="res://assets/audio/ambience/quietrainroomambience.ogg" id="5_3h65x"]
-[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="5_eidxj"]
-[ext_resource type="PackedScene" uid="uid://7l4ucy2yhcju" path="res://assets/models/notepad/notepad.tscn" id="6_d2wof"]
-[ext_resource type="PackedScene" path="res://scenes/components/note_component.tscn" id="7_1bk6v"]
+[ext_resource type="PackedScene" uid="uid://bn5pbgt3j2chy" path="res://scenes/components/dialogue_component.tscn" id="7_1j27x"]
 [ext_resource type="Script" path="res://scenes/components/message_area.gd" id="8_g1or1"]
 [ext_resource type="Script" path="res://scenes/env/light_area.gd" id="8_oo28k"]
 [ext_resource type="Texture2D" uid="uid://dlm43kabi140f" path="res://assets/textures/rug.png" id="8_wkw4a"]
@@ -39,9 +37,6 @@ ambient_light_energy = 0.03
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8oyw"]
 size = Vector3(11.969, 7.20313, 18.9561)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rgudl"]
-size = Vector3(0.3, 0.5, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nd38b"]
 size = Vector3(6.37891, 7.00684, 1)
@@ -140,22 +135,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.9, 
 [node name="Props" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
 
-[node name="Notepad" type="StaticBody3D" parent="Props/ApartmentA3Props/Props" node_paths=PackedStringArray("collision", "mesh_node")]
-transform = Transform3D(1, 8.60679e-08, 8.74123e-08, 8.60679e-08, 0.0154979, -0.99988, -8.74123e-08, 0.99988, 0.0154979, 5.53394, 7.22211e-07, -11.3406)
-collision_layer = 7
-script = ExtResource("5_eidxj")
-collision = NodePath("CollisionShape3D")
-mesh_node = NodePath("notepad")
-
-[node name="notepad" parent="Props/ApartmentA3Props/Props/Notepad" instance=ExtResource("6_d2wof")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Notepad"]
-transform = Transform3D(1, 8.31335e-13, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_rgudl")
-
-[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/Notepad" instance=ExtResource("7_1bk6v")]
-text = "this is a note"
-
 [node name="chair" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
 transform = Transform3D(0.606724, -8.74228e-08, 0.794913, 5.30415e-08, 1, 6.94935e-08, -0.794913, 0, 0.606724, 11.9892, 1.16734e-06, -1.12395)
 
@@ -177,8 +156,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 [node name="DoorComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe/Door" index="2"]
 closed = false
 
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe/Door" index="4" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]The door seems to have been forced open. Doesn't look like it locks anymore...[/color][/center]"
+
 [node name="Doorframe2" parent="Props/ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
+
+[node name="DoorComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe2/Door" index="2"]
+locked = true
 
 [node name="Doorframe3" parent="Props/ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7.5)
@@ -245,6 +231,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -1.5)
 locked = true
 locked_message = "[center][color=white]Locked. I remember having a key in my briefcase. (Tab)[/color][/center]"
 key_name = "Third Floor Stairwell Key"
+
+[node name="DialogueComponent" parent="Props/HallwayProps/StairwellDoor/Door" index="4" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]This is the door to the third floor. I should have the key in my briefcase (Tab).[/color][/center]"
 
 [node name="Window" parent="Props/HallwayProps" instance=ExtResource("3_je4py")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, -1.74372, -8.5)
@@ -359,6 +349,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.199
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door/Door"]
+[editable path="Props/ApartmentA3Props/Doorframes/Doorframe2"]
+[editable path="Props/ApartmentA3Props/Doorframes/Doorframe2/Door"]
+[editable path="Props/ApartmentA3Props/Doorframes/Doorframe2/Door/Door"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe6"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe6/Door"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe6/Door/Door"]
