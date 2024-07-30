@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqmhwwq2jimjb"]
+
+[ext_resource type="PackedScene" uid="uid://dcfgdk3p2bt7w" path="res://assets/models/paintings/beachpainting.glb" id="1_g7rs7"]
+[ext_resource type="Material" uid="uid://ryxrjbum2tsh" path="res://assets/models/paintings/thinpainting.tres" id="2_4pktx"]
+
+[node name="beachpainting" instance=ExtResource("1_g7rs7")]
+
+[node name="Plane_001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_4pktx")

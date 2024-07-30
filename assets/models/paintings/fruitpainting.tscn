@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj8l7avbds442"]
+
+[ext_resource type="PackedScene" uid="uid://cjylwqn8kfkb2" path="res://assets/models/paintings/fruitpainting.glb" id="1_j1h8n"]
+[ext_resource type="Material" uid="uid://ceifbhxuar2t0" path="res://assets/models/paintings/painting.tres" id="2_nfn1m"]
+
+[node name="fruitpainting" instance=ExtResource("1_j1h8n")]
+
+[node name="Plane_004" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_nfn1m")

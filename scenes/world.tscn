@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=35 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -16,11 +16,19 @@
 [ext_resource type="PackedScene" uid="uid://c8qeor42ujf7" path="res://assets/models/bed/bed.tscn" id="9_6udc8"]
 [ext_resource type="PackedScene" uid="uid://cy0nk5nh1ku4m" path="res://assets/models/apartments/hallway.tscn" id="9_uss60"]
 [ext_resource type="Texture2D" uid="uid://wkre1fjc2cp5" path="res://assets/textures/45_old cut out persian rug texture.png" id="11_qlaow"]
+[ext_resource type="PackedScene" uid="uid://bp25eeava2cmk" path="res://assets/models/apartments/kitchen/kitchenfurniture.tscn" id="12_ql7vf"]
 [ext_resource type="PackedScene" uid="uid://c6d728aa8fwyl" path="res://assets/models/chair/chair.tscn" id="14_r85f0"]
 [ext_resource type="PackedScene" uid="uid://c0aexu1i55xxh" path="res://assets/models/bookcase/bookcase.tscn" id="17_eps6s"]
 [ext_resource type="PackedScene" uid="uid://dtht4exxiwdts" path="res://assets/models/wardrobe/wardrobe.tscn" id="18_xr338"]
 [ext_resource type="PackedScene" uid="uid://bem8jkmp1i0uv" path="res://assets/models/radiator/radiator.tscn" id="19_d0hr5"]
 [ext_resource type="PackedScene" uid="uid://dnbreg84256oh" path="res://assets/models/cardboard/squarecardboardbox.tscn" id="21_dcdn3"]
+[ext_resource type="PackedScene" uid="uid://dj8l7avbds442" path="res://assets/models/paintings/fruitpainting.tscn" id="22_6p0w1"]
+[ext_resource type="PackedScene" uid="uid://dqmhwwq2jimjb" path="res://assets/models/paintings/beachpainting.tscn" id="23_y7und"]
+[ext_resource type="PackedScene" uid="uid://gy0w8edoca31" path="res://assets/models/paintings/painting.tscn" id="24_ecwq5"]
+[ext_resource type="PackedScene" uid="uid://cdrcne8dgy71o" path="res://assets/models/couch/couch.tscn" id="25_uv87g"]
+[ext_resource type="PackedScene" uid="uid://cn47bbjngb2ds" path="res://assets/models/table/recttable.tscn" id="26_4gsyf"]
+[ext_resource type="PackedScene" uid="uid://dulpbx03pm5xi" path="res://assets/models/candles/candlegroup.tscn" id="27_vgra5"]
+[ext_resource type="PackedScene" uid="uid://srdjhbg442b7" path="res://assets/models/clock/clock.tscn" id="28_yweog"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -200,6 +208,8 @@ pixel_size = 0.005
 shaded = true
 texture = ExtResource("11_qlaow")
 
+[node name="kitchenfurniture" parent="Props/ApartmentA3Props" instance=ExtResource("12_ql7vf")]
+
 [node name="ApartmentA4Props" type="Node3D" parent="Props"]
 
 [node name="Props" type="Node3D" parent="Props/ApartmentA4Props"]
@@ -309,6 +319,30 @@ transform = Transform3D(0.992565, 0, 0.121713, 0, 1, 0, -0.121713, 0, 0.992565, 
 
 [node name="squarecardboardbox7" parent="." instance=ExtResource("21_dcdn3")]
 transform = Transform3D(0.885783, 0, -0.4641, 0, 1, 0, 0.4641, 0, 0.885783, -9.23584, 1.04502, -19.8955)
+
+[node name="fruitpainting" parent="." instance=ExtResource("22_6p0w1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0499992, 1.81828, -11.1392)
+
+[node name="beachpainting" parent="." instance=ExtResource("23_y7und")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.98758, 1.7855, -7.55)
+
+[node name="painting" parent="." instance=ExtResource("24_ecwq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 1.82024, -10.8848)
+
+[node name="couch" parent="." instance=ExtResource("25_uv87g")]
+transform = Transform3D(-0.776355, 0, -0.630296, 0, 1, 0, 0.630296, 0, -0.776355, -10.1535, 2.38419e-07, -9.01629)
+
+[node name="recttable" parent="." instance=ExtResource("26_4gsyf")]
+transform = Transform3D(0.651185, 0, -0.758919, 0, 1, 0, 0.758919, 0, 0.651185, -9.08668, 2.38419e-07, -10.0067)
+
+[node name="bookcase2" parent="." instance=ExtResource("17_eps6s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.12622, 0, -7.87716)
+
+[node name="candlegroup" parent="." instance=ExtResource("27_vgra5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20329, 0.734376, -10.4139)
+
+[node name="clock" parent="." instance=ExtResource("28_yweog")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.19931, -2.38419e-07, -14.2848)
 
 [connection signal="body_entered" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_entered"]
 [connection signal="body_exited" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_exited"]

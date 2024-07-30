@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://ryxrjbum2tsh"]
+
+[ext_resource type="Texture2D" uid="uid://b0tqqe4gjci7e" path="res://assets/models/paintings/ThinPaintingFrame_BaseColor.png" id="1_jnjrn"]
+[ext_resource type="Texture2D" uid="uid://dbbllqgtwghah" path="res://assets/models/paintings/ThinPaintingFrame_Normal.png" id="2_w2j7k"]
+[ext_resource type="Texture2D" uid="uid://bw1f80lew8qc1" path="res://assets/models/paintings/ThinPaintingFrame_Roughness.png" id="3_rw1sf"]
+
+[resource]
+albedo_texture = ExtResource("1_jnjrn")
+roughness_texture = ExtResource("3_rw1sf")
+normal_enabled = true
+normal_texture = ExtResource("2_w2j7k")

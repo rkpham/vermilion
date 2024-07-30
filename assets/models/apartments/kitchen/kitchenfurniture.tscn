@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp25eeava2cmk"]
+
+[ext_resource type="PackedScene" uid="uid://s8mwilx2sbeq" path="res://assets/models/apartments/kitchen/kitchenfurniture.glb" id="1_1613s"]
+
+[node name="kitchenfurniture" instance=ExtResource("1_1613s")]
