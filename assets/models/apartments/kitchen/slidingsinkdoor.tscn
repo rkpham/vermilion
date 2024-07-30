@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://deqnvua1tm677"]
+
+[ext_resource type="PackedScene" uid="uid://dlnkgnvxoi2pq" path="res://assets/models/apartments/kitchen/slidingsinkdoor.glb" id="1_qqyvu"]
+[ext_resource type="Material" uid="uid://6k7sqvgh0ksm" path="res://assets/models/apartments/kitchen/slidingsinkdoor.tres" id="2_t0omk"]
+
+[node name="slidingsinkdoor" instance=ExtResource("1_qqyvu")]
+
+[node name="CabinetDoor_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_t0omk")

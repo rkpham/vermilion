@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c71vdb4k8ej11"]
+
+[ext_resource type="PackedScene" uid="uid://ekxnfjtmyawy" path="res://assets/models/table/roundtable.glb" id="1_t45o7"]
+[ext_resource type="Material" uid="uid://bxqkdut0v2swr" path="res://assets/models/table/roundtable.tres" id="2_yb70w"]
+
+[node name="roundtable" instance=ExtResource("1_t45o7")]
+
+[node name="Table" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_yb70w")

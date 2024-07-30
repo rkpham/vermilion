@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://s8mwilx2sbeq"
-path="res://.godot/imported/kitchenfurniture.glb-4cc884a360dd4011c5cc8ef42741ef5c.scn"
+uid="uid://0b2qgwp60p2e"
+path="res://.godot/imported/stovedial.glb-85e000f15fabe11354ff5eea334205dd.scn"
 
 [deps]
 
-source_file="res://assets/models/apartments/kitchen/kitchenfurniture.glb"
-dest_files=["res://.godot/imported/kitchenfurniture.glb-4cc884a360dd4011c5cc8ef42741ef5c.scn"]
+source_file="res://assets/models/apartments/kitchen/stovedial.glb"
+dest_files=["res://.godot/imported/stovedial.glb-85e000f15fabe11354ff5eea334205dd.scn"]
 
 [params]
 

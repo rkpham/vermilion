@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://byqtg14p07gxw"]
+
+[ext_resource type="PackedScene" uid="uid://bp25eeava2cmk" path="res://assets/models/apartments/kitchen/kitchencabinets.tscn" id="1_4sqrr"]
+[ext_resource type="PackedScene" uid="uid://hfw1dyi5jyai" path="res://assets/models/apartments/kitchen/doublecabinetdoor.tscn" id="2_eoggp"]
+[ext_resource type="PackedScene" uid="uid://drg6xciatrovn" path="res://assets/models/apartments/kitchen/drawer.tscn" id="3_tg20f"]
+[ext_resource type="PackedScene" uid="uid://bf8l8fnwidond" path="res://assets/models/apartments/kitchen/faucet.tscn" id="4_srjd1"]
+[ext_resource type="PackedScene" uid="uid://bkch3cuutv6xn" path="res://assets/models/apartments/kitchen/uppercabinetdoor.tscn" id="5_jct3a"]
+[ext_resource type="PackedScene" uid="uid://dg0lfuoy2e0q7" path="res://assets/models/apartments/kitchen/thinneruppercabinetdoor.tscn" id="6_obw18"]
+[ext_resource type="PackedScene" uid="uid://deqnvua1tm677" path="res://assets/models/apartments/kitchen/slidingsinkdoor.tscn" id="7_johsi"]
+[ext_resource type="PackedScene" uid="uid://cvtg3ywk4qeia" path="res://assets/models/apartments/kitchen/sinkcabinet.tscn" id="8_sm3gc"]
+[ext_resource type="PackedScene" uid="uid://fpim7dflivay" path="res://assets/models/apartments/kitchen/stove.tscn" id="9_g12v1"]
+[ext_resource type="PackedScene" uid="uid://cpe8s82gt8fse" path="res://assets/models/apartments/kitchen/stovedial.tscn" id="10_3ap72"]
+
+[node name="KitchenStuff" type="Node3D"]
+
+[node name="kitchenfurniture" parent="." instance=ExtResource("1_4sqrr")]
+
+[node name="doublecabinetdoor" parent="." instance=ExtResource("2_eoggp")]
+
+[node name="drawer" parent="." instance=ExtResource("3_tg20f")]
+
+[node name="faucet" parent="." instance=ExtResource("4_srjd1")]
+
+[node name="uppercabinetdoor" parent="." instance=ExtResource("5_jct3a")]
+
+[node name="thinneruppercabinetdoor" parent="." instance=ExtResource("6_obw18")]
+
+[node name="slidingsinkdoor" parent="." instance=ExtResource("7_johsi")]
+
+[node name="sinkcabinet" parent="." instance=ExtResource("8_sm3gc")]
+
+[node name="stove" parent="." instance=ExtResource("9_g12v1")]
+
+[node name="stovedial" parent="stove" instance=ExtResource("10_3ap72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125127, 0)
+
+[node name="stovedial2" parent="stove" instance=ExtResource("10_3ap72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.0125127, 0)
+
+[node name="stovedial3" parent="stove" instance=ExtResource("10_3ap72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.0125127, 0)
+
+[node name="stovedial4" parent="stove" instance=ExtResource("10_3ap72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.0125127, 0)

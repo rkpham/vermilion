@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvtg3ywk4qeia"]
+
+[ext_resource type="PackedScene" uid="uid://cd7pb7ix7c12i" path="res://assets/models/apartments/kitchen/sinkcabinet.glb" id="1_l8gpf"]
+[ext_resource type="Material" uid="uid://vvelbv4j17hl" path="res://assets/models/apartments/kitchen/sinkcabinet.tres" id="2_5l6oc"]
+
+[node name="sinkcabinet" instance=ExtResource("1_l8gpf")]
+
+[node name="CabinetDoor_002" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5l6oc")

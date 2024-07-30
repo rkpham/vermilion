@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://rg88x6fyou8v"]
+
+[ext_resource type="Texture2D" uid="uid://210gaj76spiw" path="res://assets/models/apartments/kitchen/Faucet_BaseColor.png" id="1_8nf5s"]
+[ext_resource type="Texture2D" uid="uid://ccn5wghnhbix7" path="res://assets/models/apartments/kitchen/Faucet_Metallic.png" id="2_h5rbb"]
+[ext_resource type="Texture2D" uid="uid://bvwp3ebjgige4" path="res://assets/models/apartments/kitchen/Faucet_Normal.png" id="3_dhlgh"]
+[ext_resource type="Texture2D" uid="uid://df4v7mp8s6eut" path="res://assets/models/apartments/kitchen/Faucet_Roughness.png" id="4_pdikw"]
+
+[resource]
+albedo_texture = ExtResource("1_8nf5s")
+metallic = 1.0
+metallic_texture = ExtResource("2_h5rbb")
+roughness_texture = ExtResource("4_pdikw")
+normal_enabled = true
+normal_texture = ExtResource("3_dhlgh")

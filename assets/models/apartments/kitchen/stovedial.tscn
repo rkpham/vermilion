@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpe8s82gt8fse"]
+
+[ext_resource type="PackedScene" uid="uid://0b2qgwp60p2e" path="res://assets/models/apartments/kitchen/stovedial.glb" id="1_dmgx0"]
+[ext_resource type="Material" uid="uid://byq8eidv78wc" path="res://assets/models/apartments/kitchen/stovedial.tres" id="2_raga2"]
+
+[node name="stovedial" instance=ExtResource("1_dmgx0")]
+
+[node name="Apartment_003" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_raga2")

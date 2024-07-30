@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hfw1dyi5jyai"]
+
+[ext_resource type="PackedScene" uid="uid://d0o6eof6grndx" path="res://assets/models/apartments/kitchen/doublecabinetdoor.glb" id="1_woksb"]
+[ext_resource type="Material" uid="uid://b7mx3rga48pux" path="res://assets/models/apartments/kitchen/doublecabinetdoor.tres" id="2_hu4sf"]
+
+[node name="doublecabinetdoor" instance=ExtResource("1_woksb")]
+
+[node name="CabinetDoor" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_hu4sf")

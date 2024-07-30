@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp25eeava2cmk"]
+
+[ext_resource type="PackedScene" uid="uid://s8mwilx2sbeq" path="res://assets/models/apartments/kitchen/kitchencabinets.glb" id="1_ltltc"]
+[ext_resource type="Material" uid="uid://b2nbxpstuwjg8" path="res://assets/models/apartments/kitchen/kitchencabinets.tres" id="2_1gob4"]
+
+[node name="kitchenfurniture" instance=ExtResource("1_ltltc")]
+
+[node name="Apartment_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_1gob4")
