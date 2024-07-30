@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gy0w8edoca31"]
+
+[ext_resource type="PackedScene" uid="uid://cpl4cmm20bi1i" path="res://assets/models/paintings/painting.glb" id="1_h2wiq"]
+[ext_resource type="Material" uid="uid://ceifbhxuar2t0" path="res://assets/models/paintings/painting.tres" id="2_oxrrg"]
+
+[node name="painting" instance=ExtResource("1_h2wiq")]
+
+[node name="Plane_002" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_oxrrg")
