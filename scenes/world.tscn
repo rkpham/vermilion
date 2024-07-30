@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=27 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -8,11 +8,19 @@
 [ext_resource type="AudioStream" uid="uid://cvogm81aw0job" path="res://assets/audio/ambience/quietrainroomambience.ogg" id="5_3h65x"]
 [ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="5_eidxj"]
 [ext_resource type="PackedScene" uid="uid://7l4ucy2yhcju" path="res://assets/models/notepad/notepad.tscn" id="6_d2wof"]
-[ext_resource type="PackedScene" uid="uid://bedu67papthkm" path="res://scenes/components/note_component.tscn" id="7_1bk6v"]
+[ext_resource type="PackedScene" path="res://scenes/components/note_component.tscn" id="7_1bk6v"]
 [ext_resource type="Script" path="res://scenes/components/message_area.gd" id="8_g1or1"]
 [ext_resource type="Script" path="res://scenes/env/light_area.gd" id="8_oo28k"]
+[ext_resource type="Texture2D" uid="uid://dlm43kabi140f" path="res://assets/textures/rug.png" id="8_wkw4a"]
 [ext_resource type="PackedScene" uid="uid://dy2bynepodjeb" path="res://assets/models/apartments/apartment.tscn" id="9_2nkxv"]
+[ext_resource type="PackedScene" uid="uid://c8qeor42ujf7" path="res://assets/models/bed/bed.tscn" id="9_6udc8"]
 [ext_resource type="PackedScene" uid="uid://cy0nk5nh1ku4m" path="res://assets/models/apartments/hallway.tscn" id="9_uss60"]
+[ext_resource type="Texture2D" uid="uid://wkre1fjc2cp5" path="res://assets/textures/45_old cut out persian rug texture.png" id="11_qlaow"]
+[ext_resource type="PackedScene" uid="uid://c6d728aa8fwyl" path="res://assets/models/chair/chair.tscn" id="14_r85f0"]
+[ext_resource type="PackedScene" uid="uid://c0aexu1i55xxh" path="res://assets/models/bookcase/bookcase.tscn" id="17_eps6s"]
+[ext_resource type="PackedScene" uid="uid://dtht4exxiwdts" path="res://assets/models/wardrobe/wardrobe.tscn" id="18_xr338"]
+[ext_resource type="PackedScene" uid="uid://bem8jkmp1i0uv" path="res://assets/models/radiator/radiator.tscn" id="19_d0hr5"]
+[ext_resource type="PackedScene" uid="uid://dnbreg84256oh" path="res://assets/models/cardboard/squarecardboardbox.tscn" id="21_dcdn3"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -70,10 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 
 [node name="DoorComponent" parent="Props/ApartmentA1Props/Doorframes/Doorframe/Door" index="2"]
 locked = true
-
-[node name="Props" type="Node3D" parent="Props/ApartmentA1Props"]
-
-[node name="Effects" type="Node3D" parent="Props/ApartmentA1Props"]
 
 [node name="ApartmentA2Props" type="Node3D" parent="Props"]
 
@@ -144,6 +148,15 @@ shape = SubResource("BoxShape3D_rgudl")
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/Notepad" instance=ExtResource("7_1bk6v")]
 text = "this is a note"
 
+[node name="chair" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
+transform = Transform3D(0.606724, -8.74228e-08, 0.794913, 5.30415e-08, 1, 6.94935e-08, -0.794913, 0, 0.606724, 11.9892, 1.16734e-06, -1.12395)
+
+[node name="chair2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
+transform = Transform3D(0.888096, -8.74228e-08, -0.459657, 7.76399e-08, 1, -4.01845e-08, 0.459657, 0, 0.888096, 23.6386, 2.06655e-06, 1.10664)
+
+[node name="Bed" parent="Props/ApartmentA3Props/Props" instance=ExtResource("9_6udc8")]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, 1, 3.28406e-15, 1, 8.74228e-08, -1, 0, -4.37114e-08, 4.79795, 4.1945e-07, -17.6755)
+
 [node name="Effects" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
 
@@ -170,6 +183,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -14.5)
 
 [node name="Doorframe6" parent="Props/ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
+
+[node name="DoorComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe6/Door" index="2"]
+locked = true
+key_name = "3-A3 Closet Key"
+
+[node name="Sprite3D" type="Sprite3D" parent="Props/ApartmentA3Props"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -9.49742, 0.0116732, -2.493)
+pixel_size = 0.0015
+shaded = true
+texture = ExtResource("8_wkw4a")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Props/ApartmentA3Props"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.16519, 0.0116732, -17.8389)
+pixel_size = 0.005
+shaded = true
+texture = ExtResource("11_qlaow")
 
 [node name="ApartmentA4Props" type="Node3D" parent="Props"]
 
@@ -251,6 +280,36 @@ transform = Transform3D(-0.764888, 0, 0.644164, 0, 1, 0, -0.644164, 0, -0.764888
 stream = ExtResource("5_3h65x")
 autoplay = true
 
+[node name="bookcase" parent="." instance=ExtResource("17_eps6s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.13151, 4.76837e-07, -15.6021)
+
+[node name="wardrobe" parent="." instance=ExtResource("18_xr338")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.02611, 0, -14.9058)
+
+[node name="radiator" parent="." instance=ExtResource("19_d0hr5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.68468, 0, -20.768)
+
+[node name="squarecardboardbox" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.923753, 0, -0.38299, 0, 1, 0, 0.38299, 0, 0.923753, -10.4152, 7.15256e-07, -19.6392)
+
+[node name="squarecardboardbox2" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.881781, 0, 0.471658, 0, 1, 0, -0.471658, 0, 0.881781, -10.4924, 1.04502, -19.295)
+
+[node name="squarecardboardbox3" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.996893, 0, -0.0787723, 0, 1, 0, 0.0787723, 0, 0.996893, -9.16561, 7.15256e-07, -20.3678)
+
+[node name="squarecardboardbox4" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.799936, 0, -0.600085, 0, 1, 0, 0.600085, 0, 0.799936, -9.35034, 7.15256e-07, -18.9547)
+
+[node name="squarecardboardbox5" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.204154, 0, 0.978939, 0, 1, 0, -0.978939, 0, 0.204154, -10.7442, 4.76837e-07, -18.2553)
+
+[node name="squarecardboardbox6" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.992565, 0, 0.121713, 0, 1, 0, -0.121713, 0, 0.992565, -9.43707, 4.76837e-07, -17.62)
+
+[node name="squarecardboardbox7" parent="." instance=ExtResource("21_dcdn3")]
+transform = Transform3D(0.885783, 0, -0.4641, 0, 1, 0, 0.4641, 0, 0.885783, -9.23584, 1.04502, -19.8955)
+
 [connection signal="body_entered" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_entered"]
 [connection signal="body_exited" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_exited"]
 [connection signal="body_entered" from="Rooms/RoomA3" to="Rooms/RoomA3" method="_on_body_entered"]
@@ -266,6 +325,9 @@ autoplay = true
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door/Door"]
+[editable path="Props/ApartmentA3Props/Doorframes/Doorframe6"]
+[editable path="Props/ApartmentA3Props/Doorframes/Doorframe6/Door"]
+[editable path="Props/ApartmentA3Props/Doorframes/Doorframe6/Door/Door"]
 [editable path="Props/ApartmentA4Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA4Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA4Props/Doorframes/Doorframe/Door/Door"]

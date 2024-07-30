@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwra4ocwn3yxa"]
+
+[ext_resource type="PackedScene" uid="uid://bg8n8tdira3eo" path="res://assets/models/chess/chessboard.glb" id="1_lujaq"]
+[ext_resource type="Material" uid="uid://b5ojd4scdq1a4" path="res://assets/models/chess/chessboard.tres" id="2_x3qon"]
+
+[node name="chessboard" instance=ExtResource("1_lujaq")]
+
+[node name="ChessBoard" parent="ChessboardArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_x3qon")

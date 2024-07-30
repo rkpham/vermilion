@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ccap0one5li2"]
+
+[ext_resource type="Texture2D" uid="uid://orfklb8enxcd" path="res://assets/models/clock/Clock_BaseColor.png" id="1_k7sem"]
+[ext_resource type="Texture2D" uid="uid://bf7uv22h7ima" path="res://assets/models/clock/Clock_Metallic.png" id="2_14k77"]
+[ext_resource type="Texture2D" uid="uid://br1poie4lx3o1" path="res://assets/models/clock/Clock_Normal.png" id="3_augrm"]
+[ext_resource type="Texture2D" uid="uid://oiriwidjyjlp" path="res://assets/models/clock/Clock_Roughness.png" id="4_ry37i"]
+
+[resource]
+albedo_texture = ExtResource("1_k7sem")
+metallic = 1.0
+metallic_texture = ExtResource("2_14k77")
+roughness_texture = ExtResource("4_ry37i")
+normal_enabled = true
+normal_texture = ExtResource("3_augrm")

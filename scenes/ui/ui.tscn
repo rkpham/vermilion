@@ -623,7 +623,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "Test Text"
 metadata/_edit_use_anchors_ = true
 
 [node name="ControlsText" type="Label" parent="Note"]
@@ -655,7 +654,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_uhsnx")
 script = ExtResource("7_wnrkn")
-pages = Array[String](["[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
+pages = Array[String](["
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
 [center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
 
@@ -671,7 +671,36 @@ Please note that we have included several important documents on the following p
 Conduct yourself with honor and get the job done.
 
 	Ovborod Homicide Division
-	Chief Viktor Harvald", "awesome", "journal", "pages", "hahha"])
+	Chief Viktor Harvald", "
+Not sure what to do?
+Go down this list.
+
+[center]Investigator Checklist[/center]
+
+- [E] Interact
+- [Tab] Briefcase
+- [Shift] Sprint", "
+[center]Testimonies[/center]
+
+Ovborod Homicide Division
+Interviewer:
+	Leonid Ilyin
+Interviewee:
+	Reynauld Barig
+Place of Residence:
+	Armin Building 3-A1
+	3394 Armin Road
+	Ovborod, Veluvia
+Interview Time: Jun 15, 14:02
+
+Q: Where were you at the time of the incident?
+A: In my apartment for the whole day. I was writing. Ask Sofia.
+
+Q: Can you elaborate?
+A: I write for fun. I didn't leave my apartment.
+
+Q: Did you hear or see anything unusual that day?
+A: Nothing out of the ordinary. Isak was giving his same speeches to-", "-nobody. "])
 
 [node name="ControlsText" type="Label" parent="Journal"]
 layout_mode = 1
@@ -787,23 +816,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
-[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
-[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
+text = "
+[center]Testimonies[/center]
 
+Ovborod Homicide Division
+Interviewer:
+	Leonid Ilyin
+Interviewee:
+	Reynauld Barig
+Place of Residence:
+	Armin Building 3-A1
+	3394 Armin Road
+	Ovborod, Veluvia
+Interview Time: Jun 15, 14:02
 
-Greetings, Mr. Ivanov
+Q: Where were you at the time of the incident?
+A: In my apartment for the whole day. I was writing. Ask Sofia.
 
-Welcome to your first homicide case.
+Q: Can you elaborate?
+A: I write for fun. I didn't leave my apartment.
 
-The state police has conducted a preliminary investigation. You will see a note with their findings within the victim's apartment.
-
-Please note that we have included several important documents on the following pages.
-
-Conduct yourself with honor and get the job done.
-
-	Ovborod Homicide Division
-	Chief Viktor Harvald"
+Q: Did you hear or see anything unusual that day?
+A: Nothing out of the ordinary. Isak was giving his same speeches to-"
 metadata/_edit_use_anchors_ = true
 
 [node name="PaperRight" type="Control" parent="Journal"]
@@ -827,6 +861,7 @@ offset_right = -240.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+bbcode_enabled = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Dialogue" type="Control" parent="."]

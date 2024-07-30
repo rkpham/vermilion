@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlm43kabi140f"
-path.s3tc="res://.godot/imported/rug.png-ffa1cb4fd590bb127a42bd57aef999d2.s3tc.ctex"
+uid="uid://f024ywn2nqmj"
+path.s3tc="res://.godot/imported/ChessPiece_Roughness.png-9e923307e9b6d90b0ed72d9638717357.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/rug.png"
-dest_files=["res://.godot/imported/rug.png-ffa1cb4fd590bb127a42bd57aef999d2.s3tc.ctex"]
+source_file="res://assets/models/chess/ChessPiece_Roughness.png"
+dest_files=["res://.godot/imported/ChessPiece_Roughness.png-9e923307e9b6d90b0ed72d9638717357.s3tc.ctex"]
 
 [params]
 

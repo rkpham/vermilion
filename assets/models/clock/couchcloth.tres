@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c2plt7sq36a47"]
+
+[ext_resource type="Texture2D" uid="uid://jry2kfqpi00e" path="res://assets/textures/46_vintage worn rug texture.png" id="1_2fv6c"]
+[ext_resource type="Texture2D" uid="uid://dxaf37shvesrl" path="res://assets/models/couch/couch_ClothNormal.png" id="1_h4ry0"]
+
+[resource]
+albedo_texture = ExtResource("1_2fv6c")
+normal_enabled = true
+normal_scale = 5.84
+normal_texture = ExtResource("1_h4ry0")

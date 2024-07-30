@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3v648rtru00"]
+
+[ext_resource type="PackedScene" uid="uid://b6a0tu6r6ihd0" path="res://assets/models/chess/rook.glb" id="1_hco6h"]
+[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiece.tres" id="2_kgqlm"]
+
+[node name="rook" instance=ExtResource("1_hco6h")]
+
+[node name="Rook" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_kgqlm")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ml8aud0g7k6s"]
+
+[ext_resource type="PackedScene" uid="uid://xdota2m8y2pb" path="res://assets/models/clock/clockhands.glb" id="1_w0cua"]
+[ext_resource type="Material" uid="uid://cyksss1rb1ard" path="res://assets/models/clock/clockhands.tres" id="2_5txiv"]
+
+[node name="clockhands" instance=ExtResource("1_w0cua")]
+
+[node name="ClockHands" parent="ClockHandsArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_5txiv")

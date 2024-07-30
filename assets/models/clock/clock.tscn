@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://srdjhbg442b7"]
+
+[ext_resource type="PackedScene" uid="uid://cxse06l7j8ovs" path="res://assets/models/clock/clock.glb" id="1_cyscm"]
+[ext_resource type="Material" uid="uid://ccap0one5li2" path="res://assets/models/clock/clock.tres" id="2_8jjre"]
+[ext_resource type="PackedScene" uid="uid://ml8aud0g7k6s" path="res://assets/models/clock/clockhands.tscn" id="3_qfbis"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hv874"]
+points = PackedVector3Array(0.138229, 1.64208, 0.24485, 0.138229, 1.77204, 0.0825913, -0.138229, 1.64208, 0.24485, 0.138229, 1.60994, 0.24485, 0.138229, 1.79417, 0.0303426, -0.138229, 1.77204, 0.0825913, -0.138229, 1.60994, 0.24485, 0.138229, 1.60994, -0.24485, 0.130976, 0, 0.23579, -0.138229, 1.79417, 0.0303426, 0.138229, 1.79417, -0.0303905, -0.138229, 1.60994, -0.24485, -0.131003, 0, 0.23579, 0.138229, 1.64208, -0.24485, 0.130976, 0, -0.235838, -0.138229, 1.79417, -0.0303905, 0.138229, 1.77204, -0.0826392, -0.138229, 1.64208, -0.24485, -0.131003, 0, -0.235838, -0.138229, 1.77204, -0.0826392)
+
+[node name="clock" instance=ExtResource("1_cyscm")]
+
+[node name="Clock" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8jjre")
+
+[node name="clockhands" parent="." index="1" instance=ExtResource("3_qfbis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0275105, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_hv874")

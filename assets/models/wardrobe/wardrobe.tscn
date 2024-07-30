@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtht4exxiwdts"]
+
+[ext_resource type="PackedScene" uid="uid://b4lqndwqhv88l" path="res://assets/models/wardrobe/wardrobe.glb" id="1_bhn14"]
+[ext_resource type="Material" uid="uid://b7hglv34coghh" path="res://assets/models/wardrobe/wardrobe.tres" id="2_4bifm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2e2y5"]
+points = PackedVector3Array(0.389981, 1.7, 0.811714, 0.389981, 1.7, -0.811714, -0.390006, 1.7, 0.811714, 0.389981, -1, 0.811714, -0.390006, 1.7, -0.811714, 0.389981, -1, -0.811714, -0.431049, 1.64291, 0.777389, -0.416079, -0.932077, 0.811714, -0.416079, -1, 0.811714, -0.431049, 1.64291, -0.777548, -0.416079, -0.932077, -0.811714, -0.416079, -1, -0.811714, -0.469233, 0.856382, 0.127605, -0.469233, -0.280599, 0.680772, -0.431049, -0.872612, 0.777389, -0.469233, -0.652193, 0.680772, -0.469233, -0.280599, -0.68109, -0.469233, 0.856382, -0.127923, -0.431049, -0.872612, -0.777548, -0.469233, -0.652193, -0.68109)
+
+[node name="wardrobe" instance=ExtResource("1_bhn14")]
+
+[node name="Wardrobe" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4bifm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0441084, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_2e2y5")

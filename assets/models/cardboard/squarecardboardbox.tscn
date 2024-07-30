@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnbreg84256oh"]
+
+[ext_resource type="PackedScene" uid="uid://inj3iw0h0820" path="res://assets/models/cardboard/squarecardboardbox.glb" id="1_kprrq"]
+[ext_resource type="Material" uid="uid://b5hu0mcuqne3t" path="res://assets/models/cardboard/squarecardboardbox.tres" id="2_ow76l"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iown3"]
+data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
+
+[node name="squarecardboardbox" instance=ExtResource("1_kprrq")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ow76l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(0.52251, 0, 0, 0, 0.52251, 0, 0, 0, 0.52251, 0, 0.52251, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_iown3")

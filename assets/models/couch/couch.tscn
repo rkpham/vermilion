@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdrcne8dgy71o"]
+
+[ext_resource type="PackedScene" uid="uid://n8b6v6qwp0c" path="res://assets/models/couch/couch.glb" id="1_sype5"]
+[ext_resource type="Material" uid="uid://c2plt7sq36a47" path="res://assets/models/clock/couchcloth.tres" id="2_4t0ul"]
+[ext_resource type="Material" uid="uid://c3aosq3pkduth" path="res://assets/models/couch/couch.tres" id="2_jpgpg"]
+
+[node name="couch" instance=ExtResource("1_sype5")]
+
+[node name="Couch" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_jpgpg")
+
+[node name="Cloth" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_4t0ul")
