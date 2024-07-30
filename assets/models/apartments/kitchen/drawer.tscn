@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://drg6xciatrovn"]
+
+[ext_resource type="PackedScene" uid="uid://cxbj48mkx5jxa" path="res://assets/models/apartments/kitchen/drawer.glb" id="1_pv2b2"]
+[ext_resource type="Material" uid="uid://ddyqhj7uc08i4" path="res://assets/models/apartments/kitchen/drawer.tres" id="2_klayt"]
+
+[node name="drawer" instance=ExtResource("1_pv2b2")]
+
+[node name="Apartment_002" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_klayt")

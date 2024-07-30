@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://fpim7dflivay"]
+
+[ext_resource type="PackedScene" uid="uid://iai5lemj0smo" path="res://assets/models/apartments/kitchen/stove.glb" id="1_n8mfq"]
+[ext_resource type="Texture2D" uid="uid://fcr5v472frl5" path="res://assets/models/apartments/kitchen/Stove_BaseColor.png" id="2_aapk0"]
+[ext_resource type="Texture2D" uid="uid://c7r28b36j3spa" path="res://assets/models/apartments/kitchen/Stove_Metallic.png" id="3_x538q"]
+[ext_resource type="Texture2D" uid="uid://cm6rfosgxtxnb" path="res://assets/models/apartments/kitchen/Stove_Normal.png" id="4_wa48x"]
+[ext_resource type="Texture2D" uid="uid://6jx3y2pb28xm" path="res://assets/models/apartments/kitchen/StoveDial_Roughness.png" id="5_k76ub"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1d8p"]
+albedo_texture = ExtResource("2_aapk0")
+metallic = 1.0
+metallic_texture = ExtResource("3_x538q")
+roughness_texture = ExtResource("5_k76ub")
+normal_enabled = true
+normal_texture = ExtResource("4_wa48x")
+
+[node name="stove" instance=ExtResource("1_n8mfq")]
+
+[node name="Apartment_008" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s1d8p")

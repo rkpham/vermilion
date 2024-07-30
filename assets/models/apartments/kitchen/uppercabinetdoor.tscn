@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkch3cuutv6xn"]
+
+[ext_resource type="PackedScene" uid="uid://b5de8xthq8msa" path="res://assets/models/apartments/kitchen/uppercabinetdoor.glb" id="1_kqq73"]
+[ext_resource type="Texture2D" uid="uid://dinsu2nu2x005" path="res://assets/models/apartments/kitchen/UpperCabinetDoor_BaseColor.png" id="2_hac8r"]
+[ext_resource type="Texture2D" uid="uid://dbm5yfhr2igty" path="res://assets/models/apartments/kitchen/UpperCabinetDoor_Normal.png" id="3_rly6t"]
+[ext_resource type="Texture2D" uid="uid://dpqwxox3eo62a" path="res://assets/models/apartments/kitchen/UpperCabinetDoor_Roughness.png" id="4_dnhs0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3chjl"]
+albedo_texture = ExtResource("2_hac8r")
+roughness_texture = ExtResource("4_dnhs0")
+normal_enabled = true
+normal_texture = ExtResource("3_rly6t")
+
+[node name="uppercabinetdoor" instance=ExtResource("1_kqq73")]
+
+[node name="Apartment_006" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_3chjl")

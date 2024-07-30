@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg0lfuoy2e0q7"]
+
+[ext_resource type="PackedScene" uid="uid://moxd0qhi6oc0" path="res://assets/models/apartments/kitchen/thinneruppercabinetdoor.glb" id="1_bg8xo"]
+[ext_resource type="Texture2D" uid="uid://brcegnphsrkmv" path="res://assets/models/apartments/kitchen/ThinnerUpperCabinetDoor_BaseColor.png" id="2_2myfu"]
+[ext_resource type="Texture2D" uid="uid://dtrp3c5innno4" path="res://assets/models/apartments/kitchen/ThinnerUpperCabinetDoor_Normal.png" id="3_dt43d"]
+[ext_resource type="Texture2D" uid="uid://86gdb2c00wrn" path="res://assets/models/apartments/kitchen/ThinnerUpperCabinetDoor_Roughness.png" id="4_nmxgk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nald6"]
+albedo_texture = ExtResource("2_2myfu")
+roughness_texture = ExtResource("4_nmxgk")
+normal_enabled = true
+normal_texture = ExtResource("3_dt43d")
+
+[node name="thinneruppercabinetdoor" instance=ExtResource("1_bg8xo")]
+
+[node name="Apartment_007" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nald6")

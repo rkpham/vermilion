@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf8l8fnwidond"]
+
+[ext_resource type="PackedScene" uid="uid://j07fj7k1vp16" path="res://assets/models/apartments/kitchen/faucet.glb" id="1_b3cnk"]
+[ext_resource type="Material" uid="uid://rg88x6fyou8v" path="res://assets/models/apartments/kitchen/faucet.tres" id="2_ybd7y"]
+
+[node name="faucet" instance=ExtResource("1_b3cnk")]
+
+[node name="Apartment_004" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ybd7y")

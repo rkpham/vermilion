@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://r8yj65vb761v"]
+
+[ext_resource type="Texture2D" uid="uid://brcegnphsrkmv" path="res://assets/models/apartments/kitchen/ThinnerUpperCabinetDoor_BaseColor.png" id="1_bktw7"]
+[ext_resource type="Texture2D" uid="uid://dtrp3c5innno4" path="res://assets/models/apartments/kitchen/ThinnerUpperCabinetDoor_Normal.png" id="2_s2g4r"]
+[ext_resource type="Texture2D" uid="uid://86gdb2c00wrn" path="res://assets/models/apartments/kitchen/ThinnerUpperCabinetDoor_Roughness.png" id="3_p3xln"]
+
+[resource]
+albedo_texture = ExtResource("1_bktw7")
+roughness_texture = ExtResource("3_p3xln")
+normal_enabled = true
+normal_texture = ExtResource("2_s2g4r")

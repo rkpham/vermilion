@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://vvelbv4j17hl"]
+
+[ext_resource type="Texture2D" uid="uid://di5w6fqj4erep" path="res://assets/models/apartments/kitchen/SinkCabinet_BaseColor.png" id="1_83l2y"]
+[ext_resource type="Texture2D" uid="uid://wm1y3ehniwtx" path="res://assets/models/apartments/kitchen/SinkCabinet_Metallic.png" id="2_tca3x"]
+[ext_resource type="Texture2D" uid="uid://c2uq228hl7hy8" path="res://assets/models/apartments/kitchen/SinkCabinet_Normal.png" id="3_e6vh3"]
+[ext_resource type="Texture2D" uid="uid://dw4se51ny8lhb" path="res://assets/models/apartments/kitchen/SinkCabinet_Roughness.png" id="4_mwcqc"]
+
+[resource]
+albedo_texture = ExtResource("1_83l2y")
+metallic = 1.0
+metallic_texture = ExtResource("2_tca3x")
+roughness_texture = ExtResource("4_mwcqc")
+normal_enabled = true
+normal_texture = ExtResource("3_e6vh3")
