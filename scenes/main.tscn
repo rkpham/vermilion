@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://di1lgu50gdfbw" path="res://scenes/ui/ui.tscn" id="1_adlav"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_twwyn"]
-[ext_resource type="PackedScene" uid="uid://y2l18wisrmdb" path="res://scenes/shader_loader/shader_loader.tscn" id="3_owj7p"]
+[ext_resource type="PackedScene" uid="uid://y2l18wisrmdb" path="res://scenes/loader/loader.tscn" id="3_owj7p"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_twwyn")

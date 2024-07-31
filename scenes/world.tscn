@@ -1161,7 +1161,7 @@ script = ExtResource("8_g1or1")
 shape = SubResource("BoxShape3D_tkay5")
 
 [node name="Player" parent="." instance=ExtResource("1_fxprh")]
-transform = Transform3D(-0.764888, 0, 0.644164, 0, 1, 0, -0.644164, 0, -0.764888, -13.7231, 0.945051, -2.84411)
+transform = Transform3D(0.759919, 0, -0.650019, 0, 1, 0, 0.650019, 0, 0.759919, -13.7231, 0.945051, -2.84411)
 
 [node name="QuietAmbience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3h65x")
@@ -1172,6 +1172,7 @@ script = ExtResource("60_hhuk2")
 musics = Array[AudioStream]([ExtResource("61_duhog"), ExtResource("62_uk64a")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicQueue"]
+volume_db = -10.0
 
 [connection signal="body_entered" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_entered"]
 [connection signal="body_exited" from="Rooms/RoomA2" to="Rooms/RoomA2" method="_on_body_exited"]
