@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg63vdp5njgbu"]
+
+[ext_resource type="PackedScene" uid="uid://uigtxderwful" path="res://assets/models/safe/safe.glb" id="1_bjnjd"]
+[ext_resource type="Material" uid="uid://bkartsj4u62y5" path="res://assets/models/safe/safe.tres" id="2_gnbyu"]
+
+[node name="safe" instance=ExtResource("1_bjnjd")]
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_gnbyu")
