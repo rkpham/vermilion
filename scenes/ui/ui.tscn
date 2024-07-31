@@ -1,7 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=38 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
-[ext_resource type="Theme" uid="uid://cnjks23fh4kxd" path="res://assets/resources/loading.tres" id="2_7qa3h"]
+[ext_resource type="Theme" uid="uid://7cwnhesijr34" path="res://assets/resources/endscreen.tres" id="2_p3l5g"]
 [ext_resource type="Texture2D" uid="uid://fov4ot6uv6ex" path="res://assets/textures/icons/goldcursor.png" id="4_d1e7q"]
 [ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="5_0udoo"]
 [ext_resource type="Script" path="res://scenes/ui/notepad.gd" id="5_a0cvu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/ui/key_label.gd" id="11_n50wj"]
 [ext_resource type="Theme" uid="uid://4r64qqa5xhoc" path="res://assets/resources/form.tres" id="14_ptsr0"]
 [ext_resource type="Theme" uid="uid://c31b6fm6gx6hg" path="res://assets/resources/checkbox.tres" id="15_fmajr"]
+[ext_resource type="Texture2D" uid="uid://c13wlgg455oma" path="res://assets/textures/icons/veluvia.png" id="16_8khcm"]
 
 [sub_resource type="Gradient" id="Gradient_w11qt"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0784314, 0, 0.0823529, 1)
@@ -401,6 +402,12 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.372549)
 gradient = SubResource("Gradient_r7w64")
 fill_to = Vector2(0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_endef"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epv0j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -410,6 +417,33 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_iyfh5")
+end_text_1 = "[center]
+Ms. Sofia Petrov was prosecuted for the crime of murdering Azbastanian Diplomat John Makovich.
+She was found guilty of performing unlicensed alchemy and first degree murder.
+Her textbooks, which once were invaluable and accessible resources for many alchemists, have been deemed harmful sources of information for the public, and expunged from libraries.
+
+Many people cry out for her innocence, but those cries are left unheard.
+
+In the end, you did your job.
+[/center]"
+end_text_2 = "[center]
+Mr. Reynauld Barig was prosecuted for the crime of murdering Azbastanian Diplomat John Makovich.
+He was found guilty of treason and first degree murder.
+Once a proud Veluvian soldier, he eventually was court martialed for the crime of desertion. Nobody knows why he snapped, but perhaps it was the way he was treated by the Republic during his service.
+
+Regardless, it seems like Raynauld wasn't the first of his kind, nor would he be the last of his kind either.
+
+In the end, you did your job.
+[/center]"
+end_text_3 = "[center]
+Mr. Isak Tempolev was prosecuted for the crime of murdering Azbastanian Diplomat John Makovich.
+He was found guilty of treason, terrorism, and first degree murder.
+Isak was once considered to be a proud shining example of what it means to be a Veluvian citizen, but according to what officials would say, he fell into the wrong crowds.
+
+Isak fought for what he believed to be right and morally just, and the Republic must uphold its status quo, but does the end justify the means?
+
+In the end, you did your job.
+[/center]"
 
 [node name="Loading" type="Control" parent="."]
 visible = false
@@ -422,7 +456,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("2_7qa3h")
+theme = ExtResource("2_p3l5g")
 
 [node name="TextureRect" type="TextureRect" parent="Loading"]
 layout_mode = 1
@@ -461,6 +495,7 @@ grow_horizontal = 2
 text = "Loading shaders..."
 
 [node name="Label" type="Label" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
@@ -469,7 +504,7 @@ anchor_right = 1.0
 offset_left = -42.0
 offset_bottom = 23.0
 grow_horizontal = 0
-theme = ExtResource("2_7qa3h")
+theme = ExtResource("2_p3l5g")
 text = "fps: 0"
 script = SubResource("GDScript_v5iy4")
 
@@ -1009,11 +1044,10 @@ texture_filter = 1
 layout_mode = 1
 offset_right = 102.0
 offset_bottom = 15.0
-theme = ExtResource("2_7qa3h")
+theme = ExtResource("2_p3l5g")
 script = ExtResource("11_n50wj")
 
 [node name="MurdererSelection" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1077,43 +1111,113 @@ Location of Murder
 	Ovborod, Veluvia
 	In the kitchen, next to the stove.
 
-Murderer
+Murderer                      Signature
 
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MurdererSelection/Paper"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MurdererSelection/Paper"]
 layout_mode = 0
-offset_top = 261.0
-offset_right = 256.0
-offset_bottom = 312.0
+offset_left = 8.0
+offset_top = 260.0
+offset_right = 113.0
+offset_bottom = 311.0
+theme_override_constants/separation = 85
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MurdererSelection/Paper/HBoxContainer"]
+layout_mode = 2
 theme = ExtResource("14_ptsr0")
 theme_override_constants/separation = 0
 
-[node name="Murderer" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("15_fmajr")
-text = "Reynauld Barig"
-
-[node name="Murderer2" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("15_fmajr")
-text = "Isak Tempolev"
-
-[node name="Murderer3" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
+[node name="Murderer1" type="CheckBox" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("15_fmajr")
 text = "Sofia Petrov"
 
+[node name="Murderer2" type="CheckBox" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Reynauld Barig"
+
+[node name="Murderer3" type="CheckBox" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Isak Tempolev"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MurdererSelection/Paper/HBoxContainer"]
+layout_mode = 2
+
+[node name="SignButton" type="Button" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/hover = SubResource("StyleBoxFlat_endef")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_epv0j")
+text = "SIGN"
+
+[node name="Blackout" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p3l5g")
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Blackout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Blackout/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="Blackout"]
+modulate = Color(1, 0, 0, 0.129412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_8khcm")
+
 [connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
 [connection signal="gui_input" from="Journal/PaperLeft" to="Journal" method="_on_paper_left_gui_input"]
 [connection signal="gui_input" from="Journal/PaperRight" to="Journal" method="_on_paper_right_gui_input"]
-[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer" to="." method="_on_murderer_toggled"]
-[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer2" to="." method="_on_murderer_2_toggled"]
-[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer3" to="." method="_on_murderer_3_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer1" to="." method="_on_murderer_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer2" to="." method="_on_murderer_2_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer3" to="." method="_on_murderer_3_toggled"]
+[connection signal="pressed" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer2/SignButton" to="." method="_on_sign_button_pressed"]

@@ -12,6 +12,10 @@ var dialogue_speaking: bool = false
 var dialogue_tween: Tween
 var note_tween: Tween
 var note_shown: bool = false
+var form_shown: bool = false:
+	set = _set_form_shown
+var form_tween: Tween
+var blackout_tween: Tween
 
 @onready var interact_icons = $InteractIcons
 @onready var cursor = $Cursor
@@ -25,10 +29,16 @@ var note_shown: bool = false
 @onready var key_name = $KeyRingControls/KeyName
 @onready var note: Note = $Note
 @onready var note_text = $Note/PageText
-@onready var murderer_checkbox = $MurdererSelection/Paper/VBoxContainer/Murderer
-@onready var murderer_checkbox2 = $MurdererSelection/Paper/VBoxContainer/Murderer2
-@onready var murderer_checkbox3 = $MurdererSelection/Paper/VBoxContainer/Murderer3
+@onready var murderer_selection = $MurdererSelection
+@onready var murderer_checkbox = $MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer1
+@onready var murderer_checkbox2 = $MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer2
+@onready var murderer_checkbox3 = $MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer3
+@onready var blackout = $Blackout
+@onready var blackout_text = $Blackout/MarginContainer/RichTextLabel
 
+@export_multiline var end_text_1: String
+@export_multiline var end_text_2: String
+@export_multiline var end_text_3: String
 
 func _ready() -> void:
 	Game.ui = self
@@ -48,6 +58,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("undo"):
 		if notepad_shown:
 			notepad.undo()
+	if event.is_action_pressed("form"):
+		form_shown = not form_shown
 
 
 func _physics_process(delta: float) -> void:
@@ -189,6 +201,40 @@ func hide_note() -> void:
 	await note_tween.finished
 	note.hide()
 
+func show_form() -> void:
+	if form_tween:
+		form_tween.finished.emit()
+		form_tween.stop()
+	
+	murderer_selection.show()
+	form_tween = create_tween()
+	form_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	form_tween.tween_property(murderer_selection, "position", Vector2(0, 0), 0.5)
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Game.player.footsteps.stepping = false
+	Game.capture_mouse = false
+	Game.viewmodel.frozen = true
+	cursor.visible = true
+	Game.player.cam.frozen = true
+	Game.player.frozen = true
+	
+func hide_form() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Game.capture_mouse = true
+	Game.viewmodel.frozen = false
+	cursor.visible = false
+	Game.player.cam.frozen = false
+	Game.player.frozen = false
+	
+	if form_tween:
+		form_tween.finished.emit()
+		form_tween.stop()
+	
+	form_tween = create_tween()
+	form_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	form_tween.tween_property(murderer_selection, "position", Vector2(0, 360), 0.5)
+	await form_tween.finished
+	murderer_selection.hide()
 
 func _set_notepad_shown(_notepad_shown: bool) -> void:
 	notepad_shown = _notepad_shown
@@ -207,6 +253,13 @@ func _set_journal_shown(_journal_shown: bool) -> void:
 	else:
 		hide_journal()
 
+func _set_form_shown(_form_shown: bool) -> void:
+	form_shown = _form_shown
+	
+	if form_shown:
+		show_form()
+	else:
+		hide_form()
 
 func _on_murderer_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -224,3 +277,24 @@ func _on_murderer_3_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		murderer_checkbox.button_pressed = false
 		murderer_checkbox2.button_pressed = false
+
+
+func _on_sign_button_pressed():
+	if not murderer_checkbox.button_pressed and not murderer_checkbox2.button_pressed and not murderer_checkbox3.button_pressed:
+		return
+	hide_form()
+	blackout.visible = true
+	blackout_tween = create_tween()
+	blackout_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	blackout_tween.tween_property(blackout, "position", Vector2(0, 0), 0.5)
+	cursor.visible = false
+	var end_text: String
+	if murderer_checkbox.button_pressed:
+		end_text = end_text_1
+	elif murderer_checkbox2.button_pressed:
+		end_text = end_text_2
+	else:
+		end_text = end_text_3
+	blackout_text.text = end_text
+
+		
