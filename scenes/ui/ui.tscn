@@ -668,41 +668,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_uhsnx")
 script = ExtResource("7_wnrkn")
-pages = Array[String](["
-[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
+pages = Array[String](["[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
 [center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
-
-
 Greetings, Mr. Ivanov
-
 Welcome to your first homicide case.
-
 Please note that we have included several important documents on the following pages.
-
 Conduct yourself with honor and get the job done.
-
 	Ovborod Homicide Division
-	Chief Viktor Harvald", "
-Not sure what to do?
+	Chief Viktor Harvald", "Not sure what to do?
 Go down this list.
-
 [center]Investigator Checklist[/center]
-
 - [E] Interact
 - [Tab] Briefcase
 - [Shift] Sprint
 - [Scroll Wheel] Swap Use Modes
-
+- [Space] File Report
 [center]A Primer on Reconstruction[/center]
-
 Thanks to advancements in alchemy, we are now able to construct representations of the past positions and states of certain objects. 
 We aren't 100% sure on which objects are able to be reconstructed, but it appears that things thay may have been recently moved are have exceptionally high success rates.
-
-Give your reconstructor a try on objects that seem out of place!", "
-[center]Testimonies[/center]
-
-Ovborod Homicide Division
+Give your reconstructor a try on objects that seem out of place!", "Ovborod Homicide Division
 Interviewer:
 	Leonid Ilyin
 Interviewee:
@@ -712,19 +697,14 @@ Place of Residence:
 	3394 Armin Road
 	Ovborod, Veluvia
 Interview Time: Jun 15, 14:02
-
 Q: Where were you at the time of the incident?
 A: I can't remember too well, but I was In my apartment for the whole day. I was writing. Ask Sofia.
-
 Q: Can you elaborate?
 A: I write for fun. I didn't leave my apartment.
-
 Q: Did you hear or see anything unusual that day?
 A: Nothing out of the ordinary. ", "Isak was giving his same speeches to nobody. 
-
 Q: What is your relationship with Mr. John Makovich?
 A: Nothing more than acquaintances. I show him my writing from time to time, and we play chess together on occassion.
-
 Q: That sounds like you two were pretty close no?
 A: No, not really. I barely know the guy", "Ovborod Homicide Division
 Interviewer:
@@ -736,17 +716,13 @@ Place of Residence:
 	3394 Armin Road
 	Ovborod, Veluvia
 Interview Time: Jun 15, 15:03
-
 Q: Where were you at the time of the incident?
 A: I was out all day meeting with my friends in my club.
-
 Q: What do you mean by club?
 A: Just an average University club, nothing too official. Just a bunch of friends.
-
 Q: Did you hear or see anything unusual that day?
 A: I saw Sofia slip a note under Mr. Makovich's door when I left.", "Q: What is your relationship with Mr. John Makovich?
 A: I don't know him personally, but he was there for my last court session, and he was able to help me out a little.
-
 Q: Your last court session?
 A: Yeah... I was out with some friends, and the police must've mistaken us for someone else, so they arrested us all.", "Ovborod Homicide Division
 Interviewer:
@@ -758,19 +734,14 @@ Place of Residence:
 	3394 Armin Road
 	Ovborod, Veluvia
 Interview Time: Jun 15, 17:06
-
 Q: Where were you at the time of the incident?
 A: I was performing alchemical research in my apartment.
-
 Q: What kind of alchemical research?
 A: Simple energy transmutation! I want it to be easier for the next generation of alchemists to transmute energy.
-
 Q: Did you hear or see anything unusual that day?
 A: Isak, bless his heart, was leaving his apartment when I saw Reynauld leave his apartment to ", "talk to John. I didn't catch much of the conversation but it did seem a little odd. Must've been about writing.
-
 Q: What is your relationship with Mr. John Makovich?
 A: John is a little bit of a contentious man. It seems like he recently kindled a love for alchemy, and I happen to love teaching alchemy, but he doesn't seem to take much heed to anything of what I have to say.
-
 Q: Can you elaborate for me please?
 A: Frankly, John is strongheaded and doesn't take no for an answer. He'll try and do whatever it takes to get what he wants.
 
