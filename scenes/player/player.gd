@@ -19,7 +19,7 @@ var current_mode: Game.InteractType = Game.InteractType.HAND
 @onready var interact_ray: RayCast3D = $PlayerCam/Camera3D/InteractRay
 @onready var drop_ray: RayCast3D = $PlayerCam/Camera3D/DropRay
 @onready var footsteps: Footsteps = $Footsteps
-
+@onready var collision = $CollisionShape3D
 @onready var crafting_circle: = preload("res://scenes/crafting_circle/crafting_circle.tscn")
 
 
@@ -31,6 +31,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if frozen:
+		velocity = Vector3.ZERO
 		return
 	
 	var input_vec = Input.get_vector("move_left", "move_right", "move_forward", "move_back")

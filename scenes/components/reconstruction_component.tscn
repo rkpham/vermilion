@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsacakukfn6o3"]
+[gd_scene load_steps=17 format=3 uid="uid://bsacakukfn6o3"]
 
 [ext_resource type="Script" path="res://scenes/components/reconstruction_component.gd" id="1_8gq0n"]
 [ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="2_go6en"]
 [ext_resource type="Texture2D" uid="uid://b3anp7kxoia5p" path="res://scripts/shaders/reconstruction_grad.tres" id="3_d044q"]
+[ext_resource type="AudioStream" uid="uid://ciwg6o2caxyeh" path="res://assets/audio/sfx/reconstruction.ogg" id="4_vp01w"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_662wr"]
 
@@ -82,6 +83,10 @@ reconstruction_shader = SubResource("ShaderMaterial_qea86")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00151262, 0.00546893, -0.00151807)
+cast_shadow = 0
 amount_ratio = 0.5
 process_material = SubResource("ParticleProcessMaterial_ycp6n")
 draw_pass_1 = SubResource("QuadMesh_w4a3m")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_vp01w")

@@ -12,6 +12,7 @@ extends Node3D
 @onready var original_obj = get_parent()
 
 @onready var original_pos = original_obj.global_position
+@onready var reconstruction_sound = $AudioStreamPlayer3D
 
 var reconstructed: bool = false
 
@@ -65,7 +66,7 @@ func reconstruct():
 	tween.tween_method(set_shader_opacity, 0.0, 1.0, 0.3)
 	await tween.finished
 	Game.ui.show_dialogue("[center][color=white]Ok, I should be able to find a copy of this somewhere now...[/color][/center]")
-	
+	reconstruction_sound.play()
 	
 func deconstruct():
 	var tween = get_tree().create_tween().set_parallel()

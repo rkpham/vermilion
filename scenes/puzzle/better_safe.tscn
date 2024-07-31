@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgevhhixqt3hh"]
+[gd_scene load_steps=14 format=3 uid="uid://bgevhhixqt3hh"]
 
 [ext_resource type="Script" path="res://scenes/puzzle/better_safe.gd" id="1_28ksj"]
 [ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_jnpm1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="4_ot4s3"]
 [ext_resource type="FontFile" uid="uid://dx75jx0mequiw" path="res://assets/resources/retro-pixel-petty-5x5.ttf" id="6_f8qyc"]
 [ext_resource type="AudioStream" uid="uid://cwb18qtn85gk0" path="res://assets/audio/sfx/safeopen.ogg" id="7_6lqxm"]
+[ext_resource type="Script" path="res://scenes/components/dialogue_component.gd" id="7_7t0vm"]
 [ext_resource type="AudioStream" uid="uid://ogejys5ct1i7" path="res://assets/audio/sfx/click.ogg" id="8_5gly5"]
 
 [sub_resource type="Animation" id="Animation_03gbt"]
@@ -42,7 +43,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kabw0"]
-size = Vector3(0.66098, 0.372925, 0.667908)
+size = Vector3(0.66098, 0.372925, 0.061081)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq0pt"]
+size = Vector3(0.688477, 0.368042, 0.609619)
 
 [node name="BetterSafe" type="Node3D"]
 script = ExtResource("1_28ksj")
@@ -136,7 +140,7 @@ collision = NodePath("CollisionShape3D")
 mesh_node = NodePath("../safe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00788879, 0.184631, -0.00790405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00788879, 0.184631, 0.295509)
 shape = SubResource("BoxShape3D_kabw0")
 
 [node name="CloseUpComponent" parent="Area3D" instance=ExtResource("4_ot4s3")]
@@ -144,6 +148,24 @@ cursor = true
 
 [node name="Camera3D" type="Camera3D" parent="Area3D/CloseUpComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.191058, 0.185307, 0.473495)
+
+[node name="DialogueComponent" type="Node3D" parent="Area3D"]
+script = ExtResource("7_7t0vm")
+action_mode = 1
+text = "[center][color=white]It's a safe. Looks like it's a newer model.[/color][/center]"
+
+[node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 7
+script = ExtResource("1_jnpm1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184509, -0.0384521)
+shape = SubResource("BoxShape3D_aq0pt")
+
+[node name="DialogueComponent" type="Node3D" parent="Area3D2"]
+script = ExtResource("7_7t0vm")
+action_mode = 1
+text = "[center][color=white]It's a safe.[/color][/center]"
 
 [node name="OpenSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_6lqxm")

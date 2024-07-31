@@ -9,6 +9,7 @@ var interacting: bool = false
 
 @onready var clock_hand_skeleton = $clockhands/ClockHandsArmature/Skeleton3D
 @onready var clock_collision = $StaticBody3D/CollisionShape3D
+@onready var key_sound = $KeySound
 
 
 func _input(event: InputEvent) -> void:
@@ -25,6 +26,7 @@ func _input(event: InputEvent) -> void:
 				got_key = true
 				Game.ui.show_dialogue("[center][color=yellow]Found a key from an opened compartment on the side of the clock.[/color][/center]")
 				Game.viewmodel.key_ring.add_key("3-A3 Closet Key")
+				key_sound.play()
 
 
 func _process(delta: float) -> void:
