@@ -1,5 +1,7 @@
 extends Node3D
 
+const KEY_ON_RING = preload("res://scenes/viewmodel/key.tscn")
+
 var shown: bool = false
 
 var keys: Array[Node3D] = []
@@ -35,8 +37,17 @@ func _process(delta: float) -> void:
 		key.rotation.y = lerp_angle(key.rotation.y, deg_to_rad(targ_rot), delta * 8.0)
 		key_idx += 1
 
+
 func next_key() -> void:
 	keys.push_back(keys.pop_front())
 
+
 func prev_key() -> void:
 	keys.push_front(keys.pop_back())
+
+
+func add_key(_key_name: String) -> void:
+	var new_key = KEY_ON_RING.instantiate()
+	add_child(new_key)
+	keys.append(new_key)
+	new_key.key_name = _key_name

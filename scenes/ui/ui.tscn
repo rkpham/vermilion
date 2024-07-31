@@ -1021,8 +1021,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("14_ptsr0")
 
 [node name="Paper" type="TextureRect" parent="MurdererSelection"]
@@ -1056,6 +1059,7 @@ offset_right = -8.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "[font_size=8] [/font_size]
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
