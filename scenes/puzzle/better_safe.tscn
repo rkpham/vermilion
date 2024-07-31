@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgevhhixqt3hh"]
+[gd_scene load_steps=15 format=3 uid="uid://bgevhhixqt3hh"]
 
 [ext_resource type="Script" path="res://scenes/puzzle/better_safe.gd" id="1_28ksj"]
 [ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_jnpm1"]
@@ -37,8 +37,37 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_0pyqf"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoneAttachment3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.000949047, 0.000949949, 0.000949949)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Area3D/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8eq4"]
 _data = {
+"RESET": SubResource("Animation_0pyqf"),
 "safe_open": SubResource("Animation_03gbt")
 }
 
@@ -57,7 +86,7 @@ script = ExtResource("1_28ksj")
 bones/1/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 1.00048)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="safe/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999999, -0.000949046, 0.000949948, 0.000949948, 0.999999, -0.000949046, -0.000949046, 0.000949948, 0.999999, 0.306972, 0.183993, 0.310594)
+transform = Transform3D(0.999999, -0.000949047, 0.000949948, 0.000949948, 0.999999, -0.000949047, -0.000949047, 0.000949948, 0.999999, 0.306972, 0.183993, 0.310594)
 bone_name = "SafeDoor"
 bone_idx = 1
 override_pose = true

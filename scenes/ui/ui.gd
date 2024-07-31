@@ -18,6 +18,7 @@ var note_shown: bool = false
 @onready var notepad: Notepad = $Notepad
 @onready var journal: Journal = $Journal
 @onready var loading = $Loading
+@onready var loading_text = $Loading/LoadingProgress/Label
 @onready var loading_progress = $Loading/LoadingProgress
 @onready var dialogue = $Dialogue
 @onready var dialogue_text = $Dialogue/RichTextLabel

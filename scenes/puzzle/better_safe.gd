@@ -22,6 +22,7 @@ func _get_number(number: int, submit: bool, clear: bool) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			Game.capture_mouse = true
 			Game.ui.cursor.visible = false
+			Game.player.collision.disabled = false
 			var timer = get_tree().create_timer(0.5)
 			await timer.timeout
 			Game.player.cam.cam_copy = null

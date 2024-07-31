@@ -48,7 +48,7 @@ func interact() -> bool:
 		Game.player.collision.disabled = true
 		if cursor:
 			Game.capture_mouse = false
-			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			Game.ui.cursor.visible = true
 			Game.ui.show_icon(Game.InteractType.NONE)
 	return true
