@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://chioku8h6xka0"]
+
+[ext_resource type="PackedScene" uid="uid://bjq0kqmtn1k5i" path="res://assets/models/safe/safebutton.glb" id="1_5inlg"]
+[ext_resource type="Material" uid="uid://b5jel7ujwoylk" path="res://assets/models/safe/safebutton.tres" id="2_refpb"]
+
+[node name="safebutton" instance=ExtResource("1_5inlg")]
+
+[node name="Cube_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_refpb")

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b5jel7ujwoylk"]
+
+[ext_resource type="Texture2D" uid="uid://dkt6m8ppbuq8g" path="res://assets/models/safe/SafeButton_BaseColor.png" id="1_wx2sh"]
+[ext_resource type="Texture2D" uid="uid://c2as1awj5te16" path="res://assets/models/safe/SafeButton_Normal.png" id="2_nklj7"]
+[ext_resource type="Texture2D" uid="uid://c3nsi6aps15ac" path="res://assets/models/safe/SafeButton_Roughness.png" id="3_57cru"]
+
+[resource]
+albedo_texture = ExtResource("1_wx2sh")
+roughness_texture = ExtResource("3_57cru")
+normal_enabled = true
+normal_texture = ExtResource("2_nklj7")
