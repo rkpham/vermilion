@@ -19,6 +19,17 @@ func _on_mouse_entered() -> void:
 	
 	if hover_tween:
 		hover_tween.stop()
+		
+	match item_type:
+			Game.ItemType.NOTEPAD:
+				Game.ui.show_dialogue("[center][color=white]Notepad[/color][/center]")
+			Game.ItemType.JOURNAL:
+				Game.ui.show_dialogue("[center][color=white]Journal[/color][/center]")
+			Game.ItemType.RECONSTRUCTOR:
+				Game.ui.show_dialogue("[center][color=white]Reconstructor[/color][/center]")
+			Game.ItemType.KEYRING:
+				Game.ui.show_dialogue("[center][color=white]Keyring[/color][/center]")
+				
 	hover_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	hover_tween.tween_property(item_model, "position", hover_position, 0.2)
 	hover_tween.tween_property(hover_light, "light_energy", 0.03, 0.2)
@@ -55,8 +66,8 @@ func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal:
 				Game.viewmodel.frozen = true
 				Game.ui.journal_shown = true
 			Game.ItemType.RECONSTRUCTOR:
-				var item_model_mesh = item_model.get_child(0).get_child(0).get_child(0).mesh
-				var item_model_mat = item_model.get_child(0).get_child(0).get_child(0).get_surface_override_material(0)
+				var item_model_mesh = item_model.get_child(0).mesh
+				var item_model_mat = item_model.get_child(0).get_surface_override_material(0)
 				Game.item_taken_out.emit(item_type, item_model_mesh, item_model_mat)
 			Game.ItemType.CHALK:
 				var item_model_mesh = item_model.get_child(0).mesh

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqcdxneqobw1l"]
+[gd_scene load_steps=5 format=3 uid="uid://bqcdxneqobw1l"]
 
 [ext_resource type="PackedScene" uid="uid://bns2mg3p7gw3p" path="res://assets/models/desk/desk.glb" id="1_fbmiv"]
 [ext_resource type="Material" uid="uid://cyjn3u3rc678m" path="res://assets/models/desk/desk.tres" id="2_c205f"]
 [ext_resource type="PackedScene" uid="uid://db6vnmfb0h88j" path="res://assets/models/desk/deskdrawer.tscn" id="3_fv6bh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t154e"]
+size = Vector3(0.76123, 0.0489502, 2.37146)
 
 [node name="desk" instance=ExtResource("1_fbmiv")]
 
@@ -25,3 +28,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280263, -1.61749)
 
 [node name="deskdrawer6" parent="." index="6" instance=ExtResource("3_fv6bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5488, -1.61749)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119385, 0.996578, -0.000793457)
+shape = SubResource("BoxShape3D_t154e")

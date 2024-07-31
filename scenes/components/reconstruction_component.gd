@@ -5,6 +5,7 @@ extends Node3D
 @export_category("References")
 @export var reconstruction_shader: ShaderMaterial
 @export var optional_model: Node3D
+@export var disable_collision_array: Array[Node3D]
 
 @onready var mesh_instance = $MeshInstance3D
 @onready var mesh_gpu_particle = $MeshInstance3D/GPUParticles3D
@@ -57,10 +58,13 @@ func interact() -> bool:
 
 func reconstruct():
 	visible = true
+	for collision in disable_collision_array:
+		collision.set_deferred("disabled", false)
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(mesh_gpu_particle, "amount_ratio", 0.5, 0.3)
 	tween.tween_method(set_shader_opacity, 0.0, 1.0, 0.3)
 	await tween.finished
+	Game.ui.show_dialogue("[center][color=white]Ok, I should be able to find a copy of this somewhere now...[/color][/center]")
 	
 	
 func deconstruct():
@@ -69,6 +73,8 @@ func deconstruct():
 	tween.tween_method(set_shader_opacity, 1.0, 0.0, 0.3)
 	await tween.finished
 	visible = false
+	for collision in disable_collision_array:
+		collision.set_deferred("disabled", true)
 	
 func set_shader_opacity(opacity: float) -> void:
 	reconstruction_shader.set_shader_parameter("opacity", opacity)

@@ -7,6 +7,7 @@
 [resource]
 albedo_color = Color(0.212305, 0.212305, 0.212305, 1)
 albedo_texture = ExtResource("1_wtxqb")
+albedo_texture_force_srgb = true
 roughness_texture = ExtResource("3_a2imk")
 normal_enabled = true
 normal_texture = ExtResource("2_mdl5i")

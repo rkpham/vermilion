@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byqtg14p07gxw"]
+[gd_scene load_steps=13 format=3 uid="uid://byqtg14p07gxw"]
 
 [ext_resource type="PackedScene" uid="uid://bp25eeava2cmk" path="res://assets/models/apartments/kitchen/kitchencabinets.tscn" id="1_4sqrr"]
 [ext_resource type="PackedScene" uid="uid://hfw1dyi5jyai" path="res://assets/models/apartments/kitchen/doublecabinetdoor.tscn" id="2_eoggp"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://cvtg3ywk4qeia" path="res://assets/models/apartments/kitchen/sinkcabinet.tscn" id="8_sm3gc"]
 [ext_resource type="PackedScene" uid="uid://fpim7dflivay" path="res://assets/models/apartments/kitchen/stove.tscn" id="9_g12v1"]
 [ext_resource type="PackedScene" uid="uid://cpe8s82gt8fse" path="res://assets/models/apartments/kitchen/stovedial.tscn" id="10_3ap72"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_neob2"]
+size = Vector3(0.800537, 0.0903015, 5.88068)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpwir"]
+size = Vector3(4.34808, 0.0872498, 0.764069)
 
 [node name="KitchenStuff" type="Node3D"]
 
@@ -42,3 +48,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.0125127, 0)
 
 [node name="stovedial4" parent="stove" instance=ExtResource("10_3ap72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.0125127, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482056, 0.877087, -4.51259)
+shape = SubResource("BoxShape3D_neob2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2504, 0.875561, -1.95429)
+shape = SubResource("BoxShape3D_fpwir")

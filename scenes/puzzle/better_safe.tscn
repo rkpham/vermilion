@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://855m27eobwcg"]
+
+[ext_resource type="Script" path="res://scenes/puzzle/better_safe.gd" id="1_28ksj"]
+[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_jnpm1"]
+[ext_resource type="PackedScene" uid="uid://cg63vdp5njgbu" path="res://assets/models/safe/safe.tscn" id="1_m4y3l"]
+[ext_resource type="PackedScene" uid="uid://bq3qxy5jn2umo" path="res://assets/models/safe/safebutton.tscn" id="2_qtvy7"]
+[ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="4_ot4s3"]
+[ext_resource type="FontFile" uid="uid://dx75jx0mequiw" path="res://assets/resources/retro-pixel-petty-5x5.ttf" id="6_f8qyc"]
+
+[sub_resource type="Animation" id="Animation_03gbt"]
+resource_name = "safe_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoneAttachment3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.000949047, 0.000949949, 0.000949949), Vector3(0.00174533, 1.74533, 0.00174533), Vector3(0.00174533, 1.5708, 0.00174533)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Area3D/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8eq4"]
+_data = {
+"safe_open": SubResource("Animation_03gbt")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kabw0"]
+size = Vector3(0.66098, 0.372925, 0.667908)
+
+[node name="BetterSafe" type="Node3D"]
+script = ExtResource("1_28ksj")
+
+[node name="safe" parent="." instance=ExtResource("1_m4y3l")]
+
+[node name="Skeleton3D" parent="safe/Armature" index="0"]
+bones/1/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 1.00048)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="safe/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.999999, -0.000949046, 0.000949948, 0.000949948, 0.999999, -0.000949046, -0.000949046, 0.000949948, 0.999999, 0.306972, 0.183993, 0.310594)
+bone_name = "SafeDoor"
+bone_idx = 1
+override_pose = true
+
+[node name="Label3D" type="Label3D" parent="safe/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.999999, 0.000949948, -0.000949047, -0.000949047, 0.999999, 0.000949948, 0.000949948, -0.000949047, 0.999999, -0.115455, 0.0811656, 0.0256491)
+pixel_size = 0.0005
+texture_filter = 5
+font = ExtResource("6_f8qyc")
+
+[node name="SafeButtons" type="Node3D" parent="safe/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.999999, 0.000949948, -0.000949046, -0.000949046, 0.999999, 0.000949948, 0.000949948, -0.000949046, 0.999999, -0.310057, -0.186513, -0.310188)
+
+[node name="safebutton" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159288, 0.224593, 0.344587)
+clear_button = false
+
+[node name="safebutton2" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.224593, 0.344587)
+number = 2
+clear_button = false
+additional_text = "ABC"
+
+[node name="safebutton3" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227092, 0.224593, 0.344587)
+number = 3
+clear_button = false
+additional_text = "DEF"
+
+[node name="safebutton4" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159288, 0.199549, 0.344587)
+number = 4
+clear_button = false
+additional_text = "GHI"
+
+[node name="safebutton5" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.199549, 0.344587)
+number = 5
+clear_button = false
+additional_text = "JKL"
+
+[node name="safebutton6" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227092, 0.199549, 0.344587)
+number = 6
+clear_button = false
+additional_text = "MNO"
+
+[node name="safebutton7" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159288, 0.174258, 0.344587)
+number = 7
+clear_button = false
+additional_text = "PQRS"
+
+[node name="safebutton8" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.174258, 0.344587)
+number = 8
+clear_button = false
+additional_text = "TUV"
+
+[node name="safebutton9" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227092, 0.174258, 0.344587)
+number = 9
+clear_button = false
+additional_text = "WXYZ"
+
+[node name="safebutton0" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.151659, 0.344587)
+number = 0
+clear_button = false
+
+[node name="safebutton#" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227821, 0.151659, 0.344587)
+number = 0
+submit_button = true
+clear_button = false
+
+[node name="safebuttonC" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
+transform = Transform3D(1, -6.77628e-21, 2.63678e-16, 1.31836e-16, 1, -1.31839e-16, -1.31839e-16, 1.31839e-16, 1, 0.1596, 0.152757, 0.34796)
+number = 7
+clear_button = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../safe/Armature/Skeleton3D")
+libraries = {
+"": SubResource("AnimationLibrary_x8eq4")
+}
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("collision", "mesh_node")]
+collision_layer = 7
+script = ExtResource("1_jnpm1")
+collision = NodePath("CollisionShape3D")
+mesh_node = NodePath("../safe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00788879, 0.184631, -0.00790405)
+shape = SubResource("BoxShape3D_kabw0")
+
+[node name="CloseUpComponent" parent="Area3D" instance=ExtResource("4_ot4s3")]
+cursor = true
+
+[node name="Camera3D" type="Camera3D" parent="Area3D/CloseUpComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.191058, 0.185307, 0.473495)
+
+[editable path="safe"]

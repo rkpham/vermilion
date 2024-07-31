@@ -1,7 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsacakukfn6o3"]
+[gd_scene load_steps=16 format=3 uid="uid://bsacakukfn6o3"]
 
 [ext_resource type="Script" path="res://scenes/components/reconstruction_component.gd" id="1_8gq0n"]
-[ext_resource type="Material" uid="uid://bly46xj15cygd" path="res://scripts/shaders/reconstruction.tres" id="3_e8hea"]
+[ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="2_go6en"]
+[ext_resource type="Texture2D" uid="uid://b3anp7kxoia5p" path="res://scripts/shaders/reconstruction_grad.tres" id="3_d044q"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pn5lb"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_i6iag"]
+seamless = true
+seamless_blend_skirt = 0.435
+noise = SubResource("FastNoiseLite_pn5lb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qea86"]
+render_priority = 0
+shader = ExtResource("2_go6en")
+shader_parameter/stability = 0.01
+shader_parameter/opacity = 1.0
+shader_parameter/noise = SubResource("NoiseTexture3D_i6iag")
+shader_parameter/tex = ExtResource("3_d044q")
 
 [sub_resource type="Curve" id="Curve_okhcd"]
 _data = [Vector2(0, 0), 0.0, 4.4595, 0, 0, Vector2(0.0866667, 0.590482), 2.61394, 2.61394, 0, 0, Vector2(1, 0), -2.72565, 0.0, 0, 0]
@@ -20,7 +36,7 @@ point_count = 2
 curve = SubResource("Curve_3qow0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycp6n"]
-emission_shape_scale = Vector3(0.690574, 0.135547, 0.397281)
+emission_shape_scale = Vector3(0.0217217, 0.057915, 0.025082)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -360.0
@@ -60,7 +76,7 @@ size = Vector2(0.05, 0.05)
 
 [node name="ReconstructionComponent" type="Node3D"]
 script = ExtResource("1_8gq0n")
-reconstruction_shader = ExtResource("3_e8hea")
+reconstruction_shader = SubResource("ShaderMaterial_qea86")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 

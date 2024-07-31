@@ -4,7 +4,6 @@
 [ext_resource type="Material" uid="uid://bflue4hkop08s" path="res://assets/models/journal/journal.tres" id="3_tcj1g"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1lmws"]
-load_path = "res://.godot/imported/BookOver_BaseColor.png-bd18709dab6473f4876b99fc5af5af2e.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkf24"]
 transparency = 2

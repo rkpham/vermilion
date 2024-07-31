@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://ca2wymjwsx0cr"]
 
 [ext_resource type="PackedScene" uid="uid://bwmycqmkihpne" path="res://assets/models/journal/journal.glb" id="1_nur4j"]
-[ext_resource type="Texture2D" uid="uid://cc0u5rwo0ab7t" path="res://assets/models/journal/Journal_OverlayColor.png" id="2_12r8m"]
+[ext_resource type="Texture2D" uid="uid://u5kox7i6sa44" path="res://assets/models/journal/Journal_BaseColor.png" id="2_0nt6q"]
 [ext_resource type="Material" uid="uid://bflue4hkop08s" path="res://assets/models/journal/journal.tres" id="2_cmms1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkf24"]
 transparency = 1
-albedo_texture = ExtResource("2_12r8m")
+albedo_texture = ExtResource("2_0nt6q")
 
 [node name="journal" instance=ExtResource("1_nur4j")]
 
