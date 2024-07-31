@@ -20,6 +20,7 @@ func _get_number(number: int, submit: bool, clear: bool) -> void:
 		if label.text == password:
 			label.modulate = Color(0.0, 1.0, 0.0)
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			Game.ui.closeup_leave_text.hide()
 			Game.capture_mouse = true
 			Game.ui.cursor.visible = false
 			Game.player.collision.disabled = false

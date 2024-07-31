@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dtht4exxiwdts" path="res://assets/models/wardrobe/wardrobe.tscn" id="18_xr338"]
 [ext_resource type="PackedScene" uid="uid://bem8jkmp1i0uv" path="res://assets/models/radiator/radiator.tscn" id="19_d0hr5"]
 [ext_resource type="PackedScene" uid="uid://b5m5r4c1qrq1k" path="res://assets/models/bed/pillow.tscn" id="20_e3x5g"]
-[ext_resource type="PackedScene" uid="uid://twdld5mc1gjo" path="res://scenes/components/holdable_component.tscn" id="21_85bkh"]
+[ext_resource type="PackedScene" path="res://scenes/components/holdable_component.tscn" id="21_85bkh"]
 [ext_resource type="PackedScene" uid="uid://dnbreg84256oh" path="res://assets/models/cardboard/squarecardboardbox.tscn" id="21_dcdn3"]
 [ext_resource type="PackedScene" uid="uid://dj8l7avbds442" path="res://assets/models/paintings/fruitpainting.tscn" id="22_6p0w1"]
 [ext_resource type="PackedScene" uid="uid://bsacakukfn6o3" path="res://scenes/components/reconstruction_component.tscn" id="22_nymjp"]
@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://bwra4ocwn3yxa" path="res://assets/models/chess/chessboard.tscn" id="27_x4bc0"]
 [ext_resource type="PackedScene" uid="uid://b3h7gb4gwfdjj" path="res://assets/models/chess/king.tscn" id="28_dfeov"]
 [ext_resource type="PackedScene" uid="uid://srdjhbg442b7" path="res://assets/models/clock/clock.tscn" id="28_yweog"]
-[ext_resource type="Material" uid="uid://y080wmdqlsp0" path="res://assets/models/chess/chesspieceblack.tres" id="29_6fg6y"]
+[ext_resource type="Material" path="res://assets/models/chess/chesspieceblack.tres" id="29_6fg6y"]
 [ext_resource type="PackedScene" uid="uid://dxm0v1x1lo4tv" path="res://assets/models/chess/pawn.tscn" id="29_coxww"]
 [ext_resource type="PackedScene" uid="uid://b63k4vmv0mlsd" path="res://assets/models/chess/queen.tscn" id="30_l5h5j"]
 [ext_resource type="PackedScene" uid="uid://02mbfsuw1lia" path="res://assets/models/chess/bishop.tscn" id="31_5wvs4"]
@@ -424,7 +424,6 @@ transform = Transform3D(-0.566694, 0, 0.823928, 0, 1, 0, -0.823928, 0, -0.566694
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/BedNote" index="2"]
 text = "NOTE TO SELF:
-
 Make sure to change the safe combination, it should be the same as the game winning move I made against Reynauld."
 
 [node name="FoyerTable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_4gsyf")]
@@ -438,11 +437,8 @@ transform = Transform3D(0.964989, -3.06076e-09, 0.26229, -3.06076e-09, 1, 2.2930
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/FoyerNote" index="2"]
 text = "Mr. Makovich,
-
 I'm reaching my breaking point with you on this, so I'll make this brief. I understand your need, but I cannot simply just give you any of the cinnabar I have right now. You do realize this is a controlled government substance now right? Not only am I running out of it myself (and trust me I NEED it to do my job unlike you), but I can't just give it out all willy nilly, especially to someone from Azbastania (no offense!).
-
 I hope you understand...
-
 Sofia"
 
 [node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/FoyerNote" instance=ExtResource("7_1j27x")]
@@ -745,7 +741,6 @@ transform = Transform3D(0.900235, -8.72172e-09, 0.435404, -8.72172e-09, 1, 3.806
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/ClockNote" index="2"]
 text = "NOTE TO SELF:
-
 Sometimes, to RELEASE some pressure, you really need to take a step back to look at the TIME."
 
 [node name="watch" parent="Props/ApartmentA3Props/Props" instance=ExtResource("44_o20k4")]
@@ -888,11 +883,8 @@ transform = Transform3D(0.976103, -2.08914e-09, -0.217309, -2.08914e-09, 1, -1.8
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/NumpadNote" index="2"]
 text = "NOTE TO SELF:
-
 All these new fangled technologies coming from advancements in alchemy have been SUPER confusing. To type letters on a \"numpad\", just remember, you have to press a number multiple times.
-
 For example, C is 111
-
 Hopefully, this helps future me out."
 
 [node name="AlchemyBook" parent="Props/ApartmentA3Props/Props" instance=ExtResource("42_mcdeh")]
@@ -934,35 +926,37 @@ transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 9.01988,
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/ChessNote" index="2"]
 text = "[center]Algebraic Chess Notation for Dummies![/center]
-
 - Each square is notated by a coordinate pair where columns have letters A through H, and rows have numbers 1 through 8 starting from the White Side (A1-H8).
 - Each piece (other than pawns) is identified by an uppercase letter that is their first letter (the exception is the Knight being N)
 - When a piece captures anther piece, you can indicate that by putting an \"x\" right before the destination
 - To distinguish two identical pieces, you may have to notate the piece's original column or row after the piece identifier, but before the destination (e.g. Nc1d3)
-
 There's a learning curve to it, but with enough time and practice, you should be able to notate any match for future reference!"
+
+[node name="DialogueComponent" type="Node3D" parent="Props/ApartmentA3Props/Props/ChessNote"]
+script = ExtResource("12_ypmo0")
+action_mode = 1
+text = "[center][color=white]It's a note about chess notation.[/color][/center]"
 
 [node name="ArrestNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
 transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 10.8864, 1.07794, -19.2216)
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/ArrestNote" index="2"]
-text = "
-[center]RECORD OF ARREST[/center]
+text = "[center]RECORD OF ARREST[/center]
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]COPY[/font][/color][/font_size][/center]
-
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
-
 [center][font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DEFENDANT: Isak Tempolev[/font][/font_size][/center]
 [center][font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DATE OF ARREST: 24/02/19XX 2:45 PM[/font][/font_size][/center]
 [center][font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DATE OF RELEASE: 26/02/19XX 5:45 PM[/font][/font_size][/center]
-
 [font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]Mr. Isak Tempolev was arrested on 24/02/19XX at 2:45 PM at the XXXX Plaza in XXX.  Mr. Tempolev has ties to the Veluvian People's Freedom Party (VPFP). VPFP Members were sighted carrying controlled alchemical substances used for terrorist bombings. Mr. Tempolev was interrogated and was found to have no involvement in any terroristic activities and released. Mr. Tempolev is still a danger to the Republic of Veluvia, but agents will continue to monitor and assess danger levels.[/font][/font_size]
-
 Chief of Homeland Security
 [font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]XXX XXX[/font][/font_size]
-
 [font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]This copy is for Mr. John Makovich of Azbastia's eyes only.[/font][/color][/font_size]
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]COPY[/font][/color][/font_size][/center]"
+
+[node name="DialogueComponent" type="Node3D" parent="Props/ApartmentA3Props/Props/ArrestNote"]
+script = ExtResource("12_ypmo0")
+action_mode = 1
+text = "[center][color=white]Seems like an important document about an arrest.[/color][/center]"
 
 [node name="ClosetNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17177, 1.04006, -17.3801)

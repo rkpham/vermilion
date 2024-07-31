@@ -36,6 +36,7 @@ var blackout_tween: Tween
 @onready var murderer_checkbox3 = $MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer3
 @onready var blackout = $Blackout
 @onready var blackout_text = $Blackout/MarginContainer/RichTextLabel
+@onready var closeup_leave_text = $CloseupLeaveText
 
 @export_multiline var end_text_1: String
 @export_multiline var end_text_2: String
@@ -283,6 +284,10 @@ func _on_murderer_3_toggled(toggled_on: bool) -> void:
 func _on_sign_button_pressed():
 	if not murderer_checkbox.button_pressed and not murderer_checkbox2.button_pressed and not murderer_checkbox3.button_pressed:
 		return
+	Game.player.frozen = true
+	Game.viewmodel.frozen = true
+	Game.capture_mouse = false
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	hide_form()
 	blackout.visible = true
 	blackout_tween = create_tween()
@@ -297,5 +302,3 @@ func _on_sign_button_pressed():
 	else:
 		end_text = end_text_3
 	blackout_text.text = end_text
-
-		

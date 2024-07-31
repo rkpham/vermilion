@@ -31,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0275105, 0)
 bones/1/rotation = Quaternion(0.000474975, -0.996525, -0.087525, 0.000474975)
 
 [node name="ShortHandAttachment" type="BoneAttachment3D" parent="clockhands" index="1"]
-transform = Transform3D(-0.999999, -0.000862881, -0.00102905, -0.00102905, 0.984689, 0.174315, 0.000862881, 0.174316, -0.984689, -0.0951508, 1.39688, 0)
+transform = Transform3D(-0.999999, -0.000862881, -0.00102905, -0.00102905, 0.984689, 0.174315, 0.000862881, 0.174316, -0.984689, 0, 0, 0)
 bone_name = "ShortHand"
 bone_idx = 1
 use_external_skeleton = true
@@ -44,7 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00473864, 0.0374768, 0)
 shape = SubResource("BoxShape3D_7ggun")
 
 [node name="LongHandAttachment" type="BoneAttachment3D" parent="clockhands" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0951508, 1.39688, 0)
 bone_name = "LongHand"
 bone_idx = 0
 use_external_skeleton = true

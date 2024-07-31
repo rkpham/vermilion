@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 			Game.ui.interact_icons.visible = true
 			ended_closeup.emit()
 			Game.player.collision.disabled = false
+			Game.ui.closeup_leave_text.hide()
 			if cursor:
 				Game.capture_mouse = true
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -37,6 +38,7 @@ func _input(event: InputEvent) -> void:
 
 func interact() -> bool:
 	if not interacting:
+		Game.ui.closeup_leave_text.show()
 		focused_puzzle_item = 0
 		interacting = true
 		Game.player.frozen = true

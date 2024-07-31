@@ -11,4 +11,5 @@ spacing_bottom = -2
 default_font = SubResource("FontVariation_odiwl")
 default_font_size = 11
 Label/colors/font_color = Color(0.101961, 0.0431373, 0, 1)
+Label/font_sizes/font_size = 11
 RichTextLabel/colors/default_color = Color(0.0823529, 0.0588235, 0.0156863, 1)
