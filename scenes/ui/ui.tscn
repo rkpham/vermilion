@@ -13,8 +13,8 @@
 [ext_resource type="Theme" uid="uid://bpvu7bw8wrncp" path="res://assets/resources/dialogue.tres" id="9_552ou"]
 [ext_resource type="Script" path="res://scenes/ui/note.gd" id="9_tna6k"]
 [ext_resource type="Script" path="res://scenes/ui/key_label.gd" id="11_n50wj"]
-[ext_resource type="Theme" uid="uid://be1b4xrv7wo86" path="res://assets/resources/form.tres" id="14_ptsr0"]
-[ext_resource type="Theme" uid="uid://c4464vj2nffa3" path="res://assets/resources/checkbox.tres" id="15_fmajr"]
+[ext_resource type="Theme" uid="uid://4r64qqa5xhoc" path="res://assets/resources/form.tres" id="14_ptsr0"]
+[ext_resource type="Theme" uid="uid://c31b6fm6gx6hg" path="res://assets/resources/checkbox.tres" id="15_fmajr"]
 
 [sub_resource type="Gradient" id="Gradient_w11qt"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0784314, 0, 0.0823529, 1)
@@ -576,7 +576,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Notepad" type="Control" parent="."]
-visible = false
 custom_minimum_size = Vector2(240, 320)
 layout_mode = 1
 anchor_left = 0.3125
@@ -661,9 +660,6 @@ Go down this list.
 - [Tab] Briefcase
 - [Shift] Sprint
 - [Scroll Wheel] Swap Use Modes", "
-[center]Common Alchemical Transmutations[/center]
-
-", "
 [center]Testimonies[/center]
 
 Ovborod Homicide Division
@@ -1017,6 +1013,7 @@ theme = ExtResource("2_7qa3h")
 script = ExtResource("11_n50wj")
 
 [node name="MurdererSelection" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

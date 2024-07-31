@@ -4,19 +4,19 @@
 [ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="2_go6en"]
 [ext_resource type="Texture2D" uid="uid://b3anp7kxoia5p" path="res://scripts/shaders/reconstruction_grad.tres" id="3_d044q"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pn5lb"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_662wr"]
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_i6iag"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_tvy2j"]
 seamless = true
 seamless_blend_skirt = 0.435
-noise = SubResource("FastNoiseLite_pn5lb")
+noise = SubResource("FastNoiseLite_662wr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qea86"]
 render_priority = 0
 shader = ExtResource("2_go6en")
 shader_parameter/stability = 0.01
 shader_parameter/opacity = 1.0
-shader_parameter/noise = SubResource("NoiseTexture3D_i6iag")
+shader_parameter/noise = SubResource("NoiseTexture3D_tvy2j")
 shader_parameter/tex = ExtResource("3_d044q")
 
 [sub_resource type="Curve" id="Curve_okhcd"]

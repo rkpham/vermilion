@@ -41,7 +41,6 @@ size = Vector3(0.0296992, 0.0252188, 0.00504102)
 
 [node name="safebutton" type="Area3D"]
 script = ExtResource("2_iiar3")
-clear_button = null
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ksh5v")
@@ -51,7 +50,7 @@ surface_material_override/0 = ExtResource("2_refpb")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4588e-05, 0, 0.00175802)
 pixel_size = 0.0001
-text = "
+text = "1
 "
 font = ExtResource("4_xn3pl")
 font_size = 74

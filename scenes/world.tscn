@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=82 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -53,7 +53,8 @@
 [ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="43_6qud8"]
 [ext_resource type="PackedScene" path="res://scenes/components/note_component.tscn" id="43_eaclq"]
 [ext_resource type="Texture2D" uid="uid://b3anp7kxoia5p" path="res://scripts/shaders/reconstruction_grad.tres" id="44_agbvw"]
-[ext_resource type="PackedScene" uid="uid://bgevhhixqt3hh" path="res://scenes/puzzle/better_safe.tscn" id="47_dktlg"]
+[ext_resource type="PackedScene" uid="uid://b0htdbskerthy" path="res://assets/models/watch/watch.tscn" id="44_o20k4"]
+[ext_resource type="PackedScene" uid="uid://855m27eobwcg" path="res://scenes/puzzle/better_safe.tscn" id="47_dktlg"]
 [ext_resource type="PackedScene" uid="uid://cod506qjqhsat" path="res://assets/models/table/smalltable.tscn" id="47_mjlm0"]
 [ext_resource type="PackedScene" uid="uid://bqcdxneqobw1l" path="res://assets/models/desk/desk.tscn" id="48_imku4"]
 [ext_resource type="PackedScene" uid="uid://dk4roakyd0p70" path="res://assets/models/bookcase/bookcasefull.tscn" id="50_xleyq"]
@@ -74,6 +75,21 @@ size = Vector3(0.2, 1.2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_oetqq"]
 size = Vector3(0.75, 0.2, 0.4)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_662wr"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_tvy2j"]
+seamless = true
+seamless_blend_skirt = 0.435
+noise = SubResource("FastNoiseLite_662wr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujnc6"]
+render_priority = 0
+shader = ExtResource("43_6qud8")
+shader_parameter/stability = 0.01
+shader_parameter/opacity = 1.0
+shader_parameter/noise = SubResource("NoiseTexture3D_tvy2j")
+shader_parameter/tex = ExtResource("44_agbvw")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmkjv"]
 size = Vector3(1.5, 0.3, 2.3)
 
@@ -82,6 +98,8 @@ size = Vector3(1.68066, 1, 1.00488)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o0if0"]
 size = Vector3(0.57666, 0.198547, 0.574158)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dj66n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xkwl5"]
 size = Vector3(0.338501, 0.519165, 0.0993652)
@@ -93,7 +111,7 @@ seamless = true
 seamless_blend_skirt = 0.435
 noise = SubResource("FastNoiseLite_pn5lb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxqyj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hepn5"]
 render_priority = 0
 shader = ExtResource("43_6qud8")
 shader_parameter/stability = 0.01
@@ -110,8 +128,19 @@ size = Vector3(1.33405, 0.244629, 1.81931)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vc5f"]
 size = Vector3(0.1, 0.126465, 0.1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5ye1"]
+render_priority = 0
+shader = ExtResource("43_6qud8")
+shader_parameter/stability = 0.01
+shader_parameter/opacity = 1.0
+shader_parameter/noise = SubResource("NoiseTexture3D_tvy2j")
+shader_parameter/tex = ExtResource("44_agbvw")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_yiqsq"]
 size = Vector3(0.05, 0.0654297, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpa2d"]
+size = Vector3(0.544479, 0.0918884, 0.384766)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nd38b"]
 size = Vector3(6.37891, 7.00684, 1)
@@ -308,6 +337,7 @@ text = "[center][color=white]The pillow looks conspicuously placed.[/color][/cen
 
 [node name="ReconstructionComponent" parent="Props/ApartmentA3Props/Props/Bed/Bed/Pillow" node_paths=PackedStringArray("optional_model") instance=ExtResource("22_nymjp")]
 transform = Transform3D(0.756105, 5.72139e-08, 0.654451, -5.72139e-08, 1, -2.1322e-08, -0.654451, -2.1322e-08, 0.756105, -0.418732, 0.0694645, 0.272458)
+reconstruction_shader = SubResource("ShaderMaterial_ujnc6")
 optional_model = NodePath("../pillow")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Bed"]
@@ -352,6 +382,7 @@ text = "[center][color=white]Looks like this note is from [color=green]Sofia[/co
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.04907e-06, 0)
 
 [node name="StoveArea" type="Area3D" parent="Props/ApartmentA3Props/Props/KitchenStuff"]
+collision_layer = 7
 script = ExtResource("5_eidxj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/KitchenStuff/StoveArea"]
@@ -464,7 +495,7 @@ surface_material_override/0 = ExtResource("29_6fg6y")
 transform = Transform3D(1, 0, 0, 0, 1, -3.38813e-21, 0, 0, 1, -0.17838, 0, 0.810582)
 
 [node name="Queen" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/queen" index="0"]
-transform = Transform3D(2.16883, 0, 5.96046e-08, 6.77626e-21, 2.16883, -1.27055e-21, -5.96046e-08, 0, 2.16883, 0.452124, 0, -0.407146)
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, -5.42101e-20, -5.96046e-08, 0, 2.16883, 0.198618, 0.192261, -1.04309)
 surface_material_override/0 = ExtResource("29_6fg6y")
 
 [node name="knight" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("32_u5h5h")]
@@ -539,7 +570,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.05879e-21, 0, 0, 1, -0.27587, 0, -0.39
 transform = Transform3D(1, 0, 0, 0, 1, -1.90582e-21, 0, 0, 1, -0.0887947, -1.19209e-07, -0.478261)
 
 [node name="Sprite3D" type="Sprite3D" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0280848, 0.192261, -0.234858)
+transform = Transform3D(1, 0, -3.55271e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0245976, 0.192261, 0.228518)
 modulate = Color(1, 1, 1, 0.560784)
 pixel_size = 0.003
 shaded = true
@@ -590,6 +621,27 @@ shaded = true
 texture_filter = 0
 texture = ExtResource("41_x1w36")
 
+[node name="ClockNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
+transform = Transform3D(0.900235, -8.72172e-09, 0.435404, -8.72172e-09, 1, 3.80642e-08, -0.435404, -3.80642e-08, 0.900235, 6.47912, 0.68693, -14.0506)
+
+[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/ClockNote" index="2"]
+text = "NOTE TO SELF:
+
+Sometimes, to RELEASE some pressure, you really need to take a step back to look at the TIME."
+
+[node name="watch" parent="Props/ApartmentA3Props/Props" instance=ExtResource("44_o20k4")]
+transform = Transform3D(0.131596, -5.98007e-09, 0.150607, -5.98007e-09, 0.2, 1.31665e-08, -0.150607, -1.31665e-08, 0.131596, 4.012, 0.701616, -19.1996)
+
+[node name="Area3D" type="Area3D" parent="Props/ApartmentA3Props/Props/watch"]
+script = ExtResource("5_eidxj")
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/watch/Area3D" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]An ornate pocketwatch. You normally can't get this kind of craftmanship here anymore.[/color][/center]"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/watch/Area3D"]
+shape = SubResource("SphereShape3D_dj66n")
+
 [node name="BurntNotepad" type="Area3D" parent="Props/ApartmentA3Props/Props" node_paths=PackedStringArray("collision")]
 transform = Transform3D(0.725386, -2.40075e-08, 0.688342, -2.40075e-08, 1, 6.01768e-08, -0.688342, -6.01768e-08, 0.725386, 8.97822, 7.84902e-07, -3.31494)
 collision_layer = 7
@@ -618,7 +670,7 @@ shape = SubResource("BoxShape3D_xkwl5")
 
 [node name="ReconstructionComponent" parent="Props/ApartmentA3Props/Props/BurntNotepad" node_paths=PackedStringArray("optional_model", "disable_collision_array") instance=ExtResource("22_nymjp")]
 transform = Transform3D(0.932526, -5.8988e-09, -0.361104, -5.8988e-09, 1, -3.15687e-08, 0.361104, 3.15687e-08, 0.932526, 5.05339, 0.893781, -5.02263)
-reconstruction_shader = SubResource("ShaderMaterial_nxqyj")
+reconstruction_shader = SubResource("ShaderMaterial_hepn5")
 optional_model = NodePath("../Book2")
 disable_collision_array = [NodePath("Area3D/CollisionShape3D")]
 
@@ -680,7 +732,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0686035, 0)
 shape = SubResource("BoxShape3D_5vc5f")
 
 [node name="ReconstructionComponent" parent="Props/ApartmentA3Props/Props/MissingQueen" node_paths=PackedStringArray("optional_model", "disable_collision_array") instance=ExtResource("22_nymjp")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.134852, 0.0596235, 8.11466)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.542703, 0.0596235, 7.88113)
+reconstruction_shader = SubResource("ShaderMaterial_m5ye1")
 optional_model = NodePath("../queen")
 disable_collision_array = [NodePath("Area3D/CollisionShape3D")]
 
@@ -695,7 +748,7 @@ disabled = true
 
 [node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/MissingQueen/ReconstructionComponent/Area3D" instance=ExtResource("7_1j27x")]
 action_mode = 1
-text = "[center][color=white]Haha! Checkmate. Take that![/color][/center]"
+text = "[center][color=white]The missing queen, I think we might be one move away from winning.[/color][/center]"
 
 [node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/MissingQueen" instance=ExtResource("7_1j27x")]
 action_mode = 1
@@ -708,19 +761,86 @@ collision = NodePath("../CollisionShape3D")
 [node name="BetterSafe" parent="Props/ApartmentA3Props/Props" instance=ExtResource("47_dktlg")]
 transform = Transform3D(-0.939639, -1.69569e-07, -0.342168, -1.69569e-07, 1, -2.99133e-08, 0.342168, 2.99133e-08, -0.939639, 10.9505, 1.02288, -19.1088)
 
+[node name="NumpadNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
+transform = Transform3D(0.976103, -2.08914e-09, -0.217309, -2.08914e-09, 1, -1.89977e-08, 0.217309, 1.89977e-08, 0.976103, 9.98721, 1.03535, -19.1292)
+
+[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/NumpadNote" index="2"]
+text = "NOTE TO SELF:
+
+All these new fangled technologies coming from advancements in alchemy have been SUPER confusing. To type letters on a \"numpad\", just remember, you have to press a number multiple times.
+
+For example, C is 111
+
+Hopefully, this helps future me out."
+
+[node name="AlchemyBook" parent="Props/ApartmentA3Props/Props" instance=ExtResource("42_mcdeh")]
+transform = Transform3D(-0.922147, -1.68039e-07, -0.38684, -1.68039e-07, 1, -3.38186e-08, 0.38684, 3.38186e-08, -0.922147, 2.75626, 0.734377, -9.20301)
+
+[node name="Area3D" type="Area3D" parent="Props/ApartmentA3Props/Props/AlchemyBook" node_paths=PackedStringArray("mesh_node")]
+transform = Transform3D(1, -2.66454e-15, 0, 5.32907e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 7
+script = ExtResource("5_eidxj")
+mesh_node = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/AlchemyBook/Area3D"]
+transform = Transform3D(1, -2.66454e-15, 0, 3.89111e-12, 1, 0, 0, 0, 1, 0.000308037, 0.0384663, -0.0019455)
+shape = SubResource("BoxShape3D_wpa2d")
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/AlchemyBook/Area3D" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]A textbook on Alchemy. Pretty common reading for most budding enthusiasts.[/color][/center]"
+
+[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/AlchemyBook/Area3D" instance=ExtResource("43_eaclq")]
+text = "[center]A Modern Approach to Alchemy, 3rd Edition. by Sofia Petrov[/center]
+
+[center][The textbook contains a brief introduction into alchemy][/center]
+
+[center][This page catches your eye][/center]
+
+[center]Destructive Transmutations and their Byproducts[/center]
+
+[center][color=red][font_size=4][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DISCLAIMER: THESE TRANSMUTATIONS SHOULD ONLY BE PERFORMED IN A SAFE EDUCATIONAL ENVIRONMENT, ANY ATTEMPT TO PERFORM THESE TRANSMUTATIONS WITHOUT PROPER APPROVAL MAY PUT YOU IN TROUBLE WITH YOUR LOCAL AUTHORITIES[/font][/font_size][/color][/center]
+
+[font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]A great way to generate lots of heat is through using a Cinnabar compound combined with a Phlogiston catalyst of any kind.[/font][/font_size]
+
+[center]Sulfur + Phlogiston = Fire + Quicksilver[/center]
+
+[font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]One thing to note, is that using this method for fire generation leaves behind Quicksilver as a large byproduct as the Sulfur in the Cinnabar reacts with the Phlogiston.[/font][/font_size]"
+
+[node name="ChessNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
+transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 9.01988, 0.888416, -11.9698)
+
+[node name="NoteComponent" parent="Props/ApartmentA3Props/Props/ChessNote" index="2"]
+text = "[center]Algebraic Chess Notation for Dummies![/center]
+
+- Each square is notated by a coordinate pair where columns have letters A through H, and rows have numbers 1 through 8 starting from the White Side (A1-H8).
+- Each piece (other than pawns) is identified by an uppercase letter that is their first letter (the exception is the Knight being N)
+- When a piece captures anther piece, you can indicate that by putting an \"x\" right before the destination
+- To distinguish two identical pieces, you may have to notate the piece's original column or row after the piece identifier, but before the destination (e.g. Nc1d3)
+
+There's a learning curve to it, but with enough time and practice, you should be able to notate any match for future reference!"
+
 [node name="ArrestNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
 transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 10.8864, 1.07794, -19.2216)
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/ArrestNote" index="2"]
-text = "[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
-[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+text = "
+[center]RECORD OF ARREST[/center]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]COPY[/font][/color][/font_size][/center]
+
 [center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
 
-[center][bold]DEFENDANT:[/bold] Isak Tempolev[/center]
-[center][font_size=5][bold]DATE OF ARREST:[/bold] 24/02/19▮▮ 2:45 PM[/font_size][/center]
-[center][font_size=5][bold]Date of Release: 26/02/19▮▮ 5:35 PM[/bold][/font_size][/center]
+[center][font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DEFENDANT: Isak Tempolev[/font][/font_size][/center]
+[center][font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DATE OF ARREST: 24/02/19▮▮ 2:45 PM[/font][/font_size][/center]
+[center][font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]DATE OF RELEASE: 26/02/19▮▮ 5:45 PM[/font][/font_size][/center]
 
-[bold][/bold]"
+[font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]Mr. Isak Tempolev was arrested on 24/02/19▮▮ at 2:45 PM at the ▮▮▮▮ ▮▮▮▮ Plaza in ▮▮▮▮.  Mr. Tempolev has ties to the Veluvian People's Freedom Party (VPFP). VPFP Members were sighted carrying controlled alchemical substances used for terrorist bombings. Mr. Tempolev was interrogated and was found to have no involvement in any terroristic activities and released. Mr. Tempolev is still a danger to the Republic of Veluvia, but agents will continue to monitor and assess danger levels.[/font][/font_size]
+
+Chief of Homeland Security
+[font_size=5][font=res://assets/resources/retro-pixel-petty-5x5.ttf]▮▮▮▮ ▮▮▮▮[/font][/font_size]
+
+[font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]This copy is for Mr. John Makovich of Azbastia's eyes only.[/font][/color][/font_size]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]COPY[/font][/color][/font_size][/center]"
 
 [node name="Effects" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -744,6 +864,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0
 [node name="DoorComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe2/Door" index="2"]
 locked = true
 
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe2/Door" index="4" instance=ExtResource("7_1j27x")]
+text = "[center][color=white]According to the floor plan, this should be the bathroom, but the door doesn't seem to want to open.[/color][/center]"
+
 [node name="Doorframe3" parent="Props/ApartmentA3Props/Doorframes" instance=ExtResource("3_j0moq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7.5)
 
@@ -759,6 +882,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14.5)
 [node name="DoorComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe6/Door" index="2"]
 locked = true
 key_name = "3-A3 Closet Key"
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Doorframes/Doorframe6/Door" index="4" instance=ExtResource("7_1j27x")]
+action_mode = 1
+text = "[center][color=white]This should be the door to storage, looks like [color=green]Mr. Makovich[/color] must've locked it up though.[/color][/center]"
 
 [node name="Sprite3D" type="Sprite3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -9.49742, 0.0116732, -2.493)
@@ -909,8 +1036,13 @@ autoplay = true
 [editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/knight2"]
 [editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/rook"]
 [editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/rook2"]
+[editable path="Props/ApartmentA3Props/Props/ClockNote"]
+[editable path="Props/ApartmentA3Props/Props/watch"]
 [editable path="Props/ApartmentA3Props/Props/BurntNotepad/Book"]
 [editable path="Props/ApartmentA3Props/Props/BurntNotepad/Book2"]
+[editable path="Props/ApartmentA3Props/Props/NumpadNote"]
+[editable path="Props/ApartmentA3Props/Props/AlchemyBook"]
+[editable path="Props/ApartmentA3Props/Props/ChessNote"]
 [editable path="Props/ApartmentA3Props/Props/ArrestNote"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door"]

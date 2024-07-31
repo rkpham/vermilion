@@ -4,9 +4,9 @@ extends Node3D
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var safe_buttons: Node3D = $safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons
 @onready var label: Label3D = $safe/Armature/Skeleton3D/BoneAttachment3D/Label3D
-@onready var password: String = "9933877"
 @onready var open_sound = $OpenSound
 @onready var click_sound = $ClickSound
+@export var password: String = "7799338"
 
 func _ready():
 	for button in safe_buttons.get_children():
@@ -32,11 +32,11 @@ func _get_number(number: int, submit: bool, clear: bool) -> void:
 			open_sound.play()
 		else:
 			label.modulate = Color(1.0, 0.0, 0.0)
-	elif label.text.length() == 7:
-		label.text = label.text.substr(1) + "%d" % number
-		label.modulate = Color(1.0, 1.0, 1.0)
 	elif clear:
 		label.text = ""
+		label.modulate = Color(1.0, 1.0, 1.0)
+	elif label.text.length() == 7:
+		label.text = label.text.substr(1) + "%d" % number
 		label.modulate = Color(1.0, 1.0, 1.0)
 	else:
 		label.text += "%d" % number

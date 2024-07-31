@@ -4,8 +4,8 @@
 
 [sub_resource type="FontVariation" id="FontVariation_odiwl"]
 base_font = ExtResource("1_pc87b")
-spacing_top = -6
-spacing_bottom = -6
+spacing_top = -2
+spacing_bottom = -2
 
 [resource]
 default_font = SubResource("FontVariation_odiwl")

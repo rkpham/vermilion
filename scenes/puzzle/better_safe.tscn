@@ -69,70 +69,58 @@ transform = Transform3D(0.999999, 0.000949948, -0.000949046, -0.000949046, 0.999
 
 [node name="safebutton" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159288, 0.224593, 0.344587)
-clear_button = false
 
 [node name="safebutton2" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.224593, 0.344587)
 number = 2
-clear_button = false
 additional_text = "ABC"
 
 [node name="safebutton3" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227092, 0.224593, 0.344587)
 number = 3
-clear_button = false
 additional_text = "DEF"
 
 [node name="safebutton4" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159288, 0.199549, 0.344587)
 number = 4
-clear_button = false
 additional_text = "GHI"
 
 [node name="safebutton5" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.199549, 0.344587)
 number = 5
-clear_button = false
 additional_text = "JKL"
 
 [node name="safebutton6" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227092, 0.199549, 0.344587)
 number = 6
-clear_button = false
 additional_text = "MNO"
 
 [node name="safebutton7" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159288, 0.174258, 0.344587)
 number = 7
-clear_button = false
 additional_text = "PQRS"
 
 [node name="safebutton8" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.174258, 0.344587)
 number = 8
-clear_button = false
 additional_text = "TUV"
 
 [node name="safebutton9" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227092, 0.174258, 0.344587)
 number = 9
-clear_button = false
 additional_text = "WXYZ"
 
 [node name="safebutton0" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193861, 0.151659, 0.344587)
 number = 0
-clear_button = false
 
 [node name="safebutton#" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227821, 0.151659, 0.344587)
 number = 0
 submit_button = true
-clear_button = false
 
 [node name="safebuttonC" parent="safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons" instance=ExtResource("2_qtvy7")]
 transform = Transform3D(1, -6.77628e-21, 2.63678e-16, 1.31836e-16, 1, -1.31839e-16, -1.31839e-16, 1.31839e-16, 1, 0.1596, 0.152757, 0.34796)
-number = 7
 clear_button = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
