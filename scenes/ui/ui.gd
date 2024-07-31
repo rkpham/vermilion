@@ -175,6 +175,8 @@ func show_note(text: String) -> void:
 		note_tween.finished.emit()
 		note_tween.stop()
 	
+	Game.capture_mouse = false
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	note.show()
 	Game.player.frozen = true
 	interact_icons.visible = false
@@ -193,6 +195,7 @@ func hide_note() -> void:
 		note_tween.finished.emit()
 		note_tween.stop()
 	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	note_tween = create_tween()
 	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	note_tween.tween_property(note, "position", Vector2(200, 400), 0.5)
