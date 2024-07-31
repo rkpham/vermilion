@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c13wlgg455oma"
-path.s3tc="res://.godot/imported/veluvia.png-1bc3f1b73c8c7a063ff7ff1ec4c9a807.s3tc.ctex"
+uid="uid://csjav1px1ih0a"
+path.s3tc="res://.godot/imported/x.png-be0e9d155a8a73abb879de2aae448a2a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/icons/veluvia.png"
-dest_files=["res://.godot/imported/veluvia.png-1bc3f1b73c8c7a063ff7ff1ec4c9a807.s3tc.ctex"]
+source_file="res://assets/textures/crack/x.png"
+dest_files=["res://.godot/imported/x.png-be0e9d155a8a73abb879de2aae448a2a.s3tc.ctex"]
 
 [params]
 

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdrcne8dgy71o"]
+[gd_scene load_steps=5 format=3 uid="uid://cdrcne8dgy71o"]
 
 [ext_resource type="PackedScene" uid="uid://n8b6v6qwp0c" path="res://assets/models/couch/couch.glb" id="1_sype5"]
 [ext_resource type="Material" uid="uid://c2plt7sq36a47" path="res://assets/models/clock/couchcloth.tres" id="2_4t0ul"]
 [ext_resource type="Material" uid="uid://c3aosq3pkduth" path="res://assets/models/couch/couch.tres" id="2_jpgpg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsqwn"]
+size = Vector3(0.871948, 0.49707, 2.87976)
 
 [node name="couch" instance=ExtResource("1_sype5")]
 
@@ -11,3 +14,9 @@ surface_material_override/0 = ExtResource("2_jpgpg")
 
 [node name="Cloth" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_4t0ul")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0640259, 0.251465, 0.00201416)
+shape = SubResource("BoxShape3D_nsqwn")

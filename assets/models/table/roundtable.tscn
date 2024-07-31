@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c71vdb4k8ej11"]
+[gd_scene load_steps=4 format=3 uid="uid://c71vdb4k8ej11"]
 
 [ext_resource type="PackedScene" uid="uid://ekxnfjtmyawy" path="res://assets/models/table/roundtable.glb" id="1_t45o7"]
 [ext_resource type="Material" uid="uid://bxqkdut0v2swr" path="res://assets/models/table/roundtable.tres" id="2_yb70w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tvr06"]
+height = 0.0168306
+radius = 1.06206
 
 [node name="roundtable" instance=ExtResource("1_t45o7")]
 
 [node name="Table" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_yb70w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 0)
+shape = SubResource("CylinderShape3D_tvr06")

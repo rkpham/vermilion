@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=53 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -30,9 +30,20 @@
 [ext_resource type="PackedScene" uid="uid://benpnomafosb6" path="res://assets/models/candles/candle.tscn" id="24_hapgs"]
 [ext_resource type="PackedScene" uid="uid://cdrcne8dgy71o" path="res://assets/models/couch/couch.tscn" id="25_uv87g"]
 [ext_resource type="PackedScene" uid="uid://cn47bbjngb2ds" path="res://assets/models/table/recttable.tscn" id="26_4gsyf"]
+[ext_resource type="PackedScene" uid="uid://c71vdb4k8ej11" path="res://assets/models/table/roundtable.tscn" id="26_h7xck"]
 [ext_resource type="PackedScene" uid="uid://dulpbx03pm5xi" path="res://assets/models/candles/candlegroup.tscn" id="27_vgra5"]
+[ext_resource type="PackedScene" uid="uid://bwra4ocwn3yxa" path="res://assets/models/chess/chessboard.tscn" id="27_x4bc0"]
+[ext_resource type="PackedScene" uid="uid://b3h7gb4gwfdjj" path="res://assets/models/chess/king.tscn" id="28_dfeov"]
 [ext_resource type="PackedScene" uid="uid://srdjhbg442b7" path="res://assets/models/clock/clock.tscn" id="28_yweog"]
+[ext_resource type="Material" uid="uid://y080wmdqlsp0" path="res://assets/models/chess/chesspieceblack.tres" id="29_6fg6y"]
+[ext_resource type="PackedScene" uid="uid://dxm0v1x1lo4tv" path="res://assets/models/chess/pawn.tscn" id="29_coxww"]
+[ext_resource type="PackedScene" uid="uid://b63k4vmv0mlsd" path="res://assets/models/chess/queen.tscn" id="30_l5h5j"]
+[ext_resource type="PackedScene" uid="uid://02mbfsuw1lia" path="res://assets/models/chess/bishop.tscn" id="31_5wvs4"]
+[ext_resource type="PackedScene" uid="uid://m3v648rtru00" path="res://assets/models/chess/rook.tscn" id="31_kgcll"]
 [ext_resource type="PackedScene" uid="uid://cf5pq1c8qptqb" path="res://scenes/objects/note.tscn" id="32_hlhsm"]
+[ext_resource type="PackedScene" uid="uid://d2cfvix3v6vk4" path="res://assets/models/chess/knight.tscn" id="32_u5h5h"]
+[ext_resource type="Texture2D" uid="uid://csjav1px1ih0a" path="res://assets/textures/crack/x.png" id="35_avmk0"]
+[ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="36_k8c0p"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -52,6 +63,9 @@ size = Vector3(0.75, 0.2, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmkjv"]
 size = Vector3(1.5, 0.3, 2.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0if0"]
+size = Vector3(0.57666, 0.198547, 0.574158)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nd38b"]
 size = Vector3(6.37891, 7.00684, 1)
@@ -180,6 +194,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.9955
 [node name="couch" parent="Props/ApartmentA3Props/Props" instance=ExtResource("25_uv87g")]
 transform = Transform3D(-0.776355, 0, -0.630296, 0, 1, 0, 0.630296, 0, -0.776355, 1.82958, 1.28601e-06, -9.01629)
 
+[node name="couch2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("25_uv87g")]
+transform = Transform3D(0.0134567, -1.43433e-07, 0.99991, 6.90476e-08, 1, 1.42517e-07, -0.99991, 6.71235e-08, 0.0134567, 4.5409, 1.0462e-06, -13.9443)
+
+[node name="Cloth" parent="Props/ApartmentA3Props/Props/couch2" index="1"]
+transform = Transform3D(0.831895, -0.207213, -0.210253, 0.179015, 0.985496, -0.0222966, 0.18292, -0.0220792, 0.978022, 0.049695, 1.47854, 0.0399737)
+visible = false
+
 [node name="recttable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_4gsyf")]
 transform = Transform3D(0.651185, 0, -0.758919, 0, 1, 0, 0.758919, 0, 0.651185, 2.89639, 1.28601e-06, -10.0067)
 
@@ -190,7 +211,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.8568
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77979, 0.734377, -10.4139)
 
 [node name="clock" parent="Props/ApartmentA3Props/Props" instance=ExtResource("28_yweog")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.78377, 8.09175e-07, -14.2848)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.03131, 9.18239e-07, -14.2848)
 
 [node name="Painting" type="Area3D" parent="Props/ApartmentA3Props/Props" node_paths=PackedStringArray("collision", "mesh_node")]
 transform = Transform3D(1, 1.29706e-09, 1.50035e-08, 1.29707e-09, 0.985163, -0.17162, -1.50035e-08, 0.17162, 0.985163, 0.568086, 1.9474, -11.1896)
@@ -269,7 +290,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50839, 0.0242107, -6.96611)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07045, 0.791475, -6.75702)
 
 [node name="FoyerNote" parent="Props/ApartmentA3Props/Props" instance=ExtResource("32_hlhsm")]
-transform = Transform3D(0.964989, -3.06076e-09, 0.26229, -3.06076e-09, 1, 2.29301e-08, -0.26229, -2.29301e-08, 0.964989, 2.52153, 0.766026, -6.80307)
+transform = Transform3D(0.964989, -3.06076e-09, 0.26229, -3.06076e-09, 1, 2.29301e-08, -0.26229, -2.29301e-08, 0.964989, 2.68154, 0.766026, -6.80309)
 
 [node name="NoteComponent" parent="Props/ApartmentA3Props/Props/FoyerNote" index="2"]
 text = "Mr. Makovich,
@@ -286,6 +307,204 @@ text = "[center][color=white]Looks like this note is from [color=green]Sofia[/co
 
 [node name="KitchenStuff" parent="Props/ApartmentA3Props/Props" instance=ExtResource("7_yabix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.04907e-06, 0)
+
+[node name="roundtable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_h7xck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8283, 1.24863e-06, -11.0969)
+
+[node name="chair3" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
+transform = Transform3D(0.916216, -7.32464e-09, -0.400685, -7.32464e-09, 1, -3.5029e-08, 0.400685, 3.5029e-08, 0.916216, 9.64806, 0.00662054, -10.4681)
+
+[node name="chair4" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
+transform = Transform3D(-0.436394, -1.25574e-07, 0.899756, -1.25574e-07, 1, 7.86592e-08, -0.899756, -7.86592e-08, -0.436394, 8.1914, 0.00662053, -11.9648)
+
+[node name="Chessboard" type="StaticBody3D" parent="Props/ApartmentA3Props/Props" node_paths=PackedStringArray("collision", "mesh_node")]
+transform = Transform3D(-0.506184, -8.74228e-08, -0.862425, -4.42521e-08, 1, -7.53956e-08, 0.862425, 7.10543e-15, -0.506184, 8.86512, 0.888416, -11.1342)
+collision_layer = 7
+script = ExtResource("5_eidxj")
+collision = NodePath("CollisionShape3D")
+mesh_node = NodePath("chessboard")
+
+[node name="chessboard" parent="Props/ApartmentA3Props/Props/Chessboard" instance=ExtResource("27_x4bc0")]
+transform = Transform3D(1, 0, 0, 4.23516e-22, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="black" type="Node3D" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.11758e-22, 0, 0, 1, 0, 0, 0)
+
+[node name="king" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("28_dfeov")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.27055e-21, 0, 0, 1, 0.163456, 0.192261, -0.231393)
+
+[node name="King" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/king" index="0"]
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.27055e-21, 0, 0, 1, -0.232195, 0.192261, -0.0978203)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.11758e-21, 0, 0, 1, -0.164668, 0.192261, -0.167793)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn2" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn8" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.96462e-21, 0, 0, 1, -0.0366602, 0.192261, -0.0329323)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn8" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn3" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.96462e-21, 0, 0, 1, -0.098196, 0.192261, -0.168007)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn3" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn4" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -5.92923e-21, 0, 0, 1, 0.25345, 0, 0.580205)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn4" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn5" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -6.77626e-21, 0, 0, 1, 0.204045, 0, 0.361219)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn5" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn6" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -7.6233e-21, 0, 0, 1, 0.431004, 0, 0.419999)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn6" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="pawn7" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.47033e-21, 0, 0, 1, 0.511861, 0, 0.334104)
+
+[node name="Pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn7" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 0, 2.16883, 4.23516e-22, -5.96046e-08, 0, 2.16883, 0, 0, 0)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="bishop" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("31_5wvs4")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.38813e-21, 0, 0, 1, -0.0324545, 0.192261, 0.0912676)
+
+[node name="Bishoop" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/bishop" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 6.77626e-21, 2.16883, -1.27055e-21, -5.96046e-08, 0, 2.16883, 0.191773, 0, -0.0547485)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="bishop2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("31_5wvs4")]
+transform = Transform3D(1, 0, 0, 0, 1, -4.65868e-21, 0, 0, 1, 0.136831, 0, 0.36887)
+
+[node name="Bishoop" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/bishop2" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 6.77626e-21, 2.16883, -1.27055e-21, -5.96046e-08, 0, 2.16883, 0.191773, 0, -0.0547485)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="queen" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("30_l5h5j")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.38813e-21, 0, 0, 1, -0.17838, 0, 0.810582)
+
+[node name="Queen" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/queen" index="0"]
+transform = Transform3D(2.16883, 0, 5.96046e-08, 6.77626e-21, 2.16883, -1.27055e-21, -5.96046e-08, 0, 2.16883, 0.452124, 0, -0.407146)
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="knight" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("32_u5h5h")]
+transform = Transform3D(0.315748, -4.8619e-15, 0.948843, -4.8619e-15, 1, 6.74193e-15, -0.948843, -6.74194e-15, 0.315748, -0.170035, 0.192261, -0.102062)
+
+[node name="Knight" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/knight" index="0"]
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="knight2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("32_u5h5h")]
+transform = Transform3D(0.315748, -4.8619e-15, 0.948843, -4.8619e-15, 1, 6.74193e-15, -0.948843, -6.74194e-15, 0.315748, -0.0119333, 0, 0.344691)
+
+[node name="Knight" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/knight2" index="0"]
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="rook" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("31_kgcll")]
+transform = Transform3D(1, 0, 0, 0, 1, -4.23516e-21, 0, 0, 1, 0.447419, 0, 0.568417)
+
+[node name="Rook" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/rook" index="0"]
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="rook2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black" instance=ExtResource("31_kgcll")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.38813e-21, 0, 0, 1, 0.616927, 0, 0.349549)
+
+[node name="Rook" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/rook2" index="0"]
+surface_material_override/0 = ExtResource("29_6fg6y")
+
+[node name="white" type="Node3D" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard"]
+
+[node name="knight" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("32_u5h5h")]
+transform = Transform3D(0.045363, -6.7831e-15, -0.998971, -6.7831e-15, 1, -7.09811e-15, 0.998971, 7.09811e-15, 0.045363, 0.098711, 0.192261, 0.156091)
+
+[node name="knight2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("32_u5h5h")]
+transform = Transform3D(0.952987, 0.300651, -0.0377759, -0.0107422, -0.091066, -0.995788, -0.302825, 0.949377, -0.0835549, -0.391163, 0.0185542, -0.295845)
+
+[node name="rook" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("31_kgcll")]
+transform = Transform3D(1, 0, 0, 2.5411e-21, 1, -2.32934e-21, 0, 0, 1, 0.160341, 0.192261, -0.0355186)
+
+[node name="rook2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("31_kgcll")]
+transform = Transform3D(1, 0, 0, 2.5411e-21, 1, -3.17637e-21, 0, 0, 1, -0.49244, 0, -0.160625)
+
+[node name="king" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("28_dfeov")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.5411e-21, 0, 0, 1, -0.174525, 0.192261, 0.233699)
+
+[node name="pawn" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.48231e-21, 0, 0, 1, -0.240295, 0.192261, 0.102068)
+
+[node name="pawn2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.96462e-21, 0, 0, 1, -0.172607, 0.192261, 0.163477)
+
+[node name="pawn3" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.81165e-21, 0, 0, 1, -0.0982389, 0.192261, 0.0931768)
+
+[node name="pawn4" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -4.87044e-21, 0, 0, 1, -0.428383, 0, -0.135915)
+
+[node name="pawn5" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(0.226374, -0.861731, 0.454066, 0.861731, -0.0401316, -0.505777, 0.454066, 0.505777, 0.733495, -0.366643, 0.0252055, -0.0665379)
+
+[node name="pawn6" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -5.29396e-21, 0, 0, 1, -0.507939, 0, -0.286982)
+
+[node name="pawn7" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(1, 0, 0, 0, 1, -5.71747e-21, 0, 0, 1, -0.359601, 0, -0.132653)
+
+[node name="pawn8" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("29_coxww")]
+transform = Transform3D(-0.44763, -0.529419, -0.720655, 0.861731, -0.0401316, -0.505777, 0.238846, -0.847411, 0.47418, -0.361982, 0.0252054, -0.454773)
+
+[node name="bishop" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("31_5wvs4")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.05879e-21, 0, 0, 1, -0.27587, 0, -0.393792)
+
+[node name="bishop2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("31_5wvs4")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.90582e-21, 0, 0, 1, -0.0887947, -1.19209e-07, -0.478261)
+
+[node name="Sprite3D" type="Sprite3D" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0280848, 0.192261, -0.234858)
+modulate = Color(1, 1, 1, 0.560784)
+pixel_size = 0.003
+shaded = true
+texture_filter = 0
+texture = ExtResource("35_avmk0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/Chessboard"]
+transform = Transform3D(1, 0, 0, 2.10064e-19, 1, 0, 0, 0, 1, 0.000725746, 0.0929871, 0.000894547)
+shape = SubResource("BoxShape3D_o0if0")
+
+[node name="CloseUpComponent" parent="Props/ApartmentA3Props/Props/Chessboard" instance=ExtResource("36_k8c0p")]
+
+[node name="Camera3D" type="Camera3D" parent="Props/ApartmentA3Props/Props/Chessboard/CloseUpComponent"]
+transform = Transform3D(1, 0, 1.77636e-15, 2.11758e-21, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.658532, 0)
+
+[node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/Chessboard" instance=ExtResource("7_1j27x")]
+transform = Transform3D(1, 0, 0, 4.23516e-22, 1, 0, 0, 0, 1, 0, 0, 0)
+action_mode = 1
+text = "[center][color=white]A chess game. Looks like a piece is missing though.[/color][/center]"
 
 [node name="Effects" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -434,9 +653,27 @@ autoplay = true
 [editable path="Props/ApartmentA2Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA2Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA2Props/Doorframes/Doorframe/Door/Door"]
+[editable path="Props/ApartmentA3Props/Props/couch2"]
 [editable path="Props/ApartmentA3Props/Props/Bed/Bed"]
 [editable path="Props/ApartmentA3Props/Props/BedNote"]
+[editable path="Props/ApartmentA3Props/Props/candle"]
 [editable path="Props/ApartmentA3Props/Props/FoyerNote"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/king"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn2"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn8"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn3"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn4"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn5"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn6"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/pawn7"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/bishop"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/bishop2"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/queen"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/knight"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/knight2"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/rook"]
+[editable path="Props/ApartmentA3Props/Props/Chessboard/chessboard/black/rook2"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door"]
 [editable path="Props/ApartmentA3Props/Doorframes/Doorframe/Door/Door"]

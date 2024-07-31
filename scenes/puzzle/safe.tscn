@@ -26,7 +26,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0fk73")
 
 [node name="CloseUpComponent" parent="." node_paths=PackedStringArray("puzzle_items") instance=ExtResource("2_e2hu2")]
-puzzle_items = [NodePath(""), NodePath(""), NodePath("")]
+puzzle_items = [null, null, null]
 
 [node name="Camera3D" type="Camera3D" parent="CloseUpComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0, 0.481)

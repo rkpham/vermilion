@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b63k4vmv0mlsd"]
 
 [ext_resource type="PackedScene" uid="uid://6mmcueh7xqi" path="res://assets/models/chess/queen.glb" id="1_lenvr"]
-[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiece.tres" id="2_2tbfk"]
+[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiecewhite.tres" id="2_2tbfk"]
 
 [node name="queen" instance=ExtResource("1_lenvr")]
 

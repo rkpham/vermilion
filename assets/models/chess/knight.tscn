@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2cfvix3v6vk4"]
 
 [ext_resource type="PackedScene" uid="uid://cy7pfjkuapgog" path="res://assets/models/chess/knight.glb" id="1_aixsr"]
-[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiece.tres" id="2_axccf"]
+[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiecewhite.tres" id="2_axccf"]
+
 
 [node name="knight" instance=ExtResource("1_aixsr")]
 

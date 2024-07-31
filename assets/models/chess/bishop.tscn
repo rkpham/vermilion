@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://02mbfsuw1lia"]
 
 [ext_resource type="PackedScene" uid="uid://dfjkaua3vantk" path="res://assets/models/chess/bishop.glb" id="1_erva5"]
-[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiece.tres" id="2_glve4"]
+[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiecewhite.tres" id="2_glve4"]
+
 
 [node name="bishop" instance=ExtResource("1_erva5")]
 

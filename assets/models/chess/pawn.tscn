@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxm0v1x1lo4tv"]
 
 [ext_resource type="PackedScene" uid="uid://b0kbdrqrbvvgg" path="res://assets/models/chess/pawn.glb" id="1_yymsu"]
-[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiece.tres" id="2_r1jbv"]
+[ext_resource type="Material" uid="uid://bxy3yff7asfxm" path="res://assets/models/chess/chesspiecewhite.tres" id="2_r1jbv"]
+
 
 [node name="pawn" instance=ExtResource("1_yymsu")]
 

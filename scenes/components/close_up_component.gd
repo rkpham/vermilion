@@ -16,6 +16,7 @@ func _input(event: InputEvent) -> void:
 			Game.player.cam.cam_copy = null
 			Game.player.frozen = false
 			Game.viewmodel.frozen = false
+			Game.ui.interact_icons.visible = true
 		if event.is_action_pressed("move_left"):
 			if focused_puzzle_item > 0:
 				focused_puzzle_item -= 1
@@ -32,6 +33,7 @@ func interact() -> bool:
 		Game.player.cam.cam_copy = cam
 		Game.viewmodel.frozen = true
 		Game.player.footsteps.stepping = false
+		Game.ui.interact_icons.visible = false
 	return true
 
 

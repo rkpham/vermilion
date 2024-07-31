@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://y080wmdqlsp0"]
+
+[ext_resource type="Texture2D" uid="uid://bsbdtc7v8w0fh" path="res://assets/models/chess/ChessPiece_BaseColor.png" id="1_wtxqb"]
+[ext_resource type="Texture2D" uid="uid://crn1a6375p0ed" path="res://assets/models/chess/ChessPiece_Normal.png" id="2_mdl5i"]
+[ext_resource type="Texture2D" uid="uid://f024ywn2nqmj" path="res://assets/models/chess/ChessPiece_Roughness.png" id="3_a2imk"]
+
+[resource]
+albedo_color = Color(0.212305, 0.212305, 0.212305, 1)
+albedo_texture = ExtResource("1_wtxqb")
+roughness_texture = ExtResource("3_a2imk")
+normal_enabled = true
+normal_texture = ExtResource("2_mdl5i")

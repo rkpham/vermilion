@@ -10,6 +10,7 @@ radial_segments = 16
 rings = 1
 
 [sub_resource type="SystemFont" id="SystemFont_2tg2j"]
+subpixel_positioning = 0
 
 [node name="SafeDial" type="Node3D"]
 script = ExtResource("1_3jghn")

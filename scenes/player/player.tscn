@@ -63,6 +63,7 @@ footsteps = NodePath("../Footsteps")
 view_bob_amount = 0.03
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCam"]
+current = true
 fov = 70.0
 near = 0.001
 far = 1000.0
@@ -89,7 +90,7 @@ libraries = {
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-light_energy = 0.01
+light_energy = 0.05
 omni_range = 4.0
 
 [editable path="Footsteps"]
