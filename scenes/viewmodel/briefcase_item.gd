@@ -10,6 +10,8 @@ var debounce: float = 0.0
 @export var item_type: Game.ItemType = Game.ItemType.NOTEPAD
 
 @onready var hover_light: OmniLight3D = $HoverLight
+@onready var sound: AudioStreamPlayer = $Sound
+
 
 signal item_used(item)
 
@@ -19,16 +21,19 @@ func _on_mouse_entered() -> void:
 	
 	if hover_tween:
 		hover_tween.stop()
-		
+	
+	if sound:
+		sound.play()
+	
 	match item_type:
-			Game.ItemType.NOTEPAD:
-				Game.ui.show_dialogue("[center][color=white]Notepad[/color][/center]")
-			Game.ItemType.JOURNAL:
-				Game.ui.show_dialogue("[center][color=white]Journal[/color][/center]")
-			Game.ItemType.RECONSTRUCTOR:
-				Game.ui.show_dialogue("[center][color=white]Reconstructor[/color][/center]")
-			Game.ItemType.KEYRING:
-				Game.ui.show_dialogue("[center][color=white]Keyring[/color][/center]")
+		Game.ItemType.NOTEPAD:
+			Game.ui.show_dialogue("[center][color=white]Notepad[/color][/center]")
+		Game.ItemType.JOURNAL:
+			Game.ui.show_dialogue("[center][color=white]Journal[/color][/center]")
+		Game.ItemType.RECONSTRUCTOR:
+			Game.ui.show_dialogue("[center][color=white]Reconstructor[/color][/center]")
+		Game.ItemType.KEYRING:
+			Game.ui.show_dialogue("[center][color=white]Keyring[/color][/center]")
 				
 	hover_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	hover_tween.tween_property(item_model, "position", hover_position, 0.2)
@@ -78,4 +83,3 @@ func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal:
 				_on_mouse_exited()
 				Game.viewmodel.frozen = true
 				Game.viewmodel.keyring_shown = true
-				

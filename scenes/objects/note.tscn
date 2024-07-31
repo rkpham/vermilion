@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_06in2"]
 [ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="2_1n58n"]
-[ext_resource type="PackedScene" path="res://scenes/components/note_component.tscn" id="3_vlgnw"]
+[ext_resource type="PackedScene" uid="uid://bxe0s08x1ou1r" path="res://scenes/components/note_component.tscn" id="3_vlgnw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bsj3n"]
 size = Vector3(0.2, 0.05, 0.3)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bexruyiyhhkyk"]
+[gd_scene load_steps=30 format=3 uid="uid://bexruyiyhhkyk"]
 
 [ext_resource type="Script" path="res://scenes/viewmodel/view_model.gd" id="1_pmnb7"]
 [ext_resource type="PackedScene" uid="uid://kc143kogfxww" path="res://assets/models/briefcase/briefcase.tscn" id="1_troln"]
@@ -8,10 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://ca2wymjwsx0cr" path="res://assets/models/journal/journal.tscn" id="5_cpbrx"]
 [ext_resource type="PackedScene" uid="uid://8t716aqtkoaa" path="res://assets/models/keys/keyring.tscn" id="5_i3nhx"]
 [ext_resource type="AudioStream" uid="uid://cipgfhuwb7glo" path="res://assets/audio/sfx/briefcaseopen.ogg" id="5_t0qvq"]
+[ext_resource type="AudioStream" uid="uid://bhpft0lttnvty" path="res://assets/audio/sfx/keypickup.ogg" id="6_ke7sn"]
 [ext_resource type="AudioStream" uid="uid://d0m3yhkyouo1x" path="res://assets/audio/sfx/briefcaseclose.ogg" id="6_q8jn2"]
 [ext_resource type="Script" path="res://scenes/viewmodel/keyring.gd" id="7_bk0uh"]
 [ext_resource type="PackedScene" uid="uid://t2eo56jpovmp" path="res://assets/models/keys/stairkey.tscn" id="9_1rgs5"]
+[ext_resource type="AudioStream" uid="uid://g5f6omhlcx07" path="res://assets/audio/sfx/flapoff.mp3" id="10_le676"]
 [ext_resource type="PackedScene" uid="uid://b1wva8v70xav3" path="res://scenes/viewmodel/key.tscn" id="10_xol8i"]
+[ext_resource type="AudioStream" uid="uid://3hcb5lqhjbjr" path="res://assets/audio/sfx/clink.wav" id="13_ku0ru"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nety3"]
 size = Vector3(0.516266, 0.283203, 0.117188)
@@ -323,11 +326,6 @@ script = ExtResource("1_pmnb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.868, -5, 0)
 visible = false
 
-[node name="Skeleton3D" parent="Briefcase/Armature" index="0"]
-bones/2/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, -1.43438e-06)
-bones/3/rotation = Quaternion(0.999904, 2.86875e-06, -0.0138881, 8.81324e-16)
-bones/4/rotation = Quaternion(1, -5.96047e-08, -9.23866e-15, -7.54979e-08)
-
 [node name="BottomAttachment" type="BoneAttachment3D" parent="Briefcase"]
 bone_name = "BottomBriefcase"
 bone_idx = 0
@@ -347,6 +345,9 @@ item_type = 3
 transform = Transform3D(0.999994, 5.06639e-07, -2.4576e-06, -3.33786e-06, 1.00001, 1.00142e-06, 1.22438e-05, 6.12351e-06, 1.00001, -0.0148466, 2.38419e-07, -0.015137)
 shape = SubResource("BoxShape3D_nety3")
 
+[node name="Sound" type="AudioStreamPlayer" parent="Briefcase/BottomAttachment/ReconstructorPosition/BriefcaseItem"]
+stream = ExtResource("13_ku0ru")
+
 [node name="sprayer" parent="Briefcase/BottomAttachment/ReconstructorPosition" instance=ExtResource("4_lpqe5")]
 transform = Transform3D(1, -1.49012e-07, -1.49012e-08, -3.46028e-09, 0.0787897, 0.996891, -2.98023e-08, -0.996891, 0.0787897, 0, 0, 0)
 
@@ -362,6 +363,10 @@ item_type = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/KeyRingPosition/BriefcaseItem"]
 transform = Transform3D(0.999994, 3.57628e-07, -2.0116e-06, -3.33786e-06, 1.00001, -1.5126e-07, 1.21841e-05, 6.09371e-06, 1.00001, 0, 0, 0)
 shape = SubResource("BoxShape3D_nety3")
+
+[node name="Sound" type="AudioStreamPlayer" parent="Briefcase/BottomAttachment/KeyRingPosition/BriefcaseItem"]
+stream = ExtResource("6_ke7sn")
+volume_db = -10.0
 
 [node name="KeyRing" parent="Briefcase/BottomAttachment/KeyRingPosition" instance=ExtResource("5_i3nhx")]
 transform = Transform3D(1, 0, 2.98023e-08, -3.46027e-09, 1, 2.00131e-08, 0, -2.98023e-08, 1, 0, 0.0158269, 0)
@@ -395,6 +400,9 @@ item_model = NodePath("../NotepadModel")
 transform = Transform3D(0.999988, 4.84288e-07, 1.40294e-07, 8.71718e-07, 0.999996, -1.18106e-07, 2.54285e-08, 2.07541e-06, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_ul24s")
 
+[node name="Sound" type="AudioStreamPlayer" parent="Briefcase/BottomAttachment/NotepadPosition/BriefcaseItem"]
+stream = ExtResource("10_le676")
+
 [node name="NotepadModel" parent="Briefcase/BottomAttachment/NotepadPosition" instance=ExtResource("3_n2vnl")]
 transform = Transform3D(1.2666e-07, 1, 0, -4.37114e-08, -5.73205e-15, 1, 1, -1.2666e-07, 4.37114e-08, 0, 0, 0)
 
@@ -409,6 +417,9 @@ item_type = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Briefcase/BottomAttachment/JournalPosition/BriefcaseItem"]
 transform = Transform3D(0.999994, 3.8743e-07, 7.21769e-08, -4.32134e-07, 1, -2.55369e-06, -7.3109e-08, 2.55369e-06, 1, -0.0115777, -0.0061956, -7.55787e-05)
 shape = SubResource("BoxShape3D_nety3")
+
+[node name="Sound" type="AudioStreamPlayer" parent="Briefcase/BottomAttachment/JournalPosition/BriefcaseItem"]
+stream = ExtResource("10_le676")
 
 [node name="Journal" parent="Briefcase/BottomAttachment/JournalPosition" instance=ExtResource("5_cpbrx")]
 transform = Transform3D(1, -3.65416e-09, -4.47035e-08, 7.36498e-10, -1, -8.73064e-08, 0, 8.72798e-08, -1, 0, 0, 0)

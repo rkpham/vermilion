@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=86 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c8qeor42ujf7" path="res://assets/models/bed/bed.tscn" id="9_6udc8"]
 [ext_resource type="PackedScene" uid="uid://cy0nk5nh1ku4m" path="res://assets/models/apartments/hallway.tscn" id="9_uss60"]
 [ext_resource type="Texture2D" uid="uid://wkre1fjc2cp5" path="res://assets/textures/45_old cut out persian rug texture.png" id="11_qlaow"]
+[ext_resource type="Script" path="res://scenes/components/dialogue_component.gd" id="12_ypmo0"]
 [ext_resource type="PackedScene" uid="uid://c6d728aa8fwyl" path="res://assets/models/chair/chair.tscn" id="14_r85f0"]
 [ext_resource type="PackedScene" uid="uid://c0aexu1i55xxh" path="res://assets/models/bookcase/bookcase.tscn" id="17_eps6s"]
 [ext_resource type="PackedScene" uid="uid://dtht4exxiwdts" path="res://assets/models/wardrobe/wardrobe.tscn" id="18_xr338"]
@@ -51,10 +52,10 @@
 [ext_resource type="Texture2D" uid="uid://05brj101msr5" path="res://assets/textures/soot.png" id="41_x1w36"]
 [ext_resource type="PackedScene" uid="uid://dhyaxw63rjf0w" path="res://assets/models/book/bookrecolorable.tscn" id="42_mcdeh"]
 [ext_resource type="Shader" path="res://scripts/shaders/reconstruction.gdshader" id="43_6qud8"]
-[ext_resource type="PackedScene" path="res://scenes/components/note_component.tscn" id="43_eaclq"]
+[ext_resource type="PackedScene" uid="uid://bxe0s08x1ou1r" path="res://scenes/components/note_component.tscn" id="43_eaclq"]
 [ext_resource type="Texture2D" uid="uid://b3anp7kxoia5p" path="res://scripts/shaders/reconstruction_grad.tres" id="44_agbvw"]
 [ext_resource type="PackedScene" uid="uid://b0htdbskerthy" path="res://assets/models/watch/watch.tscn" id="44_o20k4"]
-[ext_resource type="PackedScene" uid="uid://855m27eobwcg" path="res://scenes/puzzle/better_safe.tscn" id="47_dktlg"]
+[ext_resource type="PackedScene" uid="uid://bgevhhixqt3hh" path="res://scenes/puzzle/better_safe.tscn" id="47_dktlg"]
 [ext_resource type="PackedScene" uid="uid://cod506qjqhsat" path="res://assets/models/table/smalltable.tscn" id="47_mjlm0"]
 [ext_resource type="PackedScene" uid="uid://bqcdxneqobw1l" path="res://assets/models/desk/desk.tscn" id="48_imku4"]
 [ext_resource type="PackedScene" uid="uid://dk4roakyd0p70" path="res://assets/models/bookcase/bookcasefull.tscn" id="50_xleyq"]
@@ -68,6 +69,12 @@ ambient_light_energy = 0.03
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8oyw"]
 size = Vector3(11.969, 7.20313, 18.9561)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr05c"]
+size = Vector3(0.935913, 0.917725, 1.09766)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8utwb"]
+size = Vector3(0.0894165, 0.765381, 1.12524)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8d228"]
 size = Vector3(0.2, 1.2, 1)
@@ -95,6 +102,9 @@ size = Vector3(1.5, 0.3, 2.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkqqn"]
 size = Vector3(1.68066, 1, 1.00488)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pt0kv"]
+size = Vector3(1.2959, 0.383545, 2.02765)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o0if0"]
 size = Vector3(0.57666, 0.198547, 0.574158)
@@ -263,8 +273,40 @@ transform = Transform3D(0.885783, 0, -0.4641, 0, 1, 0, 0.4641, 0, 0.885783, 2.74
 [node name="fruitpainting" parent="Props/ApartmentA3Props/Props" instance=ExtResource("22_6p0w1")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.9331, 1.81828, -11.1392)
 
+[node name="Area3D" type="Area3D" parent="Props/ApartmentA3Props/Props/fruitpainting"]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/fruitpainting/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41925, 0, 0)
+shape = SubResource("BoxShape3D_pr05c")
+
+[node name="DialogueComponent" type="Node3D" parent="Props/ApartmentA3Props/Props/fruitpainting/Area3D"]
+script = ExtResource("12_ypmo0")
+action_mode = 1
+text = "[center][color=white]A still-life painting of some things on a table.[/color][/center]"
+
 [node name="beachpainting" parent="Props/ApartmentA3Props/Props" instance=ExtResource("23_y7und")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.9955, 1.7855, -7.55)
+
+[node name="Area3D" type="Area3D" parent="Props/ApartmentA3Props/Props/beachpainting"]
+collision_layer = 7
+
+[node name="DialogueComponent" type="Node3D" parent="Props/ApartmentA3Props/Props/beachpainting/Area3D"]
+script = ExtResource("12_ypmo0")
+action_mode = 1
+text = "[center][color=white]A painting of some people on a beach.[/color][/center]"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/beachpainting/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0, 0)
+shape = SubResource("BoxShape3D_8utwb")
+
+[node name="Area3D2" type="Area3D" parent="Props/ApartmentA3Props/Props/beachpainting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0930958, 0, 0)
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/beachpainting/Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0, 0)
+shape = SubResource("BoxShape3D_8utwb")
 
 [node name="couch" parent="Props/ApartmentA3Props/Props" instance=ExtResource("25_uv87g")]
 transform = Transform3D(-0.999419, -1.77133e-08, -0.034079, -1.95009e-08, 1, 5.2123e-08, 0.034079, 5.27573e-08, -0.999419, 1.10946, 1.22306e-06, -9.42887)
@@ -392,6 +434,19 @@ shape = SubResource("BoxShape3D_wkqqn")
 [node name="DialogueComponent" parent="Props/ApartmentA3Props/Props/KitchenStuff/StoveArea" instance=ExtResource("7_1j27x")]
 action_mode = 1
 text = "[center][color=white]A stove. There's soot all over the place. There's no way all of this is from the stove.[/color][/center]"
+
+[node name="SinkArea" type="Area3D" parent="Props/ApartmentA3Props/Props/KitchenStuff"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0669003, 0.603002, -4.4078)
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/ApartmentA3Props/Props/KitchenStuff/SinkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147949, 0.396362, -0.0410461)
+shape = SubResource("BoxShape3D_pt0kv")
+
+[node name="DialogueComponent" type="Node3D" parent="Props/ApartmentA3Props/Props/KitchenStuff/SinkArea"]
+script = ExtResource("12_ypmo0")
+action_mode = 1
+text = "[center][color=white]An empty sink. The faucet is leaking a bit.[/color][/center]"
 
 [node name="roundtable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_h7xck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8283, 1.24863e-06, -11.0969)
@@ -564,7 +619,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.71747e-21, 0, 0, 1, -0.359601, 0, -0.1
 transform = Transform3D(-0.44763, -0.529419, -0.720655, 0.861731, -0.0401316, -0.505777, 0.238846, -0.847411, 0.47418, -0.361982, 0.0252054, -0.454773)
 
 [node name="bishop" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("31_5wvs4")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.05879e-21, 0, 0, 1, -0.27587, 0, -0.393792)
+transform = Transform3D(1, 0, 0, 0, 1, -6.77626e-21, 0, 0, 1, -0.104432, 0.192261, 0.166604)
 
 [node name="bishop2" parent="Props/ApartmentA3Props/Props/Chessboard/chessboard/white" instance=ExtResource("31_5wvs4")]
 transform = Transform3D(1, 0, 0, 0, 1, -1.90582e-21, 0, 0, 1, -0.0887947, -1.19209e-07, -0.478261)

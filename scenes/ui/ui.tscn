@@ -643,8 +643,6 @@ Greetings, Mr. Ivanov
 
 Welcome to your first homicide case.
 
-The state police has conducted a preliminary investigation. You will see a note with their findings within the victim's apartment.
-
 Please note that we have included several important documents on the following pages.
 
 Conduct yourself with honor and get the job done.
@@ -872,8 +870,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -24.0
-offset_bottom = -8.0
+offset_top = -17.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true

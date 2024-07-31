@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxe0s08x1ou1r"]
+[gd_scene load_steps=3 format=3 uid="uid://bxe0s08x1ou1r"]
 
 [ext_resource type="Script" path="res://scenes/components/note_component.gd" id="1_ffh0k"]
+[ext_resource type="AudioStream" uid="uid://cce6vxwgpak4" path="res://assets/audio/sfx/writing.wav" id="2_f4c5p"]
 
 [node name="NoteComponent" type="Node3D"]
 script = ExtResource("1_ffh0k")
+
+[node name="WritingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_f4c5p")
+volume_db = -15.0
