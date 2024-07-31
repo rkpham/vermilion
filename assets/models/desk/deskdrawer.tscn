@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://db6vnmfb0h88j"]
+
+[ext_resource type="PackedScene" uid="uid://cr7wa40paa06w" path="res://assets/models/desk/deskdrawer.glb" id="1_m7qio"]
+[ext_resource type="Material" uid="uid://csyxnchdplmsm" path="res://assets/models/desk/deskdrawer.tres" id="2_jne77"]
+
+[node name="deskdrawer" instance=ExtResource("1_m7qio")]
+
+[node name="Desk_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_jne77")

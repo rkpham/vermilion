@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://y2l18wisrmdb"]
+[gd_scene load_steps=40 format=3 uid="uid://y2l18wisrmdb"]
 
 [ext_resource type="Script" path="res://scenes/shader_loader/shader_loader.gd" id="1_1h3dv"]
 [ext_resource type="Material" uid="uid://s3e6vuswq8ej" path="res://assets/models/apartments/apartment.tres" id="2_c4jdo"]
@@ -36,12 +36,14 @@
 [ext_resource type="Material" uid="uid://ccl785dmv82vt" path="res://assets/models/apartments/kitchen/uppercabinetdoor.tres" id="34_rljbc"]
 [ext_resource type="Material" uid="uid://bkartsj4u62y5" path="res://assets/models/safe/safe.tres" id="35_0o125"]
 [ext_resource type="Material" uid="uid://curjns7jta2yg" path="res://assets/models/ceilinglight/ceilinglight.tres" id="36_pbuj0"]
+[ext_resource type="Material" uid="uid://cyjn3u3rc678m" path="res://assets/models/desk/desk.tres" id="37_hqqjr"]
+[ext_resource type="Material" uid="uid://csyxnchdplmsm" path="res://assets/models/desk/deskdrawer.tres" id="38_he52v"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_m26cf"]
 
 [node name="ShaderLoader" type="Node3D"]
 script = ExtResource("1_1h3dv")
-shaders = Array[Material]([ExtResource("2_c4jdo"), ExtResource("3_s1d6f"), ExtResource("4_buns8"), ExtResource("3_ccyyt"), ExtResource("4_qxihl"), ExtResource("5_gkqsx"), ExtResource("6_dyi7n"), ExtResource("2_qgwd1"), ExtResource("8_h3wpe"), ExtResource("11_7b3as"), ExtResource("12_v5re1"), ExtResource("13_yv5ja"), ExtResource("14_j1818"), ExtResource("15_t7akc"), ExtResource("16_ewypi"), ExtResource("17_5jlw5"), ExtResource("18_8iqoi"), ExtResource("19_n5aqu"), ExtResource("20_c4nkc"), ExtResource("21_yhsud"), ExtResource("22_uuen5"), ExtResource("23_jcqf1"), ExtResource("24_8jnel"), ExtResource("25_guoif"), ExtResource("26_31td1"), ExtResource("27_a2yd4"), ExtResource("28_huc8a"), ExtResource("29_34u5n"), ExtResource("30_frjo7"), ExtResource("31_oi0st"), ExtResource("32_hfxfs"), ExtResource("33_0kwqv"), ExtResource("34_rljbc"), ExtResource("35_0o125"), ExtResource("36_pbuj0")])
+shaders = Array[Material]([ExtResource("2_c4jdo"), ExtResource("3_s1d6f"), ExtResource("4_buns8"), ExtResource("3_ccyyt"), ExtResource("4_qxihl"), ExtResource("5_gkqsx"), ExtResource("6_dyi7n"), ExtResource("2_qgwd1"), ExtResource("8_h3wpe"), ExtResource("11_7b3as"), ExtResource("12_v5re1"), ExtResource("13_yv5ja"), ExtResource("14_j1818"), ExtResource("15_t7akc"), ExtResource("16_ewypi"), ExtResource("17_5jlw5"), ExtResource("18_8iqoi"), ExtResource("19_n5aqu"), ExtResource("20_c4nkc"), ExtResource("21_yhsud"), ExtResource("22_uuen5"), ExtResource("23_jcqf1"), ExtResource("24_8jnel"), ExtResource("25_guoif"), ExtResource("26_31td1"), ExtResource("27_a2yd4"), ExtResource("28_huc8a"), ExtResource("29_34u5n"), ExtResource("30_frjo7"), ExtResource("31_oi0st"), ExtResource("32_hfxfs"), ExtResource("33_0kwqv"), ExtResource("34_rljbc"), ExtResource("35_0o125"), ExtResource("36_pbuj0"), ExtResource("37_hqqjr"), ExtResource("38_he52v")])
 
 [node name="Quad" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_m26cf")

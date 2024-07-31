@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqcdxneqobw1l"]
+
+[ext_resource type="PackedScene" uid="uid://bns2mg3p7gw3p" path="res://assets/models/desk/desk.glb" id="1_fbmiv"]
+[ext_resource type="Material" uid="uid://cyjn3u3rc678m" path="res://assets/models/desk/desk.tres" id="2_c205f"]
+[ext_resource type="PackedScene" uid="uid://db6vnmfb0h88j" path="res://assets/models/desk/deskdrawer.tscn" id="3_fv6bh"]
+
+[node name="desk" instance=ExtResource("1_fbmiv")]
+
+[node name="Desk" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_c205f")
+
+[node name="deskdrawer" parent="." index="1" instance=ExtResource("3_fv6bh")]
+
+[node name="deskdrawer2" parent="." index="2" instance=ExtResource("3_fv6bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280263, 0)
+
+[node name="deskdrawer3" parent="." index="3" instance=ExtResource("3_fv6bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5488, 0)
+
+[node name="deskdrawer4" parent="." index="4" instance=ExtResource("3_fv6bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61749)
+
+[node name="deskdrawer5" parent="." index="5" instance=ExtResource("3_fv6bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280263, -1.61749)
+
+[node name="deskdrawer6" parent="." index="6" instance=ExtResource("3_fv6bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5488, -1.61749)
