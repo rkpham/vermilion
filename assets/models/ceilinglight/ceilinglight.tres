@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://curjns7jta2yg"]
+
+[ext_resource type="Texture2D" uid="uid://cx8bxmyukups7" path="res://assets/models/ceilinglight/CeilingLight_BaseColor.png" id="1_wtdcy"]
+[ext_resource type="Texture2D" uid="uid://de03uq001h5fe" path="res://assets/models/ceilinglight/CeilingLight_Emission.png" id="2_larvf"]
+[ext_resource type="Texture2D" uid="uid://1ql853mq12s6" path="res://assets/models/ceilinglight/CeilingLight_Metallic.png" id="3_trkv5"]
+[ext_resource type="Texture2D" uid="uid://dl0v2onru2be8" path="res://assets/models/ceilinglight/CeilingLight_Normal.png" id="4_ulwyp"]
+[ext_resource type="Texture2D" uid="uid://bx1ud7mnmoy3" path="res://assets/models/ceilinglight/CeilingLight_Roughness.png" id="5_7un7l"]
+
+[resource]
+albedo_texture = ExtResource("1_wtdcy")
+metallic = 1.0
+metallic_texture = ExtResource("3_trkv5")
+roughness_texture = ExtResource("5_7un7l")
+emission_enabled = true
+emission_texture = ExtResource("2_larvf")
+normal_enabled = true
+normal_texture = ExtResource("4_ulwyp")

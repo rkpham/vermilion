@@ -925,14 +925,13 @@ bbcode_enabled = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ControlsText" type="Label" parent="Note"]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 6.10352e-05
-offset_bottom = 9.00006
+offset_top = -329.0
+offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
