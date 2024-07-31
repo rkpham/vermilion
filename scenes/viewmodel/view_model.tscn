@@ -261,7 +261,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("Hand")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.6, -0.3, -0.6, 0.5, 1, -0.6, -1, -0.6)
+tracks/0/keys = PackedFloat32Array(0, 1, -0.6, -1, -0.6)
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -269,10 +269,10 @@ tracks/1/path = NodePath("Hand:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_dki5j"]
@@ -283,7 +283,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("Hand")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.6, -1, -0.6, 0.5, 1, -0.6, -0.3, -0.6)
+tracks/0/keys = PackedFloat32Array(0, 1, -0.6, -0.3, -0.6)
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -421,7 +421,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../Armature/Skeleton3D")
 
 [node name="Hand" type="Node3D" parent="."]
-transform = Transform3D(0.95532, -0.295575, 0, 0.283321, 0.915714, -0.284952, 0.0842247, 0.272221, 0.958542, -0.2, -1, -0.2)
+transform = Transform3D(0.95532, -0.295575, 0, 0.283321, 0.915714, -0.284952, 0.0842247, 0.272221, 0.958542, -0.6, -0.3, -0.6)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hand"]
 
