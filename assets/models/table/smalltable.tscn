@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cod506qjqhsat"]
+
+[ext_resource type="PackedScene" uid="uid://c2bygi210qomm" path="res://assets/models/table/smalltable.glb" id="1_kprjj"]
+[ext_resource type="Material" uid="uid://cb5vgfgbgl5gt" path="res://assets/models/table/smalltable.tres" id="2_74jin"]
+
+[node name="smalltable" instance=ExtResource("1_kprjj")]
+
+[node name="Desk_002" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_74jin")

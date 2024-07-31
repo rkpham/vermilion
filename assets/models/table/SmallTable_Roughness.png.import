@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://il3o6xc2eloq"
-path.s3tc="res://.godot/imported/43_Round rug texture.png-5bbea76c62cd6935eec86e91446b02b5.s3tc.ctex"
+uid="uid://de8u81ch7ypiq"
+path.s3tc="res://.godot/imported/SmallTable_Roughness.png-db1bc2e3140557934a4421aa04cf10e1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/43_Round rug texture.png"
-dest_files=["res://.godot/imported/43_Round rug texture.png-5bbea76c62cd6935eec86e91446b02b5.s3tc.ctex"]
+source_file="res://assets/models/table/SmallTable_Roughness.png"
+dest_files=["res://.godot/imported/SmallTable_Roughness.png-db1bc2e3140557934a4421aa04cf10e1.s3tc.ctex"]
 
 [params]
 

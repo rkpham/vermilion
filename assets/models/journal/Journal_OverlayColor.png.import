@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://il3o6xc2eloq"
-path.s3tc="res://.godot/imported/43_Round rug texture.png-5bbea76c62cd6935eec86e91446b02b5.s3tc.ctex"
+uid="uid://cc0u5rwo0ab7t"
+path.s3tc="res://.godot/imported/Journal_OverlayColor.png-85833730200ad1fed2cb8ba82155435e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/43_Round rug texture.png"
-dest_files=["res://.godot/imported/43_Round rug texture.png-5bbea76c62cd6935eec86e91446b02b5.s3tc.ctex"]
+source_file="res://assets/models/journal/Journal_OverlayColor.png"
+dest_files=["res://.godot/imported/Journal_OverlayColor.png-85833730200ad1fed2cb8ba82155435e.s3tc.ctex"]
 
 [params]
 

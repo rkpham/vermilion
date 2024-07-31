@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhyaxw63rjf0w"]
+
+[ext_resource type="PackedScene" uid="uid://bwmycqmkihpne" path="res://assets/models/journal/journal.glb" id="1_ugi13"]
+[ext_resource type="Material" uid="uid://bflue4hkop08s" path="res://assets/models/journal/journal.tres" id="3_tcj1g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1lmws"]
+load_path = "res://.godot/imported/BookOver_BaseColor.png-bd18709dab6473f4876b99fc5af5af2e.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkf24"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_1lmws")
+
+[node name="Book" instance=ExtResource("1_ugi13")]
+
+[node name="Book" parent="." index="0"]
+material_overlay = SubResource("StandardMaterial3D_nkf24")
+surface_material_override/0 = ExtResource("3_tcj1g")

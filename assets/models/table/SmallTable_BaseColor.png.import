@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://il3o6xc2eloq"
-path.s3tc="res://.godot/imported/43_Round rug texture.png-5bbea76c62cd6935eec86e91446b02b5.s3tc.ctex"
+uid="uid://cj1ha1l417mc0"
+path.s3tc="res://.godot/imported/SmallTable_BaseColor.png-0e4755f905d50a0d28dc5a29d1326905.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/43_Round rug texture.png"
-dest_files=["res://.godot/imported/43_Round rug texture.png-5bbea76c62cd6935eec86e91446b02b5.s3tc.ctex"]
+source_file="res://assets/models/table/SmallTable_BaseColor.png"
+dest_files=["res://.godot/imported/SmallTable_BaseColor.png-0e4755f905d50a0d28dc5a29d1326905.s3tc.ctex"]
 
 [params]
 

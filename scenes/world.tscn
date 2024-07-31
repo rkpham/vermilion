@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=59 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dtht4exxiwdts" path="res://assets/models/wardrobe/wardrobe.tscn" id="18_xr338"]
 [ext_resource type="PackedScene" uid="uid://bem8jkmp1i0uv" path="res://assets/models/radiator/radiator.tscn" id="19_d0hr5"]
 [ext_resource type="PackedScene" uid="uid://b5m5r4c1qrq1k" path="res://assets/models/bed/pillow.tscn" id="20_e3x5g"]
-[ext_resource type="PackedScene" uid="uid://twdld5mc1gjo" path="res://scenes/components/holdable_component.tscn" id="21_85bkh"]
+[ext_resource type="PackedScene" path="res://scenes/components/holdable_component.tscn" id="21_85bkh"]
 [ext_resource type="PackedScene" uid="uid://dnbreg84256oh" path="res://assets/models/cardboard/squarecardboardbox.tscn" id="21_dcdn3"]
 [ext_resource type="PackedScene" uid="uid://dj8l7avbds442" path="res://assets/models/paintings/fruitpainting.tscn" id="22_6p0w1"]
 [ext_resource type="PackedScene" uid="uid://bsacakukfn6o3" path="res://scenes/components/reconstruction_component.tscn" id="22_nymjp"]
@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://bwra4ocwn3yxa" path="res://assets/models/chess/chessboard.tscn" id="27_x4bc0"]
 [ext_resource type="PackedScene" uid="uid://b3h7gb4gwfdjj" path="res://assets/models/chess/king.tscn" id="28_dfeov"]
 [ext_resource type="PackedScene" uid="uid://srdjhbg442b7" path="res://assets/models/clock/clock.tscn" id="28_yweog"]
-[ext_resource type="Material" uid="uid://y080wmdqlsp0" path="res://assets/models/chess/chesspieceblack.tres" id="29_6fg6y"]
+[ext_resource type="Material" path="res://assets/models/chess/chesspieceblack.tres" id="29_6fg6y"]
 [ext_resource type="PackedScene" uid="uid://dxm0v1x1lo4tv" path="res://assets/models/chess/pawn.tscn" id="29_coxww"]
 [ext_resource type="PackedScene" uid="uid://b63k4vmv0mlsd" path="res://assets/models/chess/queen.tscn" id="30_l5h5j"]
 [ext_resource type="PackedScene" uid="uid://02mbfsuw1lia" path="res://assets/models/chess/bishop.tscn" id="31_5wvs4"]
@@ -45,6 +45,11 @@
 [ext_resource type="Texture2D" uid="uid://csjav1px1ih0a" path="res://assets/textures/crack/x.png" id="35_avmk0"]
 [ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="36_k8c0p"]
 [ext_resource type="PackedScene" uid="uid://q5gmoh0snfe" path="res://assets/models/ceilinglight/ceilinglight.tscn" id="37_7p63j"]
+[ext_resource type="Texture2D" uid="uid://il3o6xc2eloq" path="res://assets/textures/43_Round rug texture.png" id="40_uuftr"]
+[ext_resource type="Texture2D" uid="uid://bxpbavyi733el" path="res://assets/textures/6_cut out persian rug texture.png" id="41_e42ll"]
+[ext_resource type="PackedScene" uid="uid://cod506qjqhsat" path="res://assets/models/table/smalltable.tscn" id="47_mjlm0"]
+[ext_resource type="PackedScene" uid="uid://bqcdxneqobw1l" path="res://assets/models/desk/desk.tscn" id="48_imku4"]
+[ext_resource type="PackedScene" uid="uid://dk4roakyd0p70" path="res://assets/models/bookcase/bookcasefull.tscn" id="50_xleyq"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -193,7 +198,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.933
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.9955, 1.7855, -7.55)
 
 [node name="couch" parent="Props/ApartmentA3Props/Props" instance=ExtResource("25_uv87g")]
-transform = Transform3D(-0.776355, 0, -0.630296, 0, 1, 0, 0.630296, 0, -0.776355, 1.82958, 1.28601e-06, -9.01629)
+transform = Transform3D(-0.999419, -1.77133e-08, -0.034079, -1.95009e-08, 1, 5.2123e-08, 0.034079, 5.27573e-08, -0.999419, 1.10946, 1.22306e-06, -9.42887)
 
 [node name="couch2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("25_uv87g")]
 transform = Transform3D(0.0134567, -1.43433e-07, 0.99991, 6.90476e-08, 1, 1.42517e-07, -0.99991, 6.71235e-08, 0.0134567, 4.5409, 1.0462e-06, -13.9443)
@@ -203,13 +208,10 @@ transform = Transform3D(0.831895, -0.207213, -0.210253, 0.179015, 0.985496, -0.0
 visible = false
 
 [node name="recttable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("26_4gsyf")]
-transform = Transform3D(0.651185, 0, -0.758919, 0, 1, 0, 0.758919, 0, 0.651185, 2.89639, 1.28601e-06, -10.0067)
+transform = Transform3D(-0.0660473, -2.49808e-08, -0.997817, -6.27025e-08, 1, -2.08851e-08, 0.997817, 6.11861e-08, -0.0660473, 2.62381, 1.26218e-06, -9.49671)
 
-[node name="bookcase2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("17_eps6s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.85685, 1.04759e-06, -7.87716)
-
-[node name="candlegroup" parent="Props/ApartmentA3Props/Props" instance=ExtResource("27_vgra5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77979, 0.734377, -10.4139)
+[node name="candlegroup" parent="Props/ApartmentA3Props/Props/recttable" instance=ExtResource("27_vgra5")]
+transform = Transform3D(0.651185, -3.55271e-15, 0.758919, 0, 1, 0, -0.758919, -7.10543e-15, 0.651185, -0.384961, 0.734376, -0.176673)
 
 [node name="clock" parent="Props/ApartmentA3Props/Props" instance=ExtResource("28_yweog")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.03131, 9.18239e-07, -14.2848)
@@ -515,6 +517,21 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.
 shadow_enabled = true
 spot_angle = 21.7245
 
+[node name="smalltable" parent="Props/ApartmentA3Props/Props" instance=ExtResource("47_mjlm0")]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 1, 0, -4.37114e-08, 6.40445, 3.21477e-07, -14.0961)
+
+[node name="smalltable2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("47_mjlm0")]
+transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 3.88339, 5.77915e-07, -19.2545)
+
+[node name="desk" parent="Props/ApartmentA3Props/Props" instance=ExtResource("48_imku4")]
+transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 11.3806, 7.56506e-07, -19.6393)
+
+[node name="chair5" parent="Props/ApartmentA3Props/Props" instance=ExtResource("14_r85f0")]
+transform = Transform3D(-0.96312, -8.74228e-08, 0.269071, -8.41987e-08, 1, 2.35229e-08, -0.269071, 0, -0.96312, 11.1229, 7.33973e-07, -19.69)
+
+[node name="bookcase2" parent="Props/ApartmentA3Props/Props" instance=ExtResource("50_xleyq")]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 1, 0, -4.37114e-08, 7.87175, 6.88171e-07, -7.87346)
+
 [node name="Effects" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
 
@@ -560,10 +577,25 @@ shaded = true
 texture = ExtResource("8_wkw4a")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Props/ApartmentA3Props"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.16519, 0.0116732, -17.8389)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.16519, 0.040168, -17.8389)
 pixel_size = 0.005
 shaded = true
+double_sided = false
 texture = ExtResource("11_qlaow")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Props/ApartmentA3Props"]
+transform = Transform3D(0.881303, 0.472551, -5.63511e-09, 0, 1.19249e-08, 1, 0.472551, -0.881303, 1.05094e-08, -3.17903, 0.0116732, -11.0883)
+pixel_size = 0.0035
+shaded = true
+double_sided = false
+texture = ExtResource("40_uuftr")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Props/ApartmentA3Props"]
+transform = Transform3D(-0.0244845, 0.9997, -1.19213e-08, 0, 1.19249e-08, 1, 0.9997, 0.0244845, -2.91975e-10, -9.38902, 0.0116734, -10.9974)
+pixel_size = 0.004
+shaded = true
+double_sided = false
+texture = ExtResource("41_e42ll")
 
 [node name="ApartmentA4Props" type="Node3D" parent="Props"]
 
