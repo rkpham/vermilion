@@ -77,12 +77,9 @@ script = ExtResource("7_7owfh")
 action_mode = 1
 text = "[center][color=white]This clock isn't moving at all. I wonder if it's broken?[/color][/center]"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.691787, 1.28229, 0)
-
-[node name="KeySound" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="KeySound" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("8_nn2ql")
-volume_db = -10.0
+volume_db = -20.0
 
 [connection signal="input_event" from="clockhands/ShortHandAttachment/ShortHandArea" to="." method="_on_short_hand_area_input_event"]
 [connection signal="input_event" from="clockhands/LongHandAttachment/LongHandArea" to="." method="_on_long_hand_area_input_event"]

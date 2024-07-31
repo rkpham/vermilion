@@ -156,6 +156,7 @@ text = "[center][color=white]It's a safe. Looks like it's a newer model.[/color]
 
 [node name="Area3D2" type="Area3D" parent="."]
 collision_layer = 7
+script = ExtResource("1_jnpm1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184509, -0.0384521)

@@ -32,8 +32,8 @@ func _process(delta: float) -> void:
 		cam3d.global_transform = cam3d.global_transform.interpolate_with(cam_copy.global_transform, delta * 8.0)
 	else:
 		cam3d.position = lerp(cam3d.position, Vector3.ZERO, delta * 8.0)
-		cam3d.rotation.x = lerp(cam3d.rotation.x, deg_to_rad(look.y), delta * smooth_speed)
-		player.rotation.y = lerp_angle(player.rotation.y, deg_to_rad(look.x), delta * smooth_speed)
+		cam3d.rotation.x = lerp_angle(cam3d.rotation.x, deg_to_rad(look.y), min(delta, 1/smooth_speed) * smooth_speed)
+		player.rotation.y = lerp_angle(player.rotation.y, deg_to_rad(look.x), min(delta, 1/smooth_speed) * smooth_speed)
 	
 	if footsteps and not cam_copy:
 		if footsteps.stepping:

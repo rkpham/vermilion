@@ -11,10 +11,10 @@ func _ready():
 	if not mesh_node:
 		return
 	for child in mesh_node.get_children():
-			if child is MeshInstance3D:
-				mesh = child
-				material = child.get_surface_override_material(0)
-				break
+		if child is MeshInstance3D:
+			mesh = child
+			material = child.get_surface_override_material(0)
+			break
 
 func interact() -> void:
 	var has_interacted: bool = false

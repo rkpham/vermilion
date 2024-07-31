@@ -22,9 +22,10 @@ func _input(event: InputEvent) -> void:
 			Game.viewmodel.frozen = false
 			Game.ui.interact_icons.visible = true
 			ended_closeup.emit()
+			Game.player.collision.disabled = false
 			if cursor:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				Game.capture_mouse = true
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				Game.ui.cursor.visible = false
 		if event.is_action_pressed("move_left"):
 			if focused_puzzle_item > 0:
@@ -44,9 +45,10 @@ func interact() -> bool:
 		Game.player.footsteps.stepping = false
 		Game.ui.interact_icons.visible = false
 		started_closeup.emit()
+		Game.player.collision.disabled = true
 		if cursor:
-			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 			Game.capture_mouse = false
+			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 			Game.ui.cursor.visible = true
 			Game.ui.show_icon(Game.InteractType.NONE)
 	return true

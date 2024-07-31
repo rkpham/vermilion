@@ -461,6 +461,7 @@ grow_horizontal = 2
 text = "Loading shaders..."
 
 [node name="Label" type="Label" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
