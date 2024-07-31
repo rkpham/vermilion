@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=35 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
 [ext_resource type="Theme" uid="uid://cnjks23fh4kxd" path="res://assets/resources/loading.tres" id="2_7qa3h"]
@@ -13,6 +13,8 @@
 [ext_resource type="Theme" uid="uid://bpvu7bw8wrncp" path="res://assets/resources/dialogue.tres" id="9_552ou"]
 [ext_resource type="Script" path="res://scenes/ui/note.gd" id="9_tna6k"]
 [ext_resource type="Script" path="res://scenes/ui/key_label.gd" id="11_n50wj"]
+[ext_resource type="Theme" uid="uid://be1b4xrv7wo86" path="res://assets/resources/form.tres" id="14_ptsr0"]
+[ext_resource type="Theme" uid="uid://c4464vj2nffa3" path="res://assets/resources/checkbox.tres" id="15_fmajr"]
 
 [sub_resource type="Gradient" id="Gradient_w11qt"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0784314, 0, 0.0823529, 1)
@@ -574,6 +576,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Notepad" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(240, 320)
 layout_mode = 1
 anchor_left = 0.3125
@@ -620,6 +623,7 @@ text = "(LMB) Draw (ESC) Close"
 horizontal_alignment = 1
 
 [node name="Journal" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -882,6 +886,7 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Note" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(240, 320)
 layout_mode = 1
 anchor_left = 0.3125
@@ -1011,7 +1016,103 @@ offset_bottom = 15.0
 theme = ExtResource("2_7qa3h")
 script = ExtResource("11_n50wj")
 
+[node name="MurdererSelection" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_ptsr0")
+
+[node name="Paper" type="TextureRect" parent="MurdererSelection"]
+show_behind_parent = true
+z_index = -5
+z_as_relative = false
+custom_minimum_size = Vector2(240, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -160.0
+offset_right = 128.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0udoo")
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MurdererSelection/Paper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=8] [/font_size]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
+[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
+
+[center]Homicide Investigation
+Finalization Form[/center]
+
+Please fill out the form to the best of your ability. Falsifications will not be tolerated.
+
+Name and Investigator ID
+	▮▮▮▮ ▮▮▮▮▮ A-4409-71
+
+Location of Murder
+	Armin Building 3-A1
+	3394 Armin Road
+	Ovborod, Veluvia
+	In the kitchen, next to the stove.
+
+Murderer
+
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MurdererSelection/Paper"]
+layout_mode = 0
+offset_top = 261.0
+offset_right = 256.0
+offset_bottom = 312.0
+theme = ExtResource("14_ptsr0")
+theme_override_constants/separation = 0
+
+[node name="Murderer" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Reynauld Barig"
+
+[node name="Murderer2" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Isak Tempolev"
+
+[node name="Murderer3" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Sofia Petrov"
+
 [connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
 [connection signal="gui_input" from="Journal/PaperLeft" to="Journal" method="_on_paper_left_gui_input"]
 [connection signal="gui_input" from="Journal/PaperRight" to="Journal" method="_on_paper_right_gui_input"]
+[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer" to="." method="_on_murderer_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer2" to="." method="_on_murderer_2_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer3" to="." method="_on_murderer_3_toggled"]
