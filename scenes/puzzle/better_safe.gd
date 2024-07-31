@@ -5,6 +5,8 @@ extends Node3D
 @onready var safe_buttons: Node3D = $safe/Armature/Skeleton3D/BoneAttachment3D/SafeButtons
 @onready var label: Label3D = $safe/Armature/Skeleton3D/BoneAttachment3D/Label3D
 @onready var password: String = "9933877"
+@onready var open_sound = $OpenSound
+@onready var click_sound = $ClickSound
 
 func _ready():
 	for button in safe_buttons.get_children():
@@ -12,6 +14,8 @@ func _ready():
 
 
 func _get_number(number: int, submit: bool, clear: bool) -> void:
+	click_sound.play()
+	
 	if submit:
 		if label.text == password:
 			label.modulate = Color(0.0, 1.0, 0.0)
@@ -25,6 +29,7 @@ func _get_number(number: int, submit: bool, clear: bool) -> void:
 			Game.viewmodel.frozen = false
 			Game.ui.interact_icons.visible = true
 			anim.play("safe_open")
+			open_sound.play()
 		else:
 			label.modulate = Color(1.0, 0.0, 0.0)
 	elif label.text.length() == 7:
