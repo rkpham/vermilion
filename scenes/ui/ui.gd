@@ -25,6 +25,9 @@ var note_shown: bool = false
 @onready var key_name = $KeyRingControls/KeyName
 @onready var note: Note = $Note
 @onready var note_text = $Note/PageText
+@onready var murderer_checkbox = $MurdererSelection/Paper/VBoxContainer/Murderer
+@onready var murderer_checkbox2 = $MurdererSelection/Paper/VBoxContainer/Murderer2
+@onready var murderer_checkbox3 = $MurdererSelection/Paper/VBoxContainer/Murderer3
 
 
 func _ready() -> void:
@@ -77,6 +80,7 @@ func toggle_notepad() -> void:
 
 func show_notepad() -> void:
 	if notepad_tween:
+		notepad_tween.finished.emit()
 		notepad_tween.stop()
 	
 	notepad_tween = create_tween()
@@ -88,6 +92,7 @@ func hide_notepad() -> void:
 	Game.viewmodel.frozen = false
 	
 	if notepad_tween:
+		notepad_tween.finished.emit()
 		notepad_tween.stop()
 	
 	notepad_tween = create_tween()
@@ -97,8 +102,10 @@ func hide_notepad() -> void:
 
 func show_journal() -> void:
 	if journal_tween:
+		journal_tween.finished.emit()
 		journal_tween.stop()
 	
+	journal.show()
 	journal_tween = create_tween()
 	journal_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	journal_tween.tween_property(journal, "position", Vector2(0, 0), 0.5)
@@ -108,11 +115,14 @@ func hide_journal() -> void:
 	Game.viewmodel.frozen = false
 	
 	if journal_tween:
+		journal_tween.finished.emit()
 		journal_tween.stop()
 	
 	journal_tween = create_tween()
 	journal_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	journal_tween.tween_property(journal, "position", Vector2(0, 360), 0.5)
+	await journal_tween.finished
+	journal_tween.hide()
 
 
 func set_loading_progress(progress: float) -> void:
@@ -145,10 +155,13 @@ func hide_dialogue() -> void:
 	dialogue_tween.tween_property(dialogue, "position", dialogue.position, 2.0)
 	dialogue_tween.tween_property(dialogue, "modulate", Color.TRANSPARENT, 0.2)
 
+
 func show_note(text: String) -> void:
 	if note_tween:
+		note_tween.finished.emit()
 		note_tween.stop()
 	
+	note.show()
 	Game.player.frozen = true
 	interact_icons.visible = false
 	Game.player.cam.frozen = true
@@ -157,13 +170,13 @@ func show_note(text: String) -> void:
 	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	note_tween.tween_property(note, "position", Vector2(200, 20), 0.5)
 	note_shown = true
-	
 
 
 func hide_note() -> void:
 	Game.viewmodel.frozen = false
 	
 	if note_tween:
+		note_tween.finished.emit()
 		note_tween.stop()
 	
 	note_tween = create_tween()
@@ -173,6 +186,9 @@ func hide_note() -> void:
 	Game.player.frozen = false
 	interact_icons.visible = true
 	Game.player.cam.frozen = false
+	await note_tween.finished
+	note.hide()
+
 
 func _set_notepad_shown(_notepad_shown: bool) -> void:
 	notepad_shown = _notepad_shown
@@ -191,3 +207,20 @@ func _set_journal_shown(_journal_shown: bool) -> void:
 	else:
 		hide_journal()
 
+
+func _on_murderer_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		murderer_checkbox2.button_pressed = false
+		murderer_checkbox3.button_pressed = false
+
+
+func _on_murderer_2_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		murderer_checkbox.button_pressed = false
+		murderer_checkbox3.button_pressed = false
+
+
+func _on_murderer_3_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		murderer_checkbox.button_pressed = false
+		murderer_checkbox2.button_pressed = false

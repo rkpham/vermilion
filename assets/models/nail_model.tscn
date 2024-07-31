@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cja7bhbvrf82g"]
-
-[ext_resource type="PackedScene" uid="uid://c47ogvg7bnl5j" path="res://assets/models/nail.glb" id="1_dq1vb"]
-
-[node name="nail" instance=ExtResource("1_dq1vb")]

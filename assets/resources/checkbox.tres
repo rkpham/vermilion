@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c4464vj2nffa3"]
+
+[ext_resource type="FontFile" uid="uid://cgobn7jbhym58" path="res://assets/resources/pixel.ttf" id="1_2mlkh"]
+[ext_resource type="Texture2D" uid="uid://cy7ogbyyiilsa" path="res://assets/textures/icons/checkbox_checked.png" id="2_w2dav"]
+[ext_resource type="Texture2D" uid="uid://h0jj8wrypxu0" path="res://assets/textures/icons/checkbox_disabled.png" id="3_3pnih"]
+[ext_resource type="Texture2D" uid="uid://dgmv4hqe6joqg" path="res://assets/textures/icons/checkbox.png" id="4_msbch"]
+
+[sub_resource type="FontVariation" id="FontVariation_s10l1"]
+base_font = ExtResource("1_2mlkh")
+spacing_top = -4
+spacing_bottom = -4
+
+[resource]
+default_font = SubResource("FontVariation_s10l1")
+default_font_size = 11
+Button/font_sizes/font_size = 11
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/constants/check_v_offset = -2
+CheckBox/constants/h_separation = 4
+CheckBox/constants/outline_size = 0
+CheckBox/font_sizes/font_size = 11
+CheckBox/fonts/font = SubResource("FontVariation_s10l1")
+CheckBox/icons/checked = ExtResource("2_w2dav")
+CheckBox/icons/checked_disabled = ExtResource("3_3pnih")
+CheckBox/icons/radio_checked = ExtResource("4_msbch")
+CheckBox/icons/radio_checked_disabled = ExtResource("4_msbch")
+CheckBox/icons/radio_unchecked = ExtResource("4_msbch")
+CheckBox/icons/radio_unchecked_disabled = ExtResource("4_msbch")
+CheckBox/icons/unchecked = ExtResource("4_msbch")
+CheckBox/icons/unchecked_disabled = ExtResource("4_msbch")
+Label/colors/font_color = Color(0.101961, 0.0431373, 0, 1)
+RichTextLabel/colors/default_color = Color(0.0823529, 0.0588235, 0.0156863, 1)
