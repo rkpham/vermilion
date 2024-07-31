@@ -195,6 +195,7 @@ func hide_note() -> void:
 		note_tween.finished.emit()
 		note_tween.stop()
 	
+	Game.capture_mouse = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	note_tween = create_tween()
 	note_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
