@@ -1,6 +1,9 @@
 class_name CloseUpComponent
 extends Node3D
 
+signal started_closeup
+signal ended_closeup
+
 var interacting: bool = false
 var focused_puzzle_item: int = 0:
 	set = _set_focused_puzzle_item
@@ -18,6 +21,7 @@ func _input(event: InputEvent) -> void:
 			Game.player.frozen = false
 			Game.viewmodel.frozen = false
 			Game.ui.interact_icons.visible = true
+			ended_closeup.emit()
 			if cursor:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				Game.capture_mouse = true
@@ -39,6 +43,7 @@ func interact() -> bool:
 		Game.viewmodel.frozen = true
 		Game.player.footsteps.stepping = false
 		Game.ui.interact_icons.visible = false
+		started_closeup.emit()
 		if cursor:
 			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 			Game.capture_mouse = false

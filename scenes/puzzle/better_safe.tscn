@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://855m27eobwcg"]
+[gd_scene load_steps=10 format=3 uid="uid://bgevhhixqt3hh"]
 
 [ext_resource type="Script" path="res://scenes/puzzle/better_safe.gd" id="1_28ksj"]
 [ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="1_jnpm1"]

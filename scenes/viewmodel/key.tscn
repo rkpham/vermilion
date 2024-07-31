@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1wva8v70xav3"]
+
+[ext_resource type="Script" path="res://scenes/viewmodel/key.gd" id="1_i6fvs"]
+[ext_resource type="PackedScene" uid="uid://t2eo56jpovmp" path="res://assets/models/keys/stairkey.tscn" id="2_teae0"]
+
+[node name="Key" type="Node3D"]
+transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 2.23517e-08, -1.49012e-08, 0, 1, 0, 0, 0)
+script = ExtResource("1_i6fvs")
+key_name = "Third Floor Stairwell Key"
+
+[node name="stairkey" parent="." instance=ExtResource("2_teae0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 1.42109e-14, 8.74228e-08, 1.42109e-14, -1, 0, 0.00335348, -0.196568)

@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://srdjhbg442b7"]
+[gd_scene load_steps=11 format=3 uid="uid://srdjhbg442b7"]
 
 [ext_resource type="PackedScene" uid="uid://cxse06l7j8ovs" path="res://assets/models/clock/clock.glb" id="1_cyscm"]
 [ext_resource type="Material" uid="uid://ccap0one5li2" path="res://assets/models/clock/clock.tres" id="2_8jjre"]
+[ext_resource type="Script" path="res://assets/models/clock/clock.gd" id="2_j6gue"]
 [ext_resource type="PackedScene" uid="uid://ml8aud0g7k6s" path="res://assets/models/clock/clockhands.tscn" id="3_qfbis"]
+[ext_resource type="Script" path="res://scenes/objects/interactable.gd" id="4_7jjxo"]
+[ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="5_cghcr"]
+[ext_resource type="Script" path="res://scenes/components/dialogue_component.gd" id="7_7owfh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ggun"]
+size = Vector3(0.01, 0.0986304, 0.0185547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ct3m"]
+size = Vector3(0.01, 0.0197754, 0.168577)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hv874"]
 points = PackedVector3Array(0.138229, 1.64208, 0.24485, 0.138229, 1.77204, 0.0825913, -0.138229, 1.64208, 0.24485, 0.138229, 1.60994, 0.24485, 0.138229, 1.79417, 0.0303426, -0.138229, 1.77204, 0.0825913, -0.138229, 1.60994, 0.24485, 0.138229, 1.60994, -0.24485, 0.130976, 0, 0.23579, -0.138229, 1.79417, 0.0303426, 0.138229, 1.79417, -0.0303905, -0.138229, 1.60994, -0.24485, -0.131003, 0, 0.23579, 0.138229, 1.64208, -0.24485, 0.130976, 0, -0.235838, -0.138229, 1.79417, -0.0303905, 0.138229, 1.77204, -0.0826392, -0.138229, 1.64208, -0.24485, -0.131003, 0, -0.235838, -0.138229, 1.77204, -0.0826392)
 
 [node name="clock" instance=ExtResource("1_cyscm")]
+script = ExtResource("2_j6gue")
 
 [node name="Clock" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_8jjre")
@@ -15,7 +26,62 @@ surface_material_override/0 = ExtResource("2_8jjre")
 [node name="clockhands" parent="." index="1" instance=ExtResource("3_qfbis")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0275105, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+[node name="Skeleton3D" parent="clockhands/ClockHandsArmature" index="0"]
+bones/1/rotation = Quaternion(0.000474975, -0.996525, -0.087525, 0.000474975)
+
+[node name="ShortHandAttachment" type="BoneAttachment3D" parent="clockhands" index="1"]
+transform = Transform3D(-0.999999, -0.00086288, -0.00102905, -0.00102905, 0.984689, 0.174315, 0.00086288, 0.174316, -0.984689, -0.0951508, 1.39688, 0)
+bone_name = "ShortHand"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../ClockHandsArmature/Skeleton3D")
+
+[node name="ShortHandArea" type="Area3D" parent="clockhands/ShortHandAttachment" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="clockhands/ShortHandAttachment/ShortHandArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00473864, 0.0374768, 0)
+shape = SubResource("BoxShape3D_7ggun")
+
+[node name="LongHandAttachment" type="BoneAttachment3D" parent="clockhands" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0951508, 1.39688, 0)
+bone_name = "LongHand"
+bone_idx = 0
+use_external_skeleton = true
+external_skeleton = NodePath("../ClockHandsArmature/Skeleton3D")
+
+[node name="LongHandArea" type="Area3D" parent="clockhands/LongHandAttachment" index="0"]
+transform = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="clockhands/LongHandAttachment/LongHandArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0792882)
+shape = SubResource("BoxShape3D_0ct3m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" node_paths=PackedStringArray("collision", "mesh_node")]
+collision_layer = 7
+script = ExtResource("4_7jjxo")
+collision = NodePath("CollisionShape3D")
+mesh_node = NodePath("../Clock")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_hv874")
+
+[node name="CloseUpComponent" parent="StaticBody3D" index="1" instance=ExtResource("5_cghcr")]
+cursor = true
+
+[node name="Camera3D" type="Camera3D" parent="StaticBody3D/CloseUpComponent" index="0"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -0.448156, 1.42439, 0)
+
+[node name="DialogueComponent" type="Node3D" parent="StaticBody3D" index="2"]
+script = ExtResource("7_7owfh")
+action_mode = 1
+text = "[center][color=white]This clock isn't moving at all. I wonder if it's broken?[/color][/center]"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.691787, 1.28229, 0)
+
+[connection signal="input_event" from="clockhands/ShortHandAttachment/ShortHandArea" to="." method="_on_short_hand_area_input_event"]
+[connection signal="input_event" from="clockhands/LongHandAttachment/LongHandArea" to="." method="_on_long_hand_area_input_event"]
+[connection signal="ended_closeup" from="StaticBody3D/CloseUpComponent" to="." method="_on_close_up_component_ended_closeup"]
+[connection signal="started_closeup" from="StaticBody3D/CloseUpComponent" to="." method="_on_close_up_component_started_closeup"]
+
+[editable path="clockhands"]

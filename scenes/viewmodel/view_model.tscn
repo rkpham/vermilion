@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://d0m3yhkyouo1x" path="res://assets/audio/sfx/briefcaseclose.ogg" id="6_q8jn2"]
 [ext_resource type="Script" path="res://scenes/viewmodel/keyring.gd" id="7_bk0uh"]
 [ext_resource type="PackedScene" uid="uid://t2eo56jpovmp" path="res://assets/models/keys/stairkey.tscn" id="9_1rgs5"]
-[ext_resource type="Script" path="res://scenes/viewmodel/key.gd" id="10_ifkhh"]
+[ext_resource type="PackedScene" uid="uid://b1wva8v70xav3" path="res://scenes/viewmodel/key.tscn" id="10_xol8i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nety3"]
 size = Vector3(0.516266, 0.283203, 0.117188)
@@ -33,6 +33,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.765, -1, 0.025)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_25ylt"]
@@ -402,7 +414,7 @@ shape = SubResource("BoxShape3D_nety3")
 transform = Transform3D(1, -3.65416e-09, -4.47035e-08, 7.36498e-10, -1, -8.73064e-08, 0, 8.72798e-08, -1, 0, 0, 0)
 
 [node name="UpperAttachment" type="BoneAttachment3D" parent="Briefcase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987165, -0.0368981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714645, 0.0987163, -0.0368981)
 bone_name = "TopBriefcase"
 bone_idx = 1
 use_external_skeleton = true
@@ -418,33 +430,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847778, 0, 0)
 
 [node name="KeyRing" type="Node3D" parent="."]
 transform = Transform3D(0.60042, 0.747565, -0.283974, 0, 0.355107, 0.934826, 0.799684, -0.561288, 0.213213, -0.765, -1, 0.025)
+visible = false
 script = ExtResource("7_bk0uh")
 
 [node name="KeyRingModel" parent="KeyRing" instance=ExtResource("5_i3nhx")]
 
-[node name="Key" type="Node3D" parent="KeyRing"]
-transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 2.23517e-08, -1.49012e-08, 0, 1, 0, 0, 0)
-script = ExtResource("10_ifkhh")
-key_name = "Third Floor Stairwell Key"
+[node name="Key" parent="KeyRing" instance=ExtResource("10_xol8i")]
 
-[node name="stairkey" parent="KeyRing/Key" instance=ExtResource("9_1rgs5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 1.42109e-14, 8.74228e-08, 1.42109e-14, -1, 0, 0.00335348, -0.196568)
-
-[node name="Key2" type="Node3D" parent="KeyRing"]
-transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 2.23517e-08, -1.49012e-08, 0, 1, 0, 0, 0)
-script = ExtResource("10_ifkhh")
+[node name="Key2" parent="KeyRing" instance=ExtResource("10_xol8i")]
+transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 5.21541e-08, -2.98023e-08, 0, 1, 0, 0, 0)
 key_name = "Veluvia Precinct #43 Key"
 
-[node name="stairkey" parent="KeyRing/Key2" instance=ExtResource("9_1rgs5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 1.42109e-14, 8.74228e-08, 1.42109e-14, -1, 0, 0.00335348, -0.196568)
-
-[node name="Key3" type="Node3D" parent="KeyRing"]
-transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 2.23517e-08, -1.49012e-08, 0, 1, 0, 0, 0)
-script = ExtResource("10_ifkhh")
+[node name="Key3" parent="KeyRing" instance=ExtResource("10_xol8i")]
+transform = Transform3D(1, 0, -4.47035e-08, -2.98023e-08, 1, 5.21541e-08, -2.98023e-08, 0, 1, 0, 0, 0)
 key_name = "Home Key"
-
-[node name="stairkey" parent="KeyRing/Key3" instance=ExtResource("9_1rgs5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 1.42109e-14, 8.74228e-08, 1.42109e-14, -1, 0, 0.00335348, -0.196568)
 
 [node name="KeyRingAnim" type="AnimationPlayer" parent="KeyRing"]
 libraries = {

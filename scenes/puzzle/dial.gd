@@ -8,7 +8,7 @@ var number: int = 0:
 
 
 func _input(event: InputEvent) -> void:
-	if active:
+	if focused:
 		if event.is_action_pressed("move_forward"):
 			number -= 1
 			number = wrapi(number, 0, 10)
