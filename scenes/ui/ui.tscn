@@ -1,7 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://di1lgu50gdfbw"]
+[gd_scene load_steps=38 format=3 uid="uid://di1lgu50gdfbw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iyfh5"]
-[ext_resource type="Theme" uid="uid://cnjks23fh4kxd" path="res://assets/resources/loading.tres" id="2_7qa3h"]
+[ext_resource type="Theme" uid="uid://7cwnhesijr34" path="res://assets/resources/endscreen.tres" id="2_p3l5g"]
 [ext_resource type="Texture2D" uid="uid://fov4ot6uv6ex" path="res://assets/textures/icons/goldcursor.png" id="4_d1e7q"]
 [ext_resource type="Texture2D" uid="uid://beleei6fw0wgb" path="res://assets/textures/paper.png" id="5_0udoo"]
 [ext_resource type="Script" path="res://scenes/ui/notepad.gd" id="5_a0cvu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/ui/key_label.gd" id="11_n50wj"]
 [ext_resource type="Theme" uid="uid://4r64qqa5xhoc" path="res://assets/resources/form.tres" id="14_ptsr0"]
 [ext_resource type="Theme" uid="uid://c31b6fm6gx6hg" path="res://assets/resources/checkbox.tres" id="15_fmajr"]
+[ext_resource type="Texture2D" uid="uid://c13wlgg455oma" path="res://assets/textures/icons/veluvia.png" id="16_8khcm"]
 
 [sub_resource type="Gradient" id="Gradient_w11qt"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0784314, 0, 0.0823529, 1)
@@ -401,6 +402,12 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.372549)
 gradient = SubResource("Gradient_r7w64")
 fill_to = Vector2(0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_endef"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epv0j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -410,6 +417,33 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_iyfh5")
+end_text_1 = "[center]
+Ms. Sofia Petrov was prosecuted for the crime of murdering Azbastanian Diplomat John Makovich.
+She was found guilty of performing unlicensed alchemy and first degree murder.
+Her textbooks, which once were invaluable and accessible resources for many alchemists, have been deemed harmful sources of information for the public, and expunged from libraries.
+
+Many people cry out for her innocence, but those cries are left unheard.
+
+In the end, you did your job.
+[/center]"
+end_text_2 = "[center]
+Mr. Reynauld Barig was prosecuted for the crime of murdering Azbastanian Diplomat John Makovich.
+He was found guilty of treason and first degree murder.
+Once a proud Veluvian soldier, he eventually was court martialed for the crime of desertion. Nobody knows why he snapped, but perhaps it was the way he was treated by the Republic during his service.
+
+Regardless, it seems like Raynauld wasn't the first of his kind, nor would he be the last of his kind either.
+
+In the end, you did your job.
+[/center]"
+end_text_3 = "[center]
+Mr. Isak Tempolev was prosecuted for the crime of murdering Azbastanian Diplomat John Makovich.
+He was found guilty of treason, terrorism, and first degree murder.
+Isak was once considered to be a proud shining example of what it means to be a Veluvian citizen, but according to what officials would say, he fell into the wrong crowds.
+
+Isak fought for what he believed to be right and morally just, and the Republic must uphold its status quo, but does the end justify the means?
+
+In the end, you did your job.
+[/center]"
 
 [node name="Loading" type="Control" parent="."]
 visible = false
@@ -422,7 +456,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("2_7qa3h")
+theme = ExtResource("2_p3l5g")
 
 [node name="TextureRect" type="TextureRect" parent="Loading"]
 layout_mode = 1
@@ -470,7 +504,7 @@ anchor_right = 1.0
 offset_left = -42.0
 offset_bottom = 23.0
 grow_horizontal = 0
-theme = ExtResource("2_7qa3h")
+theme = ExtResource("2_p3l5g")
 text = "fps: 0"
 script = SubResource("GDScript_v5iy4")
 
@@ -619,7 +653,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
-text = "(LMB) Draw (ESC) Close"
+text = "(LMB) Draw (Q) Close"
 horizontal_alignment = 1
 
 [node name="Journal" type="Control" parent="."]
@@ -658,7 +692,14 @@ Go down this list.
 - [E] Interact
 - [Tab] Briefcase
 - [Shift] Sprint
-- [Scroll Wheel] Swap Use Modes", "
+- [Scroll Wheel] Swap Use Modes
+
+[center]A Primer on Reconstruction[/center]
+
+Thanks to advancements in alchemy, we are now able to construct representations of the past positions and states of certain objects. 
+We aren't 100% sure on which objects are able to be reconstructed, but it appears that things thay may have been recently moved are have exceptionally high success rates.
+
+Give your reconstructor a try on objects that seem out of place!", "
 [center]Testimonies[/center]
 
 Ovborod Homicide Division
@@ -673,13 +714,78 @@ Place of Residence:
 Interview Time: Jun 15, 14:02
 
 Q: Where were you at the time of the incident?
-A: In my apartment for the whole day. I was writing. Ask Sofia.
+A: I can't remember too well, but I was In my apartment for the whole day. I was writing. Ask Sofia.
 
 Q: Can you elaborate?
 A: I write for fun. I didn't leave my apartment.
 
 Q: Did you hear or see anything unusual that day?
-A: Nothing out of the ordinary. Isak was giving his same speeches to-", "-nobody. "])
+A: Nothing out of the ordinary. ", "Isak was giving his same speeches to nobody. 
+
+Q: What is your relationship with Mr. John Makovich?
+A: Nothing more than acquaintances. I show him my writing from time to time, and we play chess together on occassion.
+
+Q: That sounds like you two were pretty close no?
+A: No, not really. I barely know the guy", "Ovborod Homicide Division
+Interviewer:
+	Leonid Ilyin
+Interviewee:
+	Isak Tempolev
+Place of Residence:
+	Armin Building 3-A2
+	3394 Armin Road
+	Ovborod, Veluvia
+Interview Time: Jun 15, 15:03
+
+Q: Where were you at the time of the incident?
+A: I was out all day meeting with my friends in my club.
+
+Q: What do you mean by club?
+A: Just an average University club, nothing too official. Just a bunch of friends.
+
+Q: Did you hear or see anything unusual that day?
+A: I saw Sofia slip a note under Mr. Makovich's door when I left.", "Q: What is your relationship with Mr. John Makovich?
+A: I don't know him personally, but he was there for my last court session, and he was able to help me out a little.
+
+Q: Your last court session?
+A: Yeah... I was out with some friends, and the police must've mistaken us for someone else, so they arrested us all.", "Ovborod Homicide Division
+Interviewer:
+	Leonid Ilyin
+Interviewee:
+	Sofia Petrov
+Place of Residence:
+	Armin Building 3-A4
+	3394 Armin Road
+	Ovborod, Veluvia
+Interview Time: Jun 15, 15:03
+
+Q: Where were you at the time of the incident?
+A: I was performing alchemical research in my apartment.
+
+Q: What kind of alchemical research?
+A: Simple energy transmutation! I want it to be easier for the next generation of alchemists to transmute energy.
+
+Q: Did you hear or see anything unusual that day?
+A: Isak, bless his heart, was leaving his apartment when I saw Reynauld leave his apartment to ", "talk to John. I didn't catch much of the conversation but it did seem a little odd. Must've been about writing.
+
+Q: What is your relationship with Mr. John Makovich?
+A: John is a little bit of a contentious man. It seems like he recently kindled a love for alchemy, and I happen to love teaching alchemy, but he doesn't seem to take much heed to anything of what I have to say.
+
+Q: Can you elaborate for me please?
+A: Frankly, John is strongheaded and doesn't take no for an answer. He'll try and do whatever it takes to get what he wants.
+
+ ", "[center]This page was left intentionally blank[/center]", "[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]for glory[/font][/color][/font_size][/center]
+[center][img width=32 height=32 color=a00]res://assets/textures/icons/veluvia.png[/img][/center]
+[center][font_size=5][color=a00][font=res://assets/resources/retro-pixel-petty-5x5.ttf]republic of veluvia[/font][/color][/font_size][/center]
+
+[center]The rest of these pages are left blank for note taking.
+
+An honorable investigator is an honorable note taker.
+
+Make sure to take note of anything interesting in the field.
+
+People's lives depend on it.
+[/center]"])
 
 [node name="ControlsText" type="Label" parent="Journal"]
 layout_mode = 1
@@ -696,7 +802,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
-text = "(LMB) Turn page (ESC) Close"
+text = "(LMB) Turn page (Q) Close"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Journal"]
@@ -939,7 +1045,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
-text = "(ESC) Close"
+text = "(Q) Close"
 horizontal_alignment = 1
 
 [node name="KeyRingControls" type="Control" parent="."]
@@ -970,7 +1076,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_ky6kj")
 theme_override_font_sizes/font_size = 5
-text = "(A) Previous Key (D) Next Key (S) Take KEy (W) Return Key (ESC) Back"
+text = "(A) Previous Key (D) Next Key (S) Take KEy (W) Return Key (Q) Back"
 horizontal_alignment = 1
 
 [node name="KeyName" type="Label" parent="KeyRingControls"]
@@ -1008,11 +1114,10 @@ texture_filter = 1
 layout_mode = 1
 offset_right = 102.0
 offset_bottom = 15.0
-theme = ExtResource("2_7qa3h")
+theme = ExtResource("2_p3l5g")
 script = ExtResource("11_n50wj")
 
 [node name="MurdererSelection" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1068,7 +1173,7 @@ Finalization Form[/center]
 Please fill out the form to the best of your ability. Falsifications will not be tolerated.
 
 Name and Investigator ID
-	▮▮▮▮ ▮▮▮▮▮ A-4409-71
+	XXXX XXXXX A-4409-71
 
 Location of Murder
 	Armin Building 3-A1
@@ -1076,43 +1181,113 @@ Location of Murder
 	Ovborod, Veluvia
 	In the kitchen, next to the stove.
 
-Murderer
+Murderer                      Signature
 
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MurdererSelection/Paper"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MurdererSelection/Paper"]
 layout_mode = 0
-offset_top = 261.0
-offset_right = 256.0
-offset_bottom = 312.0
+offset_left = 8.0
+offset_top = 260.0
+offset_right = 113.0
+offset_bottom = 311.0
+theme_override_constants/separation = 85
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MurdererSelection/Paper/HBoxContainer"]
+layout_mode = 2
 theme = ExtResource("14_ptsr0")
 theme_override_constants/separation = 0
 
-[node name="Murderer" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("15_fmajr")
-text = "Reynauld Barig"
-
-[node name="Murderer2" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("15_fmajr")
-text = "Isak Tempolev"
-
-[node name="Murderer3" type="CheckBox" parent="MurdererSelection/Paper/VBoxContainer"]
+[node name="Murderer1" type="CheckBox" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("15_fmajr")
 text = "Sofia Petrov"
 
+[node name="Murderer2" type="CheckBox" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Reynauld Barig"
+
+[node name="Murderer3" type="CheckBox" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("15_fmajr")
+text = "Isak Tempolev"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MurdererSelection/Paper/HBoxContainer"]
+layout_mode = 2
+
+[node name="SignButton" type="Button" parent="MurdererSelection/Paper/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/hover = SubResource("StyleBoxFlat_endef")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_epv0j")
+text = "SIGN"
+
+[node name="Blackout" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p3l5g")
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Blackout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Blackout/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="Blackout"]
+modulate = Color(1, 0, 0, 0.129412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_8khcm")
+
 [connection signal="mouse_entered" from="Notepad" to="Notepad" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Notepad" to="Notepad" method="_on_mouse_exited"]
 [connection signal="gui_input" from="Journal/PaperLeft" to="Journal" method="_on_paper_left_gui_input"]
 [connection signal="gui_input" from="Journal/PaperRight" to="Journal" method="_on_paper_right_gui_input"]
-[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer" to="." method="_on_murderer_toggled"]
-[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer2" to="." method="_on_murderer_2_toggled"]
-[connection signal="toggled" from="MurdererSelection/Paper/VBoxContainer/Murderer3" to="." method="_on_murderer_3_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer1" to="." method="_on_murderer_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer2" to="." method="_on_murderer_2_toggled"]
+[connection signal="toggled" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer/Murderer3" to="." method="_on_murderer_3_toggled"]
+[connection signal="pressed" from="MurdererSelection/Paper/HBoxContainer/VBoxContainer2/SignButton" to="." method="_on_sign_button_pressed"]
