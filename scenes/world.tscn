@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cpd4nvm2b53pl"]
+[gd_scene load_steps=54 format=3 uid="uid://cpd4nvm2b53pl"]
 
 [ext_resource type="PackedScene" uid="uid://blavsaulbsrwo" path="res://scenes/player/player.tscn" id="1_fxprh"]
 [ext_resource type="PackedScene" uid="uid://cpighcr4ai5b0" path="res://assets/models/apartments/doorframe/doorframe.tscn" id="3_j0moq"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://d2cfvix3v6vk4" path="res://assets/models/chess/knight.tscn" id="32_u5h5h"]
 [ext_resource type="Texture2D" uid="uid://csjav1px1ih0a" path="res://assets/textures/crack/x.png" id="35_avmk0"]
 [ext_resource type="PackedScene" uid="uid://cekvsxsj4fjix" path="res://scenes/components/close_up_component.tscn" id="36_k8c0p"]
+[ext_resource type="PackedScene" uid="uid://q5gmoh0snfe" path="res://assets/models/ceilinglight/ceilinglight.tscn" id="37_7p63j"]
 
 [sub_resource type="Environment" id="Environment_ujcor"]
 background_mode = 1
@@ -505,6 +506,14 @@ transform = Transform3D(1, 0, 1.77636e-15, 2.11758e-21, -4.37114e-08, 1, 0, -1, 
 transform = Transform3D(1, 0, 0, 4.23516e-22, 1, 0, 0, 0, 1, 0, 0, 0)
 action_mode = 1
 text = "[center][color=white]A chess game. Looks like a piece is missing though.[/color][/center]"
+
+[node name="ceilinglight" parent="Props/ApartmentA3Props/Props" instance=ExtResource("37_7p63j")]
+transform = Transform3D(1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, 1, 8.8772, 3.35698, -11.1261)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Props/ApartmentA3Props/Props/ceilinglight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.203437, 0)
+shadow_enabled = true
+spot_angle = 21.7245
 
 [node name="Effects" type="Node3D" parent="Props/ApartmentA3Props"]
 transform = Transform3D(1, 8.74228e-08, 0, -8.74228e-08, 1, 0, 0, 0, 1, -12, 0, 0)
