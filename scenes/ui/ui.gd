@@ -122,7 +122,7 @@ func hide_journal() -> void:
 	journal_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	journal_tween.tween_property(journal, "position", Vector2(0, 360), 0.5)
 	await journal_tween.finished
-	journal_tween.hide()
+	journal.hide()
 
 
 func set_loading_progress(progress: float) -> void:
